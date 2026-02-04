@@ -48,6 +48,7 @@ nav:
     - Exemplos Práticos: guia/exemplos-praticos.md
   - 📚 API:
     - Referência Completa: api/referencia.md
+  - 🗺️ Roadmap: roadmap.md
   - 📖 Referências: referencias.md
 
 markdown_extensions:
