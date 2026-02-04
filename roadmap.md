@@ -38,6 +38,7 @@ Funcionalidades planejadas e estado atual do projeto.
 - [x] Zero dependencias runtime (simpleaudio opcional para playback)
 - [x] Core C++17 com pybind11
 - [x] CLI completa com subcomandos (note, interval, chord, scale, field, compare)
+- [x] CLI de ritmo: duration, tempo, timesig
 - [x] Type stubs (PEP 561)
 - [x] Documentacao MkDocs completa
 

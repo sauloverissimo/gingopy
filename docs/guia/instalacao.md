@@ -129,10 +129,10 @@ Durante a instalação, você verá:
 
 ```
 Collecting gingo
-  Downloading gingo-1.0.0-cp312-cp312-win_amd64.whl (245 kB)
+  Downloading gingo-1.0.1-cp312-cp312-win_amd64.whl (245 kB)
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 245.0/245.0 kB 5.2 MB/s
 Installing collected packages: gingo
-Successfully installed gingo-1.0.0
+Successfully installed gingo-1.0.1
 ```
 
 **Instalação bem-sucedida**
@@ -156,7 +156,7 @@ gingo --version
 Saída esperada:
 
 ```
-gingo 1.0.0
+gingo 1.0.1
 ```
 
 ```mermaid
