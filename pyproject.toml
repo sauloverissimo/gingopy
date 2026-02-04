@@ -1,0 +1,53 @@
+[build-system]
+requires = ["scikit-build-core>=0.5", "pybind11>=2.11"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "gingo"
+version = "1.0.0"
+description = "Music theory library — notes, chords, scales, and harmonic fields"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [
+    {name = "Saulo Verissimo", email = "sauloverissimo@gmail.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: C++",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Education",
+]
+keywords = ["music", "theory", "chord", "scale", "harmony", "interval", "harmonic-field"]
+
+[project.urls]
+Homepage = "https://github.com/sauloverissimo/gingo"
+Documentation = "https://sauloverissimo.github.io/gingo"
+Repository = "https://github.com/sauloverissimo/gingo"
+Issues = "https://github.com/sauloverissimo/gingo/issues"
+
+[project.scripts]
+gingo = "gingo.__main__:main"
+
+[project.optional-dependencies]
+test = ["pytest>=7.0"]
+audio = ["simpleaudio>=1.0"]
+
+[tool.scikit-build]
+wheel.packages = ["python/gingo"]
+cmake.build-type = "Release"
+sdist.exclude = [".venv", "build", ".pytest_cache", ".old", ".github", "**/__pycache__"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/python"]

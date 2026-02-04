@@ -1,0 +1,90 @@
+site_name: 🪇 Gingo - Teoria Musical em Python
+site_url: https://sauloverissimo.github.io/gingo
+site_description: Aprenda teoria musical de forma divertida e fácil com Python
+site_author: Saulo Verissimo
+repo_url: https://github.com/sauloverissimo/gingo
+repo_name: sauloverissimo/gingo
+
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Modo escuro
+    - scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Modo claro
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - 🏠 Início: index.md
+  - 📖 Guia:
+    - Introdução: guia/introducao.md
+    - Instalação: guia/instalacao.md
+    - Primeiros Passos: guia/primeiros-passos.md
+    - Conceitos Básicos de Música: guia/conceitos-basicos.md
+    - Começando: guia/comecando.md
+    - Ritmo: guia/ritmo.md
+    - Audio: guia/audio.md
+    - Exemplos Práticos: guia/exemplos-praticos.md
+  - 📚 API:
+    - Referência Completa: api/referencia.md
+  - 📖 Referências: referencias.md
+
+markdown_extensions:
+  - tables
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+plugins:
+  - search:
+      lang: pt
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/sauloverissimo/gingo
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/gingo/
