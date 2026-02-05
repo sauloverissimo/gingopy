@@ -1,5 +1,5 @@
 // Gingo — Music Theory Library
-// Tree: harmonic progression tree — paths between chord functions.
+// Tree: directed graph of chord-function relationships for a single tradition.
 //
 // SPDX-License-Identifier: MIT
 
@@ -9,6 +9,7 @@
 #include "field.hpp"
 #include "interval.hpp"
 #include "note.hpp"
+#include "progression.hpp"
 #include "scale.hpp"
 
 #include <string>
@@ -26,19 +27,28 @@ struct HarmonicPath {
 };
 
 /// Represents a harmonic tree — a directed graph of chord-function
-/// relationships within a key.
+/// relationships within a key, for a specific tradition.
 ///
-/// The tree encodes how chords connect to each other in tonal harmony:
-/// which chords can follow which, and what their functional labels are.
+/// A Tree is the complete map of valid chord transitions in a tradition.
+/// It is created via Progression::tree("tradition_name"), or directly
+/// with a 3-argument constructor.
 ///
 /// Examples:
-///   Tree t("C", ScaleType::Major);
+///   // Via Progression (preferred):
+///   Progression p("C", ScaleType::Major);
+///   Tree ht = p.tree("harmonic_tree");
+///
+///   // Direct construction:
+///   Tree t("C", ScaleType::Major, "harmonic_tree");
+///
 ///   auto paths = t.paths("I");
 ///   // Returns: I → IIm/IV, I → V7, I → VIm, etc.
 class Tree {
 public:
-    Tree(const std::string& tonic, ScaleType type);
-    Tree(const std::string& tonic, const std::string& type_name);
+    /// Construct a tree for a specific tradition.
+    Tree(const std::string& tonic, ScaleType type, const std::string& tradition);
+    Tree(const std::string& tonic, const std::string& type_name,
+         const std::string& tradition);
 
     /// Get the tonic note.
     Note tonic() const { return tonic_; }
@@ -46,7 +56,10 @@ public:
     /// Get the scale type.
     ScaleType type() const { return type_; }
 
-    /// List all available branch names for this scale type.
+    /// Get the tradition metadata.
+    Tradition tradition() const;
+
+    /// List all available branch names for this scale type and tradition.
     std::vector<std::string> branches() const;
 
     /// Get harmonic paths starting from a given branch origin.
@@ -55,24 +68,22 @@ public:
 
     /// Find the shortest path between two branches.
     /// Returns empty vector if no path exists.
-    /// Example: shortest_path("I", "V7") might return ["I", "IIm", "V7"]
     std::vector<std::string> shortest_path(const std::string& from,
                                            const std::string& to) const;
 
-    /// Check if a progression is valid according to the harmonic tree.
-    /// Returns true if each transition exists in the paths table.
-    bool is_valid_progression(const std::vector<std::string>& branches) const;
+    /// Check if a progression is valid in this tradition.
+    bool is_valid(const std::vector<std::string>& branches) const;
 
     /// Get the harmonic function (T/S/D) of a branch.
-    /// Returns the function based on the primary degree.
-    /// Examples: "I" → Tonic, "V7" → Dominant, "IIm / IV" → Subdominant
     HarmonicFunction function(const std::string& branch) const;
 
     /// List all branches with a specific harmonic function.
     std::vector<std::string> branches_with_function(HarmonicFunction func) const;
 
+    /// Get named schemas (common patterns) in this tradition.
+    std::vector<Schema> schemas() const;
+
     /// Export the tree to Graphviz DOT format for visualization.
-    /// Set show_functions=true to color-code by harmonic function.
     std::string to_dot(bool show_functions = false) const;
 
     /// Export the tree to Mermaid diagram format for documentation.
@@ -81,9 +92,10 @@ public:
     std::string to_string() const;
 
 private:
-    Note      tonic_;
-    ScaleType type_;
-    int       tonic_index_;
+    Note        tonic_;
+    ScaleType   type_;
+    std::string tradition_;
+    int         tonic_index_;
 };
 
 } // namespace gingo

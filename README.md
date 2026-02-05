@@ -21,7 +21,7 @@ Gingo is a pragmatic library for analysis, composition, and teaching. It priorit
 **Highlights**
 
 - **C++17 core + Python API** — fast and deterministic, with full type hints.
-- **Pitch & harmony** — `Note`, `Interval`, `Chord`, `Scale`, `Field`, and `Tree` (beta) with identification, deduction, and comparison utilities.
+- **Pitch & harmony** — `Note`, `Interval`, `Chord`, `Scale`, `Field`, `Tree`, and `Progression` with identification, deduction, and comparison utilities.
 - **Rhythm & time** — `Duration`, `Tempo` (BPM + nomes de tempo), `TimeSignature`, and `Sequence` with note/chord events.
 - **Audio** — `.play()` and `.to_wav()` on musical objects, plus CLI `--play` / `--wav` with waveform and strum controls.
 - **CLI-first exploration** — query and inspect theory concepts without leaving the terminal.
@@ -117,15 +117,24 @@ r.root_motion        # "ascending_fifth"
 r.to_dict()          # full dict serialization
 
 # Harmonic trees (progressions and voice leading)
-tree = Tree("C", ScaleType.Major)
-# Tree is currently beta (content & references are still growing).
+from gingo import Tree, Progression
+
+tree = Tree("C", ScaleType.Major, "harmonic_tree")
 tree.branches()      # All available harmonic branches
 tree.paths("I")      # All progressions from tonic
 tree.shortest_path("I", "V7")  # ["I", "V7"]
-tree.is_valid_progression(["IIm", "V7", "I"])  # True
+tree.is_valid(["IIm", "V7", "I"])  # True
 tree.function("V7")  # HarmonicFunction.Dominant
+tree.schemas()       # Named patterns for this tradition
 tree.to_dot()        # Export to Graphviz
 tree.to_mermaid()    # Export to Mermaid diagram
+
+# Cross-tradition analysis with Progression
+prog = Progression("C", "major")
+prog.traditions()    # ["harmonic_tree", "jazz"]
+prog.identify(["IIm", "V7", "I"])  # ProgressionMatch
+prog.deduce(["IIm", "V7"])         # Ranked matches
+prog.predict(["I", "IIm"])         # Suggested next chords
 
 # Rhythm
 q = Duration("quarter")
@@ -571,21 +580,28 @@ f_minor = Field("A", ScaleType.HarmonicMinor)
 
 ---
 
-### Tree (Harmonic Tree / Progressions) — beta
+### Tree (Harmonic Graph)
 
-The `Tree` class represents harmonic progressions and voice leading paths within a scale's harmonic field. Based on José de Alencar's harmonic tree theory.
-
-**⚠️ Status: beta** — This feature is under active study and development. Due to limited bibliographic references available, the current implementation may contain errors or incomplete patterns. Use with caution and validate results against your harmonic analysis needs.
+The `Tree` class represents harmonic progressions and voice leading paths within a scale's harmonic field. It requires a tradition parameter specifying which harmonic school to use.
 
 ```python
 from gingo import Tree, ScaleType, HarmonicFunction
 
-# Construction
-tree = Tree("C", ScaleType.Major)
+# Construction — now requires tradition parameter
+tree = Tree("C", ScaleType.Major, "harmonic_tree")
 
 # List all available harmonic branches
 branches = tree.branches()
 # ["I", "IIm", "IIIm", "IV", "V7", "VIm", "VIIdim", "V7/IV", "IVm", "bVI", "bVII", ...]
+
+# Get tradition metadata
+tradition = tree.tradition()
+tradition.name         # "harmonic_tree"
+tradition.description  # "Alencar harmonic tree theory"
+
+# Get named patterns (schemas)
+schemas = tree.schemas()
+# [Schema(name="descending", branches=["I", "V7/IIm", "IIm", "V7", "I"]), ...]
 
 # Get all possible paths from a branch
 paths = tree.paths("I")
@@ -595,50 +611,69 @@ for path in paths[:3]:
 # 1: IIm / IV → Dm
 # 2: VIm → Am
 
-# Path information
-path = paths[1]
-path.branch              # "IIm / IV"
-path.chord               # Chord object
-path.chord.name()        # "Dm"
-path.interval_labels     # ["P1", "3m", "5J"]
-path.note_names          # ["D", "F", "A"]
-
 # Find shortest path between two branches
 path = tree.shortest_path("I", "V7")
 # ["I", "V7"]
 
-path = tree.shortest_path("I", "IV")
-# ["I", "VIm", "IV"] or another valid path
-
 # Validate a progression
-tree.is_valid_progression(["IIm", "V7", "I"])     # True (II-V-I)
-tree.is_valid_progression(["I", "IV", "V7"])      # True
-tree.is_valid_progression(["I", "INVALID"])       # False
+tree.is_valid(["IIm", "V7", "I"])     # True (II-V-I)
+tree.is_valid(["I", "IV", "V7"])      # True
+tree.is_valid(["I", "INVALID"])       # False
 
 # Harmonic function classification
 tree.function("I")       # HarmonicFunction.Tonic
 tree.function("IV")      # HarmonicFunction.Subdominant
 tree.function("V7")      # HarmonicFunction.Dominant
-tree.function("VIm")     # HarmonicFunction.Tonic (relative)
 
 # Get all branches with a specific function
 tonics = tree.branches_with_function(HarmonicFunction.Tonic)
 # ["I", "VIm", ...]
 
-dominants = tree.branches_with_function(HarmonicFunction.Dominant)
-# ["V7", "VIIdim", ...]
-
 # Export to visualization formats
 dot = tree.to_dot(show_functions=True)
-# Graphviz DOT format with color-coded functions
-
 mermaid = tree.to_mermaid()
-# Mermaid diagram format
 
 # Works with minor scales
-tree_minor = Tree("A", ScaleType.NaturalMinor)
+tree_minor = Tree("A", ScaleType.NaturalMinor, "harmonic_tree")
 tree_minor.branches()
 # ["Im", "IIdim", "bIII", "IVm", "Vm", "bVI", "bVII", ...]
+```
+
+### Progression (Cross-Tradition Analysis)
+
+The `Progression` class coordinates harmonic analysis across multiple traditions.
+
+```python
+from gingo import Progression
+
+# Construction
+prog = Progression("C", "major")
+
+# List available traditions
+traditions = Progression.traditions()
+# [Tradition(name="harmonic_tree"), Tradition(name="jazz")]
+
+# Get a tree for a specific tradition
+tree = prog.tree("harmonic_tree")
+jazz_tree = prog.tree("jazz")
+
+# Identify tradition and schema from a progression
+match = prog.identify(["IIm", "V7", "I"])
+match.tradition  # "harmonic_tree"
+match.schema     # "descending"
+match.score      # 1.0
+match.matched    # 2 (transitions)
+match.total      # 2
+
+# Deduce likely traditions from partial input
+matches = prog.deduce(["IIm", "V7"], limit=5)
+for m in matches:
+    print(f"{m.tradition}: {m.score}")
+
+# Predict next chords
+routes = prog.predict(["I", "IIm"])
+for r in routes:
+    print(f"Next: {r.next} (from {r.tradition}, conf={r.confidence})")
 ```
 
 ---
@@ -744,17 +779,68 @@ tree_minor.branches()
 
 | Method | Returns | Description |
 |--------|---------|-------------|
-| `Tree(tonic, type)` | `Tree` | From tonic + ScaleType/string |
+| `Tree(tonic, type, tradition)` | `Tree` | From tonic + ScaleType/string + tradition name |
 | `.tonic()` | `Note` | Tonic note |
 | `.type()` | `ScaleType` | Scale type |
+| `.tradition()` | `Tradition` | Tradition metadata |
 | `.branches()` | `list[str]` | All harmonic branches |
 | `.paths(branch)` | `list[HarmonicPath]` | All paths from a branch |
 | `.shortest_path(from, to)` | `list[str]` | Shortest progression |
-| `.is_valid_progression(branches)` | `bool` | Validate progression |
+| `.is_valid(branches)` | `bool` | Validate progression |
+| `.schemas()` | `list[Schema]` | Named patterns for this tradition |
 | `.function(branch)` | `HarmonicFunction` | Harmonic function (T/S/D) |
 | `.branches_with_function(func)` | `list[str]` | Branches with function |
 | `.to_dot(show_functions=False)` | `str` | Graphviz DOT export |
 | `.to_mermaid()` | `str` | Mermaid diagram export |
+
+### Progression
+
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `Progression(tonic, type)` | `Progression` | From tonic + ScaleType/string |
+| `.tonic()` | `Note` | Tonic note |
+| `.type()` | `ScaleType` | Scale type |
+| `Progression.traditions()` | `list[Tradition]` | Static: available traditions |
+| `.tree(tradition)` | `Tree` | Get tree for a tradition |
+| `.identify(branches)` | `ProgressionMatch` | Identify tradition/schema |
+| `.deduce(branches, limit=10)` | `list[ProgressionMatch]` | Ranked matches |
+| `.predict(branches, tradition="")` | `list[ProgressionRoute]` | Suggest next chords |
+
+### Tradition (struct)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `.name` | `str` | Tradition name ("harmonic_tree", "jazz") |
+| `.description` | `str` | Human-readable description |
+
+### Schema (struct)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `.name` | `str` | Pattern name ("descending", "ii-V-I") |
+| `.description` | `str` | Human-readable description |
+| `.branches` | `list[str]` | Branch sequence |
+
+### ProgressionMatch (struct)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `.tradition` | `str` | Matched tradition |
+| `.schema` | `str` | Matched schema (or "") |
+| `.score` | `float` | Match ratio (0.0–1.0) |
+| `.matched` | `int` | Valid transitions |
+| `.total` | `int` | Total transitions |
+| `.branches` | `list[str]` | Resolved branches |
+
+### ProgressionRoute (struct)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `.next` | `str` | Suggested next branch |
+| `.tradition` | `str` | From which tradition |
+| `.schema` | `str` | Motivating schema (or "") |
+| `.path` | `list[str]` | Complete suggested path |
+| `.confidence` | `float` | Confidence (0.0–1.0) |
 
 ### HarmonicPath (struct)
 
@@ -988,7 +1074,7 @@ gingo/
 │   │       ├── data_ops.hpp   # rotate, spread, spin operations
 │   │       ├── notation_utils.hpp  # Formal notation helpers
 │   │       ├── lookup_data.hpp     # Singleton with all music data
-│   │       ├── lookup_tree.hpp     # Singleton with tree data
+│   │       ├── lookup_progression.hpp  # Singleton with tradition data
 │   │       └── mode_data.hpp       # Mode metadata
 │   └── src/                   # All implementations
 ├── bindings/

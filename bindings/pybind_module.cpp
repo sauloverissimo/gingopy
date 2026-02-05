@@ -154,6 +154,25 @@ struct FieldMatch {
     std::vector<std::string> roles;
 };
 
+// Binding-only struct: result item for Progression.identify() / deduce().
+struct ProgressionMatch {
+    std::string tradition;
+    std::string schema;
+    double score;
+    int matched;
+    int total;
+    std::vector<std::string> branches;
+};
+
+// Binding-only struct: result item for Progression.predict().
+struct ProgressionRoute {
+    std::string next;
+    std::string tradition;
+    std::string schema;
+    std::vector<std::string> path;
+    double confidence;
+};
+
 // Helper: find the role of a chord in a field as Roman numeral.
 // Returns "I".."VII" for triads, "I7".."VII7" for sevenths, "" if not found.
 static std::string chord_role_in_field(const Field& f, const Chord& ic) {
@@ -189,6 +208,39 @@ static std::string scale_display_name(const Scale& s) {
 // Helper: field display string for FieldMatch repr.
 static std::string field_display(const Field& f) {
     return f.tonic().name() + " " + scale_display_name(f.scale());
+}
+
+// Helper: count valid consecutive transitions in a branch sequence.
+static int count_valid_transitions(const Tree& tree,
+                                    const std::vector<std::string>& branches) {
+    int count = 0;
+    for (std::size_t i = 0; i + 1 < branches.size(); ++i)
+        if (tree.is_valid({branches[i], branches[i + 1]}))
+            ++count;
+    return count;
+}
+
+// Helper: check if needle appears as a contiguous sub-sequence of haystack.
+static bool is_contiguous_subseq(const std::vector<std::string>& needle,
+                                  const std::vector<std::string>& haystack) {
+    if (needle.size() > haystack.size()) return false;
+    for (std::size_t i = 0; i + needle.size() <= haystack.size(); ++i) {
+        bool match = true;
+        for (std::size_t j = 0; j < needle.size(); ++j) {
+            if (needle[j] != haystack[i + j]) { match = false; break; }
+        }
+        if (match) return true;
+    }
+    return false;
+}
+
+// Helper: check if prefix is a prefix of seq.
+static bool is_prefix_of(const std::vector<std::string>& prefix,
+                           const std::vector<std::string>& seq) {
+    if (prefix.size() > seq.size()) return false;
+    for (std::size_t i = 0; i < prefix.size(); ++i)
+        if (prefix[i] != seq[i]) return false;
+    return true;
 }
 
 PYBIND11_MODULE(_gingo, m) {
@@ -1125,6 +1177,38 @@ PYBIND11_MODULE(_gingo, m) {
             return "FieldComparison(deg_a=" + da + ", deg_b=" + db + ")";
         });
 
+    // ---- Tradition (struct) ------------------------------------------------
+    py::class_<Tradition>(m, "Tradition")
+        .def_readonly("name",        &Tradition::name)
+        .def_readonly("description", &Tradition::description)
+        .def("to_dict", [](const Tradition& t) {
+            py::dict d;
+            d["name"]        = t.name;
+            d["description"] = t.description;
+            return d;
+        })
+        .def("__repr__", [](const Tradition& t) {
+            return "Tradition(\"" + t.name + "\")";
+        })
+        .def("__str__", [](const Tradition& t) { return t.name; });
+
+    // ---- Schema (struct) ---------------------------------------------------
+    py::class_<Schema>(m, "Schema")
+        .def_readonly("name",        &Schema::name)
+        .def_readonly("description", &Schema::description)
+        .def_readonly("branches",    &Schema::branches)
+        .def("to_dict", [](const Schema& s) {
+            py::dict d;
+            d["name"]        = s.name;
+            d["description"] = s.description;
+            d["branches"]    = s.branches;
+            return d;
+        })
+        .def("__repr__", [](const Schema& s) {
+            return "Schema(\"" + s.name + "\")";
+        })
+        .def("__str__", [](const Schema& s) { return s.name; });
+
     // ---- HarmonicPath (struct) ---------------------------------------------
     py::class_<HarmonicPath>(m, "HarmonicPath")
         .def_readonly("id",              &HarmonicPath::id)
@@ -1140,27 +1224,293 @@ PYBIND11_MODULE(_gingo, m) {
 
     // ---- Tree --------------------------------------------------------------
     py::class_<Tree>(m, "Tree")
-        .def(py::init<const std::string&, ScaleType>(),
-             py::arg("tonic"), py::arg("type"))
-        .def(py::init<const std::string&, const std::string&>(),
-             py::arg("tonic"), py::arg("type"))
+        .def(py::init<const std::string&, ScaleType, const std::string&>(),
+             py::arg("tonic"), py::arg("type"), py::arg("tradition"))
+        .def(py::init<const std::string&, const std::string&, const std::string&>(),
+             py::arg("tonic"), py::arg("type"), py::arg("tradition"))
         .def("tonic",       &Tree::tonic)
         .def("type",        &Tree::type)
+        .def("tradition",   &Tree::tradition)
         .def("branches",    &Tree::branches)
         .def("paths",       &Tree::paths, py::arg("branch_origin"))
         .def("shortest_path", &Tree::shortest_path,
              py::arg("from"), py::arg("to"))
-        .def("is_valid_progression", &Tree::is_valid_progression,
-             py::arg("branches"))
+        .def("is_valid",    &Tree::is_valid, py::arg("branches"))
         .def("function",    &Tree::function, py::arg("branch"))
         .def("branches_with_function", &Tree::branches_with_function,
              py::arg("func"))
+        .def("schemas",     &Tree::schemas)
         .def("to_dot",      &Tree::to_dot,
              py::arg("show_functions") = false)
         .def("to_mermaid",  &Tree::to_mermaid)
         .def("__repr__",    &Tree::to_string)
         .def("__str__",     [](const Tree& t) {
-            return t.tonic().name() + " harmonic tree";
+            return t.tonic().name() + " " + t.tradition().name;
+        });
+
+    // ---- ProgressionMatch (struct, binding-only) ---------------------------
+    py::class_<ProgressionMatch>(m, "ProgressionMatch")
+        .def_readonly("tradition", &ProgressionMatch::tradition)
+        .def_readonly("schema",    &ProgressionMatch::schema)
+        .def_readonly("score",     &ProgressionMatch::score)
+        .def_readonly("matched",   &ProgressionMatch::matched)
+        .def_readonly("total",     &ProgressionMatch::total)
+        .def_readonly("branches",  &ProgressionMatch::branches)
+        .def("to_dict", [](const ProgressionMatch& pm) {
+            py::dict d;
+            d["tradition"] = pm.tradition;
+            d["schema"]    = pm.schema;
+            d["score"]     = pm.score;
+            d["matched"]   = pm.matched;
+            d["total"]     = pm.total;
+            d["branches"]  = pm.branches;
+            return d;
+        })
+        .def("__repr__", [](const ProgressionMatch& pm) {
+            char buf[128];
+            std::snprintf(buf, sizeof(buf),
+                "ProgressionMatch(\"%s\", schema=\"%s\", score=%.2f, %d/%d)",
+                pm.tradition.c_str(), pm.schema.c_str(),
+                pm.score, pm.matched, pm.total);
+            return std::string(buf);
+        });
+
+    // ---- ProgressionRoute (struct, binding-only) ---------------------------
+    py::class_<ProgressionRoute>(m, "ProgressionRoute")
+        .def_readonly("next",       &ProgressionRoute::next)
+        .def_readonly("tradition",  &ProgressionRoute::tradition)
+        .def_readonly("schema",     &ProgressionRoute::schema)
+        .def_readonly("path",       &ProgressionRoute::path)
+        .def_readonly("confidence", &ProgressionRoute::confidence)
+        .def("to_dict", [](const ProgressionRoute& pr) {
+            py::dict d;
+            d["next"]       = pr.next;
+            d["tradition"]  = pr.tradition;
+            d["schema"]     = pr.schema;
+            d["path"]       = pr.path;
+            d["confidence"] = pr.confidence;
+            return d;
+        })
+        .def("__repr__", [](const ProgressionRoute& pr) {
+            char buf[128];
+            std::snprintf(buf, sizeof(buf),
+                "ProgressionRoute(\"%s\", tradition=\"%s\", confidence=%.2f)",
+                pr.next.c_str(), pr.tradition.c_str(), pr.confidence);
+            return std::string(buf);
+        });
+
+    // ---- Progression -------------------------------------------------------
+    py::class_<Progression>(m, "Progression")
+        .def(py::init<const std::string&, ScaleType>(),
+             py::arg("tonic"), py::arg("type"))
+        .def(py::init<const std::string&, const std::string&>(),
+             py::arg("tonic"), py::arg("type"))
+        .def("tonic",      &Progression::tonic)
+        .def("type",       &Progression::type)
+        .def_static("traditions", &Progression::traditions)
+        .def("tree",       &Progression::tree, py::arg("tradition"))
+        .def("identify", [](const Progression& self,
+                            const std::vector<std::string>& branches) {
+            if (branches.empty())
+                throw py::value_error("identify() requires at least one branch");
+
+            auto traditions = Progression::traditions();
+            ProgressionMatch best{"", "", 0.0, 0, 0, branches};
+            double best_schema_score = 0.0;
+
+            for (const auto& trad : traditions) {
+                Tree tree = self.tree(trad.name);
+
+                int total_trans = std::max(1,
+                    static_cast<int>(branches.size()) - 1);
+                int valid_trans = count_valid_transitions(tree, branches);
+                double trans_score =
+                    static_cast<double>(valid_trans) / total_trans;
+
+                std::string matched_schema;
+                double schema_score = 0.0;
+
+                for (const auto& s : tree.schemas()) {
+                    if (s.branches == branches) {
+                        schema_score = 1.0;
+                        matched_schema = s.name;
+                        break;
+                    }
+                    if (is_contiguous_subseq(branches, s.branches)) {
+                        double ss = static_cast<double>(branches.size())
+                                  / s.branches.size();
+                        if (ss > schema_score) {
+                            schema_score = ss;
+                            matched_schema = s.name;
+                        }
+                    }
+                }
+
+                double final_score = std::max(trans_score, schema_score);
+
+                bool better = final_score > best.score
+                    || (final_score == best.score
+                        && schema_score > best_schema_score);
+
+                if (better) {
+                    best.tradition = trad.name;
+                    best.schema    = matched_schema;
+                    best.score     = final_score;
+                    best.matched   = valid_trans;
+                    best.total     = total_trans;
+                    best_schema_score = schema_score;
+                }
+            }
+
+            if (best.score <= 0.0)
+                throw py::value_error(
+                    "no matching progression found in any tradition");
+
+            return best;
+        }, py::arg("branches"))
+        .def("deduce", [](const Progression& self,
+                          const std::vector<std::string>& branches,
+                          int limit) {
+            if (branches.empty())
+                throw py::value_error(
+                    "deduce() requires at least one branch");
+
+            auto traditions = Progression::traditions();
+            std::vector<ProgressionMatch> results;
+
+            for (const auto& trad : traditions) {
+                Tree tree = self.tree(trad.name);
+                int total_trans = std::max(1,
+                    static_cast<int>(branches.size()) - 1);
+                int valid_trans =
+                    count_valid_transitions(tree, branches);
+                double trans_score =
+                    static_cast<double>(valid_trans) / total_trans;
+
+                bool has_schema_match = false;
+
+                for (const auto& s : tree.schemas()) {
+                    double schema_score = 0.0;
+
+                    if (s.branches == branches) {
+                        schema_score = 1.0;
+                    } else if (is_prefix_of(branches, s.branches)) {
+                        schema_score =
+                            static_cast<double>(branches.size())
+                            / s.branches.size();
+                    } else if (is_contiguous_subseq(
+                                   branches, s.branches)) {
+                        schema_score =
+                            static_cast<double>(branches.size())
+                            / s.branches.size() * 0.9;
+                    }
+
+                    if (schema_score > 0.0) {
+                        has_schema_match = true;
+                        results.push_back({
+                            trad.name, s.name,
+                            std::max(trans_score, schema_score),
+                            valid_trans, total_trans, branches
+                        });
+                    }
+                }
+
+                if (!has_schema_match && trans_score > 0.0) {
+                    results.push_back({
+                        trad.name, "", trans_score,
+                        valid_trans, total_trans, branches
+                    });
+                }
+            }
+
+            std::stable_sort(results.begin(), results.end(),
+                [](const ProgressionMatch& a,
+                   const ProgressionMatch& b) {
+                    return a.score > b.score;
+                });
+
+            if (limit > 0
+                && static_cast<int>(results.size()) > limit)
+                results.erase(results.begin() + limit,
+                              results.end());
+
+            py::list out;
+            for (auto& r : results)
+                out.append(py::cast(std::move(r)));
+            return out;
+        }, py::arg("branches"), py::arg("limit") = 10)
+        .def("predict", [](const Progression& self,
+                           const std::vector<std::string>& branches,
+                           const std::string& tradition_filter) {
+            if (branches.empty())
+                throw py::value_error(
+                    "predict() requires at least one branch");
+
+            auto traditions = Progression::traditions();
+            std::vector<ProgressionRoute> results;
+            std::string last = branches.back();
+
+            for (const auto& trad : traditions) {
+                if (!tradition_filter.empty()
+                    && trad.name != tradition_filter)
+                    continue;
+
+                Tree tree = self.tree(trad.name);
+                auto reachable = tree.paths(last);
+                auto schemas = tree.schemas();
+
+                for (std::size_t i = 1; i < reachable.size(); ++i) {
+                    std::string next = reachable[i].branch;
+
+                    auto candidate = branches;
+                    candidate.push_back(next);
+
+                    std::string matched_schema;
+                    double confidence = 0.3;
+
+                    for (const auto& s : schemas) {
+                        if (is_prefix_of(candidate, s.branches)) {
+                            double c =
+                                static_cast<double>(candidate.size())
+                                / s.branches.size();
+                            if (c > confidence) {
+                                confidence = c;
+                                matched_schema = s.name;
+                            }
+                        }
+                        if (is_contiguous_subseq(
+                                candidate, s.branches)) {
+                            double c =
+                                static_cast<double>(candidate.size())
+                                / s.branches.size() * 0.8;
+                            if (c > confidence) {
+                                confidence = c;
+                                matched_schema = s.name;
+                            }
+                        }
+                    }
+
+                    results.push_back({
+                        next, trad.name, matched_schema,
+                        candidate, confidence
+                    });
+                }
+            }
+
+            std::stable_sort(results.begin(), results.end(),
+                [](const ProgressionRoute& a,
+                   const ProgressionRoute& b) {
+                    return a.confidence > b.confidence;
+                });
+
+            py::list out;
+            for (auto& r : results)
+                out.append(py::cast(std::move(r)));
+            return out;
+        }, py::arg("branches"), py::arg("tradition") = "")
+        .def("__repr__", &Progression::to_string)
+        .def("__str__",  [](const Progression& p) {
+            return p.tonic().name() + " progression";
         });
 
     // ---- Duration ----------------------------------------------------------

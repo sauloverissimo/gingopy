@@ -10,22 +10,22 @@ from gingo import Tree, ScaleType, HarmonicFunction
 # ---------------------------------------------------------------------------
 
 def test_tree_construction_from_scale_type():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     assert t.tonic().natural() == "C"
     assert t.type() == ScaleType.Major
 
 
 def test_tree_construction_from_string():
-    t = Tree("C", "major")
+    t = Tree("C", "major", "harmonic_tree")
     assert t.tonic().natural() == "C"
     assert t.type() == ScaleType.Major
 
 
 def test_tree_construction_different_tonics():
-    t1 = Tree("G", ScaleType.Major)
+    t1 = Tree("G", ScaleType.Major, "harmonic_tree")
     assert t1.tonic().natural() == "G"
 
-    t2 = Tree("A", ScaleType.NaturalMinor)
+    t2 = Tree("A", ScaleType.NaturalMinor, "harmonic_tree")
     assert t2.tonic().natural() == "A"
 
 
@@ -34,13 +34,13 @@ def test_tree_construction_different_tonics():
 # ---------------------------------------------------------------------------
 
 def test_tree_branches_non_empty():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     branches = t.branches()
     assert len(branches) > 0
 
 
 def test_tree_branches_major_scale():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     branches = t.branches()
 
     # Should contain basic diatonic branches
@@ -50,7 +50,7 @@ def test_tree_branches_major_scale():
 
 
 def test_tree_branches_minor_scale():
-    t = Tree("A", ScaleType.NaturalMinor)
+    t = Tree("A", ScaleType.NaturalMinor, "harmonic_tree")
     branches = t.branches()
 
     # Should contain Im
@@ -62,7 +62,7 @@ def test_tree_branches_minor_scale():
 # ---------------------------------------------------------------------------
 
 def test_tree_paths_from_origin():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     paths = t.paths("I")
 
     assert len(paths) > 0
@@ -72,7 +72,7 @@ def test_tree_paths_from_origin():
 
 
 def test_tree_paths_contain_chord_info():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     paths = t.paths("I")
 
     # Origin should have chord resolved
@@ -86,7 +86,7 @@ def test_tree_paths_contain_chord_info():
 # ---------------------------------------------------------------------------
 
 def test_tree_shortest_path_direct():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     path = t.shortest_path("I", "V7")
 
     assert len(path) > 0
@@ -95,14 +95,14 @@ def test_tree_shortest_path_direct():
 
 
 def test_tree_shortest_path_invalid_branch():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     path = t.shortest_path("INVALID", "V7")
 
     assert len(path) == 0
 
 
 def test_tree_shortest_path_same_branch():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     path = t.shortest_path("I", "I")
 
     assert len(path) == 1
@@ -110,7 +110,7 @@ def test_tree_shortest_path_same_branch():
 
 
 def test_tree_shortest_path_multi_step():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     path = t.shortest_path("I", "IV")
 
     # Should find some path, even if indirect
@@ -125,29 +125,29 @@ def test_tree_shortest_path_multi_step():
 # ---------------------------------------------------------------------------
 
 def test_tree_valid_progression_single():
-    t = Tree("C", ScaleType.Major)
-    assert t.is_valid_progression(["I"])
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
+    assert t.is_valid(["I"])
 
 
 def test_tree_valid_progression_ii_v_i():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     # Classic II-V-I should be valid if paths exist
-    valid = t.is_valid_progression(["IIm", "V7", "I"])
+    valid = t.is_valid(["IIm", "V7", "I"])
     # Don't require it to be true, just check it doesn't crash
     assert isinstance(valid, bool)
 
 
 def test_tree_valid_progression_empty():
-    t = Tree("C", ScaleType.Major)
-    assert t.is_valid_progression([])
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
+    assert t.is_valid([])
 
 
 def test_tree_valid_progression_invalid_branch():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     # Test with progression containing invalid branch
     # Single invalid branch may return True as empty path is valid
     # Test with progression that has invalid transition
-    assert not t.is_valid_progression(["I", "INVALID", "V7"])
+    assert not t.is_valid(["I", "INVALID", "V7"])
 
 
 # ---------------------------------------------------------------------------
@@ -155,32 +155,32 @@ def test_tree_valid_progression_invalid_branch():
 # ---------------------------------------------------------------------------
 
 def test_tree_function_tonic():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     func = t.function("I")
     assert func == HarmonicFunction.Tonic
 
 
 def test_tree_function_subdominant():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     func = t.function("IV")
     assert func == HarmonicFunction.Subdominant
 
 
 def test_tree_function_dominant():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     func = t.function("V7")
     assert func == HarmonicFunction.Dominant
 
 
 def test_tree_function_applied_uses_primary():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     # V7/IV should be Dominant (V7 = Dominant)
     func = t.function("V7 / IV")
     assert func == HarmonicFunction.Dominant
 
 
 def test_tree_function_minor_branches():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
 
     func_iim = t.function("IIm")
     assert func_iim == HarmonicFunction.Subdominant
@@ -194,7 +194,7 @@ def test_tree_function_minor_branches():
 # ---------------------------------------------------------------------------
 
 def test_tree_branches_with_function_tonics():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     tonics = t.branches_with_function(HarmonicFunction.Tonic)
 
     assert len(tonics) > 0
@@ -203,14 +203,14 @@ def test_tree_branches_with_function_tonics():
 
 
 def test_tree_branches_with_function_subdominants():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     subdominants = t.branches_with_function(HarmonicFunction.Subdominant)
 
     assert len(subdominants) > 0
 
 
 def test_tree_branches_with_function_dominants():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     dominants = t.branches_with_function(HarmonicFunction.Dominant)
 
     assert len(dominants) > 0
@@ -223,7 +223,7 @@ def test_tree_branches_with_function_dominants():
 # ---------------------------------------------------------------------------
 
 def test_tree_to_dot_basic():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     dot = t.to_dot(False)
 
     assert len(dot) > 0
@@ -231,7 +231,7 @@ def test_tree_to_dot_basic():
 
 
 def test_tree_to_dot_with_functions():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     dot = t.to_dot(True)
 
     assert len(dot) > 0
@@ -240,7 +240,7 @@ def test_tree_to_dot_with_functions():
 
 
 def test_tree_to_mermaid():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     mermaid = t.to_mermaid()
 
     assert len(mermaid) > 0
@@ -252,7 +252,7 @@ def test_tree_to_mermaid():
 # ---------------------------------------------------------------------------
 
 def test_tree_diminished_notation():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     all_branches = t.branches()
 
     # Check if diminished notation exists (either dim or °)
@@ -266,7 +266,7 @@ def test_tree_diminished_notation():
 # ---------------------------------------------------------------------------
 
 def test_tree_natural_minor():
-    t = Tree("A", ScaleType.NaturalMinor)
+    t = Tree("A", ScaleType.NaturalMinor, "harmonic_tree")
     branches = t.branches()
     assert len(branches) > 0
 
@@ -275,13 +275,13 @@ def test_tree_natural_minor():
 
 
 def test_tree_harmonic_minor():
-    t = Tree("A", ScaleType.HarmonicMinor)
+    t = Tree("A", ScaleType.HarmonicMinor, "harmonic_tree")
     branches = t.branches()
     assert len(branches) > 0
 
 
 def test_tree_melodic_minor():
-    t = Tree("A", ScaleType.MelodicMinor)
+    t = Tree("A", ScaleType.MelodicMinor, "harmonic_tree")
     branches = t.branches()
     assert len(branches) > 0
 
@@ -291,7 +291,7 @@ def test_tree_melodic_minor():
 # ---------------------------------------------------------------------------
 
 def test_tree_to_string():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     s = str(t)
 
     assert len(s) > 0
@@ -299,7 +299,7 @@ def test_tree_to_string():
 
 
 def test_tree_repr():
-    t = Tree("C", ScaleType.Major)
+    t = Tree("C", ScaleType.Major, "harmonic_tree")
     r = repr(t)
 
     assert len(r) > 0

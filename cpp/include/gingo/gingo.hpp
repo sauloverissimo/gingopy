@@ -18,6 +18,7 @@
 #include "chord.hpp"
 #include "scale.hpp"
 #include "field.hpp"
+#include "progression.hpp"
 #include "tree.hpp"
 #include "duration.hpp"
 #include "tempo.hpp"

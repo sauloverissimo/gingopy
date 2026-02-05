@@ -21,6 +21,8 @@ from gingo import (
     Field,
     FieldComparison,
     HarmonicFunction,
+    Tree,
+    Progression,
     Duration,
     Tempo,
     TimeSignature,
@@ -582,6 +584,179 @@ def cmd_compare(args):
     print()
 
 
+def cmd_tree(args):
+    """Show harmonic tree for a tradition."""
+    parts = args.name.strip().split(maxsplit=1)
+    if len(parts) < 2:
+        print(f"  Error: provide tonic and type, e.g. 'C major'")
+        sys.exit(1)
+
+    tonic, stype = parts[0], parts[1]
+    t = Tree(tonic, stype, args.tradition)
+
+    if args.dot:
+        print(t.to_dot(args.functions))
+        return
+
+    if args.mermaid:
+        print(t.to_mermaid())
+        return
+
+    trad = t.tradition()
+    _header(f"Tree: {t.tonic()} {stype} [{trad.name}]")
+    _row("Tradition", trad.name)
+    _row("Description", trad.description)
+
+    branches = t.branches()
+    _row("Branches", str(len(branches)))
+
+    if args.validate:
+        items = [b.strip() for b in args.validate.split(",")]
+        valid = t.is_valid(items)
+        print()
+        _header(f"Validate: {' -> '.join(items)}")
+        _row("Valid", "yes" if valid else "no")
+        print()
+        return
+
+    if args.paths:
+        paths = t.paths(args.paths)
+        print()
+        _header(f"Paths from: {args.paths}")
+        for p in paths:
+            chord_notes = _join(p.note_names, " ")
+            print(f"    [{p.id}] {p.branch:<16s} {str(p.chord):<12s} {chord_notes}")
+        print()
+        return
+
+    if args.shortest:
+        if len(args.shortest) != 2:
+            print("  Error: --shortest requires exactly 2 branches")
+            sys.exit(1)
+        path = t.shortest_path(args.shortest[0], args.shortest[1])
+        print()
+        _header(f"Shortest path: {args.shortest[0]} -> {args.shortest[1]}")
+        if path:
+            print(f"    {' -> '.join(path)}  ({len(path)} steps)")
+        else:
+            print("    (no path found)")
+        print()
+        return
+
+    if args.schemas:
+        schemas = t.schemas()
+        print()
+        _header("Schemas")
+        for s in schemas:
+            prog = " -> ".join(s.branches)
+            print(f"    {s.name:<24s} {prog}")
+            if s.description:
+                print(f"    {'':24s} {s.description}")
+        print()
+        return
+
+    # Default: show branches with optional functions
+    print()
+    if args.functions:
+        _header("Branches (with harmonic function)")
+        print(f"    {'Branch':<16s}  {'Function':<14s}")
+        print(f"    {'------':<16s}  {'--------':<14s}")
+        for b in branches:
+            func = t.function(b)
+            print(f"    {b:<16s}  {func.name}")
+    else:
+        _header("Branches")
+        # Print in columns
+        cols = 4
+        for i in range(0, len(branches), cols):
+            row = branches[i:i + cols]
+            print(f"    {'  '.join(f'{b:<16s}' for b in row)}")
+
+    _handle_audio(t, args)
+    print()
+
+
+def cmd_progression(args):
+    """Show progression analysis."""
+    if args.traditions:
+        traditions = Progression.traditions()
+        _header("Available traditions")
+        for trad in traditions:
+            print(f"    {trad.name:<20s} {trad.description}")
+        print()
+        return
+
+    parts = args.name.strip().split(maxsplit=1)
+    if len(parts) < 2:
+        print(f"  Error: provide tonic and type, e.g. 'C major'")
+        sys.exit(1)
+
+    tonic, stype = parts[0], parts[1]
+    p = Progression(tonic, stype)
+
+    if args.identify:
+        items = [b.strip() for b in args.identify.split(",")]
+        m = p.identify(items)
+        _header(f"Identify: {' -> '.join(items)}")
+        _row("Tradition", m.tradition)
+        if m.schema:
+            _row("Schema", m.schema)
+        _row("Score", f"{m.score:.2f}")
+        _row("Transitions", f"{m.matched}/{m.total}")
+        print()
+        return
+
+    if args.deduce:
+        items = [b.strip() for b in args.deduce.split(",")]
+        results = p.deduce(items, limit=args.limit)
+        _header(f"Deduce from: {' -> '.join(items)}")
+        if not results:
+            print("    (no matches found)")
+            print()
+            return
+        print()
+        print(f"    {'#':>3}  {'Tradition':<16s}  {'Schema':<20s}  {'Score':>6s}  {'Match':>5s}")
+        print(f"    {'---':>3}  {'---':<16s}  {'---':<20s}  {'---':>6s}  {'---':>5s}")
+        for i, r in enumerate(results, 1):
+            print(f"    {i:>3}  {r.tradition:<16s}  {r.schema or '—':<20s}  {r.score:>6.2f}  {r.matched}/{r.total}")
+        print()
+        return
+
+    if args.predict:
+        items = [b.strip() for b in args.predict.split(",")]
+        tradition = args.tradition if args.tradition else ""
+        routes = p.predict(items, tradition)
+        _header(f"Predict after: {' -> '.join(items)}")
+        if not routes:
+            print("    (no suggestions)")
+            print()
+            return
+        print()
+        print(f"    {'Next':<16s}  {'Tradition':<16s}  {'Schema':<20s}  {'Conf':>5s}  Path")
+        print(f"    {'----':<16s}  {'---':<16s}  {'---':<20s}  {'----':>5s}  ----")
+        for r in routes:
+            path_str = " -> ".join(r.path) if r.path else ""
+            print(f"    {r.next:<16s}  {r.tradition:<16s}  {r.schema or '—':<20s}  {r.confidence:>5.2f}  {path_str}")
+        print()
+        return
+
+    # Default: show info
+    _header(f"Progression: {p.tonic()} {stype}")
+    _row("Tonic", str(p.tonic()))
+    _row("Type", str(p.type()).replace("ScaleType.", ""))
+
+    traditions = Progression.traditions()
+    print()
+    _header("Traditions")
+    for trad in traditions:
+        tree = p.tree(trad.name)
+        n_branches = len(tree.branches())
+        n_schemas = len(tree.schemas())
+        print(f"    {trad.name:<20s} {n_branches} branches, {n_schemas} schemas")
+
+    print()
+
+
 def cmd_duration(args):
     """Show duration properties."""
     if args.name_or_num:
@@ -717,10 +892,10 @@ def build_parser():
             Gingo — music theory from the terminal.
 
             Explore notes, intervals, chords, scales, harmonic fields,
-            and rhythm (durations, tempo, time signatures).
+            harmonic trees, progressions, and rhythm.
 
             Pitch concepts build on each other:
-              Note → Interval → Chord → Scale → Field
+              Note → Interval → Chord → Scale → Field → Tree → Progression
 
             Rhythm concepts:
               Duration → Tempo → Time Signature
@@ -757,6 +932,14 @@ def build_parser():
               %(prog)s field "C major" --neighbors
               %(prog)s field "CM,FM,G7" --identify
               %(prog)s field "CM,FM" --deduce
+              %(prog)s tree "C major" harmonic_tree
+              %(prog)s tree "C major" jazz --schemas
+              %(prog)s tree "C major" harmonic_tree --paths I
+              %(prog)s progression "C major"
+              %(prog)s progression --traditions
+              %(prog)s progression "C major" --identify "IIm,V7,I"
+              %(prog)s progression "C major" --deduce "I,IIm"
+              %(prog)s progression "C major" --predict "I,IIm"
               %(prog)s compare CM Am
               %(prog)s compare CM GM --field "C major"
               %(prog)s duration quarter
@@ -1053,6 +1236,105 @@ def build_parser():
                       help="max results for --deduce (default: 10, 0=all)")
     _add_audio_args(p_fi)
     p_fi.set_defaults(func=cmd_field)
+
+    # --- tree ---
+    p_tr = sub.add_parser(
+        "tree", help="explore harmonic tree (chord transitions in a tradition)",
+        description=textwrap.dedent("""\
+            Show the harmonic tree — a directed graph of chord-function
+            relationships within a key, for a specific tradition.
+
+            A tree maps all valid chord transitions in a tradition.
+            Each branch is a chord function (I, IIm, V7, IV, ...) and
+            edges represent allowed transitions between them.
+
+            Format: "TONIC TYPE" TRADITION
+
+            Traditions:
+              harmonic_tree ... Alencar's harmonic tree (default)
+              jazz ............ Classic jazz chord transitions
+        """),
+        epilog=textwrap.dedent("""\
+            examples:
+              gingo tree "C major" harmonic_tree
+              gingo tree "C major" jazz
+              gingo tree "A natural minor" harmonic_tree
+              gingo tree "C major" harmonic_tree --functions
+              gingo tree "C major" harmonic_tree --paths I
+              gingo tree "C major" harmonic_tree --shortest I IV
+              gingo tree "C major" harmonic_tree --schemas
+              gingo tree "C major" harmonic_tree --validate "I,IIm,V7,I"
+              gingo tree "C major" jazz --schemas
+              gingo tree "C major" harmonic_tree --dot
+              gingo tree "C major" harmonic_tree --dot --functions
+              gingo tree "C major" harmonic_tree --mermaid
+        """),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    p_tr.add_argument("name", help='"tonic type" — e.g. "C major", "A natural minor"')
+    p_tr.add_argument("tradition", nargs="?", default="harmonic_tree",
+                      help="tradition name (default: harmonic_tree)")
+    p_tr.add_argument("--paths", metavar="BRANCH",
+                      help="show paths from a branch origin (e.g. I)")
+    p_tr.add_argument("--shortest", nargs=2, metavar=("FROM", "TO"),
+                      help="find shortest path between two branches")
+    p_tr.add_argument("--schemas", action="store_true",
+                      help="show named progression schemas for this tradition")
+    p_tr.add_argument("--functions", action="store_true",
+                      help="show harmonic function (T/S/D) for each branch")
+    p_tr.add_argument("--validate", metavar="BRANCHES",
+                      help="validate a comma-separated progression (e.g. I,IIm,V7,I)")
+    p_tr.add_argument("--dot", action="store_true",
+                      help="export tree as Graphviz DOT")
+    p_tr.add_argument("--mermaid", action="store_true",
+                      help="export tree as Mermaid diagram")
+    _add_audio_args(p_tr)
+    p_tr.set_defaults(func=cmd_tree)
+
+    # --- progression ---
+    p_pr = sub.add_parser(
+        "progression", help="analyze progressions across traditions",
+        description=textwrap.dedent("""\
+            Analyze harmonic progressions across multiple traditions.
+
+            A Progression coordinates analysis across all registered traditions
+            (harmonic_tree, jazz, ...). It can identify which tradition and
+            schema best matches a branch sequence, deduce likely matches from
+            partial input, and predict next branches.
+
+            Format: "TONIC TYPE"
+
+            Use --traditions to list available traditions.
+            Use --identify, --deduce, or --predict with comma-separated branches.
+        """),
+        epilog=textwrap.dedent("""\
+            examples:
+              gingo progression "C major"
+              gingo progression --traditions
+              gingo progression "C major" --identify "I,IIm,V7,I"
+              gingo progression "C major" --identify "IIm,V7,I"
+              gingo progression "C major" --deduce "I,IIm"
+              gingo progression "C major" --deduce "I,IIm" --limit 5
+              gingo progression "C major" --predict "I,IIm"
+              gingo progression "C major" --predict "I,IIm" --tradition jazz
+        """),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    p_pr.add_argument("name", nargs="?", default=None,
+                      help='"tonic type" — e.g. "C major", "A natural minor"')
+    p_pr.add_argument("--traditions", action="store_true",
+                      help="list available traditions")
+    p_pr.add_argument("--identify", metavar="BRANCHES",
+                      help="identify best tradition/schema for a comma-separated progression")
+    p_pr.add_argument("--deduce", metavar="BRANCHES",
+                      help="deduce likely matches from partial comma-separated input")
+    p_pr.add_argument("--predict", metavar="BRANCHES",
+                      help="predict next branches from comma-separated input")
+    p_pr.add_argument("--tradition", metavar="NAME",
+                      help="filter prediction to a specific tradition")
+    p_pr.add_argument("--limit", type=int, default=10, metavar="N",
+                      help="max results for --deduce (default: 10)")
+    p_pr.set_defaults(func=cmd_progression)
 
     # --- compare ---
     p_cmp = sub.add_parser(

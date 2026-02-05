@@ -194,14 +194,19 @@ gingo scale "C major" --play
     A classe Tree esta em fase beta. A API pode mudar em versoes futuras.
 
 ```python
-from gingo import Tree, ScaleType
+from gingo import Tree, ScaleType, Progression
 
 # Criar árvore harmônica (baseada na teoria de José de Alencar)
-tree = Tree("C", ScaleType.Major)
+tree = Tree("C", ScaleType.Major, "harmonic_tree")
 
 # Validar progressão
-valido = tree.is_valid_progression(["IIm", "V7", "I"])
+valido = tree.is_valid(["IIm", "V7", "I"])
 print(valido)  # True - progressão II-V-I
+
+# Usar Progression para análise cross-tradition
+prog = Progression("C", "major")
+match = prog.identify(["IIm", "V7", "I"])
+print(match.schema)  # "descending"
 ```
 
 **Progressão II-V-I (cadência harmônica fundamental do jazz):**

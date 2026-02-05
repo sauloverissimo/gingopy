@@ -9,7 +9,8 @@
 | `Chord`      | `Chord("Am7")`                                                | Acorde por nome      |
 | `Scale`      | `Scale("C", "major")` ou `Scale("D", "dorian")`              | Escala               |
 | `Field`      | `Field("C", "major")`                                         | Campo harmonico      |
-| `Tree`       | `Tree("C", "major")`                                          | Arvore harmonica (progressoes) **(beta)** |
+| `Tree`       | `Tree("C", "major", "harmonic_tree")`                         | Arvore harmonica (grafo de uma tradition) |
+| `Progression`| `Progression("C", "major")`                                   | Coordenador cross-tradition                |
 | `Duration`   | `Duration("quarter")` ou `Duration(1, 4)`                     | Duracao ritmica                |
 | `Tempo`      | `Tempo(120)`                                                   | Andamento em BPM               |
 | `TimeSignature` | `TimeSignature(4, 4)`                                       | Formula de compasso            |
@@ -107,14 +108,65 @@
 |-----------------------------|---------------------|---------------------------------------|
 | `tonic()`                   | `Note`              | Nota tonica                           |
 | `type()`                    | `ScaleType`         | Tipo de escala                        |
+| `tradition()`               | `Tradition`         | Metadados da tradicao (nome, descricao) |
 | `branches()`                | `List[str]`         | Todos os branches harmonicos          |
 | `paths(branch)`             | `List[HarmonicPath]`| Todos os caminhos de um branch        |
 | `shortest_path(from_, to)`  | `List[str]`         | Caminho mais curto entre branches     |
-| `is_valid_progression(branches)` | `bool`         | Valida progressao harmonica           |
+| `is_valid(branches)`        | `bool`              | Valida progressao harmonica           |
+| `is_valid_progression(branches)` | `bool`         | Alias de is_valid (retrocompat)       |
 | `function(branch)`          | `HarmonicFunction`  | Funcao harmonica (T/S/D)              |
 | `branches_with_function(func)` | `List[str]`      | Branches com funcao especifica        |
+| `schemas()`                 | `List[Schema]`      | Padroes nomeados da tradicao          |
 | `to_dot(show_functions=False)` | `str`            | Exporta para Graphviz DOT             |
 | `to_mermaid()`              | `str`               | Exporta para diagrama Mermaid         |
+
+### Metodos de Progression
+
+| Metodo                      | Retorno                  | Descricao                             |
+|-----------------------------|--------------------------|---------------------------------------|
+| `tonic()`                   | `Note`                   | Nota tonica                           |
+| `type()`                    | `ScaleType`              | Tipo de escala                        |
+| `traditions()`              | `List[Tradition]`        | Tradicoes disponiveis (estatico)      |
+| `tree(tradition)`           | `Tree`                   | Arvore de uma tradicao especifica     |
+| `identify(branches)`        | `ProgressionMatch`       | Identifica tradicao e schema          |
+| `deduce(branches, limit=10)`| `List[ProgressionMatch]` | Deduz tradicoes provaveis (ranqueado) |
+| `predict(branches, tradition="")` | `List[ProgressionRoute]` | Sugere proximos acordes        |
+
+### Atributos de Tradition
+
+| Atributo     | Tipo   | Descricao                          |
+|--------------|--------|------------------------------------|
+| `name`       | `str`  | Nome da tradicao ("harmonic_tree") |
+| `description`| `str`  | Descricao legivel                  |
+
+### Atributos de Schema
+
+| Atributo     | Tipo        | Descricao                          |
+|--------------|-------------|------------------------------------|
+| `name`       | `str`       | Nome do schema ("descending")      |
+| `description`| `str`       | Descricao legivel                  |
+| `branches`   | `List[str]` | Sequencia de branches do padrao    |
+
+### Atributos de ProgressionMatch
+
+| Atributo     | Tipo        | Descricao                          |
+|--------------|-------------|------------------------------------|
+| `tradition`  | `str`       | Tradicao identificada              |
+| `schema`     | `str`       | Schema identificado (ou "")        |
+| `score`      | `float`     | Score de match (0.0-1.0)           |
+| `matched`    | `int`       | Transicoes validas                 |
+| `total`      | `int`       | Total de transicoes                |
+| `branches`   | `List[str]` | Branches resolvidos                |
+
+### Atributos de ProgressionRoute
+
+| Atributo     | Tipo        | Descricao                          |
+|--------------|-------------|------------------------------------|
+| `next`       | `str`       | Proximo branch sugerido            |
+| `tradition`  | `str`       | De qual tradicao                   |
+| `schema`     | `str`       | Schema motivador (ou "")           |
+| `path`       | `List[str]` | Caminho completo sugerido          |
+| `confidence` | `float`     | Confianca (0.0-1.0)                |
 
 ### Atributos de HarmonicPath
 
@@ -388,6 +440,8 @@ Chord("Am7").to_wav("am7.wav", waveform="triangle")
 | `chord`     | Acorde por nome ou identificacao reversa        | `gingo chord Am7`                      |
 | `scale`     | Escala: notas, modos, mascara                   | `gingo scale "C major" --modes`        |
 | `field`     | Campo harmonico: acordes, funcoes, tonicizacao  | `gingo field "C major" --functions`    |
+| `tree`      | Arvore harmonica: branches, paths, validacao    | `gingo tree "C major" harmonic_tree`   |
+| `progression` | Analise cross-tradition de progressoes        | `gingo progression "C major" --identify IIm V7 I` |
 | `compare`   | Comparacao entre dois acordes (absoluta ou contextual) | `gingo compare CM Am --field "C major"` |
 
 ## Todas as opcoes CLI
@@ -419,6 +473,19 @@ Chord("Am7").to_wav("am7.wav", waveform="triangle")
 | `--deduce`         | `field`       | Deduz campos possiveis (ranqueado)         |
 | `--limit N`        | `field`       | Limita resultados do --deduce (default 10) |
 | `--field "T tipo"` | `compare`     | Adiciona contexto tonal a comparacao       |
+| `--branches`       | `tree`        | Lista todos os branches da arvore          |
+| `--paths BRANCH`   | `tree`        | Mostra caminhos a partir de um branch      |
+| `--shortest A B`   | `tree`        | Caminho mais curto entre dois branches     |
+| `--valid B1 B2..`  | `tree`        | Valida se a progressao e valida            |
+| `--function BRANCH`| `tree`        | Mostra funcao harmonica do branch          |
+| `--schemas`        | `tree`        | Lista schemas da tradicao                  |
+| `--dot`            | `tree`        | Exporta grafo para Graphviz DOT            |
+| `--mermaid`        | `tree`        | Exporta grafo para diagrama Mermaid        |
+| `--traditions`     | `progression` | Lista tradicoes disponiveis                |
+| `--identify B1..`  | `progression` | Identifica tradicao/schema da progressao   |
+| `--deduce B1..`    | `progression` | Deduz tradicoes provaveis (ranqueado)      |
+| `--predict B1..`   | `progression` | Sugere proximos acordes                    |
+| `--limit N`        | `progression` | Limita resultados de deduce/predict        |
 | `--play`           | `note`, `chord`, `scale`, `field` | Toca audio pelo sistema                |
 | `--wav FILE`       | `note`, `chord`, `scale`, `field` | Exporta para arquivo WAV               |
 | `--waveform WF`    | `note`, `chord`, `scale`, `field` | sine, square, sawtooth, triangle       |

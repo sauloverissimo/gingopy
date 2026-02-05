@@ -11,22 +11,22 @@ using namespace gingo;
 // ---------------------------------------------------------------------------
 
 TEST_CASE("Tree construction from ScaleType", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     REQUIRE(t.tonic().natural() == "C");
     REQUIRE(t.type() == ScaleType::Major);
 }
 
 TEST_CASE("Tree construction from string", "[tree]") {
-    Tree t("C", "major");
+    Tree t("C", "major", "harmonic_tree");
     REQUIRE(t.tonic().natural() == "C");
     REQUIRE(t.type() == ScaleType::Major);
 }
 
 TEST_CASE("Tree construction with different tonics", "[tree]") {
-    Tree t1("G", ScaleType::Major);
+    Tree t1("G", ScaleType::Major, "harmonic_tree");
     REQUIRE(t1.tonic().natural() == "G");
 
-    Tree t2("A", ScaleType::NaturalMinor);
+    Tree t2("A", ScaleType::NaturalMinor, "harmonic_tree");
     REQUIRE(t2.tonic().natural() == "A");
 }
 
@@ -35,13 +35,13 @@ TEST_CASE("Tree construction with different tonics", "[tree]") {
 // ---------------------------------------------------------------------------
 
 TEST_CASE("Tree branches returns non-empty list", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto branches = t.branches();
     REQUIRE(!branches.empty());
 }
 
 TEST_CASE("Tree branches for major scale", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto branches = t.branches();
 
     // Should contain basic diatonic branches
@@ -61,7 +61,7 @@ TEST_CASE("Tree branches for major scale", "[tree]") {
 }
 
 TEST_CASE("Tree branches for minor scale", "[tree]") {
-    Tree t("A", ScaleType::NaturalMinor);
+    Tree t("A", ScaleType::NaturalMinor, "harmonic_tree");
     auto branches = t.branches();
 
     // Should contain Im
@@ -77,7 +77,7 @@ TEST_CASE("Tree branches for minor scale", "[tree]") {
 // ---------------------------------------------------------------------------
 
 TEST_CASE("Tree paths from origin", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto paths = t.paths("I");
 
     REQUIRE(!paths.empty());
@@ -87,7 +87,7 @@ TEST_CASE("Tree paths from origin", "[tree]") {
 }
 
 TEST_CASE("Tree paths contain chord information", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto paths = t.paths("I");
 
     // Origin should have chord resolved
@@ -101,7 +101,7 @@ TEST_CASE("Tree paths contain chord information", "[tree]") {
 // ---------------------------------------------------------------------------
 
 TEST_CASE("Tree shortest_path finds direct connection", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto path = t.shortest_path("I", "V7");
 
     REQUIRE(!path.empty());
@@ -110,14 +110,14 @@ TEST_CASE("Tree shortest_path finds direct connection", "[tree]") {
 }
 
 TEST_CASE("Tree shortest_path returns empty for invalid branches", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto path = t.shortest_path("INVALID", "V7");
 
     REQUIRE(path.empty());
 }
 
 TEST_CASE("Tree shortest_path from branch to itself", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto path = t.shortest_path("I", "I");
 
     REQUIRE(path.size() == 1);
@@ -125,7 +125,7 @@ TEST_CASE("Tree shortest_path from branch to itself", "[tree]") {
 }
 
 TEST_CASE("Tree shortest_path finds multi-step path", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto path = t.shortest_path("I", "IV");
 
     // Should find some path, even if indirect
@@ -141,27 +141,27 @@ TEST_CASE("Tree shortest_path finds multi-step path", "[tree]") {
 // ---------------------------------------------------------------------------
 
 TEST_CASE("Tree is_valid_progression single chord", "[tree]") {
-    Tree t("C", ScaleType::Major);
-    REQUIRE(t.is_valid_progression({"I"}));
+    Tree t("C", ScaleType::Major, "harmonic_tree");
+    REQUIRE(t.is_valid({"I"}));
 }
 
 TEST_CASE("Tree is_valid_progression II-V-I", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     // Classic II-V-I should be valid if paths exist
-    auto valid = t.is_valid_progression({"IIm", "V7", "I"});
+    auto valid = t.is_valid({"IIm", "V7", "I"});
     // Don't require it to be true, just check it doesn't crash
     REQUIRE((valid == true || valid == false));
 }
 
 TEST_CASE("Tree is_valid_progression empty", "[tree]") {
-    Tree t("C", ScaleType::Major);
-    REQUIRE(t.is_valid_progression({}));
+    Tree t("C", ScaleType::Major, "harmonic_tree");
+    REQUIRE(t.is_valid({}));
 }
 
 TEST_CASE("Tree is_valid_progression with invalid branch", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     // Test progression containing invalid branch
-    REQUIRE_FALSE(t.is_valid_progression({"I", "INVALID", "V7"}));
+    REQUIRE_FALSE(t.is_valid({"I", "INVALID", "V7"}));
 }
 
 // ---------------------------------------------------------------------------
@@ -169,32 +169,32 @@ TEST_CASE("Tree is_valid_progression with invalid branch", "[tree]") {
 // ---------------------------------------------------------------------------
 
 TEST_CASE("Tree function returns tonic for I", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto func = t.function("I");
     REQUIRE(func == HarmonicFunction::Tonic);
 }
 
 TEST_CASE("Tree function returns subdominant for IV", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto func = t.function("IV");
     REQUIRE(func == HarmonicFunction::Subdominant);
 }
 
 TEST_CASE("Tree function returns dominant for V7", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto func = t.function("V7");
     REQUIRE(func == HarmonicFunction::Dominant);
 }
 
 TEST_CASE("Tree function for applied chords uses primary degree", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     // V7/IV should be Dominant (V7 = Dominant)
     auto func = t.function("V7 / IV");
     REQUIRE(func == HarmonicFunction::Dominant);
 }
 
 TEST_CASE("Tree function for minor branches", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto func_IIm = t.function("IIm");
     REQUIRE(func_IIm == HarmonicFunction::Subdominant);
 
@@ -207,7 +207,7 @@ TEST_CASE("Tree function for minor branches", "[tree]") {
 // ---------------------------------------------------------------------------
 
 TEST_CASE("Tree branches_with_function returns tonics", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto tonics = t.branches_with_function(HarmonicFunction::Tonic);
 
     REQUIRE(!tonics.empty());
@@ -220,14 +220,14 @@ TEST_CASE("Tree branches_with_function returns tonics", "[tree]") {
 }
 
 TEST_CASE("Tree branches_with_function returns subdominants", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto subdominants = t.branches_with_function(HarmonicFunction::Subdominant);
 
     REQUIRE(!subdominants.empty());
 }
 
 TEST_CASE("Tree branches_with_function returns dominants", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto dominants = t.branches_with_function(HarmonicFunction::Dominant);
 
     REQUIRE(!dominants.empty());
@@ -244,7 +244,7 @@ TEST_CASE("Tree branches_with_function returns dominants", "[tree]") {
 // ---------------------------------------------------------------------------
 
 TEST_CASE("Tree to_dot returns non-empty string", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto dot = t.to_dot(false);
 
     REQUIRE(!dot.empty());
@@ -252,7 +252,7 @@ TEST_CASE("Tree to_dot returns non-empty string", "[tree]") {
 }
 
 TEST_CASE("Tree to_dot with functions includes colors", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto dot = t.to_dot(true);
 
     REQUIRE(!dot.empty());
@@ -261,7 +261,7 @@ TEST_CASE("Tree to_dot with functions includes colors", "[tree]") {
 }
 
 TEST_CASE("Tree to_mermaid returns non-empty string", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto mermaid = t.to_mermaid();
 
     REQUIRE(!mermaid.empty());
@@ -273,7 +273,7 @@ TEST_CASE("Tree to_mermaid returns non-empty string", "[tree]") {
 // ---------------------------------------------------------------------------
 
 TEST_CASE("Tree resolves diminished chord notation", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto paths = t.paths("I");
 
     // Check if Idim or I° exists in branches (both ° and dim notations)
@@ -295,7 +295,7 @@ TEST_CASE("Tree resolves diminished chord notation", "[tree]") {
 // ---------------------------------------------------------------------------
 
 TEST_CASE("Tree works with NaturalMinor", "[tree]") {
-    Tree t("A", ScaleType::NaturalMinor);
+    Tree t("A", ScaleType::NaturalMinor, "harmonic_tree");
     auto branches = t.branches();
     REQUIRE(!branches.empty());
 
@@ -304,13 +304,13 @@ TEST_CASE("Tree works with NaturalMinor", "[tree]") {
 }
 
 TEST_CASE("Tree works with HarmonicMinor", "[tree]") {
-    Tree t("A", ScaleType::HarmonicMinor);
+    Tree t("A", ScaleType::HarmonicMinor, "harmonic_tree");
     auto branches = t.branches();
     REQUIRE(!branches.empty());
 }
 
 TEST_CASE("Tree works with MelodicMinor", "[tree]") {
-    Tree t("A", ScaleType::MelodicMinor);
+    Tree t("A", ScaleType::MelodicMinor, "harmonic_tree");
     auto branches = t.branches();
     REQUIRE(!branches.empty());
 }
@@ -320,7 +320,7 @@ TEST_CASE("Tree works with MelodicMinor", "[tree]") {
 // ---------------------------------------------------------------------------
 
 TEST_CASE("Tree to_string includes tonic and type", "[tree]") {
-    Tree t("C", ScaleType::Major);
+    Tree t("C", ScaleType::Major, "harmonic_tree");
     auto str = t.to_string();
 
     REQUIRE(!str.empty());

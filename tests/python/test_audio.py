@@ -169,7 +169,7 @@ class TestObjToSegments:
         assert all(s[0] == "chord" for s in segs)
 
     def test_tree(self):
-        segs = _obj_to_segments(Tree("C", "major"), octave=4, duration=0.5, tuning=440.0)
+        segs = _obj_to_segments(Tree("C", "major", "harmonic_tree"), octave=4, duration=0.5, tuning=440.0)
         assert len(segs) > 0
         assert all(s[0] == "chord" for s in segs)
 

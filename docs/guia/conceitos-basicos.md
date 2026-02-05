@@ -489,13 +489,13 @@ print(v7_of_4.name())  # "C7"
 | I-vi-ii-V | I - vi - ii - V | C - Am - Dm - G | Progressão circular |
 
 ```python
-from gingo import Tree, ScaleType
+from gingo import Tree, ScaleType, Progression
 
-# Criar árvore harmônica
-tree = Tree("C", ScaleType.Major)
+# Criar árvore harmônica (especificando tradição)
+tree = Tree("C", ScaleType.Major, "harmonic_tree")
 
 # Validar progressão
-valid = tree.is_valid_progression(["IIm", "V7", "I"])
+valid = tree.is_valid(["IIm", "V7", "I"])
 print(valid)  # True
 
 # Encontrar caminho mais curto
@@ -506,6 +506,12 @@ print(path)  # ['I', 'V7']
 branches = tree.branches()
 print(branches[:5])
 # ['I', 'IIm', 'IIIm', 'IV', 'V7', ...]
+
+# Usar Progression para análise cross-tradition
+prog = Progression("C", "major")
+match = prog.identify(["IIm", "V7", "I"])
+print(match.tradition)  # "harmonic_tree"
+print(match.schema)     # "descending"
 ```
 
 ### Movimento das Fundamentais
