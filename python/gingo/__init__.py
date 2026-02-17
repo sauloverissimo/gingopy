@@ -43,6 +43,12 @@ from gingo._gingo import (
     ChordEvent,
     Rest,
     Sequence,
+    Piano,
+    PianoKey,
+    PianoVoicing,
+    VoicingStyle,
+    MusicXML,
+    PianoSVG,
 )
 
 try:
@@ -80,6 +86,12 @@ __all__ = [
     "ChordEvent",
     "Rest",
     "Sequence",
+    "Piano",
+    "PianoKey",
+    "PianoVoicing",
+    "VoicingStyle",
+    "MusicXML",
+    "PianoSVG",
 ]
 
 # ---------------------------------------------------------------------------

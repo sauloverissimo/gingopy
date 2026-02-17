@@ -26,6 +26,10 @@ from gingo import (
     Duration,
     Tempo,
     TimeSignature,
+    Piano,
+    VoicingStyle,
+    MusicXML,
+    PianoSVG,
     __version__,
 )
 
@@ -757,6 +761,182 @@ def cmd_progression(args):
     print()
 
 
+def _write_svg(svg, args):
+    """Write SVG to file if --svg flag is set."""
+    svg_path = getattr(args, "svg", None)
+    if not svg_path:
+        return
+    PianoSVG.write(svg, svg_path)
+    print(f"    SVG: {svg_path}")
+
+
+def cmd_piano(args):
+    """Show piano key info, voicings, and reverse identification."""
+    piano = Piano(args.keys)
+
+    if args.identify:
+        midi_nums = args.identify
+        chord = piano.identify(midi_nums)
+        _header(f"Identify MIDI: {', '.join(str(m) for m in midi_nums)}")
+        _row("Chord", chord.name())
+        _row("Root", str(chord.root()))
+        _row("Notes", _join(chord.notes(), ", "))
+        _write_svg(PianoSVG.midi(piano, midi_nums, compact=args.compact), args)
+        _handle_audio(chord, args)
+        print()
+        return
+
+    if args.scale:
+        parts = args.name.strip().split(maxsplit=1)
+        if len(parts) < 2:
+            print("  Error: provide tonic and type, e.g. 'C major'")
+            sys.exit(1)
+        tonic, stype = parts[0], parts[1]
+        s = Scale(tonic, stype)
+        octave = args.octave if args.octave is not None else 4
+        keys = piano.scale_keys(s, octave)
+        _header(f"Scale keys: {s} (octave {octave})")
+        print(f"    {'Note':<6s}  {'MIDI':>4s}  {'Oct':>3s}  {'Key':>3s}  {'Color'}")
+        print(f"    {'----':<6s}  {'----':>4s}  {'---':>3s}  {'---':>3s}  {'-----'}")
+        for k in keys:
+            color = "white" if k.white else "black"
+            print(f"    {k.note:<6s}  {k.midi:>4d}  {k.octave:>3d}  {k.position:>3d}  {color}")
+        _write_svg(PianoSVG.scale(piano, s, octave, compact=args.compact), args)
+        _handle_audio(s, args)
+        print()
+        return
+
+    # Try as chord first, then as note
+    name = args.name
+    if name is None:
+        print("  Error: provide a note (C4), chord (Am7), or use --identify / --scale")
+        sys.exit(1)
+
+    # Check if it looks like a note+octave (e.g. C4, Bb3, F#5)
+    # Valid note names: A-G optionally followed by #/b/##/bb, then a single digit
+    import re
+    is_note = False
+    m = re.fullmatch(r'([A-Ga-g][#b♯♭]{0,2})(\d)', name)
+    if m:
+        try:
+            note_part = m.group(1)
+            oct_part = int(m.group(2))
+            Note(note_part)
+            is_note = True
+        except (ValueError, RuntimeError):
+            pass
+
+    if is_note:
+        n = Note(note_part)
+        octave = oct_part
+        k = piano.key(n, octave)
+        _header(f"Piano key: {n.name()}{octave}")
+        _row("MIDI number", str(k.midi))
+        _row("Octave", str(k.octave))
+        _row("Note", k.note)
+        _row("Color", "white" if k.white else "black")
+        _row("Position", f"{k.position} of {piano.num_keys()}")
+
+        # Show all octaves for this note
+        all_keys = piano.keys(n)
+        _row("All octaves", _join([f"{kk.note}{kk.octave}(#{kk.position})" for kk in all_keys], "  "))
+        _write_svg(PianoSVG.note(piano, n, octave, compact=args.compact), args)
+        # Set octave from input so _handle_audio picks it up
+        if args.octave is None:
+            args.octave = octave
+        _handle_audio(n, args)
+        print()
+        return
+
+    # Try as chord
+    try:
+        c = Chord(name)
+    except (ValueError, RuntimeError):
+        print(f"  Error: '{name}' is not a valid note+octave or chord name")
+        sys.exit(1)
+
+    octave = args.octave if args.octave is not None else 4
+
+    if args.voicings:
+        voicings = piano.voicings(c, octave)
+        _header(f"Voicings: {c.name()} (octave {octave})")
+        print()
+        for v in voicings:
+            style_name = str(v.style).replace("VoicingStyle.", "")
+            print(f"    {style_name}")
+            print(f"    {'Note':<6s}  {'MIDI':>4s}  {'Oct':>3s}  {'Color'}")
+            print(f"    {'----':<6s}  {'----':>4s}  {'---':>3s}  {'-----'}")
+            for k in v.keys:
+                color = "white" if k.white else "black"
+                print(f"    {k.note:<6s}  {k.midi:>4d}  {k.octave:>3d}  {color}")
+            print()
+        _write_svg(PianoSVG.chord(piano, c, octave, compact=args.compact), args)
+        _handle_audio(c, args)
+        return
+
+    # Single voicing
+    style_map = {"close": VoicingStyle.Close, "open": VoicingStyle.Open, "shell": VoicingStyle.Shell}
+    style = style_map.get(args.style, VoicingStyle.Close)
+    v = piano.voicing(c, octave, style)
+    style_name = str(v.style).replace("VoicingStyle.", "")
+
+    _header(f"Piano: {c.name()} ({style_name}, octave {octave})")
+    _row("Chord", v.chord_name)
+    _row("Style", style_name)
+    _row("Inversion", str(v.inversion))
+    print()
+    print(f"    {'Note':<6s}  {'MIDI':>4s}  {'Oct':>3s}  {'Key':>3s}  {'Color'}")
+    print(f"    {'----':<6s}  {'----':>4s}  {'---':>3s}  {'---':>3s}  {'-----'}")
+    for k in v.keys:
+        color = "white" if k.white else "black"
+        print(f"    {k.note:<6s}  {k.midi:>4d}  {k.octave:>3d}  {k.position:>3d}  {color}")
+
+    _write_svg(PianoSVG.chord(piano, c, octave, style, compact=args.compact), args)
+    _handle_audio(c, args)
+    print()
+
+
+def cmd_musicxml(args):
+    """Generate MusicXML output."""
+    subcmd = args.musicxml_type
+
+    if subcmd == "note":
+        n = Note(args.name)
+        octave = args.octave if args.octave is not None else 4
+        xml = MusicXML.note(n, octave, args.type)
+    elif subcmd == "chord":
+        c = Chord(args.name)
+        octave = args.octave if args.octave is not None else 4
+        xml = MusicXML.chord(c, octave, args.type)
+    elif subcmd == "scale":
+        parts = args.name.strip().split(maxsplit=1)
+        if len(parts) < 2:
+            print("  Error: provide tonic and type, e.g. 'C major'")
+            sys.exit(1)
+        tonic, stype = parts[0], parts[1]
+        s = Scale(tonic, stype)
+        octave = args.octave if args.octave is not None else 4
+        xml = MusicXML.scale(s, octave, args.type)
+    elif subcmd == "field":
+        parts = args.name.strip().split(maxsplit=1)
+        if len(parts) < 2:
+            print("  Error: provide tonic and type, e.g. 'C major'")
+            sys.exit(1)
+        tonic, stype = parts[0], parts[1]
+        f = Field(tonic, stype)
+        octave = args.octave if args.octave is not None else 4
+        xml = MusicXML.field(f, octave, args.type)
+    else:
+        print(f"  Error: unknown MusicXML type '{subcmd}'")
+        sys.exit(1)
+
+    if args.output:
+        MusicXML.write(xml, args.output)
+        print(f"  Written: {args.output}")
+    else:
+        print(xml)
+
+
 def cmd_duration(args):
     """Show duration properties."""
     if args.name_or_num:
@@ -892,10 +1072,16 @@ def build_parser():
             Gingo — music theory from the terminal.
 
             Explore notes, intervals, chords, scales, harmonic fields,
-            harmonic trees, progressions, and rhythm.
+            harmonic trees, progressions, rhythm, and instruments.
 
             Pitch concepts build on each other:
               Note → Interval → Chord → Scale → Field → Tree → Progression
+
+            Instruments:
+              Piano (forward: theory → keys, reverse: keys → theory)
+
+            Serialization:
+              MusicXML (notation interchange for MuseScore, Finale, Sibelius)
 
             Rhythm concepts:
               Duration → Tempo → Time Signature
@@ -940,6 +1126,16 @@ def build_parser():
               %(prog)s progression "C major" --identify "IIm,V7,I"
               %(prog)s progression "C major" --deduce "I,IIm"
               %(prog)s progression "C major" --predict "I,IIm"
+              %(prog)s piano C4
+              %(prog)s piano Am7
+              %(prog)s piano Am7 --voicings
+              %(prog)s piano Am7 --style shell
+              %(prog)s piano "C major" --scale
+              %(prog)s piano --identify 60 64 67
+              %(prog)s musicxml note C
+              %(prog)s musicxml chord Am7 -o am7.musicxml
+              %(prog)s musicxml scale "C major"
+              %(prog)s musicxml field "C major"
               %(prog)s compare CM Am
               %(prog)s compare CM GM --field "C major"
               %(prog)s duration quarter
@@ -1335,6 +1531,106 @@ def build_parser():
     p_pr.add_argument("--limit", type=int, default=10, metavar="N",
                       help="max results for --deduce (default: 10)")
     p_pr.set_defaults(func=cmd_progression)
+
+    # --- piano ---
+    p_pi = sub.add_parser(
+        "piano", help="explore piano keys, voicings, and MIDI mapping",
+        description=textwrap.dedent("""\
+            Map music theory to piano keys and back.
+
+            Forward: given a note, chord, or scale, show which piano keys to press.
+            Reverse: given MIDI numbers, identify the chord.
+
+            Input formats:
+              C4 .......... single note with octave
+              Am7 ......... chord (default voicing)
+              "C major" ... scale (with --scale flag)
+              60 64 67 .... MIDI numbers (with --identify flag)
+
+            Voicing styles:
+              close ....... all notes in the same octave (default)
+              open ........ root drops one octave
+              shell ....... root + 3rd + 7th (jazz voicing)
+        """),
+        epilog=textwrap.dedent("""\
+            examples:
+              gingo piano C4
+              gingo piano Bb3
+              gingo piano Am7
+              gingo piano Am7 --voicings
+              gingo piano Am7 --style open
+              gingo piano Am7 --style shell
+              gingo piano "C major" --scale
+              gingo piano --identify 60 64 67
+              gingo piano --identify 57 60 64 67
+              gingo piano CM --keys 61
+              gingo piano Am7 --svg am7.svg
+              gingo piano "C major" --scale --svg cmajor.svg
+        """),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    p_pi.add_argument("name", nargs="?", default=None,
+                      help="note+octave (C4), chord (Am7), or 'tonic type' with --scale")
+    p_pi.add_argument("--identify", nargs="+", type=int, metavar="MIDI",
+                      help="identify chord from MIDI numbers")
+    p_pi.add_argument("--scale", action="store_true",
+                      help="show scale keys on the piano")
+    p_pi.add_argument("--voicings", action="store_true",
+                      help="show all voicing styles for a chord")
+    p_pi.add_argument("--style", choices=["close", "open", "shell"],
+                      default="close",
+                      help="voicing style (default: close)")
+    p_pi.add_argument("--octave", type=int, metavar="N",
+                      help="octave (default: 4)")
+    p_pi.add_argument("--keys", type=int, default=88, metavar="N",
+                      help="number of piano keys (default: 88)")
+    p_pi.add_argument("--svg", metavar="FILE",
+                      help="export piano visualization as SVG file")
+    p_pi.add_argument("--compact", action="store_true",
+                      help="compact SVG: only ~2 octaves around highlighted notes")
+    _add_audio_args(p_pi)
+    p_pi.set_defaults(func=cmd_piano)
+
+    # --- musicxml ---
+    p_mx = sub.add_parser(
+        "musicxml", help="generate MusicXML notation",
+        description=textwrap.dedent("""\
+            Generate MusicXML output for notes, chords, scales, and fields.
+
+            MusicXML is the standard interchange format for music notation.
+            Output can be opened in MuseScore, Finale, Sibelius, and other
+            notation software.
+
+            Subtypes:
+              note ........ single note
+              chord ....... chord (all notes stacked)
+              scale ....... scale notes in sequence
+              field ....... harmonic field (1 chord per measure)
+        """),
+        epilog=textwrap.dedent("""\
+            examples:
+              gingo musicxml note C
+              gingo musicxml note "F#" --octave 5
+              gingo musicxml chord Am7
+              gingo musicxml chord Am7 -o am7.musicxml
+              gingo musicxml scale "C major"
+              gingo musicxml scale "C major" -o cmajor.musicxml
+              gingo musicxml field "C major"
+              gingo musicxml field "C major" -o cfield.musicxml
+        """),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    p_mx.add_argument("musicxml_type", choices=["note", "chord", "scale", "field"],
+                      help="what to generate (note, chord, scale, field)")
+    p_mx.add_argument("name", help="note (C), chord (Am7), or 'tonic type' for scale/field")
+    p_mx.add_argument("-o", "--output", metavar="FILE",
+                      help="write to file instead of stdout")
+    p_mx.add_argument("--octave", type=int, metavar="N",
+                      help="octave (default: 4)")
+    p_mx.add_argument("--type", default="quarter",
+                      choices=["whole", "half", "quarter", "eighth", "sixteenth"],
+                      help="note type / duration (default: quarter)")
+    p_mx.set_defaults(func=cmd_musicxml)
 
     # --- compare ---
     p_cmp = sub.add_parser(

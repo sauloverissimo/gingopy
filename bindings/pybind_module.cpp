@@ -1653,4 +1653,127 @@ PYBIND11_MODULE(_gingo, m) {
                  + std::to_string(s.total_duration()) + " beats";
         });
 
+    // ---- PianoKey (struct) -------------------------------------------------
+    py::class_<PianoKey>(m, "PianoKey")
+        .def_readonly("midi",     &PianoKey::midi)
+        .def_readonly("octave",   &PianoKey::octave)
+        .def_readonly("note",     &PianoKey::note)
+        .def_readonly("white",    &PianoKey::white)
+        .def_readonly("position", &PianoKey::position)
+        .def("to_dict", [](const PianoKey& k) {
+            py::dict d;
+            d["midi"]     = k.midi;
+            d["octave"]   = k.octave;
+            d["note"]     = k.note;
+            d["white"]    = k.white;
+            d["position"] = k.position;
+            return d;
+        })
+        .def("__repr__", &PianoKey::to_string)
+        .def("__str__",  [](const PianoKey& k) {
+            return k.note + std::to_string(k.octave);
+        });
+
+    // ---- VoicingStyle (enum) -----------------------------------------------
+    py::enum_<VoicingStyle>(m, "VoicingStyle")
+        .value("Close", VoicingStyle::Close)
+        .value("Open",  VoicingStyle::Open)
+        .value("Shell", VoicingStyle::Shell);
+
+    // ---- PianoVoicing (struct) ---------------------------------------------
+    py::class_<PianoVoicing>(m, "PianoVoicing")
+        .def_readonly("keys",       &PianoVoicing::keys)
+        .def_readonly("style",      &PianoVoicing::style)
+        .def_readonly("chord_name", &PianoVoicing::chord_name)
+        .def_readonly("inversion",  &PianoVoicing::inversion)
+        .def("to_dict", [](const PianoVoicing& v) {
+            py::dict d;
+            py::list keys;
+            for (const auto& k : v.keys) {
+                py::dict kd;
+                kd["midi"]     = k.midi;
+                kd["octave"]   = k.octave;
+                kd["note"]     = k.note;
+                kd["white"]    = k.white;
+                kd["position"] = k.position;
+                keys.append(kd);
+            }
+            d["keys"]       = keys;
+            d["style"]      = py::cast(v.style);
+            d["chord_name"] = v.chord_name;
+            d["inversion"]  = v.inversion;
+            return d;
+        })
+        .def("__repr__", &PianoVoicing::to_string)
+        .def("__str__",  [](const PianoVoicing& v) {
+            return v.chord_name + " voicing";
+        });
+
+    // ---- Piano -------------------------------------------------------------
+    py::class_<Piano>(m, "Piano")
+        .def(py::init<int>(), py::arg("num_keys") = 88)
+        .def("num_keys", &Piano::num_keys)
+        .def("lowest",   &Piano::lowest)
+        .def("highest",  &Piano::highest)
+        .def("in_range", &Piano::in_range, py::arg("midi"))
+        .def("key",       &Piano::key,
+             py::arg("note"), py::arg("octave") = 4)
+        .def("keys",      &Piano::keys, py::arg("note"))
+        .def("voicing",   &Piano::voicing,
+             py::arg("chord"), py::arg("octave") = 4,
+             py::arg("style") = VoicingStyle::Close)
+        .def("voicings",  &Piano::voicings,
+             py::arg("chord"), py::arg("octave") = 4)
+        .def("scale_keys", &Piano::scale_keys,
+             py::arg("scale"), py::arg("octave") = 4)
+        .def("note_at",   &Piano::note_at, py::arg("midi"))
+        .def("identify",  &Piano::identify, py::arg("midi_numbers"))
+        .def("__repr__",  &Piano::to_string)
+        .def("__str__",   [](const Piano& p) {
+            return "Piano(" + std::to_string(p.num_keys()) + " keys)";
+        });
+
+    // ---- MusicXML ----------------------------------------------------------
+    py::class_<MusicXML>(m, "MusicXML")
+        .def_static("note", &MusicXML::note,
+             py::arg("note"), py::arg("octave") = 4,
+             py::arg("type") = "quarter")
+        .def_static("chord", &MusicXML::chord,
+             py::arg("chord"), py::arg("octave") = 4,
+             py::arg("type") = "whole")
+        .def_static("scale", &MusicXML::scale,
+             py::arg("scale"), py::arg("octave") = 4,
+             py::arg("type") = "quarter")
+        .def_static("field", &MusicXML::field,
+             py::arg("field"), py::arg("octave") = 4,
+             py::arg("type") = "whole")
+        .def_static("sequence", &MusicXML::sequence, py::arg("sequence"))
+        .def_static("write", &MusicXML::write,
+             py::arg("xml"), py::arg("path"));
+
+    // ---- PianoSVG -----------------------------------------------------------
+    py::class_<PianoSVG>(m, "PianoSVG")
+        .def_static("note", &PianoSVG::note,
+             py::arg("piano"), py::arg("note"), py::arg("octave") = 4,
+             py::arg("compact") = false)
+        .def_static("chord", &PianoSVG::chord,
+             py::arg("piano"), py::arg("chord"), py::arg("octave") = 4,
+             py::arg("style") = VoicingStyle::Close,
+             py::arg("compact") = false)
+        .def_static("scale", &PianoSVG::scale,
+             py::arg("piano"), py::arg("scale"), py::arg("octave") = 4,
+             py::arg("compact") = false)
+        .def_static("keys", &PianoSVG::keys,
+             py::arg("piano"), py::arg("highlighted"),
+             py::arg("title") = "",
+             py::arg("compact") = false)
+        .def_static("voicing", &PianoSVG::voicing,
+             py::arg("piano"), py::arg("voicing"),
+             py::arg("compact") = false)
+        .def_static("midi", &PianoSVG::midi,
+             py::arg("piano"), py::arg("midi_numbers"),
+             py::arg("compact") = false)
+        .def_static("write", &PianoSVG::write,
+             py::arg("svg"), py::arg("path"));
+
 }

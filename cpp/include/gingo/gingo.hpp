@@ -25,3 +25,6 @@
 #include "time_signature.hpp"
 #include "event.hpp"
 #include "sequence.hpp"
+#include "piano.hpp"
+#include "piano_svg.hpp"
+#include "musicxml.hpp"

@@ -18,6 +18,9 @@
 | `ChordEvent` | `ChordEvent(Chord("CM"), Duration("half"), 4)`                 | Acorde com duracao e oitava    |
 | `Rest`       | `Rest(Duration("quarter"))`                                    | Pausa (silencio)               |
 | `Sequence`   | `Sequence(Tempo(120), TimeSignature(4, 4))`                    | Sequencia de eventos musicais  |
+| `Piano`      | `Piano(88)`                                                    | Mapeamento piano (teoria ↔ teclas) |
+| `PianoSVG`   | `PianoSVG.note(piano, Note("C"), 4)`                           | Visualizacao SVG interativa do piano |
+| `MusicXML`   | `MusicXML.note(Note("C"), 4)`                                  | Serializador MusicXML 4.0      |
 
 ### Metodos de Note
 
@@ -339,6 +342,127 @@ Nomes aceitos: `"whole"`, `"half"`, `"quarter"`, `"eighth"`, `"sixteenth"`, `"th
 | `__len__()`                | `int`                | Quantidade de eventos                |
 | `__getitem__(i)`           | `NoteEvent\|ChordEvent\|Rest` | Acesso por indice (suporta negativo) |
 
+### Metodos de Piano
+
+| Metodo                          | Retorno             | Descricao                             |
+|---------------------------------|---------------------|---------------------------------------|
+| `num_keys()`                    | `int`               | Quantidade de teclas                  |
+| `lowest()`                      | `PianoKey`          | Tecla mais grave                      |
+| `highest()`                     | `PianoKey`          | Tecla mais aguda                      |
+| `in_range(midi)`                | `bool`              | MIDI esta no alcance do piano?        |
+| `key(note, octave=4)`           | `PianoKey`          | Mapeia Note para tecla                |
+| `keys(note)`                    | `List[PianoKey]`    | Todas as oitavas de uma nota          |
+| `voicing(chord, octave=4, style=Close)` | `PianoVoicing` | Voicing de acorde no piano      |
+| `voicings(chord, octave=4)`     | `List[PianoVoicing]`| Todos os estilos de voicing           |
+| `scale_keys(scale, octave=4)`   | `List[PianoKey]`    | Teclas da escala no piano             |
+| `note_at(midi)`                 | `Note`              | MIDI para Note                        |
+| `identify(midi_list)`           | `Chord`             | Identifica acorde a partir de MIDI    |
+
+### Atributos de PianoKey
+
+| Atributo     | Tipo   | Descricao                               |
+|--------------|--------|-----------------------------------------|
+| `midi`       | `int`  | Numero MIDI (21=A0, 60=C4, 108=C8)     |
+| `octave`     | `int`  | Numero da oitava                        |
+| `note`       | `str`  | Nome da nota (classe de pitch)          |
+| `white`      | `bool` | True = tecla branca                     |
+| `position`   | `int`  | Posicao 1-indexed no teclado            |
+
+### Atributos de PianoVoicing
+
+| Atributo     | Tipo              | Descricao                       |
+|--------------|-------------------|---------------------------------|
+| `keys`       | `List[PianoKey]`  | Teclas do voicing               |
+| `style`      | `VoicingStyle`    | Estilo de voicing               |
+| `chord_name` | `str`             | Nome do acorde                  |
+| `inversion`  | `int`             | Inversao (0=fundamental, 1=1a, 2=2a) |
+
+### VoicingStyle (enum)
+
+| Valor    | Descricao                                |
+|----------|------------------------------------------|
+| `Close`  | Todas as notas na mesma oitava           |
+| `Open`   | Raiz desce uma oitava                    |
+| `Shell`  | Raiz + 3a + 7a (voicing jazz)            |
+
+### Metodos de PianoSVG
+
+Gera imagens SVG interativas de um teclado de piano com teclas destacadas.
+Cada tecla `<rect>` carrega atributos HTML5 data (padrao W3C Custom Data Attributes)
+para facilitar integracao com JavaScript, D3.js, React, Vue, ou qualquer framework interativo.
+
+| Metodo                                                | Retorno  | Descricao                                |
+|-------------------------------------------------------|----------|------------------------------------------|
+| `PianoSVG.note(piano, note, octave=4)`                | `str`    | SVG com uma nota destacada               |
+| `PianoSVG.chord(piano, chord, octave=4, style=Close)` | `str`    | SVG com voicing de acorde destacado      |
+| `PianoSVG.scale(piano, scale, octave=4)`              | `str`    | SVG com notas da escala destacadas       |
+| `PianoSVG.keys(piano, keys, title="")`                | `str`    | SVG a partir de uma lista de PianoKeys   |
+| `PianoSVG.voicing(piano, voicing)`                    | `str`    | SVG a partir de um objeto PianoVoicing   |
+| `PianoSVG.midi(piano, midi_numbers)`                  | `str`    | SVG a partir de numeros MIDI             |
+| `PianoSVG.write(svg, path)`                           | `None`   | Grava SVG em arquivo                     |
+
+#### Atributos interativos do SVG
+
+Cada tecla `<rect>` no SVG gerado possui:
+
+| Atributo           | Exemplo                              | Descricao                         |
+|--------------------|--------------------------------------|-----------------------------------|
+| `id`               | `key-60`                             | Identificador unico (numero MIDI) |
+| `class`            | `piano-key white highlighted`        | Classes CSS para estilizacao      |
+| `data-midi`        | `60`                                 | Numero MIDI                       |
+| `data-note`        | `C`                                  | Nome da nota (classe de pitch)    |
+| `data-octave`      | `4`                                  | Numero da oitava                  |
+| `data-color`       | `white` ou `black`                   | Cor da tecla                      |
+| `data-highlighted` | `true` ou `false`                    | Se a tecla esta destacada         |
+
+Labels nas teclas possuem `pointer-events="none"` para que clicks passem pela label e atinjam o `<rect>`.
+
+#### Exemplo: SVG interativo no navegador
+
+```html
+<div id="piano"></div>
+<script>
+  document.getElementById("piano").innerHTML = svgString;
+  document.querySelectorAll(".piano-key").forEach(key => {
+    key.addEventListener("click", () => {
+      const midi = key.dataset.midi;
+      const note = key.dataset.note;
+      const octave = key.dataset.octave;
+      console.log(`Clicou: ${note}${octave} (MIDI ${midi})`);
+    });
+    key.style.cursor = "pointer";
+  });
+</script>
+```
+
+#### Como visualizar o SVG
+
+```python
+# Opcao 1: Salvar e abrir no navegador
+import subprocess
+PianoSVG.write(svg, "piano.svg")
+subprocess.Popen(["xdg-open", "piano.svg"])  # Linux
+# subprocess.Popen(["open", "piano.svg"])    # macOS
+
+# Opcao 2: Jupyter notebook
+from IPython.display import SVG, display
+display(SVG(data=svg))
+
+# Opcao 3: CLI
+# gingo piano Am7 --svg am7.svg
+```
+
+### Metodos de MusicXML
+
+| Metodo                                    | Retorno  | Descricao                           |
+|-------------------------------------------|----------|-------------------------------------|
+| `MusicXML.note(note, octave=4, type="quarter")` | `str` | Nota unica como XML             |
+| `MusicXML.chord(chord, octave=4, type="whole")` | `str` | Acorde como XML                 |
+| `MusicXML.scale(scale, octave=4, type="quarter")` | `str` | Escala como XML               |
+| `MusicXML.field(field, octave=4, type="whole")` | `str` | Campo harmonico como XML        |
+| `MusicXML.sequence(seq)`                  | `str`    | Sequencia como XML                  |
+| `MusicXML.write(xml, path)`               | `None`   | Grava XML em arquivo                |
+
 ---
 
 ## Audio (`gingo.audio`)
@@ -442,6 +566,8 @@ Chord("Am7").to_wav("am7.wav", waveform="triangle")
 | `field`     | Campo harmonico: acordes, funcoes, tonicizacao  | `gingo field "C major" --functions`    |
 | `tree`      | Arvore harmonica: branches, paths, validacao    | `gingo tree "C major" harmonic_tree`   |
 | `progression` | Analise cross-tradition de progressoes        | `gingo progression "C major" --identify IIm V7 I` |
+| `piano`     | Mapeamento piano: teclas, voicings, MIDI reverso | `gingo piano Am7 --voicings`              |
+| `musicxml`  | Gera MusicXML para notacao                   | `gingo musicxml chord Am7 -o am7.musicxml` |
 | `compare`   | Comparacao entre dois acordes (absoluta ou contextual) | `gingo compare CM Am --field "C major"` |
 
 ## Todas as opcoes CLI
@@ -486,6 +612,14 @@ Chord("Am7").to_wav("am7.wav", waveform="triangle")
 | `--deduce B1..`    | `progression` | Deduz tradicoes provaveis (ranqueado)      |
 | `--predict B1..`   | `progression` | Sugere proximos acordes                    |
 | `--limit N`        | `progression` | Limita resultados de deduce/predict        |
+| `--identify MIDI..`| `piano`         | Identifica acorde a partir de numeros MIDI |
+| `--scale`          | `piano`         | Mostra teclas da escala no piano           |
+| `--voicings`       | `piano`         | Mostra todos os estilos de voicing         |
+| `--style S`        | `piano`         | Estilo de voicing: close, open, shell      |
+| `--keys N`         | `piano`         | Quantidade de teclas do piano (default 88) |
+| `--svg FILE`       | `piano`         | Gera SVG interativo do teclado com notas destacadas |
+| `-o FILE`          | `musicxml`      | Grava XML em arquivo em vez de stdout      |
+| `--type T`         | `musicxml`      | Tipo de nota: whole, half, quarter, eighth, sixteenth |
 | `--play`           | `note`, `chord`, `scale`, `field` | Toca audio pelo sistema                |
 | `--wav FILE`       | `note`, `chord`, `scale`, `field` | Exporta para arquivo WAV               |
 | `--waveform WF`    | `note`, `chord`, `scale`, `field` | sine, square, sawtooth, triangle       |

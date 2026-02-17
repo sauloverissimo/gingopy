@@ -22,6 +22,9 @@ Gingo is a pragmatic library for analysis, composition, and teaching. It priorit
 
 - **C++17 core + Python API** — fast and deterministic, with full type hints.
 - **Pitch & harmony** — `Note`, `Interval`, `Chord`, `Scale`, `Field`, `Tree`, and `Progression` with identification, deduction, and comparison utilities.
+- **Instruments** — `Piano` maps theory to physical keys (forward & reverse MIDI), with voicing styles (close, open, shell).
+- **SVG Visualization** — `PianoSVG` renders interactive piano keyboard SVGs with highlighted notes, chords, scales, and voicings. Each key carries HTML5 data attributes (`data-midi`, `data-note`, `data-octave`, `data-color`, `data-highlighted`) and CSS classes for easy integration with JavaScript, D3.js, React, or any interactive framework.
+- **Notation** — `MusicXML` serializes any musical object to MusicXML 4.0 for MuseScore, Finale, and Sibelius.
 - **Rhythm & time** — `Duration`, `Tempo` (BPM + nomes de tempo), `TimeSignature`, and `Sequence` with note/chord events.
 - **Audio** — `.play()` and `.to_wav()` on musical objects, plus CLI `--play` / `--wav` with waveform and strum controls.
 - **CLI-first exploration** — query and inspect theory concepts without leaving the terminal.
@@ -53,6 +56,7 @@ from gingo import (
     Note, Interval, Chord, Scale, Field, Tree, ScaleType,
     Duration, Tempo, TimeSignature, Sequence,
     NoteEvent, ChordEvent, Rest,
+    Piano, VoicingStyle, MusicXML,
 )
 
 # Notes
@@ -136,6 +140,40 @@ prog.identify(["IIm", "V7", "I"])  # ProgressionMatch
 prog.deduce(["IIm", "V7"])         # Ranked matches
 prog.predict(["I", "IIm"])         # Suggested next chords
 
+# Piano — theory ↔ physical keys
+piano = Piano(88)
+key = piano.key(Note("C"), 4)
+key.midi             # 60
+key.white            # True
+key.position         # 40 (on an 88-key piano)
+
+# Chord voicing on piano
+v = piano.voicing(Chord("Am7"), 4, VoicingStyle.Close)
+[k.midi for k in v.keys]  # [69, 72, 76, 79]
+
+# Shell voicing (jazz: root + 3rd + 7th)
+v = piano.voicing(Chord("Am7"), 4, VoicingStyle.Shell)
+[k.midi for k in v.keys]  # [69, 72, 79]
+
+# Reverse: MIDI → chord
+piano.identify([60, 64, 67])  # Chord("CM")
+
+# PianoSVG — interactive piano visualization
+from gingo import PianoSVG
+
+piano = Piano(88)
+svg = PianoSVG.note(piano, Note("C"), 4)         # single note
+svg = PianoSVG.chord(piano, Chord("Am7"), 4)      # chord voicing
+svg = PianoSVG.scale(piano, Scale("C", "major"), 4)  # scale
+PianoSVG.write(svg, "piano.svg")                  # save to file
+
+# MusicXML — export to notation software
+xml = MusicXML.note(Note("C"), 4)      # single note
+xml = MusicXML.chord(Chord("Am7"), 4)  # chord
+xml = MusicXML.scale(Scale("C", "major"), 4)  # scale
+xml = MusicXML.field(Field("C", "major"), 4)  # harmonic field
+MusicXML.write(xml, "score.musicxml")  # save to file
+
 # Rhythm
 q = Duration("quarter")
 dotted = Duration("eighth", dots=1)
@@ -171,6 +209,17 @@ gingo field "C major" --functions
 gingo field "CM,FM,G7" --identify
 gingo field "CM,FM" --deduce
 gingo compare CM GM --field "C major"
+gingo piano C4
+gingo piano Am7 --voicings
+gingo piano Am7 --style shell
+gingo piano "C major" --scale
+gingo piano --identify 60 64 67
+gingo piano Am7 --svg am7.svg
+gingo piano "C major" --scale --svg cmajor.svg
+gingo musicxml note C
+gingo musicxml chord Am7 -o am7.musicxml
+gingo musicxml scale "C major"
+gingo musicxml field "C major" -o field.musicxml
 gingo note C --play --waveform triangle
 gingo chord Am7 --play --strum 0.05
 gingo chord Am7 --wav am7.wav
@@ -676,6 +725,163 @@ for r in routes:
     print(f"Next: {r.next} (from {r.tradition}, conf={r.confidence})")
 ```
 
+### Piano (Instrument Mapping)
+
+The `Piano` class maps music theory to physical piano keys and back.
+
+```python
+from gingo import Piano, Note, Chord, Scale, VoicingStyle
+
+piano = Piano(88)  # standard 88-key piano (also: 61, 76)
+
+# Forward: theory → keys
+key = piano.key(Note("C"), 4)
+key.midi        # 60
+key.octave      # 4
+key.note        # "C"
+key.white       # True
+key.position    # 40
+
+# All C keys on the piano
+all_cs = piano.keys(Note("C"))  # 8 keys (C1 through C8)
+
+# Chord voicing
+v = piano.voicing(Chord("Am7"), 4, VoicingStyle.Close)
+v.keys          # [PianoKey(A4), PianoKey(C5), PianoKey(E5), PianoKey(G5)]
+v.style         # VoicingStyle.Close
+v.chord_name    # "Am7"
+v.inversion     # 0
+
+# All voicing styles at once
+voicings = piano.voicings(Chord("Am7"), 4)  # Close, Open, Shell
+
+# Scale keys
+keys = piano.scale_keys(Scale("C", "major"), 4)  # 7 PianoKeys
+
+# Reverse: keys → theory
+piano.note_at(60)                   # Note("C")
+piano.identify([60, 64, 67])        # Chord("CM")
+piano.identify([57, 60, 64, 67])    # Chord("Am7")
+```
+
+### PianoSVG (Visual Keyboard)
+
+The `PianoSVG` class generates interactive SVG images of a piano keyboard with highlighted keys. Each key is a `<rect>` element with HTML5 data attributes following the W3C Custom Data Attributes standard, making it easy to add click handlers, tooltips, or any interactive behavior.
+
+```python
+from gingo import Piano, Note, Chord, Scale, PianoSVG, VoicingStyle
+
+piano = Piano(88)
+
+# Single note
+svg = PianoSVG.note(piano, Note("C"), 4)
+
+# Chord (default close voicing)
+svg = PianoSVG.chord(piano, Chord("Am7"), 4)
+
+# Chord with voicing style
+svg = PianoSVG.chord(piano, Chord("Am7"), 4, VoicingStyle.Shell)
+
+# Scale
+svg = PianoSVG.scale(piano, Scale("C", "major"), 4)
+
+# Custom keys with title
+k1 = piano.key(Note("C"), 4)
+k2 = piano.key(Note("E"), 4)
+svg = PianoSVG.keys(piano, [k1, k2], "My Selection")
+
+# From a voicing object
+v = piano.voicing(Chord("CM"), 4, VoicingStyle.Open)
+svg = PianoSVG.voicing(piano, v)
+
+# From raw MIDI numbers
+svg = PianoSVG.midi(piano, [60, 64, 67])
+
+# Save to file
+PianoSVG.write(svg, "piano.svg")
+```
+
+#### Interactive SVG attributes
+
+Every key `<rect>` in the generated SVG carries these attributes:
+
+| Attribute | Example | Description |
+|-----------|---------|-------------|
+| `id` | `key-60` | Unique identifier (MIDI number) |
+| `class` | `piano-key white highlighted` | CSS classes for styling |
+| `data-midi` | `60` | MIDI number |
+| `data-note` | `C` | Pitch class name |
+| `data-octave` | `4` | Octave number |
+| `data-color` | `white` or `black` | Key color |
+| `data-highlighted` | `true` or `false` | Whether the key is highlighted |
+
+Text labels on highlighted keys have `pointer-events="none"` so clicks pass through to the key rect.
+
+#### Using in the browser
+
+```html
+<div id="piano"></div>
+<script>
+  // Load the SVG (inline or via fetch)
+  document.getElementById("piano").innerHTML = svgString;
+
+  // Add click handlers using data attributes
+  document.querySelectorAll(".piano-key").forEach(key => {
+    key.addEventListener("click", () => {
+      const midi = key.dataset.midi;
+      const note = key.dataset.note;
+      const octave = key.dataset.octave;
+      console.log(`Clicked: ${note}${octave} (MIDI ${midi})`);
+    });
+    key.style.cursor = "pointer";
+  });
+</script>
+```
+
+Compatible with: D3.js, React, Vue, Svelte, plain JavaScript, Jupyter notebooks.
+
+#### Viewing the SVG
+
+```python
+# Option 1: Save and open in browser
+import subprocess
+PianoSVG.write(svg, "piano.svg")
+subprocess.Popen(["xdg-open", "piano.svg"])  # Linux
+# subprocess.Popen(["open", "piano.svg"])    # macOS
+
+# Option 2: Jupyter notebook
+from IPython.display import SVG, display
+display(SVG(data=svg))
+
+# Option 3: CLI
+# gingo piano Am7 --svg am7.svg
+```
+
+### MusicXML (Notation Export)
+
+The `MusicXML` class serializes musical objects to MusicXML 4.0 partwise format, compatible with MuseScore, Finale, Sibelius, and other notation software.
+
+```python
+from gingo import MusicXML, Note, Chord, Scale, Field
+
+# Generate XML strings
+xml = MusicXML.note(Note("C"), 4)                # single note
+xml = MusicXML.note(Note("F#"), 5, "whole")       # F#5 whole note
+xml = MusicXML.chord(Chord("Am7"), 4)             # 4-note chord
+xml = MusicXML.scale(Scale("C", "major"), 4)      # 7 notes in sequence
+xml = MusicXML.field(Field("C", "major"), 4)      # 7 measures, 1 chord each
+
+# Write to file
+MusicXML.write(xml, "score.musicxml")
+
+# Sequence support
+from gingo import Sequence, Tempo, TimeSignature, NoteEvent, Rest, Duration
+seq = Sequence(Tempo(120), TimeSignature(4, 4))
+seq.add(NoteEvent(Note("C"), Duration("quarter"), 4))
+seq.add(Rest(Duration("half")))
+xml = MusicXML.sequence(seq)
+```
+
 ---
 
 ## API Reference Summary
@@ -841,6 +1047,73 @@ for r in routes:
 | `.schema` | `str` | Motivating schema (or "") |
 | `.path` | `list[str]` | Complete suggested path |
 | `.confidence` | `float` | Confidence (0.0–1.0) |
+
+### Piano
+
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `Piano(keys=88)` | `Piano` | Construct with N keys (88, 76, 61, etc.) |
+| `.num_keys()` | `int` | Number of keys |
+| `.lowest()` | `PianoKey` | Lowest key |
+| `.highest()` | `PianoKey` | Highest key |
+| `.in_range(midi)` | `bool` | Is MIDI number within range? |
+| `.key(note, octave=4)` | `PianoKey` | Map Note to a key |
+| `.keys(note)` | `list[PianoKey]` | All octaves of a note |
+| `.voicing(chord, octave=4, style=Close)` | `PianoVoicing` | Chord voicing |
+| `.voicings(chord, octave=4)` | `list[PianoVoicing]` | All voicing styles |
+| `.scale_keys(scale, octave=4)` | `list[PianoKey]` | Scale mapped to keys |
+| `.note_at(midi)` | `Note` | MIDI number to Note |
+| `.identify(midi_list)` | `Chord` | Identify chord from MIDI numbers |
+
+### PianoKey (struct)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `.midi` | `int` | MIDI number (21=A0, 60=C4, 108=C8) |
+| `.octave` | `int` | Octave number |
+| `.note` | `str` | Pitch class name |
+| `.white` | `bool` | True = white key |
+| `.position` | `int` | 1-based position on the keyboard |
+
+### PianoVoicing (struct)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `.keys` | `list[PianoKey]` | Piano keys in the voicing |
+| `.style` | `VoicingStyle` | Voicing style |
+| `.chord_name` | `str` | Chord name |
+| `.inversion` | `int` | Inversion (0=root, 1=1st, 2=2nd) |
+
+### VoicingStyle (enum)
+
+| Value | Description |
+|-------|-------------|
+| `Close` | All notes in the same octave |
+| `Open` | Root drops one octave |
+| `Shell` | Root + 3rd + 7th (jazz voicing) |
+
+### PianoSVG
+
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `PianoSVG.note(piano, note, octave=4)` | `str` | SVG with a single highlighted note |
+| `PianoSVG.chord(piano, chord, octave=4, style=Close)` | `str` | SVG with chord voicing highlighted |
+| `PianoSVG.scale(piano, scale, octave=4)` | `str` | SVG with scale notes highlighted |
+| `PianoSVG.keys(piano, keys, title="")` | `str` | SVG from a list of PianoKeys |
+| `PianoSVG.voicing(piano, voicing)` | `str` | SVG from a PianoVoicing object |
+| `PianoSVG.midi(piano, midi_numbers)` | `str` | SVG from raw MIDI numbers |
+| `PianoSVG.write(svg, path)` | `None` | Write SVG string to file |
+
+### MusicXML
+
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `MusicXML.note(note, octave=4, type="quarter")` | `str` | Single note as XML |
+| `MusicXML.chord(chord, octave=4, type="whole")` | `str` | Chord as XML |
+| `MusicXML.scale(scale, octave=4, type="quarter")` | `str` | Scale notes as XML |
+| `MusicXML.field(field, octave=4, type="whole")` | `str` | Harmonic field as XML |
+| `MusicXML.sequence(sequence)` | `str` | Sequence as XML |
+| `MusicXML.write(xml, path)` | `None` | Write XML string to file |
 
 ### HarmonicPath (struct)
 
@@ -1067,6 +1340,9 @@ gingo/
 │   │   ├── time_signature.hpp # TimeSignature class
 │   │   ├── event.hpp          # NoteEvent, ChordEvent, Rest
 │   │   ├── sequence.hpp       # Sequence class (timeline)
+│   │   ├── piano.hpp          # Piano class (instrument mapping)
+│   │   ├── piano_svg.hpp      # PianoSVG (interactive SVG visualization)
+│   │   ├── musicxml.hpp       # MusicXML serializer
 │   │   ├── gingo.hpp          # Umbrella include
 │   │   └── internal/          # Internal infrastructure
 │   │       ├── types.hpp      # TypeElement, TypeVector, TypeTable
