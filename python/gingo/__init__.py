@@ -47,6 +47,7 @@ from gingo._gingo import (
     PianoKey,
     PianoVoicing,
     VoicingStyle,
+    Layout,
     MusicXML,
     PianoSVG,
 )
@@ -90,6 +91,7 @@ __all__ = [
     "PianoKey",
     "PianoVoicing",
     "VoicingStyle",
+    "Layout",
     "MusicXML",
     "PianoSVG",
 ]

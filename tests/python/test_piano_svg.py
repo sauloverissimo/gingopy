@@ -5,8 +5,8 @@ import tempfile
 
 import pytest
 from gingo import (
-    Piano, PianoKey, PianoVoicing, PianoSVG, VoicingStyle,
-    Note, Chord, Scale, ScaleType,
+    Piano, PianoKey, PianoVoicing, PianoSVG, VoicingStyle, Layout,
+    Note, Chord, Scale, ScaleType, Field,
 )
 
 
@@ -368,3 +368,91 @@ class TestPianoSVGCompact:
         svg = PianoSVG.voicing(piano, v, compact=True)
         assert "<svg" in svg
         assert "CM" in svg
+
+
+# ---------------------------------------------------------------------------
+# Field composite
+# ---------------------------------------------------------------------------
+
+class TestPianoSVGField:
+    def test_vertical_generates_composite(self):
+        piano = Piano()
+        f = Field("C", "major")
+        svg = PianoSVG.field(piano, f)
+        assert "<svg" in svg
+        assert "</svg>" in svg
+        assert svg.count("<style>") == 1
+
+    def test_has_all_degree_labels(self):
+        piano = Piano()
+        f = Field("C", "major")
+        svg = PianoSVG.field(piano, f)
+        assert "I - CM" in svg
+        assert "II - Dm" in svg
+        assert "VII - Bdim" in svg
+
+    def test_sevenths(self):
+        piano = Piano()
+        f = Field("C", "major")
+        svg = PianoSVG.field(piano, f, sevenths=True)
+        assert "I - C7M" in svg
+        assert "V - G7" in svg
+
+    def test_horizontal_layout(self):
+        piano = Piano()
+        f = Field("C", "major")
+        svg = PianoSVG.field(piano, f, layout=Layout.Horizontal)
+        assert "<svg" in svg
+        assert "I - CM" in svg
+        assert "VII - Bdim" in svg
+
+    def test_grid_layout(self):
+        piano = Piano()
+        f = Field("C", "major")
+        svg = PianoSVG.field(piano, f, layout=Layout.Grid)
+        assert "<svg" in svg
+        assert "I - CM" in svg
+
+    def test_write_field_svg(self):
+        piano = Piano()
+        f = Field("C", "major")
+        svg = PianoSVG.field(piano, f)
+        with tempfile.TemporaryDirectory() as tmpdir:
+            path = os.path.join(tmpdir, "field.svg")
+            PianoSVG.write(svg, path)
+            assert os.path.exists(path)
+
+
+# ---------------------------------------------------------------------------
+# Progression composite
+# ---------------------------------------------------------------------------
+
+class TestPianoSVGProgression:
+    def test_generates_composite(self):
+        piano = Piano()
+        f = Field("C", "major")
+        svg = PianoSVG.progression(piano, f, ["I", "IIm", "V", "I"])
+        assert "<svg" in svg
+        assert svg.count("<style>") == 1
+
+    def test_shows_branch_labels(self):
+        piano = Piano()
+        f = Field("C", "major")
+        svg = PianoSVG.progression(piano, f, ["I", "V"])
+        assert "I (CM)" in svg
+        assert "V (GM)" in svg
+
+    def test_horizontal_layout(self):
+        piano = Piano()
+        f = Field("C", "major")
+        svg = PianoSVG.progression(piano, f, ["I", "IIm", "V"],
+                                   layout=Layout.Horizontal)
+        assert "<svg" in svg
+        assert "I (CM)" in svg
+
+    def test_grid_layout(self):
+        piano = Piano()
+        f = Field("C", "major")
+        svg = PianoSVG.progression(piano, f, ["I", "IIm", "V", "I"],
+                                   layout=Layout.Grid)
+        assert "<svg" in svg

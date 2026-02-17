@@ -5,6 +5,7 @@
 
 #include <catch2/catch_test_macros.hpp>
 #include <gingo/piano_svg.hpp>
+#include <gingo/field.hpp>
 
 #include <fstream>
 #include <string>
@@ -351,4 +352,80 @@ TEST_CASE("PianoSVG compact empty highlights uses default range", "[piano_svg]")
     REQUIRE(contains(svg, "id=\"key-60\""));
     // Should NOT contain A0
     REQUIRE(!contains(svg, "id=\"key-21\""));
+}
+
+// ---------------------------------------------------------------------------
+// Field composite
+// ---------------------------------------------------------------------------
+
+TEST_CASE("PianoSVG field vertical generates composite SVG", "[piano_svg]") {
+    Piano piano;
+    Field f("C", ScaleType::Major);
+    auto svg = PianoSVG::field(piano, f);
+    REQUIRE(contains(svg, "<svg"));
+    REQUIRE(contains(svg, "</svg>"));
+    REQUIRE(count(svg, "<style>") == 1);
+}
+
+TEST_CASE("PianoSVG field has 7 degree labels", "[piano_svg]") {
+    Piano piano;
+    Field f("C", ScaleType::Major);
+    auto svg = PianoSVG::field(piano, f);
+    REQUIRE(contains(svg, "I - CM"));
+    REQUIRE(contains(svg, "II - Dm"));
+    REQUIRE(contains(svg, "VII - Bdim"));
+}
+
+TEST_CASE("PianoSVG field sevenths", "[piano_svg]") {
+    Piano piano;
+    Field f("C", ScaleType::Major);
+    auto svg = PianoSVG::field(piano, f, 4, Layout::Vertical, true);
+    REQUIRE(contains(svg, "I - C7M"));
+    REQUIRE(contains(svg, "V - G7"));
+}
+
+TEST_CASE("PianoSVG field horizontal layout", "[piano_svg]") {
+    Piano piano;
+    Field f("C", ScaleType::Major);
+    auto svg = PianoSVG::field(piano, f, 4, Layout::Horizontal);
+    REQUIRE(contains(svg, "<svg"));
+    REQUIRE(contains(svg, "I - CM"));
+    REQUIRE(contains(svg, "VII - Bdim"));
+}
+
+TEST_CASE("PianoSVG field grid layout", "[piano_svg]") {
+    Piano piano;
+    Field f("C", ScaleType::Major);
+    auto svg = PianoSVG::field(piano, f, 4, Layout::Grid);
+    REQUIRE(contains(svg, "<svg"));
+    REQUIRE(contains(svg, "I - CM"));
+}
+
+// ---------------------------------------------------------------------------
+// Progression composite
+// ---------------------------------------------------------------------------
+
+TEST_CASE("PianoSVG progression generates composite SVG", "[piano_svg]") {
+    Piano piano;
+    Field f("C", ScaleType::Major);
+    auto svg = PianoSVG::progression(piano, f, {"I", "IIm", "V", "I"});
+    REQUIRE(contains(svg, "<svg"));
+    REQUIRE(count(svg, "<style>") == 1);
+}
+
+TEST_CASE("PianoSVG progression shows branch and chord labels", "[piano_svg]") {
+    Piano piano;
+    Field f("C", ScaleType::Major);
+    auto svg = PianoSVG::progression(piano, f, {"I", "V"});
+    REQUIRE(contains(svg, "I (CM)"));
+    REQUIRE(contains(svg, "V (GM)"));
+}
+
+TEST_CASE("PianoSVG progression horizontal layout", "[piano_svg]") {
+    Piano piano;
+    Field f("C", ScaleType::Major);
+    auto svg = PianoSVG::progression(piano, f, {"I", "IIm", "V"},
+                                      4, Layout::Horizontal);
+    REQUIRE(contains(svg, "<svg"));
+    REQUIRE(contains(svg, "I (CM)"));
 }

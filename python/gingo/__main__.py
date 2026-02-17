@@ -28,6 +28,7 @@ from gingo import (
     TimeSignature,
     Piano,
     VoicingStyle,
+    Layout,
     MusicXML,
     PianoSVG,
     __version__,
@@ -462,6 +463,18 @@ def cmd_field(args):
         _row("Dominant", f"{repr(dom)}")
         _row("  Triads", _join(dom.chords(), "  "))
 
+    # SVG export
+    svg_path = getattr(args, "svg", None)
+    if svg_path:
+        layout_map = {"vertical": Layout.Vertical, "horizontal": Layout.Horizontal, "grid": Layout.Grid}
+        layout = layout_map.get(getattr(args, "layout", "vertical"), Layout.Vertical)
+        use_sevenths = getattr(args, "sevenths", False)
+        piano = Piano()
+        octave = getattr(args, "octave", None) or 4
+        svg = PianoSVG.field(piano, f, octave, layout, use_sevenths)
+        PianoSVG.write(svg, svg_path)
+        print(f"    SVG: {svg_path}")
+
     _handle_audio(f, args)
     print()
 
@@ -707,6 +720,17 @@ def cmd_progression(args):
             _row("Schema", m.schema)
         _row("Score", f"{m.score:.2f}")
         _row("Transitions", f"{m.matched}/{m.total}")
+
+        svg_path = getattr(args, "svg", None)
+        if svg_path:
+            layout_map = {"vertical": Layout.Vertical, "horizontal": Layout.Horizontal, "grid": Layout.Grid}
+            layout = layout_map.get(getattr(args, "layout", "vertical"), Layout.Vertical)
+            piano = Piano()
+            f = Field(tonic, stype)
+            svg = PianoSVG.progression(piano, f, items, 4, layout)
+            PianoSVG.write(svg, svg_path)
+            print(f"    SVG: {svg_path}")
+
         print()
         return
 
@@ -1430,6 +1454,13 @@ def build_parser():
                       help="deduce likely fields from partial input (ranked)")
     p_fi.add_argument("--limit", type=int, default=10, metavar="N",
                       help="max results for --deduce (default: 10, 0=all)")
+    p_fi.add_argument("--svg", metavar="FILE",
+                      help="export harmonic field as SVG piano visualization")
+    p_fi.add_argument("--layout", choices=["vertical", "horizontal", "grid"],
+                      default="vertical",
+                      help="SVG layout: vertical, horizontal, grid (default: vertical)")
+    p_fi.add_argument("--sevenths", action="store_true",
+                      help="show seventh chords instead of triads in SVG")
     _add_audio_args(p_fi)
     p_fi.set_defaults(func=cmd_field)
 
@@ -1530,6 +1561,11 @@ def build_parser():
                       help="filter prediction to a specific tradition")
     p_pr.add_argument("--limit", type=int, default=10, metavar="N",
                       help="max results for --deduce (default: 10)")
+    p_pr.add_argument("--svg", metavar="FILE",
+                      help="export progression as SVG piano visualization")
+    p_pr.add_argument("--layout", choices=["vertical", "horizontal", "grid"],
+                      default="vertical",
+                      help="SVG layout: vertical, horizontal, grid (default: vertical)")
     p_pr.set_defaults(func=cmd_progression)
 
     # --- piano ---

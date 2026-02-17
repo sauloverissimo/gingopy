@@ -1680,6 +1680,11 @@ PYBIND11_MODULE(_gingo, m) {
         .value("Open",  VoicingStyle::Open)
         .value("Shell", VoicingStyle::Shell);
 
+    py::enum_<Layout>(m, "Layout")
+        .value("Vertical",   Layout::Vertical)
+        .value("Horizontal", Layout::Horizontal)
+        .value("Grid",       Layout::Grid);
+
     // ---- PianoVoicing (struct) ---------------------------------------------
     py::class_<PianoVoicing>(m, "PianoVoicing")
         .def_readonly("keys",       &PianoVoicing::keys)
@@ -1773,6 +1778,16 @@ PYBIND11_MODULE(_gingo, m) {
         .def_static("midi", &PianoSVG::midi,
              py::arg("piano"), py::arg("midi_numbers"),
              py::arg("compact") = false)
+        .def_static("field", &PianoSVG::field,
+             py::arg("piano"), py::arg("field"),
+             py::arg("octave") = 4,
+             py::arg("layout") = Layout::Vertical,
+             py::arg("sevenths") = false)
+        .def_static("progression", &PianoSVG::progression,
+             py::arg("piano"), py::arg("field"),
+             py::arg("branches"),
+             py::arg("octave") = 4,
+             py::arg("layout") = Layout::Vertical)
         .def_static("write", &PianoSVG::write,
              py::arg("svg"), py::arg("path"));
 
