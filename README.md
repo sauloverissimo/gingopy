@@ -42,110 +42,6 @@ Gingo is a pragmatic library for analysis, composition, and teaching. It priorit
 
 ---
 
-## Visual Output
-
-Gingo generates publication-quality SVG diagrams for both piano and fretboard instruments — directly from Python code.
-
-### FretboardSVG — Chord Diagram
-
-```python
-FretboardSVG.chord(guitar, Chord("Am"))
-```
-
-<p align="center">
-  <img src="assets/fretboard_chord_am.svg" alt="Am chord diagram" height="200">
-</p>
-
-### FretboardSVG — Scale Map
-
-```python
-FretboardSVG.scale(guitar, Scale("C", "major pentatonic"), 0, 12)
-```
-
-<p align="center">
-  <img src="assets/fretboard_scale_cmaj_penta.svg" alt="C major pentatonic scale on fretboard">
-</p>
-
-### FretboardSVG — Harmonic Field (Grid)
-
-```python
-FretboardSVG.field(guitar, Field("G", "major"), Layout.Grid)
-```
-
-<p align="center">
-  <img src="assets/fretboard_field_gmaj.svg" alt="G major harmonic field on fretboard">
-</p>
-
-### FretboardSVG — Chord Progression
-
-```python
-FretboardSVG.progression(guitar, Field("C", "major"), ["I", "V", "VIm", "IV"], Layout.Horizontal)
-```
-
-<p align="center">
-  <img src="assets/fretboard_progression_c.svg" alt="I-V-vi-IV progression on fretboard">
-</p>
-
-### FretboardSVG — Left-Handed
-
-```python
-FretboardSVG.chord(guitar, Chord("Am"), 0, Orientation.Vertical, Handedness.LeftHanded)
-```
-
-<p align="center">
-  <img src="assets/fretboard_chord_am_left.svg" alt="Am chord diagram left-handed" height="200">
-</p>
-
-### PianoSVG — Chord Voicing
-
-```python
-PianoSVG.chord(Piano(25), Chord("Am7"), 3)
-```
-
-<p align="center">
-  <img src="assets/piano_chord_am7.svg" alt="Am7 chord on piano">
-</p>
-
-### PianoSVG — Scale
-
-```python
-PianoSVG.scale(Piano(25), Scale("C", "major"), 4)
-```
-
-<p align="center">
-  <img src="assets/piano_scale_cmaj.svg" alt="C major scale on piano">
-</p>
-
-### PianoSVG — Harmonic Field
-
-```python
-PianoSVG.field(Piano(25), Field("C", "major"), 4)
-```
-
-<p align="center">
-  <img src="assets/piano_field_cmaj.svg" alt="C major harmonic field on piano" width="400">
-</p>
-
-### PianoSVG — Full Keyboard (88 keys)
-
-```python
-PianoSVG.scale(Piano(88), Scale("C", "major"), 4)
-```
-
-<p align="center">
-  <img src="assets/piano_full_cmaj.svg" alt="C major scale on 88-key piano">
-</p>
-
-```python
-PianoSVG.chord(Piano(88), Chord("CM"), 4)
-```
-
-<p align="center">
-  <img src="assets/piano_full_chord_cm.svg" alt="C major chord on 88-key piano">
-</p>
-
----
-
 ## Installation
 
 ```bash
@@ -324,6 +220,110 @@ Note("C").play()
 Chord("Am7").play(waveform="square")
 Scale("C", "major").to_wav("c_major.wav")
 ```
+
+---
+
+## Visual Output
+
+Gingo generates publication-quality SVG diagrams for both piano and fretboard instruments — directly from Python code.
+
+### FretboardSVG — Chord Diagram
+
+```python
+FretboardSVG.chord(guitar, Chord("Am"))
+```
+
+<p align="center">
+  <img src="assets/fretboard_chord_am.svg" alt="Am chord diagram" height="200">
+</p>
+
+### FretboardSVG — Scale Map
+
+```python
+FretboardSVG.scale(guitar, Scale("C", "major pentatonic"), 0, 12)
+```
+
+<p align="center">
+  <img src="assets/fretboard_scale_cmaj_penta.svg" alt="C major pentatonic scale on fretboard">
+</p>
+
+### FretboardSVG — Harmonic Field (Grid)
+
+```python
+FretboardSVG.field(guitar, Field("G", "major"), Layout.Grid)
+```
+
+<p align="center">
+  <img src="assets/fretboard_field_gmaj.svg" alt="G major harmonic field on fretboard">
+</p>
+
+### FretboardSVG — Chord Progression
+
+```python
+FretboardSVG.progression(guitar, Field("C", "major"), ["I", "V", "VIm", "IV"], Layout.Horizontal)
+```
+
+<p align="center">
+  <img src="assets/fretboard_progression_c.svg" alt="I-V-vi-IV progression on fretboard">
+</p>
+
+### FretboardSVG — Left-Handed
+
+```python
+FretboardSVG.chord(guitar, Chord("Am"), 0, Orientation.Vertical, Handedness.LeftHanded)
+```
+
+<p align="center">
+  <img src="assets/fretboard_chord_am_left.svg" alt="Am chord diagram left-handed" height="200">
+</p>
+
+### PianoSVG — Chord Voicing
+
+```python
+PianoSVG.chord(Piano(25), Chord("Am7"), 3)
+```
+
+<p align="center">
+  <img src="assets/piano_chord_am7.svg" alt="Am7 chord on piano">
+</p>
+
+### PianoSVG — Scale
+
+```python
+PianoSVG.scale(Piano(25), Scale("C", "major"), 4)
+```
+
+<p align="center">
+  <img src="assets/piano_scale_cmaj.svg" alt="C major scale on piano">
+</p>
+
+### PianoSVG — Harmonic Field
+
+```python
+PianoSVG.field(Piano(25), Field("C", "major"), 4)
+```
+
+<p align="center">
+  <img src="assets/piano_field_cmaj.svg" alt="C major harmonic field on piano" width="400">
+</p>
+
+### PianoSVG — Full Keyboard (88 keys)
+
+```python
+PianoSVG.scale(Piano(88), Scale("C", "major"), 4)
+```
+
+<p align="center">
+  <img src="assets/piano_full_cmaj.svg" alt="C major scale on 88-key piano">
+</p>
+
+```python
+PianoSVG.chord(Piano(88), Chord("CM"), 4)
+```
+
+<p align="center">
+  <img src="assets/piano_full_chord_cm.svg" alt="C major chord on 88-key piano">
+</p>
 
 ---
 
