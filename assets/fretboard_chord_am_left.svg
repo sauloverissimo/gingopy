@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132" height="224" viewBox="0 0 132 224">
+<style>
+.str{stroke:#555;stroke-width:1}
+.frt{stroke:#555;stroke-width:1}
+.nut{stroke:#222;stroke-width:4}
+.dot{fill:#4A90D9}
+.dot.root{fill:#2E6AB0}
+.open{fill:none;stroke:#555;stroke-width:1.5}
+.mute{stroke:#555;stroke-width:2;stroke-linecap:round}
+.lbl{font-family:Arial,Helvetica,sans-serif;font-size:9px;fill:#fff;text-anchor:middle;pointer-events:none}
+.flbl{font-family:Arial,Helvetica,sans-serif;font-size:10px;fill:#666}
+.title{font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;fill:#333;text-anchor:middle}
+</style>
+<rect width="132" height="224" fill="#F5F5F5" rx="4"/>
+<text x="66" y="30" class="title">Am</text>
+<line x1="15" y1="68" x2="117" y2="68" class="nut"/>
+<line x1="16" y1="68" x2="116" y2="68" class="frt"/>
+<line x1="16" y1="96" x2="116" y2="96" class="frt"/>
+<line x1="16" y1="124" x2="116" y2="124" class="frt"/>
+<line x1="16" y1="152" x2="116" y2="152" class="frt"/>
+<line x1="16" y1="180" x2="116" y2="180" class="frt"/>
+<line x1="16" y1="208" x2="116" y2="208" class="frt"/>
+<line x1="16" y1="68" x2="16" y2="208" class="str"/>
+<line x1="36" y1="68" x2="36" y2="208" class="str"/>
+<line x1="56" y1="68" x2="56" y2="208" class="str"/>
+<line x1="76" y1="68" x2="76" y2="208" class="str"/>
+<line x1="96" y1="68" x2="96" y2="208" class="str"/>
+<line x1="116" y1="68" x2="116" y2="208" class="str"/>
+<text x="16" y="50" class="flbl" text-anchor="middle">E4</text>
+<text x="36" y="50" class="flbl" text-anchor="middle">B3</text>
+<text x="56" y="50" class="flbl" text-anchor="middle">G3</text>
+<text x="76" y="50" class="flbl" text-anchor="middle">D3</text>
+<text x="96" y="50" class="flbl" text-anchor="middle">A2</text>
+<text x="116" y="50" class="flbl" text-anchor="middle">E2</text>
+<circle cx="16" cy="60" r="4" class="open"/>
+<circle cx="36" cy="82" r="7" class="dot"/>
+<text x="36" y="85" class="lbl">C</text>
+<circle cx="56" cy="110" r="7" class="dot"/>
+<text x="56" y="113" class="lbl">A</text>
+<circle cx="76" cy="110" r="7" class="dot"/>
+<text x="76" y="113" class="lbl">E</text>
+<circle cx="96" cy="60" r="4" class="open"/>
+<line x1="112" y1="56" x2="120" y2="64" class="mute"/>
+<line x1="120" y1="56" x2="112" y2="64" class="mute"/>
+</svg>
