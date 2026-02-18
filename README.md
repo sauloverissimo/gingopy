@@ -136,6 +136,14 @@ PianoSVG.scale(Piano(88), Scale("C", "major"), 4)
   <img src="assets/piano_full_cmaj.svg" alt="C major scale on 88-key piano">
 </p>
 
+```python
+PianoSVG.chord(Piano(88), Chord("CM"), 4)
+```
+
+<p align="center">
+  <img src="assets/piano_full_chord_cm.svg" alt="C major chord on 88-key piano">
+</p>
+
 ---
 
 ## Installation
