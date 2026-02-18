@@ -7,6 +7,7 @@
 #include <gingo/piano_svg.hpp>
 #include <gingo/field.hpp>
 
+#include <filesystem>
 #include <fstream>
 #include <string>
 
@@ -192,7 +193,7 @@ TEST_CASE("PianoSVG midi generates SVG", "[piano_svg]") {
 TEST_CASE("PianoSVG write creates file", "[piano_svg]") {
     Piano piano;
     auto svg = PianoSVG::note(piano, Note("C"), 4);
-    std::string path = "/tmp/gingo_test_piano_svg.svg";
+    std::string path = (std::filesystem::temp_directory_path() / "gingo_test_piano_svg.svg").string();
     PianoSVG::write(svg, path);
 
     std::ifstream in(path);

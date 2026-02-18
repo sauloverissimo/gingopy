@@ -139,7 +139,7 @@ TEST_CASE("MusicXML sequence basic", "[musicxml]") {
 
 TEST_CASE("MusicXML write to file", "[musicxml]") {
     auto xml = MusicXML::note(Note("C"), 4);
-    std::string path = "/tmp/gingo_test_musicxml.xml";
+    std::string path = (std::filesystem::temp_directory_path() / "gingo_test_musicxml.xml").string();
     MusicXML::write(xml, path);
     REQUIRE(std::filesystem::exists(path));
     std::filesystem::remove(path);

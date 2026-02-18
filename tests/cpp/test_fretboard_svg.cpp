@@ -7,6 +7,7 @@
 #include <gingo/fretboard_svg.hpp>
 #include <gingo/field.hpp>
 
+#include <filesystem>
 #include <fstream>
 #include <string>
 
@@ -322,7 +323,7 @@ TEST_CASE("FretboardSVG full vertical", "[fretboard_svg]") {
 TEST_CASE("FretboardSVG write creates file", "[fretboard_svg]") {
     auto g = Fretboard::violao();
     auto svg = FretboardSVG::chord(g, Chord("CM"));
-    std::string path = "/tmp/gingo_test_fretboard_svg.svg";
+    std::string path = (std::filesystem::temp_directory_path() / "gingo_test_fretboard_svg.svg").string();
     FretboardSVG::write(svg, path);
 
     std::ifstream in(path);
