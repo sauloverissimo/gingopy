@@ -441,7 +441,7 @@ Close (posicao cerrada), Open (raiz oitava abaixo) e Shell (root+3+7).
 from gingo import Piano
 
 # Pianos de diferentes tamanhos
-p25 = Piano(25)   # 2 oitavas: C3-C5 (compacto, ideal para exemplos)
+p25 = Piano(25)   # 2 oitavas: C3-C5 (compacto, para triades)
 p44 = Piano(44)   # 3.5 oitavas: D2-A5
 p61 = Piano(61)   # 5 oitavas: C2-C7 (teclado comum)
 p88 = Piano(88)   # Piano de concerto: A0-C8
@@ -498,7 +498,7 @@ CM voicing: C4, E4, G4
 ```python
 from gingo import Piano, Chord
 
-p = Piano(25)
+p = Piano(44)   # 44 teclas: D2-A5 (range suficiente para tetrades)
 
 # Voicings para acordes de jazz
 jazz_chords = ["Dm7", "G7", "C7M", "F7M", "Bm7(b5)", "E7", "Am7"]
@@ -514,10 +514,12 @@ for nome in jazz_chords:
 
 ```
   Dm7       : D4, F4, A4, C5
-  G7        : G4, B4
+  G7        : G4, B4, D5, F5
   C7M       : C4, E4, G4, B4
-  F7M       : F4, A4, C5
-  Am7       : A4, C5
+  F7M       : F4, A4, C5, E5
+  Bm7(b5)   : B4, D5, F5, A5
+  E7        : E4, G#4, B4, D5
+  Am7       : A4, C5, E5, G5
 ```
 
 ### Todos os voicings e inversoes
@@ -629,7 +631,7 @@ O `PianoSVG` gera imagens SVG interativas com HTML5 data attributes
 ```python
 from gingo import Piano, PianoSVG, Chord
 
-p = Piano(25)
+p = Piano(44)   # 44 teclas: range suficiente para tetrades completas
 
 # Teclas de Am7 destacadas em azul
 svg = PianoSVG.chord(p, Chord("Am7"))
@@ -656,7 +658,7 @@ PianoSVG.write(svg, "piano_full_cm.svg")
 ```python
 from gingo import Piano, PianoSVG, Chord
 
-p = Piano(25)
+p = Piano(44)
 
 # Visualizar voicing padrao
 v = p.voicing(Chord("Dm7"))
@@ -673,7 +675,7 @@ PianoSVG.write(svg, "piano_dm7.svg")
 ```python
 from gingo import Piano, PianoSVG, Scale
 
-p = Piano(25)
+p = Piano(44)
 
 # Escalas visuais para estudo
 for nome in ["C major", "A natural minor", "C blues", "C harmonic minor"]:
@@ -692,7 +694,7 @@ for nome in ["C major", "A natural minor", "C blues", "C harmonic minor"]:
 ```python
 from gingo import Piano, PianoSVG, Field
 
-p = Piano(25)
+p = Piano(44)
 
 # 7 teclados empilhados — um por grau do campo
 campo = Field("C", "major")
@@ -709,7 +711,7 @@ PianoSVG.write(svg, "piano_field_cmaj.svg")
 ```python
 from gingo import Piano, PianoSVG, Field
 
-p = Piano(25)
+p = Piano(44)
 campo = Field("C", "major")
 
 # Progressao ii-V-I em teclados empilhados
@@ -726,7 +728,7 @@ PianoSVG.write(svg, "piano_251.svg")
 ```python
 from gingo import Piano, PianoSVG, Note
 
-p = Piano(25)
+p = Piano(44)
 
 # Nota individual
 svg = PianoSVG.note(p, Note("E"))
@@ -1689,7 +1691,7 @@ svg = FretboardSVG.progression(fb, campo, ["I", "V", "vi", "IV"])
 FretboardSVG.write(svg, "letitbe_progression.svg")
 
 # 7. Voicings no piano
-p = Piano(25)
+p = Piano(44)
 print("\nVoicings (piano):")
 for a in acordes:
     v = p.voicing(Chord(a))
@@ -1732,8 +1734,8 @@ Digitacoes:
 
 Voicings (piano):
   CM: C4, E4, G4
-  GM: G4, B4
-  Am: A4, C5
+  GM: G4, B4, D5
+  Am: A4, C5, E5
   FM: F4, A4, C5
 
 Escala para solo: [C, D, E, G, A]
@@ -1878,7 +1880,7 @@ for i in range(1, 8):
     )
 
 # ---- Piano ----
-p = Piano(25)
+p = Piano(44)
 
 # Campo no piano
 PianoSVG.write(
@@ -1924,7 +1926,7 @@ tipos = [
 ]
 
 fb = Fretboard.violao()
-p = Piano(25)
+p = Piano(44)
 
 for nome in tipos:
     chord = Chord(nome)
