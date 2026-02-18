@@ -4,7 +4,7 @@
 
 # 🪇 Gingo
 
-An expressive music theory and rhythm toolkit for Python, powered by a C++17 core.
+Music theory engine for Python, powered by a C++17 core.
 
 <p align="center">
 
