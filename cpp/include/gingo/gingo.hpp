@@ -27,4 +27,6 @@
 #include "sequence.hpp"
 #include "piano.hpp"
 #include "piano_svg.hpp"
+#include "fretboard.hpp"
+#include "fretboard_svg.hpp"
 #include "musicxml.hpp"

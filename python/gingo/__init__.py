@@ -50,6 +50,15 @@ from gingo._gingo import (
     Layout,
     MusicXML,
     PianoSVG,
+    Fretboard,
+    FretPosition,
+    StringAction,
+    StringState,
+    Fingering,
+    Tuning,
+    Orientation,
+    Handedness,
+    FretboardSVG,
 )
 
 try:
@@ -94,6 +103,15 @@ __all__ = [
     "Layout",
     "MusicXML",
     "PianoSVG",
+    "Fretboard",
+    "FretPosition",
+    "StringAction",
+    "StringState",
+    "Fingering",
+    "Tuning",
+    "Orientation",
+    "Handedness",
+    "FretboardSVG",
 ]
 
 # ---------------------------------------------------------------------------

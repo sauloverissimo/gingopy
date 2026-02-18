@@ -1685,6 +1685,14 @@ PYBIND11_MODULE(_gingo, m) {
         .value("Horizontal", Layout::Horizontal)
         .value("Grid",       Layout::Grid);
 
+    py::enum_<Orientation>(m, "Orientation")
+        .value("Horizontal", Orientation::Horizontal)
+        .value("Vertical",   Orientation::Vertical);
+
+    py::enum_<Handedness>(m, "Handedness")
+        .value("RightHanded", Handedness::RightHanded)
+        .value("LeftHanded",  Handedness::LeftHanded);
+
     // ---- PianoVoicing (struct) ---------------------------------------------
     py::class_<PianoVoicing>(m, "PianoVoicing")
         .def_readonly("keys",       &PianoVoicing::keys)
@@ -1755,6 +1763,175 @@ PYBIND11_MODULE(_gingo, m) {
         .def_static("sequence", &MusicXML::sequence, py::arg("sequence"))
         .def_static("write", &MusicXML::write,
              py::arg("xml"), py::arg("path"));
+
+    // ---- FretPosition (struct) ----------------------------------------------
+    py::class_<FretPosition>(m, "FretPosition")
+        .def_readonly("string", &FretPosition::string)
+        .def_readonly("fret",   &FretPosition::fret)
+        .def_readonly("midi",   &FretPosition::midi)
+        .def_readonly("note",   &FretPosition::note)
+        .def_readonly("octave", &FretPosition::octave)
+        .def("to_dict", [](const FretPosition& p) {
+            py::dict d;
+            d["string"] = p.string;
+            d["fret"]   = p.fret;
+            d["midi"]   = p.midi;
+            d["note"]   = p.note;
+            d["octave"] = p.octave;
+            return d;
+        })
+        .def("__repr__", &FretPosition::to_string)
+        .def("__str__",  [](const FretPosition& p) {
+            return p.note + std::to_string(p.octave);
+        });
+
+    // ---- StringAction (enum) ------------------------------------------------
+    py::enum_<StringAction>(m, "StringAction")
+        .value("Open",    StringAction::Open)
+        .value("Fretted", StringAction::Fretted)
+        .value("Muted",   StringAction::Muted);
+
+    // ---- StringState (struct) -----------------------------------------------
+    py::class_<StringState>(m, "StringState")
+        .def_readonly("string", &StringState::string)
+        .def_readonly("action", &StringState::action)
+        .def_readonly("fret",   &StringState::fret)
+        .def_readonly("finger", &StringState::finger)
+        .def("__repr__", [](const StringState& ss) {
+            std::string act;
+            switch (ss.action) {
+                case StringAction::Open:    act = "open"; break;
+                case StringAction::Fretted: act = "fret " + std::to_string(ss.fret); break;
+                case StringAction::Muted:   act = "muted"; break;
+            }
+            return "StringState(string=" + std::to_string(ss.string) + ", " + act + ")";
+        });
+
+    // ---- Tuning (struct) ----------------------------------------------------
+    py::class_<Tuning>(m, "Tuning")
+        .def(py::init<>())
+        .def_readwrite("name",      &Tuning::name)
+        .def_readwrite("open_midi", &Tuning::open_midi)
+        .def_readwrite("num_frets", &Tuning::num_frets)
+        .def("__repr__", [](const Tuning& t) {
+            return "Tuning(\"" + t.name + "\", " +
+                   std::to_string(t.open_midi.size()) + " strings, " +
+                   std::to_string(t.num_frets) + " frets)";
+        });
+
+    // ---- Fingering (struct) -------------------------------------------------
+    py::class_<Fingering>(m, "Fingering")
+        .def_readonly("strings",    &Fingering::strings)
+        .def_readonly("chord_name", &Fingering::chord_name)
+        .def_readonly("barre",      &Fingering::barre)
+        .def_readonly("base_fret",  &Fingering::base_fret)
+        .def_readonly("capo",       &Fingering::capo)
+        .def_readonly("midi_notes", &Fingering::midi_notes)
+        .def("to_dict", [](const Fingering& f) {
+            py::dict d;
+            py::list strings;
+            for (const auto& ss : f.strings) {
+                py::dict sd;
+                sd["string"] = ss.string;
+                sd["action"] = py::cast(ss.action);
+                sd["fret"]   = ss.fret;
+                sd["finger"] = ss.finger;
+                strings.append(sd);
+            }
+            d["strings"]    = strings;
+            d["chord_name"] = f.chord_name;
+            d["barre"]      = f.barre;
+            d["base_fret"]  = f.base_fret;
+            d["capo"]       = f.capo;
+            d["midi_notes"] = f.midi_notes;
+            return d;
+        })
+        .def("__repr__", &Fingering::to_string)
+        .def("__str__",  [](const Fingering& f) {
+            return f.chord_name + " fingering";
+        });
+
+    // ---- Fretboard ----------------------------------------------------------
+    py::class_<Fretboard>(m, "Fretboard")
+        .def(py::init<const Tuning&>(), py::arg("tuning"))
+        .def(py::init<const std::string&, const std::vector<int>&, int>(),
+             py::arg("name"), py::arg("open_midi"), py::arg("num_frets") = 19)
+        .def_static("cavaquinho", &Fretboard::cavaquinho,
+             py::arg("num_frets") = 17)
+        .def_static("violao", &Fretboard::violao,
+             py::arg("num_frets") = 19)
+        .def_static("bandolim", &Fretboard::bandolim,
+             py::arg("num_frets") = 17)
+        .def("name",        &Fretboard::name)
+        .def("num_strings", &Fretboard::num_strings)
+        .def("num_frets",   &Fretboard::num_frets)
+        .def("tuning",      &Fretboard::tuning)
+        .def("position",    &Fretboard::position,
+             py::arg("string"), py::arg("fret"))
+        .def("positions",   &Fretboard::positions, py::arg("note"))
+        .def("note_at",     &Fretboard::note_at,
+             py::arg("string"), py::arg("fret"))
+        .def("midi_at",     &Fretboard::midi_at,
+             py::arg("string"), py::arg("fret"))
+        .def("scale_positions",
+             py::overload_cast<const Scale&>(&Fretboard::scale_positions, py::const_),
+             py::arg("scale"))
+        .def("scale_positions",
+             py::overload_cast<const Scale&, int, int>(&Fretboard::scale_positions, py::const_),
+             py::arg("scale"), py::arg("fret_lo"), py::arg("fret_hi"))
+        .def("fingering",   &Fretboard::fingering,
+             py::arg("chord"), py::arg("position") = 0)
+        .def("fingerings",  &Fretboard::fingerings,
+             py::arg("chord"), py::arg("max_results") = 5)
+        .def("identify",    &Fretboard::identify, py::arg("string_frets"))
+        .def("capo",        &Fretboard::capo, py::arg("fret"))
+        .def("__repr__",    &Fretboard::to_string)
+        .def("__str__",     [](const Fretboard& fb) {
+            return "Fretboard(\"" + fb.name() + "\", " +
+                   std::to_string(fb.num_strings()) + " strings)";
+        });
+
+    // ---- FretboardSVG -------------------------------------------------------
+    py::class_<FretboardSVG>(m, "FretboardSVG")
+        .def_static("chord", &FretboardSVG::chord,
+             py::arg("fretboard"), py::arg("chord"), py::arg("position") = 0,
+             py::arg("orientation") = Orientation::Vertical,
+             py::arg("handedness") = Handedness::RightHanded)
+        .def_static("fingering", &FretboardSVG::fingering,
+             py::arg("fretboard"), py::arg("fingering"),
+             py::arg("orientation") = Orientation::Vertical,
+             py::arg("handedness") = Handedness::RightHanded)
+        .def_static("scale", &FretboardSVG::scale,
+             py::arg("fretboard"), py::arg("scale"),
+             py::arg("fret_lo") = 0, py::arg("fret_hi") = 12,
+             py::arg("orientation") = Orientation::Horizontal,
+             py::arg("handedness") = Handedness::RightHanded)
+        .def_static("positions", &FretboardSVG::positions,
+             py::arg("fretboard"), py::arg("highlighted"),
+             py::arg("title") = "",
+             py::arg("orientation") = Orientation::Horizontal,
+             py::arg("handedness") = Handedness::RightHanded)
+        .def_static("note", &FretboardSVG::note,
+             py::arg("fretboard"), py::arg("note"),
+             py::arg("orientation") = Orientation::Horizontal,
+             py::arg("handedness") = Handedness::RightHanded)
+        .def_static("field", &FretboardSVG::field,
+             py::arg("fretboard"), py::arg("field"),
+             py::arg("layout") = Layout::Vertical,
+             py::arg("orientation") = Orientation::Vertical,
+             py::arg("handedness") = Handedness::RightHanded)
+        .def_static("progression", &FretboardSVG::progression,
+             py::arg("fretboard"), py::arg("field"),
+             py::arg("branches"),
+             py::arg("layout") = Layout::Vertical,
+             py::arg("orientation") = Orientation::Vertical,
+             py::arg("handedness") = Handedness::RightHanded)
+        .def_static("full", &FretboardSVG::full,
+             py::arg("fb"),
+             py::arg("orientation") = Orientation::Horizontal,
+             py::arg("handedness") = Handedness::RightHanded)
+        .def_static("write", &FretboardSVG::write,
+             py::arg("svg"), py::arg("path"));
 
     // ---- PianoSVG -----------------------------------------------------------
     py::class_<PianoSVG>(m, "PianoSVG")

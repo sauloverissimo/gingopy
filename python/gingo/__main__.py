@@ -31,6 +31,8 @@ from gingo import (
     Layout,
     MusicXML,
     PianoSVG,
+    Fretboard,
+    FretboardSVG,
     __version__,
 )
 
@@ -920,6 +922,125 @@ def cmd_piano(args):
     print()
 
 
+def cmd_fretboard(args):
+    """Show fretboard positions, fingerings, and identification."""
+    # Build instrument.
+    inst = args.instrument.lower()
+    if inst == "violao" or inst == "guitar":
+        fb = Fretboard.violao()
+    elif inst == "cavaquinho":
+        fb = Fretboard.cavaquinho()
+    elif inst == "bandolim" or inst == "mandolin":
+        fb = Fretboard.bandolim()
+    else:
+        print(f"  Error: unknown instrument '{inst}'. Use violao, cavaquinho, or bandolim.")
+        sys.exit(1)
+
+    # Apply capo if set.
+    if args.capo > 0:
+        fb = fb.capo(args.capo)
+
+    # Identify mode.
+    if args.identify:
+        pairs = []
+        for pair in args.identify.split(","):
+            parts = pair.strip().split(":")
+            if len(parts) != 2:
+                print(f"  Error: invalid pair '{pair}'. Use string:fret format.")
+                sys.exit(1)
+            pairs.append((int(parts[0]), int(parts[1])))
+
+        chord = fb.identify(pairs)
+        _header(f"Identify: {args.identify}")
+        _row("Chord", chord.name())
+        _row("Root", str(chord.root()))
+        _row("Notes", _join(chord.notes(), ", "))
+        print()
+        return
+
+    # Scale mode.
+    if args.scale:
+        if not args.name:
+            print("  Error: provide tonic and type, e.g. 'C major'")
+            sys.exit(1)
+        parts = args.name.strip().split(maxsplit=1)
+        if len(parts) < 2:
+            print("  Error: provide tonic and type, e.g. 'C major'")
+            sys.exit(1)
+        tonic, stype = parts[0], parts[1]
+        s = Scale(tonic, stype)
+        pos = fb.scale_positions(s, 0, 12)
+        _header(f"Scale: {s.tonic().name()} {s.mode_name()} on {fb.name()}")
+        print(f"    {'String':>6s}  {'Fret':>4s}  {'Note':>4s}  {'MIDI':>4s}")
+        print(f"    {'------':>6s}  {'----':>4s}  {'----':>4s}  {'----':>4s}")
+        for p in pos:
+            print(f"    {p.string:>6d}  {p.fret:>4d}  {p.note:>4s}  {p.midi:>4d}")
+
+        if args.svg:
+            svg = FretboardSVG.scale(fb, s, 0, 12)
+            FretboardSVG.write(svg, args.svg)
+            print(f"    SVG: {args.svg}")
+        print()
+        return
+
+    # Need a chord name.
+    if not args.name:
+        print("  Error: provide a chord name (CM, Am7) or use --identify / --scale")
+        sys.exit(1)
+
+    try:
+        c = Chord(args.name)
+    except (ValueError, RuntimeError):
+        print(f"  Error: '{args.name}' is not a valid chord name")
+        sys.exit(1)
+
+    if args.fingerings:
+        # Show multiple fingerings.
+        fings = fb.fingerings(c, 5)
+        _header(f"Fingerings: {c.name()} on {fb.name()}")
+        print()
+        for i, f in enumerate(fings):
+            frets = []
+            for ss in f.strings:
+                if ss.fret == -1:
+                    frets.append("x")
+                else:
+                    frets.append(str(ss.fret))
+            barre_info = f" (barre {f.barre})" if f.barre > 0 else ""
+            print(f"    {i+1}. [{' '.join(frets)}]{barre_info}")
+        print()
+
+        if args.svg:
+            svg = FretboardSVG.chord(fb, c, args.position)
+            FretboardSVG.write(svg, args.svg)
+            print(f"    SVG: {args.svg}")
+        return
+
+    # Single fingering.
+    f = fb.fingering(c, args.position)
+
+    _header(f"Fretboard: {c.name()} on {fb.name()}")
+    if f.barre > 0:
+        _row("Barre", str(f.barre))
+    _row("Base fret", str(f.base_fret))
+    print()
+    print(f"    {'String':>6s}  {'Action':>8s}  {'Fret':>4s}  {'Note':>4s}")
+    print(f"    {'------':>6s}  {'--------':>8s}  {'----':>4s}  {'----':>4s}")
+    for ss in f.strings:
+        if ss.fret == -1:
+            print(f"    {ss.string:>6d}  {'muted':>8s}  {'x':>4s}  {'':>4s}")
+        else:
+            note = fb.note_at(ss.string, ss.fret)
+            action = "open" if ss.fret == 0 else "fretted"
+            print(f"    {ss.string:>6d}  {action:>8s}  {ss.fret:>4d}  {note.name():>4s}")
+
+    if args.svg:
+        svg = FretboardSVG.chord(fb, c, args.position)
+        FretboardSVG.write(svg, args.svg)
+        print(f"    SVG: {args.svg}")
+    print()
+
+
 def cmd_musicxml(args):
     """Generate MusicXML output."""
     subcmd = args.musicxml_type
@@ -1806,6 +1927,54 @@ def build_parser():
     p_ts.add_argument("--all", action="store_true",
                       help="show common time signatures")
     p_ts.set_defaults(func=cmd_timesig)
+
+    # --- fretboard ---
+    p_fb = sub.add_parser(
+        "fretboard", help="explore fretboard positions, fingerings, and chords",
+        description=textwrap.dedent("""\
+            Map music theory to fretboard positions on string instruments.
+
+            Instruments: violao (guitar), cavaquinho, bandolim (mandolin).
+            Custom tunings are also supported.
+
+            Input formats:
+              CM ............ chord fingering
+              "C major" ..... scale positions (with --scale flag)
+              1:0,2:1 ....... string:fret pairs (with --identify flag)
+
+            The --fingerings flag shows multiple fingering options.
+            Use --capo N to transpose the instrument.
+        """),
+        epilog=textwrap.dedent("""\
+            examples:
+              gingo fretboard violao CM
+              gingo fretboard cavaquinho Am7
+              gingo fretboard bandolim GM
+              gingo fretboard violao "C major" --scale
+              gingo fretboard violao CM --fingerings
+              gingo fretboard violao CM --capo 2
+              gingo fretboard violao --identify 5:3,4:2,3:0,2:1,1:0
+              gingo fretboard violao CM --svg cm.svg
+        """),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    p_fb.add_argument("instrument",
+                      help="instrument: violao, cavaquinho, bandolim")
+    p_fb.add_argument("name", nargs="?", default=None,
+                      help="chord name (CM, Am7) or 'tonic type' with --scale")
+    p_fb.add_argument("--identify", metavar="PAIRS",
+                      help="identify chord from string:fret pairs (e.g. 5:3,4:2,3:0)")
+    p_fb.add_argument("--scale", action="store_true",
+                      help="show scale positions on the fretboard")
+    p_fb.add_argument("--fingerings", action="store_true",
+                      help="show multiple fingering options")
+    p_fb.add_argument("--capo", type=int, default=0, metavar="N",
+                      help="capo fret (default: 0)")
+    p_fb.add_argument("--position", type=int, default=0, metavar="N",
+                      help="fret position for fingering (default: 0)")
+    p_fb.add_argument("--svg", metavar="FILE",
+                      help="export fretboard visualization as SVG file")
+    p_fb.set_defaults(func=cmd_fretboard)
 
     return parser
 
