@@ -44,65 +44,96 @@ Funcionalidades planejadas e estado atual do projeto.
 
 ---
 
+## Implementado (v1.0.2)
+
+### Progressoes e Tradicoes
+
+- [x] Progression: coordenador cross-tradition (identify, deduce, predict)
+- [x] Tree: construtor 3 argumentos, tradition(), schemas(), is_valid()
+- [x] Tradicao Jazz: branches e schemas classicos (ii-V-I, turnaround, backdoor, etc.)
+- [x] CLI: tree, progression com identify/deduce/predict
+
+---
+
+## Implementado (v1.0.2)
+
+### Instrumentos — Piano
+
+- [x] Piano: mapeamento teoria ↔ teclas fisicas (MIDI, voicings, reverse identification)
+- [x] VoicingStyle: Close, Open, Shell
+- [x] PianoSVG: visualizacao interativa do teclado em SVG
+  - note, chord, scale, voicing, keys, midi, field, progression
+  - HTML5 data attributes (data-midi, data-note, data-octave, data-color)
+  - CSS classes para integracao com JS/D3/React
+
+### Notacao
+
+- [x] MusicXML: serializacao para MusicXML 4.0 partwise
+  - Note, Chord, Scale, Field, Sequence → MuseScore/Finale/Sibelius
+
+---
+
+## Implementado (v1.1.0)
+
+### Instrumentos — Fretboard (Cordas)
+
+- [x] Fretboard: motor de digitacao para violao, cavaquinho, bandolim
+  - Factory methods: `Fretboard.violao()`, `.cavaquinho()`, `.bandolim()`
+  - Instrumentos customizados: `Fretboard(tuning, num_frets)`
+  - `fingering(chord)` — digitacao otima baseada no sistema CAGED
+  - `scale_positions(scale, fret_lo, fret_hi)` — posicoes da escala no braco
+  - `positions(note)` — todas as ocorrencias de uma nota
+  - Algoritmo multi-criterio: span, posicao, dedos, cordas, barre, conforto
+  - 22/24 formas CAGED padrao identicas a jguitar.com
+
+- [x] FretboardSVG: renderizador SVG para diagramas de fretboard
+  - chord, fingering, scale, note, positions, field, progression, full
+  - Orientacao: `Horizontal` (braco) / `Vertical` (chord box)
+  - Lateralidade: `RightHanded` / `LeftHanded`
+  - Layouts compostos: Grid, Horizontal, Vertical para campos e progressoes
+  - `write()` para salvar SVG em arquivo
+
+- [x] Structs: Tuning, FretPosition, Fingering, StringState
+- [x] Enums: Orientation, Handedness, StringAction
+- [x] CLI: `gingo fretboard chord/scale/field` com `--svg`, `--left`, `--horizontal`
+
+---
+
 ## Planejado
 
-### 1. Visualizacao de instrumentos (`gingo[visual]`)
-
-**Fase 1 — Piano**
-
-- [ ] Piano ASCII para CLI (1-2 oitavas, notas destacadas)
-- [ ] `.piano()` em Note, Chord, Scale — retorna string ASCII art
-- [ ] CLI: `gingo chord Am7 --piano`, `gingo scale "C major" --piano`
-- [ ] Suporte a destacar notas ativas, root, intervalos
-
-**Fase 2 — Cordas**
-
-- [ ] Guitar (6 cordas, diagrama de braco com trastes)
-- [ ] Bass (4 cordas)
-- [ ] Ukulele (4 cordas)
-- [ ] Afinacao padrao configuravel, multiplas posicoes
-- [ ] Interface unificada: `.guitar()`, `.bass()`, `.ukulele()`
-
-**Fase 3 — Extensibilidade**
-
-- [ ] Instrument base class (tuning, strings/keys, fret/key range)
-- [ ] Instrumentos customizados: `Instrument("banjo", tuning=["G","D","G","B","D"])`
-- [ ] Renderizacao: ASCII (CLI), SVG (notebooks), Unicode (terminais modernos)
-
-### 2. MIDI (`gingo[audio]`)
+### 1. MIDI (`gingo[audio]`)
 
 - [ ] `Duration.midi_ticks(ppqn=480)` / `Duration.from_ticks(ticks, ppqn)`
 - [ ] `Tempo.microseconds_per_beat()` / `Tempo.from_microseconds(usec)`
 - [ ] `bpm2tempo(bpm)` / `tempo2bpm(usec)` — conversao MIDI
 - [ ] `Sequence.to_midi()` / `Sequence.from_midi(path)` — import/export .mid
 
-### 3. Partitura (`gingo[score]`)
+### 2. Partitura (`gingo[score]`)
 
-- [ ] `Sequence.to_musicxml()` — export MusicXML
 - [ ] `Sequence.to_lilypond()` — export LilyPond
 - [ ] `Sequence.show()` — renderiza via MuseScore ou LilyPond
 - [ ] Suporte a claves, dinamicas, articulacoes
 
-### 4. Escalas futuras
+### 3. Escalas futuras
 
 - [ ] Bebop (6 tipos, 8 notas com passing tone cromatico)
 - [ ] Aliases de modos simetricos existentes
 - [ ] Ver `.old/scales_analysis.md` secao 14.9
 
-### 5. Estrutura hierarquica
+### 4. Estrutura hierarquica
 
 - [ ] `Bar(events, time_signature)` — compasso completo
 - [ ] `Phrase(bars)` — frase musical
 - [ ] `Part(phrases, instrument)` — uma voz/instrumento
 - [ ] `Score(parts, tempo)` — partitura com multiplas vozes
 
-### 6. Offset absoluto
+### 5. Offset absoluto
 
 - [ ] `Event.offset` — posicao temporal absoluta (em beats)
 - [ ] Eventos simultaneos sem ChordEvent
 - [ ] Polirritmia: multiplas vozes com offsets independentes
 
-### 7. Parsing alternativo de Duration
+### 6. Parsing alternativo de Duration
 
 - [ ] `Duration("1/4")` — fracao
 - [ ] `Duration("q")` — abreviacao
@@ -117,6 +148,10 @@ Funcionalidades planejadas e estado atual do projeto.
 - Comparacao contextual com 21 dimensoes
 - Arvore harmonica com caminhos e validacao
 - Field.deduce() — inferencia a partir de dados parciais
+- Fretboard com algoritmo CAGED para digitacoes realisticas
+- FretboardSVG com orientacao e lateralidade (destro/canhoto)
+- Piano com voicings (close, open, shell) e PianoSVG interativo
+- MusicXML 4.0 para exportacao de partitura
 - Zero deps + C++ backend
 - Duration racional exata (fracao, nao float)
 - Sintese de audio integrada com zero deps extras

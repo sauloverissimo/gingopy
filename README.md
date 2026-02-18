@@ -22,8 +22,8 @@ Gingo is a pragmatic library for analysis, composition, and teaching. It priorit
 
 - **C++17 core + Python API** — fast and deterministic, with full type hints.
 - **Pitch & harmony** — `Note`, `Interval`, `Chord`, `Scale`, `Field`, `Tree`, and `Progression` with identification, deduction, and comparison utilities.
-- **Instruments** — `Piano` maps theory to physical keys (forward & reverse MIDI), with voicing styles (close, open, shell).
-- **SVG Visualization** — `PianoSVG` renders interactive piano keyboard SVGs with highlighted notes, chords, scales, and voicings. Each key carries HTML5 data attributes (`data-midi`, `data-note`, `data-octave`, `data-color`, `data-highlighted`) and CSS classes for easy integration with JavaScript, D3.js, React, or any interactive framework.
+- **Instruments** — `Piano` maps theory to physical keys (forward & reverse MIDI), with voicing styles (close, open, shell). `Fretboard` generates playable fingerings for guitar, cavaquinho, bandolim (or custom tunings) using a CAGED-based scoring algorithm.
+- **SVG Visualization** — `PianoSVG` renders interactive piano keyboard SVGs. `FretboardSVG` renders chord boxes, fretboard diagrams, scale maps, and harmonic field charts — with orientation (horizontal/vertical) and handedness (right/left) support.
 - **Notation** — `MusicXML` serializes any musical object to MusicXML 4.0 for MuseScore, Finale, and Sibelius.
 - **Rhythm & time** — `Duration`, `Tempo` (BPM + nomes de tempo), `TimeSignature`, and `Sequence` with note/chord events.
 - **Audio** — `.play()` and `.to_wav()` on musical objects, plus CLI `--play` / `--wav` with waveform and strum controls.
@@ -57,6 +57,7 @@ from gingo import (
     Duration, Tempo, TimeSignature, Sequence,
     NoteEvent, ChordEvent, Rest,
     Piano, VoicingStyle, MusicXML,
+    Fretboard, FretboardSVG, Orientation, Handedness,
 )
 
 # Notes
@@ -167,6 +168,22 @@ svg = PianoSVG.chord(piano, Chord("Am7"), 4)      # chord voicing
 svg = PianoSVG.scale(piano, Scale("C", "major"), 4)  # scale
 PianoSVG.write(svg, "piano.svg")                  # save to file
 
+# Fretboard — guitar fingerings and visualization
+guitar = Fretboard.violao()            # standard 6-string guitar
+f = guitar.fingering(Chord("CM"))      # optimal CAGED fingering
+f.strings                              # per-string fret/action info
+f.barre                                # barre fret (0 = none)
+
+# FretboardSVG — render diagrams
+svg = FretboardSVG.chord(guitar, Chord("Am"))           # chord box
+svg = FretboardSVG.scale(guitar, Scale("C", "major"))   # fretboard
+svg = FretboardSVG.field(guitar, Field("C", "major"))   # all field chords
+FretboardSVG.write(svg, "fretboard.svg")                # save to file
+
+# Orientation and handedness
+svg = FretboardSVG.chord(guitar, Chord("Am"), 0,
+    Orientation.Horizontal, Handedness.LeftHanded)
+
 # MusicXML — export to notation software
 xml = MusicXML.note(Note("C"), 4)      # single note
 xml = MusicXML.chord(Chord("Am7"), 4)  # chord
@@ -216,6 +233,12 @@ gingo piano "C major" --scale
 gingo piano --identify 60 64 67
 gingo piano Am7 --svg am7.svg
 gingo piano "C major" --scale --svg cmajor.svg
+gingo fretboard chord CM
+gingo fretboard chord CM --svg chord.svg
+gingo fretboard scale "C major"
+gingo fretboard scale "C major" --svg scale.svg
+gingo fretboard field "C major" --svg field.svg
+gingo fretboard chord Am --left --horizontal
 gingo musicxml note C
 gingo musicxml chord Am7 -o am7.musicxml
 gingo musicxml scale "C major"
@@ -882,6 +905,129 @@ seq.add(Rest(Duration("half")))
 xml = MusicXML.sequence(seq)
 ```
 
+### Fretboard (Guitar Fingering)
+
+The `Fretboard` class generates realistic, playable chord fingerings using a CAGED-based multi-criteria scoring algorithm. It supports standard guitar, cavaquinho, bandolim, and any custom tuning.
+
+```python
+from gingo import Fretboard, Chord, Scale, Note
+
+# Factory methods for standard instruments
+guitar = Fretboard.violao()       # 6-string, standard tuning (EADGBE)
+cav    = Fretboard.cavaquinho()   # 4-string (DGBD)
+band   = Fretboard.bandolim()     # 4-string (GDAE)
+
+# Custom tuning
+drop_d = Fretboard(
+    Fretboard.violao().tuning().open_midi[:5] + [38],  # Drop D
+    22
+)
+
+# Chord fingering
+f = guitar.fingering(Chord("CM"))
+f.chord_name           # "CM"
+f.base_fret            # 1
+f.barre                # 0 (no barre)
+for s in f.strings:
+    print(f"  String {s.string}: fret={s.fret}, action={s.action}")
+# String 1: fret=0, action=Open       (E4 open)
+# String 2: fret=1, action=Fretted    (C on B3)
+# String 3: fret=0, action=Open       (G3 open)
+# String 4: fret=2, action=Fretted    (E on D3)
+# String 5: fret=3, action=Fretted    (C on A2)
+# String 6: fret=0, action=Muted      (E2 muted)
+
+# Barre chord example
+f = guitar.fingering(Chord("FM"))
+f.barre                # 1 (barre at fret 1)
+
+# Scale positions on the neck
+positions = guitar.scale_positions(Scale("A", "minor pentatonic"), 0, 12)
+for p in positions[:5]:
+    print(f"  String {p.string}, fret {p.fret}: {p.note}")
+
+# All positions of a note
+c_positions = guitar.positions(Note("C"))
+
+# Single position lookup
+pos = guitar.position(1, 5)  # String 1, fret 5 → A4
+pos.note                      # "A"
+pos.midi                      # 69
+
+# Instrument info
+guitar.num_strings()   # 6
+guitar.num_frets()     # 19
+guitar.tuning().name   # "standard"
+```
+
+---
+
+### FretboardSVG (Guitar Visualization)
+
+The `FretboardSVG` class renders publication-quality SVG diagrams for fretboard instruments. It supports two orientations (horizontal fretboard, vertical chord box) and two handedness options (right-handed, left-handed).
+
+```python
+from gingo import (
+    Fretboard, FretboardSVG, Chord, Scale, Field, Note,
+    Orientation, Handedness, Layout,
+)
+
+guitar = Fretboard.violao()
+
+# Chord diagram (default: vertical chord box, right-handed)
+svg = FretboardSVG.chord(guitar, Chord("Am"))
+FretboardSVG.write(svg, "am_chord.svg")
+
+# Horizontal chord view
+svg = FretboardSVG.chord(guitar, Chord("Am"), 0, Orientation.Horizontal)
+
+# Left-handed chord diagram
+svg = FretboardSVG.chord(guitar, Chord("Am"), 0,
+    Orientation.Vertical, Handedness.LeftHanded)
+
+# Specific fingering
+f = guitar.fingering(Chord("FM"))
+svg = FretboardSVG.fingering(guitar, f)
+
+# Scale on the fretboard (default: horizontal)
+svg = FretboardSVG.scale(guitar, Scale("C", "major"), 0, 12)
+
+# Scale in vertical (chord box) orientation
+svg = FretboardSVG.scale(guitar, Scale("C", "major"), 0, 12,
+    Orientation.Vertical)
+
+# Note positions across the neck
+svg = FretboardSVG.note(guitar, Note("C"))
+
+# Custom positions with title
+positions = guitar.scale_positions(Scale("A", "minor pentatonic"), 5, 12)
+svg = FretboardSVG.positions(guitar, positions, "Am Pentatonic (pos. 5)")
+
+# Harmonic field — all chords in a field
+svg = FretboardSVG.field(guitar, Field("G", "major"))
+svg = FretboardSVG.field(guitar, Field("G", "major"), Layout.Grid)
+svg = FretboardSVG.field(guitar, Field("G", "major"), Layout.Horizontal)
+
+# Progression — specific chord sequence
+svg = FretboardSVG.progression(guitar, Field("C", "major"),
+    ["I", "V", "vi", "IV"], Layout.Horizontal)
+
+# Full open fretboard
+svg = FretboardSVG.full(guitar)
+
+# All methods support orientation and handedness
+svg = FretboardSVG.scale(guitar, Scale("E", "minor"), 0, 12,
+    Orientation.Horizontal, Handedness.LeftHanded)
+```
+
+**Orientation defaults:**
+
+| Method | Default Orientation | Default Handedness |
+|--------|-------------------|--------------------|
+| `chord()`, `fingering()` | Vertical | RightHanded |
+| `scale()`, `note()`, `positions()` | Horizontal | RightHanded |
+| `field()`, `progression()`, `full()` | Vertical | RightHanded |
+
 ---
 
 ## API Reference Summary
@@ -1103,6 +1249,91 @@ xml = MusicXML.sequence(seq)
 | `PianoSVG.voicing(piano, voicing)` | `str` | SVG from a PianoVoicing object |
 | `PianoSVG.midi(piano, midi_numbers)` | `str` | SVG from raw MIDI numbers |
 | `PianoSVG.write(svg, path)` | `None` | Write SVG string to file |
+
+### Fretboard
+
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `Fretboard.violao()` | `Fretboard` | Standard 6-string guitar (EADGBE, 19 frets) |
+| `Fretboard.cavaquinho()` | `Fretboard` | Brazilian cavaquinho (DGBD, 17 frets) |
+| `Fretboard.bandolim()` | `Fretboard` | Mandolin (GDAE, 17 frets) |
+| `Fretboard(tuning, frets)` | `Fretboard` | Custom instrument |
+| `.fingering(chord, pos=0)` | `Fingering` | Optimal chord fingering |
+| `.scale_positions(scale, lo, hi)` | `list[FretPosition]` | Scale positions on neck |
+| `.positions(note)` | `list[FretPosition]` | All positions of a note |
+| `.position(string, fret)` | `FretPosition` | Single position lookup |
+| `.num_strings()` | `int` | Number of strings |
+| `.num_frets()` | `int` | Number of frets |
+| `.tuning()` | `Tuning` | Instrument tuning |
+
+### FretboardSVG
+
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `FretboardSVG.chord(fb, chord, pos=0, orient, hand)` | `str` | Chord diagram SVG |
+| `FretboardSVG.fingering(fb, fingering, orient, hand)` | `str` | Specific fingering SVG |
+| `FretboardSVG.scale(fb, scale, lo=0, hi=12, orient, hand)` | `str` | Scale on fretboard SVG |
+| `FretboardSVG.note(fb, note, orient, hand)` | `str` | Note positions SVG |
+| `FretboardSVG.positions(fb, positions, title, orient, hand)` | `str` | Custom positions SVG |
+| `FretboardSVG.field(fb, field, layout, orient, hand)` | `str` | Harmonic field SVG |
+| `FretboardSVG.progression(fb, field, branches, layout, orient, hand)` | `str` | Progression SVG |
+| `FretboardSVG.full(fb, orient, hand)` | `str` | Full open fretboard SVG |
+| `FretboardSVG.write(svg, path)` | `None` | Write SVG to file |
+
+### Tuning (struct)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `.name` | `str` | Tuning name ("standard", "drop_d", etc.) |
+| `.open_midi` | `list[int]` | MIDI values for open strings |
+
+### FretPosition (struct)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `.string` | `int` | String number (1-based, 1 = highest) |
+| `.fret` | `int` | Fret number (0 = open) |
+| `.note` | `str` | Note name |
+| `.midi` | `int` | MIDI number |
+
+### Fingering (struct)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `.strings` | `list[StringState]` | Per-string fret and action |
+| `.barre` | `int` | Barre fret (0 = no barre) |
+| `.base_fret` | `int` | Lowest fretted position |
+| `.chord_name` | `str` | Chord name |
+
+### StringState (struct)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `.string` | `int` | String number (1-based) |
+| `.fret` | `int` | Fret number |
+| `.action` | `StringAction` | Open, Fretted, or Muted |
+
+### StringAction (enum)
+
+| Value | Description |
+|-------|-------------|
+| `StringAction.Open` | Open string (no finger) |
+| `StringAction.Fretted` | Pressed at a fret |
+| `StringAction.Muted` | Muted (not sounding) |
+
+### Orientation (enum)
+
+| Value | Description |
+|-------|-------------|
+| `Orientation.Horizontal` | Fretboard view (strings vertical, frets horizontal) |
+| `Orientation.Vertical` | Chord box view (strings horizontal, frets vertical) |
+
+### Handedness (enum)
+
+| Value | Description |
+|-------|-------------|
+| `Handedness.RightHanded` | Standard right-handed orientation |
+| `Handedness.LeftHanded` | Mirrored for left-handed players |
 
 ### MusicXML
 
@@ -1342,6 +1573,8 @@ gingo/
 │   │   ├── sequence.hpp       # Sequence class (timeline)
 │   │   ├── piano.hpp          # Piano class (instrument mapping)
 │   │   ├── piano_svg.hpp      # PianoSVG (interactive SVG visualization)
+│   │   ├── fretboard.hpp      # Fretboard class (guitar fingering engine)
+│   │   ├── fretboard_svg.hpp  # FretboardSVG (chord boxes and fretboard diagrams)
 │   │   ├── musicxml.hpp       # MusicXML serializer
 │   │   ├── gingo.hpp          # Umbrella include
 │   │   └── internal/          # Internal infrastructure

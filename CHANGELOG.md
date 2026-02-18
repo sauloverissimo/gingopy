@@ -5,6 +5,60 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-02-18
+
+### Added
+
+- **Fretboard class**: Guitar/string instrument fingering engine
+  - `Fretboard.violao()`, `.cavaquinho()`, `.bandolim()` — factory methods for standard instruments
+  - `Fretboard(tuning, num_frets)` — custom instruments with any tuning
+  - `fretboard.fingering(chord, position)` — generates optimal CAGED-based fingering
+  - `fretboard.scale_positions(scale, fret_lo, fret_hi)` — all scale positions on the neck
+  - `fretboard.positions(note)` — all occurrences of a note on the fretboard
+  - `fretboard.position(string, fret)` — single position lookup
+  - Multi-criteria scoring algorithm: span, position, finger count, sounding strings, barre detection
+  - 22/24 standard CAGED chord shapes match reference (jguitar.com)
+
+- **FretboardSVG class**: SVG renderer for fretboard diagrams
+  - `FretboardSVG.chord(fb, chord)` — chord diagram (vertical chord box)
+  - `FretboardSVG.fingering(fb, fingering)` — render specific fingering
+  - `FretboardSVG.scale(fb, scale, fret_lo, fret_hi)` — scale on fretboard
+  - `FretboardSVG.note(fb, note)` — all positions of a note
+  - `FretboardSVG.positions(fb, positions, title)` — custom highlighted positions
+  - `FretboardSVG.field(fb, field, layout)` — all chords in a harmonic field
+  - `FretboardSVG.progression(fb, field, branches, layout)` — chord progression
+  - `FretboardSVG.full(fb)` — full open fretboard visualization
+  - `FretboardSVG.write(svg, path)` — save SVG to file
+
+- **Orientation enum**: `Horizontal` (fretboard view), `Vertical` (chord box view)
+  - All FretboardSVG methods accept `orientation` parameter
+  - Smart defaults: chord/fingering default to Vertical, scale/note default to Horizontal
+
+- **Handedness enum**: `RightHanded`, `LeftHanded`
+  - All FretboardSVG methods accept `handedness` parameter
+  - Left-handed mirrors the perpendicular axis (frets for horizontal, strings for vertical)
+
+- **Fretboard structs**:
+  - `Tuning` — string tuning (name, open MIDI values)
+  - `FretPosition` — single position on the fretboard (string, fret, note, MIDI)
+  - `Fingering` — complete chord fingering (strings, barre, base_fret, chord_name)
+  - `StringState` — per-string state (string number, fret, action)
+  - `StringAction` enum — `Open`, `Fretted`, `Muted`
+
+- **CLI commands**:
+  - `gingo fretboard chord CM` — show chord fingering
+  - `gingo fretboard chord CM --svg chord.svg` — export SVG
+  - `gingo fretboard scale "C major"` — show scale positions
+  - `gingo fretboard field "C major"` — show full harmonic field
+  - `gingo fretboard --left` — left-handed diagrams
+  - `gingo fretboard --horizontal` / `--vertical` — orientation control
+
+### Changed
+
+- **Version**: Bumped to 1.1.0 (new instrument module = minor version)
+- **Architecture**: Added `fretboard.hpp`, `fretboard_svg.hpp` to public headers
+- **Dependency chain**: Fretboard uses Note + Chord + Scale (same level as Piano)
+
 ## [1.0.2] - 2026-02-05
 
 ### Added

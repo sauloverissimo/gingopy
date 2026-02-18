@@ -18,6 +18,11 @@ graph LR
     C --> E[Campo Harmônico]
     D --> E
     E --> F[Árvore Harmônica]
+    C --> G[Piano]
+    C --> H[Fretboard]
+    D --> H
+    G --> I[PianoSVG]
+    H --> J[FretboardSVG]
 
     style A fill:#e1f5e1,color:#000
     style B fill:#e3f2fd,color:#000
@@ -25,6 +30,10 @@ graph LR
     style D fill:#fce4ec,color:#000
     style E fill:#f3e5f5,color:#000
     style F fill:#e0f2f1,color:#000
+    style G fill:#e8eaf6,color:#000
+    style H fill:#fbe9e7,color:#000
+    style I fill:#e8eaf6,color:#000
+    style J fill:#fbe9e7,color:#000
 ```
 
 Esta arquitetura em camadas permite a construção progressiva de conceitos harmônicos complexos a partir de elementos fundamentais.
@@ -188,7 +197,38 @@ gingo chord Am7 --play --waveform triangle
 gingo scale "C major" --play
 ```
 
-### 6. Progressões Harmônicas (beta)
+### 6. Fretboard — Digitacoes e Visualizacao
+
+```python
+from gingo import Fretboard, FretboardSVG, Chord, Scale, Field
+
+# Criar fretboard de violao
+violao = Fretboard.violao()
+
+# Gerar digitacao otima para um acorde
+f = violao.fingering(Chord("Am"))
+print(f.chord_name)  # "Am"
+print(f.barre)       # 0 (sem pestana)
+
+# Visualizar em SVG
+svg = FretboardSVG.chord(violao, Chord("Am"))
+FretboardSVG.write(svg, "am_chord.svg")
+
+# Campo harmonico completo em SVG
+svg = FretboardSVG.field(violao, Field("C", "major"))
+FretboardSVG.write(svg, "c_major_field.svg")
+```
+
+No terminal:
+
+```bash
+gingo fretboard chord Am
+gingo fretboard chord Am --svg am.svg
+gingo fretboard scale "C major" --svg scale.svg
+gingo fretboard field "C major" --svg field.svg
+```
+
+### 7. Progressões Harmônicas (beta)
 
 !!! info "Beta"
     A classe Tree esta em fase beta. A API pode mudar em versoes futuras.
@@ -231,6 +271,12 @@ Interface Python clara e consistente, seguindo convenções modernas de design d
 **Performance**
 
 Core implementado em C++17 com lookup tables e cached computations para operações eficientes.
+
+**Instrumentos**
+
+`Piano` mapeia teoria para teclas fisicas (MIDI, voicings close/open/shell) com `PianoSVG` interativo.
+`Fretboard` gera digitacoes realisticas para violao, cavaquinho e bandolim usando algoritmo CAGED.
+`FretboardSVG` renderiza chord boxes, diagramas de braco e campos harmonicos — com orientacao (horizontal/vertical) e lateralidade (destro/canhoto).
 
 **Audio integrado**
 

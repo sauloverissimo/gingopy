@@ -20,6 +20,8 @@
 | `Sequence`   | `Sequence(Tempo(120), TimeSignature(4, 4))`                    | Sequencia de eventos musicais  |
 | `Piano`      | `Piano(88)`                                                    | Mapeamento piano (teoria ↔ teclas) |
 | `PianoSVG`   | `PianoSVG.note(piano, Note("C"), 4)`                           | Visualizacao SVG interativa do piano |
+| `Fretboard`  | `Fretboard.violao()`                                           | Motor de digitacao para cordas (violao, cavaquinho, bandolim) |
+| `FretboardSVG` | `FretboardSVG.chord(fb, Chord("CM"))`                       | Visualizacao SVG de diagramas de violao |
 | `MusicXML`   | `MusicXML.note(Note("C"), 4)`                                  | Serializador MusicXML 4.0      |
 
 ### Metodos de Note
@@ -452,6 +454,104 @@ display(SVG(data=svg))
 # gingo piano Am7 --svg am7.svg
 ```
 
+### Metodos de Fretboard
+
+Motor de digitacao para instrumentos de cordas com trastes (violao, cavaquinho, bandolim).
+
+| Metodo                          | Retorno             | Descricao                                  |
+|---------------------------------|---------------------|--------------------------------------------|
+| `Fretboard.violao()`           | `Fretboard`         | Violao 6 cordas, afinacao padrao (EADGBE)  |
+| `Fretboard.cavaquinho()`       | `Fretboard`         | Cavaquinho 4 cordas (DGBD)                 |
+| `Fretboard.bandolim()`         | `Fretboard`         | Bandolim 4 cordas (GDAE)                   |
+| `Fretboard(tuning, frets)`     | `Fretboard`         | Instrumento customizado                     |
+| `fingering(chord, pos=0)`      | `Fingering`         | Digitacao otima baseada no sistema CAGED    |
+| `scale_positions(scale, lo, hi)` | `List[FretPosition]` | Posicoes da escala no braco              |
+| `positions(note)`              | `List[FretPosition]` | Todas as posicoes de uma nota              |
+| `position(string, fret)`       | `FretPosition`      | Posicao especifica (corda, traste)          |
+| `num_strings()`                | `int`               | Numero de cordas                            |
+| `num_frets()`                  | `int`               | Numero de trastes                           |
+| `tuning()`                     | `Tuning`            | Afinacao do instrumento                     |
+
+### Atributos de Tuning
+
+| Atributo    | Tipo        | Descricao                            |
+|-------------|-------------|--------------------------------------|
+| `name`      | `str`       | Nome da afinacao ("standard", etc.)  |
+| `open_midi` | `List[int]` | Valores MIDI das cordas soltas       |
+
+### Atributos de FretPosition
+
+| Atributo | Tipo  | Descricao                              |
+|----------|-------|----------------------------------------|
+| `string` | `int` | Numero da corda (1 = mais aguda)       |
+| `fret`   | `int` | Numero do traste (0 = solta)           |
+| `note`   | `str` | Nome da nota                           |
+| `midi`   | `int` | Numero MIDI                            |
+
+### Atributos de Fingering
+
+| Atributo     | Tipo              | Descricao                            |
+|--------------|-------------------|--------------------------------------|
+| `strings`    | `List[StringState]` | Estado de cada corda               |
+| `barre`      | `int`             | Traste da pestana (0 = sem pestana)  |
+| `base_fret`  | `int`             | Posicao mais baixa com dedo          |
+| `chord_name` | `str`             | Nome do acorde                       |
+
+### Atributos de StringState
+
+| Atributo | Tipo           | Descricao                          |
+|----------|----------------|------------------------------------|
+| `string` | `int`          | Numero da corda (1-based)          |
+| `fret`   | `int`          | Numero do traste                   |
+| `action` | `StringAction` | Open, Fretted, ou Muted            |
+
+### StringAction (enum)
+
+| Valor     | Descricao                       |
+|-----------|---------------------------------|
+| `Open`    | Corda solta (sem dedo)          |
+| `Fretted` | Corda pressionada em um traste  |
+| `Muted`   | Corda abafada (sem som)         |
+
+### Metodos de FretboardSVG
+
+Renderiza diagramas SVG de alta qualidade para instrumentos de cordas com trastes.
+Todos os metodos suportam parametros de orientacao e lateralidade.
+
+| Metodo                                               | Retorno | Descricao                                |
+|------------------------------------------------------|---------|------------------------------------------|
+| `FretboardSVG.chord(fb, chord, pos=0, orient, hand)` | `str`  | Diagrama de acorde em SVG                |
+| `FretboardSVG.fingering(fb, fingering, orient, hand)` | `str` | Digitacao especifica em SVG              |
+| `FretboardSVG.scale(fb, scale, lo=0, hi=12, orient, hand)` | `str` | Escala no braco em SVG            |
+| `FretboardSVG.note(fb, note, orient, hand)`          | `str`  | Posicoes de uma nota em SVG              |
+| `FretboardSVG.positions(fb, positions, title, orient, hand)` | `str` | Posicoes customizadas em SVG     |
+| `FretboardSVG.field(fb, field, layout, orient, hand)` | `str` | Campo harmonico em SVG                   |
+| `FretboardSVG.progression(fb, field, branches, layout, orient, hand)` | `str` | Progressao em SVG    |
+| `FretboardSVG.full(fb, orient, hand)`                | `str`  | Braco completo em SVG                    |
+| `FretboardSVG.write(svg, path)`                      | `None` | Grava SVG em arquivo                     |
+
+#### Orientation (enum)
+
+| Valor        | Descricao                                           |
+|--------------|-----------------------------------------------------|
+| `Horizontal` | Vista do braco (cordas vertical, trastes horizontal) |
+| `Vertical`   | Vista chord box (cordas horizontal, trastes vertical)|
+
+#### Handedness (enum)
+
+| Valor         | Descricao                      |
+|---------------|--------------------------------|
+| `RightHanded` | Orientacao padrao (destro)     |
+| `LeftHanded`  | Espelhado para canhotos        |
+
+#### Defaults por metodo
+
+| Metodo                      | Orientacao padrão | Lateralidade padrão |
+|-----------------------------|-------------------|---------------------|
+| `chord()`, `fingering()`   | Vertical          | RightHanded         |
+| `scale()`, `note()`, `positions()` | Horizontal | RightHanded         |
+| `field()`, `progression()`, `full()` | Vertical | RightHanded         |
+
 ### Metodos de MusicXML
 
 | Metodo                                    | Retorno  | Descricao                           |
@@ -552,6 +652,11 @@ Chord("Am7").to_wav("am7.wav", waveform="triangle")
 | `ScaleType`        | `Major`, `NaturalMinor`, `HarmonicMinor`, `MelodicMinor`, `Diminished`, `HarmonicMajor`, `WholeTone`, `Augmented`, `Blues`, `Chromatic` |
 | `Modality`         | `Diatonic`, `Pentatonic`                                       |
 | `HarmonicFunction` | `Tonic`, `Subdominant`, `Dominant` — props: `.name`, `.short`  |
+| `VoicingStyle`     | `Close`, `Open`, `Shell`                                       |
+| `StringAction`     | `Open`, `Fretted`, `Muted`                                     |
+| `Orientation`      | `Horizontal` (braco deitado), `Vertical` (chord box)           |
+| `Handedness`       | `RightHanded`, `LeftHanded`                                    |
+| `Layout`           | `Vertical`, `Horizontal`, `Grid`                               |
 
 ---
 
@@ -568,6 +673,7 @@ Chord("Am7").to_wav("am7.wav", waveform="triangle")
 | `progression` | Analise cross-tradition de progressoes        | `gingo progression "C major" --identify IIm V7 I` |
 | `piano`     | Mapeamento piano: teclas, voicings, MIDI reverso | `gingo piano Am7 --voicings`              |
 | `musicxml`  | Gera MusicXML para notacao                   | `gingo musicxml chord Am7 -o am7.musicxml` |
+| `fretboard` | Digitacoes e diagramas SVG para violao/cordas          | `gingo fretboard chord Am --svg am.svg`   |
 | `compare`   | Comparacao entre dois acordes (absoluta ou contextual) | `gingo compare CM Am --field "C major"` |
 
 ## Todas as opcoes CLI
@@ -620,6 +726,13 @@ Chord("Am7").to_wav("am7.wav", waveform="triangle")
 | `--svg FILE`       | `piano`         | Gera SVG interativo do teclado com notas destacadas |
 | `-o FILE`          | `musicxml`      | Grava XML em arquivo em vez de stdout      |
 | `--type T`         | `musicxml`      | Tipo de nota: whole, half, quarter, eighth, sixteenth |
+| `chord ACORDE`     | `fretboard`     | Mostra digitacao e gera SVG do acorde            |
+| `scale "T tipo"`   | `fretboard`     | Mostra posicoes da escala no braco               |
+| `field "T tipo"`   | `fretboard`     | Mostra campo harmonico completo no braco         |
+| `--svg FILE`       | `fretboard`     | Gera SVG do diagrama                             |
+| `--left`           | `fretboard`     | Diagrama para canhoto (left-handed)              |
+| `--horizontal`     | `fretboard`     | Orientacao horizontal (braco deitado)            |
+| `--vertical`       | `fretboard`     | Orientacao vertical (chord box)                  |
 | `--play`           | `note`, `chord`, `scale`, `field` | Toca audio pelo sistema                |
 | `--wav FILE`       | `note`, `chord`, `scale`, `field` | Exporta para arquivo WAV               |
 | `--waveform WF`    | `note`, `chord`, `scale`, `field` | sine, square, sawtooth, triangle       |
