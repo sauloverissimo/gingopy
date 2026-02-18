@@ -49,11 +49,11 @@ play(["CM", "Am", "FM", "GM"])     # lista de nomes de acordes
 
 | Objeto | Audio |
 |:---|:---:|
-| `Note("C")` | <audio controls preload="none"><source src="../assets/audio/play_note_c.mp3" type="audio/mpeg"></audio> |
-| `Chord("Am7")` | <audio controls preload="none"><source src="../assets/audio/play_chord_am7.mp3" type="audio/mpeg"></audio> |
-| `Scale("C", "major")` | <audio controls preload="none"><source src="../assets/audio/play_scale_cmaj.mp3" type="audio/mpeg"></audio> |
-| `Field("C", "major")` | <audio controls preload="none"><source src="../assets/audio/play_field_cmaj.mp3" type="audio/mpeg"></audio> |
-| `["CM", "Am", "FM", "GM"]` | <audio controls preload="none"><source src="../assets/audio/play_list_pop.mp3" type="audio/mpeg"></audio> |
+| `Note("C")` | <audio controls preload="none"><source src="../../assets/audio/play_note_c.mp3" type="audio/mpeg"></audio> |
+| `Chord("Am7")` | <audio controls preload="none"><source src="../../assets/audio/play_chord_am7.mp3" type="audio/mpeg"></audio> |
+| `Scale("C", "major")` | <audio controls preload="none"><source src="../../assets/audio/play_scale_cmaj.mp3" type="audio/mpeg"></audio> |
+| `Field("C", "major")` | <audio controls preload="none"><source src="../../assets/audio/play_field_cmaj.mp3" type="audio/mpeg"></audio> |
+| `["CM", "Am", "FM", "GM"]` | <audio controls preload="none"><source src="../../assets/audio/play_list_pop.mp3" type="audio/mpeg"></audio> |
 
 ---
 
@@ -115,10 +115,10 @@ Compare os timbres da nota La (A4):
 
 | Waveform | Timbre | Audio |
 |:---|:---|:---:|
-| `sine` | Puro, suave | <audio controls preload="none"><source src="../assets/audio/waveform_sine.mp3" type="audio/mpeg"></audio> |
-| `square` | Rico, cheio | <audio controls preload="none"><source src="../assets/audio/waveform_square.mp3" type="audio/mpeg"></audio> |
-| `sawtooth` | Brilhante | <audio controls preload="none"><source src="../assets/audio/waveform_sawtooth.mp3" type="audio/mpeg"></audio> |
-| `triangle` | Suave, oco | <audio controls preload="none"><source src="../assets/audio/waveform_triangle.mp3" type="audio/mpeg"></audio> |
+| `sine` | Puro, suave | <audio controls preload="none"><source src="../../assets/audio/waveform_sine.mp3" type="audio/mpeg"></audio> |
+| `square` | Rico, cheio | <audio controls preload="none"><source src="../../assets/audio/waveform_square.mp3" type="audio/mpeg"></audio> |
+| `sawtooth` | Brilhante | <audio controls preload="none"><source src="../../assets/audio/waveform_sawtooth.mp3" type="audio/mpeg"></audio> |
+| `triangle` | Suave, oco | <audio controls preload="none"><source src="../../assets/audio/waveform_triangle.mp3" type="audio/mpeg"></audio> |
 
 ---
 
@@ -159,8 +159,8 @@ Note("C").play(envelope=perc, duration=0.8)
 
 | Envelope | Audio |
 |:---|:---:|
-| Pad (attack lento) | <audio controls preload="none"><source src="../assets/audio/adsr_pad.mp3" type="audio/mpeg"></audio> |
-| Percussivo (ataque rapido) | <audio controls preload="none"><source src="../assets/audio/adsr_perc.mp3" type="audio/mpeg"></audio> |
+| Pad (attack lento) | <audio controls preload="none"><source src="../../assets/audio/adsr_pad.mp3" type="audio/mpeg"></audio> |
+| Percussivo (ataque rapido) | <audio controls preload="none"><source src="../../assets/audio/adsr_perc.mp3" type="audio/mpeg"></audio> |
 
 ---
 
@@ -190,10 +190,10 @@ Compare o efeito de strum em Am7:
 
 | Strum | Efeito | Audio |
 |:---|:---|:---:|
-| `0.0` | Simultaneo | <audio controls preload="none"><source src="../assets/audio/strum_0.mp3" type="audio/mpeg"></audio> |
-| `0.03` | Default | <audio controls preload="none"><source src="../assets/audio/strum_003.mp3" type="audio/mpeg"></audio> |
-| `0.08` | Arpejado | <audio controls preload="none"><source src="../assets/audio/strum_008.mp3" type="audio/mpeg"></audio> |
-| `0.15` | Lento | <audio controls preload="none"><source src="../assets/audio/strum_015.mp3" type="audio/mpeg"></audio> |
+| `0.0` | Simultaneo | <audio controls preload="none"><source src="../../assets/audio/strum_0.mp3" type="audio/mpeg"></audio> |
+| `0.03` | Default | <audio controls preload="none"><source src="../../assets/audio/strum_003.mp3" type="audio/mpeg"></audio> |
+| `0.08` | Arpejado | <audio controls preload="none"><source src="../../assets/audio/strum_008.mp3" type="audio/mpeg"></audio> |
+| `0.15` | Lento | <audio controls preload="none"><source src="../../assets/audio/strum_015.mp3" type="audio/mpeg"></audio> |
 
 O strum afeta apenas acordes (Chord, ChordEvent, e acordes em Field/Tree).
 Notas individuais e escalas nao sao afetados.
@@ -226,9 +226,9 @@ Compare o efeito de gap na escala de C major:
 
 | Gap | Articulacao | Audio |
 |:---|:---|:---:|
-| `0.0` | Legato | <audio controls preload="none"><source src="../assets/audio/gap_0.mp3" type="audio/mpeg"></audio> |
-| `0.05` | Natural | <audio controls preload="none"><source src="../assets/audio/gap_005.mp3" type="audio/mpeg"></audio> |
-| `0.15` | Staccato | <audio controls preload="none"><source src="../assets/audio/gap_015.mp3" type="audio/mpeg"></audio> |
+| `0.0` | Legato | <audio controls preload="none"><source src="../../assets/audio/gap_0.mp3" type="audio/mpeg"></audio> |
+| `0.05` | Natural | <audio controls preload="none"><source src="../../assets/audio/gap_005.mp3" type="audio/mpeg"></audio> |
+| `0.15` | Staccato | <audio controls preload="none"><source src="../../assets/audio/gap_015.mp3" type="audio/mpeg"></audio> |
 
 ---
 
@@ -382,7 +382,7 @@ seq.play(waveform="triangle")
 seq.to_wav("melodia.wav")
 ```
 
-<audio controls preload="none"><source src="../assets/audio/seq_melody.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/seq_melody.mp3" type="audio/mpeg"></audio>
 
 ---
 
@@ -395,7 +395,7 @@ from gingo.audio import play
 play(["CM", "GM", "Am", "FM"], duration=0.8, waveform="triangle")
 ```
 
-<audio controls preload="none"><source src="../assets/audio/jazz_pop.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/jazz_pop.mp3" type="audio/mpeg"></audio>
 
 ### Progressao ii-V-I (jazz)
 
@@ -404,7 +404,7 @@ from gingo.audio import play
 play(["Dm7", "G7", "C7M"], duration=1.0, strum=0.05)
 ```
 
-<audio controls preload="none"><source src="../assets/audio/jazz_251.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/jazz_251.mp3" type="audio/mpeg"></audio>
 
 ### Modos gregos — compare o som
 
@@ -421,13 +421,13 @@ for modo in modos:
 
 | Modo | Carater | Audio |
 |:---|:---|:---:|
-| Ionian | Maior, brilhante | <audio controls preload="none"><source src="../assets/audio/mode_ionian.mp3" type="audio/mpeg"></audio> |
-| Dorian | Menor, jazzy | <audio controls preload="none"><source src="../assets/audio/mode_dorian.mp3" type="audio/mpeg"></audio> |
-| Phrygian | Menor, flamenca | <audio controls preload="none"><source src="../assets/audio/mode_phrygian.mp3" type="audio/mpeg"></audio> |
-| Lydian | Maior, eterea | <audio controls preload="none"><source src="../assets/audio/mode_lydian.mp3" type="audio/mpeg"></audio> |
-| Mixolydian | Maior, blues | <audio controls preload="none"><source src="../assets/audio/mode_mixolydian.mp3" type="audio/mpeg"></audio> |
-| Aeolian | Menor natural | <audio controls preload="none"><source src="../assets/audio/mode_aeolian.mp3" type="audio/mpeg"></audio> |
-| Locrian | Diminuta, tensa | <audio controls preload="none"><source src="../assets/audio/mode_locrian.mp3" type="audio/mpeg"></audio> |
+| Ionian | Maior, brilhante | <audio controls preload="none"><source src="../../assets/audio/mode_ionian.mp3" type="audio/mpeg"></audio> |
+| Dorian | Menor, jazzy | <audio controls preload="none"><source src="../../assets/audio/mode_dorian.mp3" type="audio/mpeg"></audio> |
+| Phrygian | Menor, flamenca | <audio controls preload="none"><source src="../../assets/audio/mode_phrygian.mp3" type="audio/mpeg"></audio> |
+| Lydian | Maior, eterea | <audio controls preload="none"><source src="../../assets/audio/mode_lydian.mp3" type="audio/mpeg"></audio> |
+| Mixolydian | Maior, blues | <audio controls preload="none"><source src="../../assets/audio/mode_mixolydian.mp3" type="audio/mpeg"></audio> |
+| Aeolian | Menor natural | <audio controls preload="none"><source src="../../assets/audio/mode_aeolian.mp3" type="audio/mpeg"></audio> |
+| Locrian | Diminuta, tensa | <audio controls preload="none"><source src="../../assets/audio/mode_locrian.mp3" type="audio/mpeg"></audio> |
 
 ### Comparar campos maior e menor
 
@@ -443,8 +443,8 @@ Field("A", "natural minor").play(duration=0.6)
 
 | Campo | Audio |
 |:---|:---:|
-| C major | <audio controls preload="none"><source src="../assets/audio/field_c_major.mp3" type="audio/mpeg"></audio> |
-| A minor | <audio controls preload="none"><source src="../assets/audio/field_a_minor.mp3" type="audio/mpeg"></audio> |
+| C major | <audio controls preload="none"><source src="../../assets/audio/field_c_major.mp3" type="audio/mpeg"></audio> |
+| A minor | <audio controls preload="none"><source src="../../assets/audio/field_a_minor.mp3" type="audio/mpeg"></audio> |
 
 ### Familias de escalas
 
@@ -463,12 +463,12 @@ for f in familias:
 
 | Familia | Audio |
 |:---|:---:|
-| Major | <audio controls preload="none"><source src="../assets/audio/family_major.mp3" type="audio/mpeg"></audio> |
-| Natural minor | <audio controls preload="none"><source src="../assets/audio/family_natural_minor.mp3" type="audio/mpeg"></audio> |
-| Harmonic minor | <audio controls preload="none"><source src="../assets/audio/family_harmonic_minor.mp3" type="audio/mpeg"></audio> |
-| Melodic minor | <audio controls preload="none"><source src="../assets/audio/family_melodic_minor.mp3" type="audio/mpeg"></audio> |
-| Blues | <audio controls preload="none"><source src="../assets/audio/family_blues.mp3" type="audio/mpeg"></audio> |
-| Whole tone | <audio controls preload="none"><source src="../assets/audio/family_whole_tone.mp3" type="audio/mpeg"></audio> |
+| Major | <audio controls preload="none"><source src="../../assets/audio/family_major.mp3" type="audio/mpeg"></audio> |
+| Natural minor | <audio controls preload="none"><source src="../../assets/audio/family_natural_minor.mp3" type="audio/mpeg"></audio> |
+| Harmonic minor | <audio controls preload="none"><source src="../../assets/audio/family_harmonic_minor.mp3" type="audio/mpeg"></audio> |
+| Melodic minor | <audio controls preload="none"><source src="../../assets/audio/family_melodic_minor.mp3" type="audio/mpeg"></audio> |
+| Blues | <audio controls preload="none"><source src="../../assets/audio/family_blues.mp3" type="audio/mpeg"></audio> |
+| Whole tone | <audio controls preload="none"><source src="../../assets/audio/family_whole_tone.mp3" type="audio/mpeg"></audio> |
 
 ### Exportar todos os acordes do campo
 

@@ -58,7 +58,7 @@ barre: 0
 midi_notes: [45, 52, 57, 60, 64]
 ```
 
-<audio controls preload="none"><source src="../assets/audio/chord_am.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/chord_am.mp3" type="audio/mpeg"></audio>
 
 ### Todas as digitacoes possiveis
 
@@ -99,7 +99,7 @@ C#M  : C#M fingering  (pestana, casa 4)
 AbM  : AbM fingering  (pestana, casa 4)
 ```
 
-<audio controls preload="none"><source src="../assets/audio/barre_chords.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/barre_chords.mp3" type="audio/mpeg"></audio>
 
 ### Capo — transpor com capotraste
 
@@ -278,7 +278,7 @@ FretboardSVG.write(fm_svg, "fm_barre.svg")
 | Am (sem pestana) | FM (pestana) |
 |:---:|:---:|
 | ![Am chord box](../assets/ex_fb_chord_am.svg) | ![FM chord box](../assets/ex_fb_chord_fm.svg) |
-| <audio controls preload="none"><source src="../assets/audio/chord_am.mp3" type="audio/mpeg"></audio> | <audio controls preload="none"><source src="../assets/audio/chord_fm.mp3" type="audio/mpeg"></audio> |
+| <audio controls preload="none"><source src="../../assets/audio/chord_am.mp3" type="audio/mpeg"></audio> | <audio controls preload="none"><source src="../../assets/audio/chord_fm.mp3" type="audio/mpeg"></audio> |
 
 ### Chord box a partir de um Fingering
 
@@ -312,7 +312,7 @@ FretboardSVG.write(svg, "a_blues.svg")
 
 ![A Blues no braco](../assets/ex_fb_scale_ablues.svg)
 
-<audio controls preload="none"><source src="../assets/audio/scale_a_blues.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/scale_a_blues.mp3" type="audio/mpeg"></audio>
 
 ### Nota unica no braco
 
@@ -384,7 +384,7 @@ FretboardSVG.write(svg, "pop_progression.svg")
 
 ![Progressao pop](../assets/ex_fb_prog_pop.svg)
 
-<audio controls preload="none"><source src="../assets/audio/prog_pop.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/prog_pop.mp3" type="audio/mpeg"></audio>
 
 ### Diagramas para canhoto
 
@@ -506,7 +506,7 @@ CM voicing: C4, E4, G4
   Shell : C4, E4, G4
 ```
 
-<audio controls preload="none"><source src="../assets/audio/voicing_cm.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/voicing_cm.mp3" type="audio/mpeg"></audio>
 
 ### Voicings de jazz
 
@@ -537,7 +537,7 @@ for nome in jazz_chords:
   Am7       : A4, C5, E5, G5
 ```
 
-<audio controls preload="none"><source src="../assets/audio/jazz_251.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/jazz_251.mp3" type="audio/mpeg"></audio>
 
 ### Todos os voicings e inversoes
 
@@ -584,7 +584,7 @@ for k in p.scale_keys(escala):
   B4: tecla branca (MIDI 71)
 ```
 
-<audio controls preload="none"><source src="../assets/audio/scale_c_major.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/scale_c_major.mp3" type="audio/mpeg"></audio>
 
 ### Consultar tecla individual
 
@@ -661,7 +661,7 @@ PianoSVG.write(svg, "piano_am7.svg")
 
 ![Am7 no piano](../assets/ex_piano_am7.svg)
 
-<audio controls preload="none"><source src="../assets/audio/chord_am.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/chord_am.mp3" type="audio/mpeg"></audio>
 
 ```python
 # Piano completo com acorde
@@ -691,7 +691,7 @@ PianoSVG.write(svg, "piano_dm7.svg")
 
 ![Dm7 voicing](../assets/ex_piano_voicing_dm7.svg)
 
-<audio controls preload="none"><source src="../assets/audio/voicing_dm7.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/voicing_dm7.mp3" type="audio/mpeg"></audio>
 
 ### Escala no teclado
 
@@ -712,7 +712,7 @@ for nome in ["C major", "A natural minor", "C blues", "C harmonic minor"]:
 
 ![C major no piano](../assets/ex_piano_scale_cmaj.svg)
 
-<audio controls preload="none"><source src="../assets/audio/scale_c_major.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/scale_c_major.mp3" type="audio/mpeg"></audio>
 
 ### Campo harmonico em pianos empilhados
 
@@ -731,7 +731,7 @@ PianoSVG.write(svg, "piano_field_cmaj.svg")
 
 ![Campo C major no piano](../assets/ex_piano_field_cmaj.svg)
 
-<audio controls preload="none"><source src="../assets/audio/field_c_major.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/field_c_major.mp3" type="audio/mpeg"></audio>
 
 ### Progressao
 
@@ -750,7 +750,7 @@ PianoSVG.write(svg, "piano_251.svg")
 
 ![Progressao ii-V-I](../assets/ex_piano_prog_251.svg)
 
-<audio controls preload="none"><source src="../assets/audio/jazz_251.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/jazz_251.mp3" type="audio/mpeg"></audio>
 
 ### Nota individual e teclas MIDI
 
@@ -958,7 +958,7 @@ Matched: 3/3
 Direta: harmonic_tree/direct score=1.00
 ```
 
-<audio controls preload="none"><source src="../assets/audio/prog_turnaround.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/prog_turnaround.mp3" type="audio/mpeg"></audio>
 
 ### Deduzir progressao (multiplos resultados ranqueados)
 
@@ -1246,7 +1246,7 @@ jazz.play()
 tree.to_wav("harmonic_tree.wav")
 ```
 
-<audio controls preload="none"><source src="../assets/audio/field_c_major.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/field_c_major.mp3" type="audio/mpeg"></audio>
 
 ### CLI
 
@@ -1357,9 +1357,9 @@ CM -> EM: LP
 
 | Transformacao | Audio |
 |:---:|:---:|
-| **P** (CM → Cm) | <audio controls preload="none"><source src="../assets/audio/neoR_P.mp3" type="audio/mpeg"></audio> |
-| **L** (CM → Em) | <audio controls preload="none"><source src="../assets/audio/neoR_L.mp3" type="audio/mpeg"></audio> |
-| **R** (CM → Am) | <audio controls preload="none"><source src="../assets/audio/neoR_R.mp3" type="audio/mpeg"></audio> |
+| **P** (CM → Cm) | <audio controls preload="none"><source src="../../assets/audio/neoR_P.mp3" type="audio/mpeg"></audio> |
+| **L** (CM → Em) | <audio controls preload="none"><source src="../../assets/audio/neoR_L.mp3" type="audio/mpeg"></audio> |
+| **R** (CM → Am) | <audio controls preload="none"><source src="../../assets/audio/neoR_R.mp3" type="audio/mpeg"></audio> |
 
 ### Comparacao contextual (21 dimensoes)
 
@@ -1616,7 +1616,7 @@ Duracao total: 8.0 beats
 Em segundos: 4.0s
 ```
 
-<audio controls preload="none"><source src="../assets/audio/sequence_ceg_cm.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/sequence_ceg_cm.mp3" type="audio/mpeg"></audio>
 
 ### CLI
 
@@ -1645,9 +1645,9 @@ Field("C", "major").play()
 
 | Objeto | Audio |
 |:---:|:---:|
-| Chord("Am") | <audio controls preload="none"><source src="../assets/audio/chord_am.mp3" type="audio/mpeg"></audio> |
-| Scale("C", "major") | <audio controls preload="none"><source src="../assets/audio/scale_c_major.mp3" type="audio/mpeg"></audio> |
-| Field("C", "major") | <audio controls preload="none"><source src="../assets/audio/field_c_major.mp3" type="audio/mpeg"></audio> |
+| Chord("Am") | <audio controls preload="none"><source src="../../assets/audio/chord_am.mp3" type="audio/mpeg"></audio> |
+| Scale("C", "major") | <audio controls preload="none"><source src="../../assets/audio/scale_c_major.mp3" type="audio/mpeg"></audio> |
+| Field("C", "major") | <audio controls preload="none"><source src="../../assets/audio/field_c_major.mp3" type="audio/mpeg"></audio> |
 
 ### Controlar timbre e velocidade
 
@@ -1664,10 +1664,10 @@ Compare os timbres da nota La (A4) em cada waveform:
 
 | Waveform | Timbre | Audio |
 |:---|:---|:---:|
-| `sine` | puro, flauta | <audio controls preload="none"><source src="../assets/audio/waveform_sine.mp3" type="audio/mpeg"></audio> |
-| `square` | cheio, clarinete | <audio controls preload="none"><source src="../assets/audio/waveform_square.mp3" type="audio/mpeg"></audio> |
-| `sawtooth` | brilhante, violino | <audio controls preload="none"><source src="../assets/audio/waveform_sawtooth.mp3" type="audio/mpeg"></audio> |
-| `triangle` | suave, quase-sine | <audio controls preload="none"><source src="../assets/audio/waveform_triangle.mp3" type="audio/mpeg"></audio> |
+| `sine` | puro, flauta | <audio controls preload="none"><source src="../../assets/audio/waveform_sine.mp3" type="audio/mpeg"></audio> |
+| `square` | cheio, clarinete | <audio controls preload="none"><source src="../../assets/audio/waveform_square.mp3" type="audio/mpeg"></audio> |
+| `sawtooth` | brilhante, violino | <audio controls preload="none"><source src="../../assets/audio/waveform_sawtooth.mp3" type="audio/mpeg"></audio> |
+| `triangle` | suave, quase-sine | <audio controls preload="none"><source src="../../assets/audio/waveform_triangle.mp3" type="audio/mpeg"></audio> |
 
 ### Funcao standalone play()
 
@@ -1683,7 +1683,7 @@ play(["Dm7", "G7", "C7M"], duration=1.0, strum=0.04)
 
 | Progressao pop (CM-GM-Am-FM) | Jazz ii-V-I (Dm7-G7-C7M) |
 |:---:|:---:|
-| <audio controls preload="none"><source src="../assets/audio/prog_pop.mp3" type="audio/mpeg"></audio> | <audio controls preload="none"><source src="../assets/audio/jazz_251.mp3" type="audio/mpeg"></audio> |
+| <audio controls preload="none"><source src="../../assets/audio/prog_pop.mp3" type="audio/mpeg"></audio> | <audio controls preload="none"><source src="../../assets/audio/jazz_251.mp3" type="audio/mpeg"></audio> |
 
 ### Exportar para WAV
 
@@ -1803,7 +1803,7 @@ Escala para solo: [C, D, E, G, A]
 
 | Progressao (CM-GM-Am-FM) | Escala para solo (C penta) |
 |:---:|:---:|
-| <audio controls preload="none"><source src="../assets/audio/letitbe.mp3" type="audio/mpeg"></audio> | <audio controls preload="none"><source src="../assets/audio/letitbe_solo.mp3" type="audio/mpeg"></audio> |
+| <audio controls preload="none"><source src="../../assets/audio/letitbe.mp3" type="audio/mpeg"></audio> | <audio controls preload="none"><source src="../../assets/audio/letitbe_solo.mp3" type="audio/mpeg"></audio> |
 
 ---
 
@@ -1865,7 +1865,7 @@ C major e A natural minor sao relativos — compartilham
 
 | C Major (campo) | A Minor (campo) |
 |:---:|:---:|
-| <audio controls preload="none"><source src="../assets/audio/field_c_major.mp3" type="audio/mpeg"></audio> | <audio controls preload="none"><source src="../assets/audio/field_a_minor.mp3" type="audio/mpeg"></audio> |
+| <audio controls preload="none"><source src="../../assets/audio/field_c_major.mp3" type="audio/mpeg"></audio> | <audio controls preload="none"><source src="../../assets/audio/field_a_minor.mp3" type="audio/mpeg"></audio> |
 
 ```python
 from gingo import Chord
@@ -2137,4 +2137,4 @@ Schemas harmonic_tree (8):
   subdominant_prep: ['I', 'IIm / IV', 'V7 / IV', 'IV', 'V7', 'I']
 ```
 
-<audio controls preload="none"><source src="../assets/audio/prog_turnaround.mp3" type="audio/mpeg"></audio>
+<audio controls preload="none"><source src="../../assets/audio/prog_turnaround.mp3" type="audio/mpeg"></audio>
