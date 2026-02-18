@@ -1,10 +1,21 @@
+<p align="center">
+  <img src="gingo.png" alt="Gingo — Musical library for Python" width="600">
+</p>
+
 # 🪇 Gingo
 
 An expressive music theory and rhythm toolkit for Python, powered by a C++17 core.
 
-[![PyPI version](https://badge.fury.io/py/gingo.svg)](https://badge.fury.io/py/gingo)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<p align="center">
+
+[![PyPI](https://img.shields.io/badge/pypi-v1.1.0-deepviolet?logo=pypi&logoColor=white)](https://pypi.org/project/gingo/)
+[![Python](https://img.shields.io/pypi/pyversions/gingo?logo=python&logoColor=white)](https://pypi.org/project/gingo/)
+[![License](https://img.shields.io/github/license/sauloverissimo/gingo?color=blue)](https://github.com/sauloverissimo/gingo/blob/main/LICENSE)
+[![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C?logo=cplusplus&logoColor=white)](https://en.cppreference.com/w/cpp/17)
+[![Docs](https://img.shields.io/badge/docs-MkDocs-526CFE?logo=materialformkdocs&logoColor=white)](https://sauloverissimo.github.io/gingo/)
+[![Tests](https://img.shields.io/badge/tests-1102%20passed-brightgreen?logo=pytest&logoColor=white)](https://github.com/sauloverissimo/gingo)
+
+</p>
 
 From pitch classes to harmonic trees and rhythmic grids — with audio playback and a friendly CLI.
 
