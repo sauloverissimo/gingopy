@@ -1,10 +1,10 @@
 # Roadmap
 
-Funcionalidades planejadas e estado atual do projeto.
+Estado atual do projeto e visao de futuro.
 
 ---
 
-## Implementado (v1.0.0)
+## v1.0.0 — Fundamentos
 
 ### Core (C++17)
 
@@ -27,24 +27,27 @@ Funcionalidades planejadas e estado atual do projeto.
 
 - [x] Sintese: sine, square, sawtooth, triangle
 - [x] Envelope ADSR (attack, decay, sustain, release)
-- [x] Strum (delay entre notas de acordes) e gap (silencio entre eventos)
-- [x] `.play()` e `.to_wav()` em todas as classes (Note, Chord, Scale, Field, Tree, Sequence)
-- [x] Funcoes standalone: `play()`, `to_wav()`
-- [x] Playback: simpleaudio (opcional) com fallback para players do sistema
+- [x] Strum e gap
+- [x] `.play()` e `.to_wav()` em todas as classes
 - [x] CLI: `--play`, `--wav`, `--waveform`, `--strum`, `--gap`
 
 ### Infra
 
 - [x] Zero dependencias runtime (simpleaudio opcional para playback)
 - [x] Core C++17 com pybind11
-- [x] CLI completa com subcomandos (note, interval, chord, scale, field, compare)
-- [x] CLI de ritmo: duration, tempo, timesig
+- [x] CLI completa (note, interval, chord, scale, field, compare)
 - [x] Type stubs (PEP 561)
-- [x] Documentacao MkDocs completa
+- [x] Documentacao MkDocs
 
 ---
 
-## Implementado (v1.0.2)
+## v1.0.1 — Ritmo CLI
+
+- [x] CLI de ritmo: duration, tempo, timesig
+
+---
+
+## v1.0.2 — Progressoes, Piano, MusicXML
 
 ### Progressoes e Tradicoes
 
@@ -53,13 +56,9 @@ Funcionalidades planejadas e estado atual do projeto.
 - [x] Tradicao Jazz: branches e schemas classicos (ii-V-I, turnaround, backdoor, etc.)
 - [x] CLI: tree, progression com identify/deduce/predict
 
----
+### Piano
 
-## Implementado (v1.0.2)
-
-### Instrumentos — Piano
-
-- [x] Piano: mapeamento teoria ↔ teclas fisicas (MIDI, voicings, reverse identification)
+- [x] Piano: mapeamento teoria <-> teclas fisicas (MIDI, voicings, reverse identification)
 - [x] VoicingStyle: Close, Open, Shell
 - [x] PianoSVG: visualizacao interativa do teclado em SVG
   - note, chord, scale, voicing, keys, midi, field, progression
@@ -69,13 +68,13 @@ Funcionalidades planejadas e estado atual do projeto.
 ### Notacao
 
 - [x] MusicXML: serializacao para MusicXML 4.0 partwise
-  - Note, Chord, Scale, Field, Sequence → MuseScore/Finale/Sibelius
+  - Note, Chord, Scale, Field, Sequence -> MuseScore/Finale/Sibelius
 
 ---
 
-## Implementado (v1.1.0)
+## v1.1.0 — Fretboard (versao atual)
 
-### Instrumentos — Fretboard (Cordas)
+### Fretboard (instrumentos de cordas)
 
 - [x] Fretboard: motor de digitacao para violao, cavaquinho, bandolim
   - Factory methods: `Fretboard.violao()`, `.cavaquinho()`, `.bandolim()`
@@ -101,57 +100,30 @@ Funcionalidades planejadas e estado atual do projeto.
 
 ## Planejado
 
-### 1. MIDI (`gingo[audio]`)
+### MIDI import/export
 
+- [ ] `Sequence.to_midi()` / `Sequence.from_midi(path)` — import/export .mid
 - [ ] `Duration.midi_ticks(ppqn=480)` / `Duration.from_ticks(ticks, ppqn)`
 - [ ] `Tempo.microseconds_per_beat()` / `Tempo.from_microseconds(usec)`
-- [ ] `bpm2tempo(bpm)` / `tempo2bpm(usec)` — conversao MIDI
-- [ ] `Sequence.to_midi()` / `Sequence.from_midi(path)` — import/export .mid
 
-### 2. Partitura (`gingo[score]`)
+### Escalas Bebop
 
-- [ ] `Sequence.to_lilypond()` — export LilyPond
-- [ ] `Sequence.show()` — renderiza via MuseScore ou LilyPond
-- [ ] Suporte a claves, dinamicas, articulacoes
-
-### 3. Escalas futuras
-
-- [ ] Bebop (6 tipos, 8 notas com passing tone cromatico)
+- [ ] 6 tipos de escalas bebop (8 notas com passing tone cromatico)
 - [ ] Aliases de modos simetricos existentes
-- [ ] Ver `.old/scales_analysis.md` secao 14.9
-
-### 4. Estrutura hierarquica
-
-- [ ] `Bar(events, time_signature)` — compasso completo
-- [ ] `Phrase(bars)` — frase musical
-- [ ] `Part(phrases, instrument)` — uma voz/instrumento
-- [ ] `Score(parts, tempo)` — partitura com multiplas vozes
-
-### 5. Offset absoluto
-
-- [ ] `Event.offset` — posicao temporal absoluta (em beats)
-- [ ] Eventos simultaneos sem ChordEvent
-- [ ] Polirritmia: multiplas vozes com offsets independentes
-
-### 6. Parsing alternativo de Duration
-
-- [ ] `Duration("1/4")` — fracao
-- [ ] `Duration("q")` — abreviacao
-- [ ] `Duration("h.")` — abreviacao + ponto
-- [ ] Notacao LilyPond: `"4."`, `"8"`, `"16"`
 
 ---
 
 ## Diferenciais do Gingo
 
-- Campo harmonico completo com funcoes T/S/D
-- Comparacao contextual com 21 dimensoes
-- Arvore harmonica com caminhos e validacao
-- Field.deduce() — inferencia a partir de dados parciais
-- Fretboard com algoritmo CAGED para digitacoes realisticas
-- FretboardSVG com orientacao e lateralidade (destro/canhoto)
-- Piano com voicings (close, open, shell) e PianoSVG interativo
-- MusicXML 4.0 para exportacao de partitura
-- Zero deps + C++ backend
-- Duration racional exata (fracao, nao float)
-- Sintese de audio integrada com zero deps extras
+- **Teoria completa em camadas**: Note -> Interval -> Chord -> Scale -> Field -> Progression
+- **Campo harmonico** com funcoes T/S/D e acordes aplicados
+- **Comparacao contextual** com 21 dimensoes (neo-Riemannian, voice leading, borrowing, pivot)
+- **Arvore harmonica** com caminhos, validacao e cross-tradition (classico + jazz)
+- **Field.deduce()** — inferencia de tonalidade a partir de dados parciais
+- **Fretboard** com algoritmo CAGED para digitacoes realisticas de violao/cavaquinho/bandolim
+- **FretboardSVG** com orientacao (horizontal/vertical) e lateralidade (destro/canhoto)
+- **Piano** com voicings (close, open, shell) e **PianoSVG** interativo
+- **MusicXML 4.0** para exportacao de partitura
+- **Sintese de audio** integrada com `.play()` e `.to_wav()` em todas as classes
+- **Duration racional** exata (fracao, nao float)
+- **Zero dependencias** runtime + backend C++17
