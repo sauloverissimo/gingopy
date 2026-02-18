@@ -267,16 +267,9 @@ FretboardSVG.write(fm_svg, "fm_barre.svg")
 
 **Resultado:**
 
-<div style="display: flex; gap: 16px; align-items: flex-start;">
-<figure>
-<img src="../assets/ex_fb_chord_am.svg" alt="Am chord box">
-<figcaption>Am (sem pestana)</figcaption>
-</figure>
-<figure>
-<img src="../assets/ex_fb_chord_fm.svg" alt="FM chord box">
-<figcaption>FM (pestana)</figcaption>
-</figure>
-</div>
+| Am (sem pestana) | FM (pestana) |
+|:---:|:---:|
+| ![Am chord box](../assets/ex_fb_chord_am.svg) | ![FM chord box](../assets/ex_fb_chord_fm.svg) |
 
 ### Chord box a partir de um Fingering
 
