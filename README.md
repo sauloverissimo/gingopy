@@ -99,7 +99,7 @@ FretboardSVG.chord(guitar, Chord("Am"), 0, Orientation.Vertical, Handedness.Left
 ### PianoSVG — Chord Voicing
 
 ```python
-PianoSVG.chord(Piano(25), Chord("Am7"), 4)
+PianoSVG.chord(Piano(44), Chord("Am7"), 4)
 ```
 
 <p align="center">
@@ -109,11 +109,31 @@ PianoSVG.chord(Piano(25), Chord("Am7"), 4)
 ### PianoSVG — Scale
 
 ```python
-PianoSVG.scale(Piano(25), Scale("C", "major"), 4)
+PianoSVG.scale(Piano(44), Scale("C", "major"), 4)
 ```
 
 <p align="center">
   <img src="assets/piano_scale_cmaj.svg" alt="C major scale on piano">
+</p>
+
+### PianoSVG — Harmonic Field
+
+```python
+PianoSVG.field(Piano(44), Field("C", "major"), 4)
+```
+
+<p align="center">
+  <img src="assets/piano_field_cmaj.svg" alt="C major harmonic field on piano" width="400">
+</p>
+
+### PianoSVG — Full Keyboard (88 keys)
+
+```python
+PianoSVG.scale(Piano(88), Scale("C", "major"), 4)
+```
+
+<p align="center">
+  <img src="assets/piano_full_cmaj.svg" alt="C major scale on 88-key piano">
 </p>
 
 ---

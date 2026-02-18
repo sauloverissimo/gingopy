@@ -1,0 +1,326 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="1092" viewBox="0 0 480 1092">
+<style>
+.w{width:23px;height:120px;fill:#fff;stroke:#333;stroke-width:1;ry:2}
+.b{width:14px;height:78px;fill:#111;stroke:#000;stroke-width:1;ry:2}
+.t{font-family:Arial,Helvetica,sans-serif;font-weight:bold;fill:#fff;text-anchor:middle;pointer-events:none}
+.tw{font-size:9px}
+.tb{font-size:7px}
+.title{font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;fill:#333;text-anchor:middle}
+.band{font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:bold;fill:#fff;text-anchor:middle;pointer-events:none}
+.d0.w{fill:#4A6FA5}
+.d0.b{fill:#2C5187}
+.d1.w{fill:#D4793A}
+.d1.b{fill:#B65B1C}
+.d2.w{fill:#5A8F5A}
+.d2.b{fill:#3C713C}
+.d3.w{fill:#8B5A9E}
+.d3.b{fill:#6D3C80}
+.d4.w{fill:#C4453C}
+.d4.b{fill:#A6271E}
+.d5.w{fill:#C9963A}
+.d5.b{fill:#AB781C}
+.d6.w{fill:#3A9E8F}
+.d6.b{fill:#1C8071}
+</style>
+<g transform="translate(10,10)">
+<rect width="460" height="148" fill="#F0EDE8" rx="3"/>
+<text x="230" y="17" class="title">I - CM</text>
+<g transform="translate(0,28)">
+<rect id="p0-key-48" class="w" x="0" y="0"/>
+<rect id="p0-key-50" class="w" x="23" y="0"/>
+<rect id="p0-key-52" class="w" x="46" y="0"/>
+<rect id="p0-key-53" class="w" x="69" y="0"/>
+<rect id="p0-key-55" class="w" x="92" y="0"/>
+<rect id="p0-key-57" class="w" x="115" y="0"/>
+<rect id="p0-key-59" class="w" x="138" y="0"/>
+<rect id="p0-key-60" class="w d0" x="161" y="0"/>
+<text x="172" y="112" class="t tw">C4</text>
+<rect id="p0-key-62" class="w" x="184" y="0"/>
+<rect id="p0-key-64" class="w d0" x="207" y="0"/>
+<text x="218" y="112" class="t tw">E4</text>
+<rect id="p0-key-65" class="w" x="230" y="0"/>
+<rect id="p0-key-67" class="w d0" x="253" y="0"/>
+<text x="264" y="112" class="t tw">G4</text>
+<rect id="p0-key-69" class="w" x="276" y="0"/>
+<rect id="p0-key-71" class="w" x="299" y="0"/>
+<rect id="p0-key-72" class="w" x="322" y="0"/>
+<rect id="p0-key-74" class="w" x="345" y="0"/>
+<rect id="p0-key-76" class="w" x="368" y="0"/>
+<rect id="p0-key-77" class="w" x="391" y="0"/>
+<rect id="p0-key-79" class="w" x="414" y="0"/>
+<rect id="p0-key-81" class="w" x="437" y="0"/>
+<rect id="p0-key-49" class="b" x="16" y="0"/>
+<rect id="p0-key-51" class="b" x="39" y="0"/>
+<rect id="p0-key-54" class="b" x="85" y="0"/>
+<rect id="p0-key-56" class="b" x="108" y="0"/>
+<rect id="p0-key-58" class="b" x="131" y="0"/>
+<rect id="p0-key-61" class="b" x="177" y="0"/>
+<rect id="p0-key-63" class="b" x="200" y="0"/>
+<rect id="p0-key-66" class="b" x="246" y="0"/>
+<rect id="p0-key-68" class="b" x="269" y="0"/>
+<rect id="p0-key-70" class="b" x="292" y="0"/>
+<rect id="p0-key-73" class="b" x="338" y="0"/>
+<rect id="p0-key-75" class="b" x="361" y="0"/>
+<rect id="p0-key-78" class="b" x="407" y="0"/>
+<rect id="p0-key-80" class="b" x="430" y="0"/>
+</g>
+</g>
+<g transform="translate(10,164)">
+<rect width="460" height="148" fill="#F0EDE8" rx="3"/>
+<text x="230" y="17" class="title">II - Dm</text>
+<g transform="translate(0,28)">
+<rect id="p1-key-48" class="w" x="0" y="0"/>
+<rect id="p1-key-50" class="w" x="23" y="0"/>
+<rect id="p1-key-52" class="w" x="46" y="0"/>
+<rect id="p1-key-53" class="w" x="69" y="0"/>
+<rect id="p1-key-55" class="w" x="92" y="0"/>
+<rect id="p1-key-57" class="w" x="115" y="0"/>
+<rect id="p1-key-59" class="w" x="138" y="0"/>
+<rect id="p1-key-60" class="w" x="161" y="0"/>
+<rect id="p1-key-62" class="w d1" x="184" y="0"/>
+<text x="195" y="112" class="t tw">D4</text>
+<rect id="p1-key-64" class="w" x="207" y="0"/>
+<rect id="p1-key-65" class="w d1" x="230" y="0"/>
+<text x="241" y="112" class="t tw">F4</text>
+<rect id="p1-key-67" class="w" x="253" y="0"/>
+<rect id="p1-key-69" class="w d1" x="276" y="0"/>
+<text x="287" y="112" class="t tw">A4</text>
+<rect id="p1-key-71" class="w" x="299" y="0"/>
+<rect id="p1-key-72" class="w" x="322" y="0"/>
+<rect id="p1-key-74" class="w" x="345" y="0"/>
+<rect id="p1-key-76" class="w" x="368" y="0"/>
+<rect id="p1-key-77" class="w" x="391" y="0"/>
+<rect id="p1-key-79" class="w" x="414" y="0"/>
+<rect id="p1-key-81" class="w" x="437" y="0"/>
+<rect id="p1-key-49" class="b" x="16" y="0"/>
+<rect id="p1-key-51" class="b" x="39" y="0"/>
+<rect id="p1-key-54" class="b" x="85" y="0"/>
+<rect id="p1-key-56" class="b" x="108" y="0"/>
+<rect id="p1-key-58" class="b" x="131" y="0"/>
+<rect id="p1-key-61" class="b" x="177" y="0"/>
+<rect id="p1-key-63" class="b" x="200" y="0"/>
+<rect id="p1-key-66" class="b" x="246" y="0"/>
+<rect id="p1-key-68" class="b" x="269" y="0"/>
+<rect id="p1-key-70" class="b" x="292" y="0"/>
+<rect id="p1-key-73" class="b" x="338" y="0"/>
+<rect id="p1-key-75" class="b" x="361" y="0"/>
+<rect id="p1-key-78" class="b" x="407" y="0"/>
+<rect id="p1-key-80" class="b" x="430" y="0"/>
+</g>
+</g>
+<g transform="translate(10,318)">
+<rect width="460" height="148" fill="#F0EDE8" rx="3"/>
+<text x="230" y="17" class="title">III - Em</text>
+<g transform="translate(0,28)">
+<rect id="p2-key-48" class="w" x="0" y="0"/>
+<rect id="p2-key-50" class="w" x="23" y="0"/>
+<rect id="p2-key-52" class="w" x="46" y="0"/>
+<rect id="p2-key-53" class="w" x="69" y="0"/>
+<rect id="p2-key-55" class="w" x="92" y="0"/>
+<rect id="p2-key-57" class="w" x="115" y="0"/>
+<rect id="p2-key-59" class="w" x="138" y="0"/>
+<rect id="p2-key-60" class="w" x="161" y="0"/>
+<rect id="p2-key-62" class="w" x="184" y="0"/>
+<rect id="p2-key-64" class="w d2" x="207" y="0"/>
+<text x="218" y="112" class="t tw">E4</text>
+<rect id="p2-key-65" class="w" x="230" y="0"/>
+<rect id="p2-key-67" class="w d2" x="253" y="0"/>
+<text x="264" y="112" class="t tw">G4</text>
+<rect id="p2-key-69" class="w" x="276" y="0"/>
+<rect id="p2-key-71" class="w d2" x="299" y="0"/>
+<text x="310" y="112" class="t tw">B4</text>
+<rect id="p2-key-72" class="w" x="322" y="0"/>
+<rect id="p2-key-74" class="w" x="345" y="0"/>
+<rect id="p2-key-76" class="w" x="368" y="0"/>
+<rect id="p2-key-77" class="w" x="391" y="0"/>
+<rect id="p2-key-79" class="w" x="414" y="0"/>
+<rect id="p2-key-81" class="w" x="437" y="0"/>
+<rect id="p2-key-49" class="b" x="16" y="0"/>
+<rect id="p2-key-51" class="b" x="39" y="0"/>
+<rect id="p2-key-54" class="b" x="85" y="0"/>
+<rect id="p2-key-56" class="b" x="108" y="0"/>
+<rect id="p2-key-58" class="b" x="131" y="0"/>
+<rect id="p2-key-61" class="b" x="177" y="0"/>
+<rect id="p2-key-63" class="b" x="200" y="0"/>
+<rect id="p2-key-66" class="b" x="246" y="0"/>
+<rect id="p2-key-68" class="b" x="269" y="0"/>
+<rect id="p2-key-70" class="b" x="292" y="0"/>
+<rect id="p2-key-73" class="b" x="338" y="0"/>
+<rect id="p2-key-75" class="b" x="361" y="0"/>
+<rect id="p2-key-78" class="b" x="407" y="0"/>
+<rect id="p2-key-80" class="b" x="430" y="0"/>
+</g>
+</g>
+<g transform="translate(10,472)">
+<rect width="460" height="148" fill="#F0EDE8" rx="3"/>
+<text x="230" y="17" class="title">IV - FM</text>
+<g transform="translate(0,28)">
+<rect id="p3-key-48" class="w" x="0" y="0"/>
+<rect id="p3-key-50" class="w" x="23" y="0"/>
+<rect id="p3-key-52" class="w" x="46" y="0"/>
+<rect id="p3-key-53" class="w" x="69" y="0"/>
+<rect id="p3-key-55" class="w" x="92" y="0"/>
+<rect id="p3-key-57" class="w" x="115" y="0"/>
+<rect id="p3-key-59" class="w" x="138" y="0"/>
+<rect id="p3-key-60" class="w" x="161" y="0"/>
+<rect id="p3-key-62" class="w" x="184" y="0"/>
+<rect id="p3-key-64" class="w" x="207" y="0"/>
+<rect id="p3-key-65" class="w d3" x="230" y="0"/>
+<text x="241" y="112" class="t tw">F4</text>
+<rect id="p3-key-67" class="w" x="253" y="0"/>
+<rect id="p3-key-69" class="w d3" x="276" y="0"/>
+<text x="287" y="112" class="t tw">A4</text>
+<rect id="p3-key-71" class="w" x="299" y="0"/>
+<rect id="p3-key-72" class="w d3" x="322" y="0"/>
+<text x="333" y="112" class="t tw">C5</text>
+<rect id="p3-key-74" class="w" x="345" y="0"/>
+<rect id="p3-key-76" class="w" x="368" y="0"/>
+<rect id="p3-key-77" class="w" x="391" y="0"/>
+<rect id="p3-key-79" class="w" x="414" y="0"/>
+<rect id="p3-key-81" class="w" x="437" y="0"/>
+<rect id="p3-key-49" class="b" x="16" y="0"/>
+<rect id="p3-key-51" class="b" x="39" y="0"/>
+<rect id="p3-key-54" class="b" x="85" y="0"/>
+<rect id="p3-key-56" class="b" x="108" y="0"/>
+<rect id="p3-key-58" class="b" x="131" y="0"/>
+<rect id="p3-key-61" class="b" x="177" y="0"/>
+<rect id="p3-key-63" class="b" x="200" y="0"/>
+<rect id="p3-key-66" class="b" x="246" y="0"/>
+<rect id="p3-key-68" class="b" x="269" y="0"/>
+<rect id="p3-key-70" class="b" x="292" y="0"/>
+<rect id="p3-key-73" class="b" x="338" y="0"/>
+<rect id="p3-key-75" class="b" x="361" y="0"/>
+<rect id="p3-key-78" class="b" x="407" y="0"/>
+<rect id="p3-key-80" class="b" x="430" y="0"/>
+</g>
+</g>
+<g transform="translate(10,626)">
+<rect width="460" height="148" fill="#F0EDE8" rx="3"/>
+<text x="230" y="17" class="title">V - GM</text>
+<g transform="translate(0,28)">
+<rect id="p4-key-48" class="w" x="0" y="0"/>
+<rect id="p4-key-50" class="w" x="23" y="0"/>
+<rect id="p4-key-52" class="w" x="46" y="0"/>
+<rect id="p4-key-53" class="w" x="69" y="0"/>
+<rect id="p4-key-55" class="w" x="92" y="0"/>
+<rect id="p4-key-57" class="w" x="115" y="0"/>
+<rect id="p4-key-59" class="w" x="138" y="0"/>
+<rect id="p4-key-60" class="w" x="161" y="0"/>
+<rect id="p4-key-62" class="w" x="184" y="0"/>
+<rect id="p4-key-64" class="w" x="207" y="0"/>
+<rect id="p4-key-65" class="w" x="230" y="0"/>
+<rect id="p4-key-67" class="w d4" x="253" y="0"/>
+<text x="264" y="112" class="t tw">G4</text>
+<rect id="p4-key-69" class="w" x="276" y="0"/>
+<rect id="p4-key-71" class="w d4" x="299" y="0"/>
+<text x="310" y="112" class="t tw">B4</text>
+<rect id="p4-key-72" class="w" x="322" y="0"/>
+<rect id="p4-key-74" class="w d4" x="345" y="0"/>
+<text x="356" y="112" class="t tw">D5</text>
+<rect id="p4-key-76" class="w" x="368" y="0"/>
+<rect id="p4-key-77" class="w" x="391" y="0"/>
+<rect id="p4-key-79" class="w" x="414" y="0"/>
+<rect id="p4-key-81" class="w" x="437" y="0"/>
+<rect id="p4-key-49" class="b" x="16" y="0"/>
+<rect id="p4-key-51" class="b" x="39" y="0"/>
+<rect id="p4-key-54" class="b" x="85" y="0"/>
+<rect id="p4-key-56" class="b" x="108" y="0"/>
+<rect id="p4-key-58" class="b" x="131" y="0"/>
+<rect id="p4-key-61" class="b" x="177" y="0"/>
+<rect id="p4-key-63" class="b" x="200" y="0"/>
+<rect id="p4-key-66" class="b" x="246" y="0"/>
+<rect id="p4-key-68" class="b" x="269" y="0"/>
+<rect id="p4-key-70" class="b" x="292" y="0"/>
+<rect id="p4-key-73" class="b" x="338" y="0"/>
+<rect id="p4-key-75" class="b" x="361" y="0"/>
+<rect id="p4-key-78" class="b" x="407" y="0"/>
+<rect id="p4-key-80" class="b" x="430" y="0"/>
+</g>
+</g>
+<g transform="translate(10,780)">
+<rect width="460" height="148" fill="#F0EDE8" rx="3"/>
+<text x="230" y="17" class="title">VI - Am</text>
+<g transform="translate(0,28)">
+<rect id="p5-key-48" class="w" x="0" y="0"/>
+<rect id="p5-key-50" class="w" x="23" y="0"/>
+<rect id="p5-key-52" class="w" x="46" y="0"/>
+<rect id="p5-key-53" class="w" x="69" y="0"/>
+<rect id="p5-key-55" class="w" x="92" y="0"/>
+<rect id="p5-key-57" class="w" x="115" y="0"/>
+<rect id="p5-key-59" class="w" x="138" y="0"/>
+<rect id="p5-key-60" class="w" x="161" y="0"/>
+<rect id="p5-key-62" class="w" x="184" y="0"/>
+<rect id="p5-key-64" class="w" x="207" y="0"/>
+<rect id="p5-key-65" class="w" x="230" y="0"/>
+<rect id="p5-key-67" class="w" x="253" y="0"/>
+<rect id="p5-key-69" class="w d5" x="276" y="0"/>
+<text x="287" y="112" class="t tw">A4</text>
+<rect id="p5-key-71" class="w" x="299" y="0"/>
+<rect id="p5-key-72" class="w d5" x="322" y="0"/>
+<text x="333" y="112" class="t tw">C5</text>
+<rect id="p5-key-74" class="w" x="345" y="0"/>
+<rect id="p5-key-76" class="w d5" x="368" y="0"/>
+<text x="379" y="112" class="t tw">E5</text>
+<rect id="p5-key-77" class="w" x="391" y="0"/>
+<rect id="p5-key-79" class="w" x="414" y="0"/>
+<rect id="p5-key-81" class="w" x="437" y="0"/>
+<rect id="p5-key-49" class="b" x="16" y="0"/>
+<rect id="p5-key-51" class="b" x="39" y="0"/>
+<rect id="p5-key-54" class="b" x="85" y="0"/>
+<rect id="p5-key-56" class="b" x="108" y="0"/>
+<rect id="p5-key-58" class="b" x="131" y="0"/>
+<rect id="p5-key-61" class="b" x="177" y="0"/>
+<rect id="p5-key-63" class="b" x="200" y="0"/>
+<rect id="p5-key-66" class="b" x="246" y="0"/>
+<rect id="p5-key-68" class="b" x="269" y="0"/>
+<rect id="p5-key-70" class="b" x="292" y="0"/>
+<rect id="p5-key-73" class="b" x="338" y="0"/>
+<rect id="p5-key-75" class="b" x="361" y="0"/>
+<rect id="p5-key-78" class="b" x="407" y="0"/>
+<rect id="p5-key-80" class="b" x="430" y="0"/>
+</g>
+</g>
+<g transform="translate(10,934)">
+<rect width="460" height="148" fill="#F0EDE8" rx="3"/>
+<text x="230" y="17" class="title">VII - Bdim</text>
+<g transform="translate(0,28)">
+<rect id="p6-key-48" class="w" x="0" y="0"/>
+<rect id="p6-key-50" class="w" x="23" y="0"/>
+<rect id="p6-key-52" class="w" x="46" y="0"/>
+<rect id="p6-key-53" class="w" x="69" y="0"/>
+<rect id="p6-key-55" class="w" x="92" y="0"/>
+<rect id="p6-key-57" class="w" x="115" y="0"/>
+<rect id="p6-key-59" class="w" x="138" y="0"/>
+<rect id="p6-key-60" class="w" x="161" y="0"/>
+<rect id="p6-key-62" class="w" x="184" y="0"/>
+<rect id="p6-key-64" class="w" x="207" y="0"/>
+<rect id="p6-key-65" class="w" x="230" y="0"/>
+<rect id="p6-key-67" class="w" x="253" y="0"/>
+<rect id="p6-key-69" class="w" x="276" y="0"/>
+<rect id="p6-key-71" class="w d6" x="299" y="0"/>
+<text x="310" y="112" class="t tw">B4</text>
+<rect id="p6-key-72" class="w" x="322" y="0"/>
+<rect id="p6-key-74" class="w d6" x="345" y="0"/>
+<text x="356" y="112" class="t tw">D5</text>
+<rect id="p6-key-76" class="w" x="368" y="0"/>
+<rect id="p6-key-77" class="w d6" x="391" y="0"/>
+<text x="402" y="112" class="t tw">F5</text>
+<rect id="p6-key-79" class="w" x="414" y="0"/>
+<rect id="p6-key-81" class="w" x="437" y="0"/>
+<rect id="p6-key-49" class="b" x="16" y="0"/>
+<rect id="p6-key-51" class="b" x="39" y="0"/>
+<rect id="p6-key-54" class="b" x="85" y="0"/>
+<rect id="p6-key-56" class="b" x="108" y="0"/>
+<rect id="p6-key-58" class="b" x="131" y="0"/>
+<rect id="p6-key-61" class="b" x="177" y="0"/>
+<rect id="p6-key-63" class="b" x="200" y="0"/>
+<rect id="p6-key-66" class="b" x="246" y="0"/>
+<rect id="p6-key-68" class="b" x="269" y="0"/>
+<rect id="p6-key-70" class="b" x="292" y="0"/>
+<rect id="p6-key-73" class="b" x="338" y="0"/>
+<rect id="p6-key-75" class="b" x="361" y="0"/>
+<rect id="p6-key-78" class="b" x="407" y="0"/>
+<rect id="p6-key-80" class="b" x="430" y="0"/>
+</g>
+</g>
+</svg>
