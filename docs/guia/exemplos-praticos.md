@@ -38,6 +38,22 @@ for s in f.strings:
 print(f.midi_notes)   # [45, 52, 57, 60, 64]
 ```
 
+**Saida:**
+
+```
+Am fingering
+chord_name: Am
+base_fret: 1
+barre: 0
+  Corda 1: solta (E)
+  Corda 2: casa 1 (C)
+  Corda 3: casa 2 (A)
+  Corda 4: casa 2 (E)
+  Corda 5: solta (A)
+  Corda 6: muda
+midi_notes: [45, 52, 57, 60, 64]
+```
+
 ### Todas as digitacoes possiveis
 
 ```python
@@ -64,6 +80,17 @@ for nome in acordes_barre:
     f = fb.fingering(Chord(nome))
     barre = "pestana" if f.barre else "sem pestana"
     print(f"{nome:5s}: {f}  ({barre}, casa {f.base_fret})")
+```
+
+**Saida:**
+
+```
+FM   : FM fingering   (pestana, casa 1)
+BbM  : BbM fingering  (pestana, casa 1)
+Bm   : Bm fingering   (pestana, casa 2)
+F#m  : F#m fingering  (pestana, casa 2)
+C#M  : C#M fingering  (pestana, casa 4)
+AbM  : AbM fingering  (pestana, casa 4)
 ```
 
 ### Capo — transpor com capotraste
@@ -103,6 +130,17 @@ for corda in range(1, 7):
     print(f"  Corda {corda}: {casas}")
 ```
 
+**Saida:**
+
+```
+  Corda 1: 0(E), 3(G), 5(A), 8(C), 10(D), 12(E)
+  Corda 2: 1(C), 3(D), 5(E), 8(G), 10(A)
+  Corda 3: 0(G), 2(A), 5(C), 7(D), 9(E), 12(G)
+  Corda 4: 0(D), 2(E), 5(G), 7(A), 10(C), 12(D)
+  Corda 5: 0(A), 3(C), 5(D), 7(E), 10(G), 12(A)
+  Corda 6: 0(E), 3(G), 5(A), 8(C), 10(D), 12(E)
+```
+
 ### Encontrar uma nota no braco inteiro
 
 ```python
@@ -124,8 +162,19 @@ fb = Fretboard.violao()
 
 # Primeiras 5 casas de cada corda
 for corda in range(1, 7):
-    notas = [f"{fb.note_at(corda, casa):2s}" for casa in range(6)]
+    notas = [f"{str(fb.note_at(corda, casa)):2s}" for casa in range(6)]
     print(f"  Corda {corda}: {' | '.join(notas)}")
+```
+
+**Saida:**
+
+```
+  Corda 1: E  | F  | F# | G  | G# | A
+  Corda 2: B  | C  | C# | D  | D# | E
+  Corda 3: G  | G# | A  | A# | B  | C
+  Corda 4: D  | D# | E  | F  | F# | G
+  Corda 5: A  | A# | B  | C  | C# | D
+  Corda 6: E  | F  | F# | G  | G# | A
 ```
 
 ### Identificar acorde por posicoes
@@ -216,6 +265,19 @@ fm_svg = FretboardSVG.chord(fb, Chord("FM"))
 FretboardSVG.write(fm_svg, "fm_barre.svg")
 ```
 
+**Resultado:**
+
+<div style="display: flex; gap: 16px; align-items: flex-start;">
+<figure>
+<img src="../assets/ex_fb_chord_am.svg" alt="Am chord box">
+<figcaption>Am (sem pestana)</figcaption>
+</figure>
+<figure>
+<img src="../assets/ex_fb_chord_fm.svg" alt="FM chord box">
+<figcaption>FM (pestana)</figcaption>
+</figure>
+</div>
+
 ### Chord box a partir de um Fingering
 
 ```python
@@ -242,12 +304,11 @@ fb = Fretboard.violao()
 blues = Scale("A", "blues")
 svg = FretboardSVG.scale(fb, blues)
 FretboardSVG.write(svg, "a_blues.svg")
-
-# Pentatonica
-penta = Scale("E", "minor pentatonic")
-svg = FretboardSVG.scale(fb, penta)
-FretboardSVG.write(svg, "em_penta.svg")
 ```
+
+**Resultado:**
+
+![A Blues no braco](../assets/ex_fb_scale_ablues.svg)
 
 ### Nota unica no braco
 
@@ -257,9 +318,13 @@ from gingo import Fretboard, FretboardSVG, Note
 fb = Fretboard.violao()
 
 # Todas as posicoes de E no braco
-svg = FretboardSVG.note(fb, Note("E"))
-FretboardSVG.write(svg, "all_E.svg")
+svg = FretboardSVG.note(fb, Note("A"))
+FretboardSVG.write(svg, "all_A.svg")
 ```
+
+**Resultado:**
+
+![Todas as posicoes de A](../assets/ex_fb_note_a.svg)
 
 ### Posicoes arbitrarias
 
@@ -292,15 +357,11 @@ fb = Fretboard.violao()
 campo = Field("G", "major")
 svg = FretboardSVG.field(fb, campo, layout=Layout.Grid)
 FretboardSVG.write(svg, "g_major_grid.svg")
-
-# Horizontal: 7 chord boxes em linha
-svg = FretboardSVG.field(fb, campo, layout=Layout.Horizontal)
-FretboardSVG.write(svg, "g_major_line.svg")
-
-# Vertical: 7 chord boxes empilhados
-svg = FretboardSVG.field(fb, campo, layout=Layout.Vertical)
-FretboardSVG.write(svg, "g_major_stack.svg")
 ```
+
+**Resultado (Grid):**
+
+![Campo G major em grid](../assets/ex_fb_field_gmaj.svg)
 
 ### Progressao especifica
 
@@ -313,11 +374,11 @@ campo = Field("C", "major")
 # Progressao I-V-vi-IV (pop)
 svg = FretboardSVG.progression(fb, campo, ["I", "V", "vi", "IV"])
 FretboardSVG.write(svg, "pop_progression.svg")
-
-# Progressao ii-V-I (jazz)
-svg = FretboardSVG.progression(fb, campo, ["ii", "V", "I"])
-FretboardSVG.write(svg, "jazz_251.svg")
 ```
+
+**Resultado (I-V-vi-IV):**
+
+![Progressao pop](../assets/ex_fb_prog_pop.svg)
 
 ### Diagramas para canhoto
 
@@ -329,6 +390,18 @@ fb = Fretboard.violao()
 # Chord box canhoto
 svg = FretboardSVG.chord(fb, Chord("Em"), handedness=Handedness.LeftHanded)
 FretboardSVG.write(svg, "em_left.svg")
+```
+
+**Resultado:**
+
+![Em canhoto](../assets/ex_fb_chord_em_left.svg)
+
+### Fretboard horizontal para canhoto
+
+```python
+from gingo import Fretboard, FretboardSVG, Scale, Orientation, Handedness
+
+fb = Fretboard.violao()
 
 # Braco horizontal canhoto
 svg = FretboardSVG.scale(
@@ -381,10 +454,19 @@ p61 = Piano(61)   # 5 oitavas: C2-C7 (teclado comum)
 p88 = Piano(88)   # Piano de concerto: A0-C8
 
 for p in [p25, p44, p61, p88]:
-    lo = p.lowest
-    hi = p.highest
+    lo = p.lowest()
+    hi = p.highest()
     print(f"Piano({p.num_keys}): {lo.note}{lo.octave} (MIDI {lo.midi})"
           f" ate {hi.note}{hi.octave} (MIDI {hi.midi})")
+```
+
+**Saida:**
+
+```
+Piano(25): C3 (MIDI 48) ate C5 (MIDI 72)
+Piano(44): D2 (MIDI 38) ate A5 (MIDI 81)
+Piano(61): F#1 (MIDI 30) ate F#6 (MIDI 90)
+Piano(88): A0 (MIDI 21) ate C8 (MIDI 108)
 ```
 
 ### Voicings — tres estilos
@@ -409,6 +491,15 @@ for v in p.voicings(Chord("CM")):
 # Shell: C4 E4 G4       (raiz + terca + setima, sem quinta em tetrades)
 ```
 
+**Saida:**
+
+```
+CM voicing: C4, E4, G4
+  Close : C4, E4, G4
+  Open  : C3, E4, G4
+  Shell : C4, E4, G4
+```
+
 ### Voicings de jazz
 
 ```python
@@ -424,6 +515,16 @@ for nome in jazz_chords:
     v = p.voicing(Chord(nome))
     teclas = ", ".join(f"{k.note}{k.octave}" for k in v.keys)
     print(f"  {nome:10s}: {teclas}")
+```
+
+**Saida:**
+
+```
+  Dm7       : D4, F4, A4, C5
+  G7        : G4, B4
+  C7M       : C4, E4, G4, B4
+  F7M       : F4, A4, C5
+  Am7       : A4, C5
 ```
 
 ### Todos os voicings e inversoes
@@ -459,6 +560,18 @@ for k in p.scale_keys(escala):
     print(f"  {k.note}{k.octave}: tecla {cor}, posicao {k.position} (MIDI {k.midi})")
 ```
 
+**Saida:**
+
+```
+  C4: tecla branca (MIDI 60)
+  D4: tecla branca (MIDI 62)
+  E4: tecla branca (MIDI 64)
+  F4: tecla branca (MIDI 65)
+  G4: tecla branca (MIDI 67)
+  A4: tecla branca (MIDI 69)
+  B4: tecla branca (MIDI 71)
+```
+
 ### Consultar tecla individual
 
 ```python
@@ -491,6 +604,13 @@ acorde = p.identify([57, 60, 64, 67])  # A3, C4, E4, G4
 print(f"MIDI [57, 60, 64, 67] = {acorde}")  # Am7
 ```
 
+**Saida:**
+
+```
+MIDI [60, 64, 67] = CM
+MIDI [57, 60, 64, 67] = Am7
+```
+
 ### Verificar range
 
 ```python
@@ -521,12 +641,22 @@ p = Piano(25)
 # Teclas de Am7 destacadas em azul
 svg = PianoSVG.chord(p, Chord("Am7"))
 PianoSVG.write(svg, "piano_am7.svg")
+```
 
+**Resultado:**
+
+![Am7 no piano](../assets/ex_piano_am7.svg)
+
+```python
 # Piano completo com acorde
 p88 = Piano(88)
 svg = PianoSVG.chord(p88, Chord("CM"))
 PianoSVG.write(svg, "piano_full_cm.svg")
 ```
+
+**Resultado (88 teclas):**
+
+![CM no piano completo](../assets/ex_piano_full_cm.svg)
 
 ### Voicing especifico no teclado
 
@@ -540,6 +670,10 @@ v = p.voicing(Chord("Dm7"))
 svg = PianoSVG.voicing(p, v)
 PianoSVG.write(svg, "piano_dm7.svg")
 ```
+
+**Resultado:**
+
+![Dm7 voicing](../assets/ex_piano_voicing_dm7.svg)
 
 ### Escala no teclado
 
@@ -556,6 +690,10 @@ for nome in ["C major", "A natural minor", "C blues", "C harmonic minor"]:
     PianoSVG.write(svg, f"piano_{filename}.svg")
 ```
 
+**Resultado (C major):**
+
+![C major no piano](../assets/ex_piano_scale_cmaj.svg)
+
 ### Campo harmonico em pianos empilhados
 
 ```python
@@ -569,6 +707,10 @@ svg = PianoSVG.field(p, campo)
 PianoSVG.write(svg, "piano_field_cmaj.svg")
 ```
 
+**Resultado:**
+
+![Campo C major no piano](../assets/ex_piano_field_cmaj.svg)
+
 ### Progressao
 
 ```python
@@ -581,6 +723,10 @@ campo = Field("C", "major")
 svg = PianoSVG.progression(p, campo, ["ii", "V", "I"])
 PianoSVG.write(svg, "piano_251.svg")
 ```
+
+**Resultado:**
+
+![Progressao ii-V-I](../assets/ex_piano_prog_251.svg)
 
 ### Nota individual e teclas MIDI
 
@@ -597,6 +743,14 @@ PianoSVG.write(svg, "piano_e.svg")
 svg = PianoSVG.midi(p, [60, 64, 67])
 PianoSVG.write(svg, "piano_ceg_midi.svg")
 ```
+
+**Resultado (nota E):**
+
+![Nota E no piano](../assets/ex_piano_note_e.svg)
+
+**Resultado (MIDI 60, 64, 67):**
+
+![CEG via MIDI](../assets/ex_piano_midi_ceg.svg)
 
 ### Integracao com JavaScript
 
@@ -633,7 +787,8 @@ o formato.
 from gingo import MusicXML, Note, Chord, Scale
 
 # Nota individual
-MusicXML.write(MusicXML.note(Note("C")), "nota_do.musicxml")
+xml = MusicXML.note(Note("C"))
+MusicXML.write(xml, "nota_do.musicxml")
 
 # Acorde
 MusicXML.write(MusicXML.chord(Chord("Am7")), "am7.musicxml")
@@ -641,6 +796,27 @@ MusicXML.write(MusicXML.chord(Chord("Am7")), "am7.musicxml")
 # Escala completa (ascendente)
 MusicXML.write(MusicXML.scale(Scale("C", "major")), "c_major.musicxml")
 ```
+
+**Saida (trecho do XML gerado):**
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN"
+  "http://www.musicxml.org/dtds/partwise.dtd">
+<score-partwise version="4.0">
+  <work>
+    <work-title>C4</work-title>
+  </work>
+  <identification>
+    <encoding>
+      <software>Gingo</software>
+    </encoding>
+  </identification>
+  ...
+</score-partwise>
+```
+
+Os arquivos `.musicxml` abrem diretamente no **MuseScore**, **Finale**, **Sibelius** e **Dorico**.
 
 ### Campo harmonico
 
@@ -713,23 +889,49 @@ from gingo import Progression
 for t in Progression.traditions():
     print(f"{t.name}")
     print(f"  {t.description}")
-# harmonic_tree: arvore harmonica de Jose de Alencar Soares
-# jazz: progressoes classicas da tradicao jazzistica
+```
+
+**Saida:**
+
+```
+harmonic_tree
+  Harmonic Tree — José de Alencar Soares' model for Brazilian Popular Music harmonic progressions.
+jazz
+  Jazz — Common chord progressions from the jazz tradition, including ii-V-I patterns, turnarounds, and backdoor progressions.
 ```
 
 ### Identificar uma progressao
+
+As branches precisam corresponder aos nos do grafo da tradicao. Use `tree.branches()`
+para ver todas as branches validas.
 
 ```python
 from gingo import Progression
 
 prog = Progression("C", "major")
 
-# Quais schemas combinam com esta sequencia de branches?
-match = prog.identify(["I", "IV", "V", "I"])
+# Turnaround jazz: I-VIm-IIm-V7
+match = prog.identify(["I", "VIm", "IIm", "V7"])
 print(f"Tradicao: {match.tradition}")
 print(f"Schema: {match.schema}")
 print(f"Score: {match.score:.2f}")
 print(f"Matched: {match.matched}/{match.total}")
+
+# Cadencia direta: I-V7-I
+match = prog.identify(["I", "V7", "I"])
+print(f"\nDireta: {match.tradition}/{match.schema} "
+      f"score={match.score:.2f}")
+```
+
+**Saida:**
+
+```
+Tradicao: jazz
+Schema: turnaround
+Score: 1.00
+Matched: 3/3
+
+Direta: harmonic_tree/direct score=1.00
 ```
 
 ### Deduzir progressao (multiplos resultados ranqueados)
@@ -740,10 +942,17 @@ from gingo import Progression
 prog = Progression("C", "major")
 
 # Dadas estas branches, quais schemas se encaixam?
-matches = prog.deduce(["I", "IV", "V"], limit=5)
+matches = prog.deduce(["I", "VIm", "IIm", "V7"], limit=5)
 for m in matches:
     print(f"  {m.tradition}/{m.schema}: "
           f"score={m.score:.2f}, matched={m.matched}/{m.total}")
+```
+
+**Saida:**
+
+```
+  jazz/turnaround: score=1.00, matched=3/3
+  harmonic_tree/: score=0.67, matched=2/3
 ```
 
 ### Prever proximo acorde
@@ -753,12 +962,19 @@ from gingo import Progression
 
 prog = Progression("C", "major")
 
-# Dado I-IV, o que vem depois?
-sugestoes = prog.predict(["I", "IV"])
+# Dado IIm-V7, o que vem depois?
+sugestoes = prog.predict(["IIm", "V7"])
 for s in sugestoes:
     print(f"  Proximo: {s.next:8s} "
           f"(confianca: {s.confidence:.0%}, "
           f"via {s.tradition}/{s.schema})")
+```
+
+**Saida:**
+
+```
+  Proximo: I        (confianca: 100%, via jazz/ii-V-I)
+  Proximo: I        (confianca: 48%, via harmonic_tree/descending)
 ```
 
 ### Serializacao para JSON
@@ -768,17 +984,17 @@ import json
 from gingo import Progression
 
 prog = Progression("C", "major")
-match = prog.identify(["I", "VIm", "IIm", "V"])
+match = prog.identify(["I", "VIm", "IIm", "V7"])
 print(json.dumps(match.to_dict(), indent=2))
 ```
 
 ### CLI
 
 ```bash
-gingo progression "C major" --identify "I,IV,V,I"
-gingo progression "C major" --deduce "I,IV,V"
-gingo progression "C major" --predict "I,IV"
-gingo progression "A natural minor" --identify "I,IV,V"
+gingo progression "C major" --identify "I,VIm,IIm,V7"
+gingo progression "C major" --deduce "I,V7,I"
+gingo progression "C major" --predict "IIm,V7"
+gingo progression "A natural minor" --identify "I,V7,I"
 ```
 
 ---
@@ -802,11 +1018,32 @@ t = tree.tradition()
 print(f"Tradicao: {t.name}")
 print(f"Descricao: {t.description}")
 
-# Todas as branches (nos do grafo)
-print(f"\nBranches ({len(tree.branches())}):")
-for b in tree.branches():
+# Branches (nos do grafo) — primeiras 10
+branches = tree.branches()
+print(f"\nBranches ({len(branches)}):")
+for b in branches[:10]:
     func = tree.function(b)
     print(f"  {b:20s} -> {func.name}")
+```
+
+**Saida:**
+
+```
+Tradicao: harmonic_tree
+Descricao: Harmonic Tree — José de Alencar Soares' model for Brazilian
+           Popular Music harmonic progressions.
+
+Branches (27):
+  I                    -> Tonic
+  IIm / IV             -> Subdominant
+  IIm7(b5) / IIm       -> Subdominant
+  IIm7(11) / IV        -> Subdominant
+  SUBV7 / IV           -> Dominant
+  V7 / IV              -> Dominant
+  VIm                  -> Tonic
+  V7 / IIm             -> Dominant
+  Idim                 -> Tonic
+  #Idim                -> Tonic
 ```
 
 ### Branches por funcao harmonica
@@ -833,6 +1070,43 @@ for b in tree.branches_with_function(HarmonicFunction.Dominant):
     print(f"  {b}")
 ```
 
+**Saida:**
+
+```
+Tonica:
+  I
+  VIm
+  Idim
+  #Idim
+  bIIIdim
+  bVI
+
+Subdominante:
+  IIm / IV
+  IIm7(b5) / IIm
+  IIm7(11) / IV
+  IV#dim
+  IV
+  IIm
+  IVm
+  IIm7(b5)
+  II#dim
+
+Dominante:
+  SUBV7 / IV
+  V7 / IV
+  V7 / IIm
+  V7 / V
+  bVII
+  SUBV7
+  V7
+  V7 / VI
+  V7 / Im
+  V7 / III
+  V7 / bIII
+  V7 / bVI
+```
+
 ### Schemas (padroes nomeados)
 
 ```python
@@ -841,11 +1115,35 @@ from gingo import Progression
 prog = Progression("C", "major")
 tree = prog.tree("harmonic_tree")
 
-for s in tree.schemas():
+for s in tree.schemas()[:5]:
     print(f"{s.name}")
     print(f"  {s.description}")
     print(f"  Branches: {s.branches}")
     print()
+```
+
+**Saida:**
+
+```
+descending
+  Main descending path (por baixo)
+  Branches: ['I', 'V7 / IIm', 'IIm', 'V7', 'I']
+
+ascending
+  Ascending path through IV (por cima)
+  Branches: ['I', 'V7 / IV', 'IV', 'V7', 'I']
+
+direct
+  Direct resolution I-V7-I
+  Branches: ['I', 'V7', 'I']
+
+extended_descending
+  Extended descending with applied IIm7(b5)
+  Branches: ['I', 'IIm7(b5) / IIm', 'V7 / IIm', 'IIm', 'V7', 'I']
+
+subdominant_prep
+  Subdominant preparation via IIm/IV
+  Branches: ['I', 'IIm / IV', 'V7 / IV', 'IV', 'V7', 'I']
 ```
 
 ### Caminhos e validacao
@@ -856,17 +1154,31 @@ from gingo import Progression
 prog = Progression("C", "major")
 tree = prog.tree("harmonic_tree")
 
-# Esta sequencia e valida?
-print(tree.is_valid(["I", "IV", "V", "I"]))
+# Esta sequencia e valida na arvore?
+print(tree.is_valid(["I", "V7", "I"]))          # True (cadencia direta)
+print(tree.is_valid(["I", "#Idim", "IIm"]))     # True (passagem cromatica)
 
-# Caminho mais curto de I ate IV
-caminho = tree.shortest_path("I", "IV")
-print(f"I -> IV: {' -> '.join(caminho)}")
+# Caminho mais curto de I ate IIm
+caminho = tree.shortest_path("I", "IIm")
+print(f"I -> IIm: {' -> '.join(caminho)}")
 
 # Explorar paths a partir de I
 for path in tree.paths("I")[:5]:
     print(f"  {path.branch} -> {path.chord} "
           f"({', '.join(path.note_names)})")
+```
+
+**Saida:**
+
+```
+True
+True
+I -> IIm: I -> #Idim -> IIm
+  I -> CM (['C', 'E', 'G'])
+  IIm / IV -> Gm (['G', 'Bb', 'D'])
+  IIm7(b5) / IIm -> Em7(b5) (['E', 'G', 'Bb', 'D'])
+  IIm7(11) / IV -> Gm7(11) (['G', 'Bb', 'D', 'F', 'C'])
+  VIm -> Am (['A', 'C', 'E'])
 ```
 
 ### Visualizar como diagrama
@@ -960,6 +1272,27 @@ print(f"Dissonancia CM: {r.dissonance_a:.4f}")
 print(f"Dissonancia Am: {r.dissonance_b:.4f}")
 ```
 
+**Saida:**
+
+```
+Notas em comum: [C, E]
+Exclusivas A: [G]
+Exclusivas B: [A]
+Distancia de raiz: 3
+Direcao: -3
+Mesma qualidade: False
+Mesmo tamanho: True
+Enarmonico: False
+Transformacao: R
+Voice leading: 2 st
+IV(CM): [0, 0, 1, 1, 1, 0]
+IV(Am): [0, 0, 1, 1, 1, 0]
+Mesmo IV: True
+T_n: -1
+Dissonancia CM: 0.1826
+Dissonancia Am: 0.1027
+```
+
 ### Transformacoes neo-Riemannianas
 
 ```python
@@ -981,6 +1314,17 @@ print()
 print(f"CM -> AM: {Chord('CM').compare(Chord('AM')).transformation}")   # RP
 print(f"CM -> EM: {Chord('CM').compare(Chord('EM')).transformation}")   # LP
 print(f"CM -> G#M: {Chord('CM').compare(Chord('G#M')).transformation}") # PL
+```
+
+**Saida:**
+
+```
+CM -> Cm: P (esperado: P)
+CM -> Em: L (esperado: L)
+CM -> Am: R (esperado: R)
+
+CM -> AM: RP
+CM -> EM: LP
 ```
 
 ### Comparacao contextual (21 dimensoes)
@@ -1020,6 +1364,29 @@ print(f"\nCM -> EM:")
 print(f"  Mediante cromatica: {r.chromatic_mediant}")       # upper
 ```
 
+**Saida:**
+
+```
+Graus: 1 -> 5
+Funcoes: Tonic -> Dominant
+Mesma funcao: False
+Root motion: ascending_fifth
+Diatonico A: True
+Diatonico B: True
+
+D7 -> GM:
+  Dominante secundaria: a_is_V7_of_b
+
+Bdim -> CM:
+  Diminuta aplicada: a_is_viidim_of_b
+
+G7 -> C#7:
+  Tritone sub: True
+
+CM -> EM:
+  Mediante cromatica: upper
+```
+
 ### Emprestimo modal e acorde pivot
 
 ```python
@@ -1040,6 +1407,21 @@ r = f.compare(Chord("CM"), Chord("Am"))
 print(f"\nAm como pivot:")
 for p in r.pivot[:3]:
     print(f"  {p.tonic} {p.scale_type}: grau {p.degree_a} -> {p.degree_b}")
+```
+
+**Saida:**
+
+```
+Fm e diatonico? False
+Emprestado de: NaturalMinor
+Grau na origem: 4
+Funcao na origem: Subdominant
+Notas estrangeiras: [Ab]
+
+Am como pivot:
+  C Major: grau 1 -> 6
+  C MelodicMinor: grau 1 -> 6
+  C# HarmonicMinor: grau 7 -> 6
 ```
 
 ### Serializacao
@@ -1095,6 +1477,14 @@ minima_dpp = Duration("half", 2)   # 2 pontos
 print(f"Minima duplo ponto: {minima_dpp.beats()} beats")     # 3.5
 ```
 
+**Saida:**
+
+```
+Seminima: 1.0 beats, quarter
+Seminima pontuada: 1.5 beats
+Minima duplo ponto: 3.5 beats
+```
+
 ### Tempo (BPM e marcacoes italianas)
 
 ```python
@@ -1107,7 +1497,17 @@ print(f"ms por beat: {t.ms_per_beat()}")  # ~461
 
 # Converter marcacao para BPM
 print(f"Adagio: {Tempo.marking_to_bpm('Adagio')} BPM")    # 65
-print(f"Allegro: {Tempo.marking_to_bpm('Allegro')} BPM")   # 130
+print(f"Allegro: {Tempo.marking_to_bpm('Allegro')} BPM")   # 138
+```
+
+**Saida:**
+
+```
+BPM: 130.0
+Marcacao: Allegro
+ms por beat: 462
+Adagio: 65.0 BPM
+Allegro: 138.0 BPM
 ```
 
 ### Formula de compasso
@@ -1126,6 +1526,20 @@ print(f"Duracao do compasso: {ts.bar_duration()}")  # Duration("whole")
 for b, u in [(3, 4), (6, 8), (5, 4), (7, 8)]:
     ts = TimeSignature(b, u)
     print(f"  {ts.common_name():12s}: {ts.classification()}")
+```
+
+**Saida:**
+
+```
+Compasso: (4, 4)
+Nome: common time
+Classificacao: simple
+Beats por compasso: 4
+Duracao do compasso: whole
+  3/4         : simple
+  6/8         : compound
+  5/4         : simple
+  7/8         : simple
 ```
 
 ### Sequencia musical completa
@@ -1158,6 +1572,14 @@ seq.to_wav("sequencia.wav")
 # Transpor +5 semitons (C major -> F major)
 seq.transpose(5)
 seq.play()
+```
+
+**Saida:**
+
+```
+Compassos: 2
+Duracao total: 8.0 beats
+Em segundos: 4.0s
 ```
 
 ### CLI
@@ -1297,6 +1719,33 @@ FretboardSVG.write(svg, "letitbe_solo.svg")
 MusicXML.write(MusicXML.field(campo), "letitbe_campo.musicxml")
 ```
 
+**Saida:**
+
+```
+Acordes: CM - GM - Am - FM
+Tonalidade: C major
+
+Analise funcional:
+  CM  : Tonic         (T) — primary
+  GM  : Dominant      (D) — primary
+  Am  : Tonic         (T) — relative of I
+  FM  : Subdominant   (S) — primary
+
+Digitacoes:
+  CM: X 0 2 2 1 0
+  GM: 3 2 0 0 0 3
+  Am: X 0 2 2 1 0
+  FM: 1 1 2 3 3 1
+
+Voicings (piano):
+  CM: C4, E4, G4
+  GM: G4, B4
+  Am: A4, C5
+  FM: F4, A4, C5
+
+Escala para solo: [C, D, E, G, A]
+```
+
 ---
 
 ## Caso de uso: Estudo comparativo de tonalidades
@@ -1325,13 +1774,66 @@ acordes_a = {a_min.chord(i).name() for i in range(1, 8)}
 comuns = acordes_c & acordes_a
 for nome in sorted(comuns):
     print(f"  {nome}")
+```
 
-# Comparacao contextual: V de C major vs V de A minor
-r = c_maj.compare(c_maj.chord(5), a_min.chord(5))
-print(f"\nV(C maj) = {c_maj.chord(5).name()}")
-print(f"V(A min) = {a_min.chord(5).name()}")
+**Saida:**
+
+```
+C Major vs A Minor
+
+Grau  C Major    A Minor
+------------------------------
+    1  CM         Am
+    2  Dm         Bdim
+    3  Em         CM
+    4  FM         Dm
+    5  GM         Em
+    6  Am         FM
+    7  Bdim       GM
+
+Acordes em comum:
+  Am
+  Bdim
+  CM
+  Dm
+  Em
+  FM
+  GM
+```
+
+C major e A natural minor sao relativos — compartilham
+**todos os 7 acordes**, apenas em graus diferentes!
+
+```python
+from gingo import Chord
+
+# Comparar V de cada campo usando Chord.compare (absoluta)
+v_cmaj = c_maj.chord(5)   # GM
+v_amin = a_min.chord(5)   # Em
+r = v_cmaj.compare(v_amin)
+
+print(f"V(C maj) = {v_cmaj.name()}")
+print(f"V(A min) = {v_amin.name()}")
 print(f"Transformacao: {r.transformation}")
 print(f"Voice leading: {r.voice_leading} st")
+
+# Comparacao contextual: mesmos acordes no campo de C major
+rc = c_maj.compare(v_cmaj, v_amin)
+print(f"Root motion: {rc.root_motion}")
+print(f"Funcoes: {rc.function_a.name} -> {rc.function_b.name}")
+print(f"Mediante cromatica: {rc.chromatic_mediant}")
+```
+
+**Saida:**
+
+```
+V(C maj) = GM
+V(A min) = Em
+Transformacao: R
+Voice leading: 2 st
+Root motion: descending_third
+Funcoes: Dominant -> Tonic
+Mediante cromatica: lower
 ```
 
 ---
@@ -1461,6 +1963,48 @@ for nome in tipos:
     )
 ```
 
+**Saida (primeiros 7 tipos):**
+
+```
+CM
+  Notas: C, E, G
+  Intervalos: P1, 3M, 5J
+  Piano: C4, E4, G4
+
+Cm
+  Notas: C, Eb, G
+  Intervalos: P1, 3m, 5J
+  Piano: C4, D#4, G4
+
+C7
+  Notas: C, E, G, Bb
+  Intervalos: P1, 3M, 5J, 7m
+  Piano: C4, E4, G4, A#4
+
+C7M
+  Notas: C, E, G, B
+  Intervalos: P1, 3M, 5J, 7M
+  Piano: C4, E4, G4, B4
+
+Cm7
+  Notas: C, Eb, G, Bb
+  Intervalos: P1, 3m, 5J, 7m
+  Piano: C4, D#4, G4, A#4
+
+Cdim
+  Notas: C, Eb, Gb
+  Intervalos: P1, 3m, d5
+  Piano: C4, D#4, F#4
+
+Caug
+  Notas: C, E, Ab
+  Intervalos: P1, 3M, #5
+  Piano: C4, E4, G#4
+```
+
+O script gera 17 chord boxes SVG para violao e 17 teclados SVG para piano,
+cobrindo todos os tipos de acorde suportados pelo Gingo.
+
 ---
 
 ## Caso de uso: Cross-tradition analysis
@@ -1470,8 +2014,8 @@ from gingo import Progression
 
 prog = Progression("C", "major")
 
-# Progressao famosa: I-vi-ii-V (turnaround de jazz)
-sequencia = ["I", "VIm", "IIm", "V"]
+# Turnaround de jazz: I-VIm-IIm-V7
+sequencia = ["I", "VIm", "IIm", "V7"]
 
 # Identificar em qual tradicao se encaixa
 match = prog.identify(sequencia)
@@ -1488,15 +2032,44 @@ print("\nSugestoes de continuacao:")
 for s in prog.predict(sequencia):
     print(f"  -> {s.next} ({s.confidence:.0%}, {s.tradition}/{s.schema})")
 
-# Comparar com jazz
+# Comparar schemas das duas tradicoes
 jazz_tree = prog.tree("jazz")
 ht_tree = prog.tree("harmonic_tree")
 
-print(f"\nSchemas jazz: {len(jazz_tree.schemas())}")
+print(f"\nSchemas jazz ({len(jazz_tree.schemas())}):")
 for s in jazz_tree.schemas():
     print(f"  {s.name}: {s.branches}")
 
-print(f"\nSchemas harmonic_tree: {len(ht_tree.schemas())}")
-for s in ht_tree.schemas():
+print(f"\nSchemas harmonic_tree ({len(ht_tree.schemas())}):")
+for s in ht_tree.schemas()[:5]:
     print(f"  {s.name}: {s.branches}")
+```
+
+**Saida:**
+
+```
+Melhor match: jazz/turnaround
+Score: 1.00
+
+Alternativas:
+  jazz/turnaround: 1.00
+  harmonic_tree/: 0.67
+
+Sugestoes de continuacao:
+  -> I (30%, harmonic_tree/)
+  -> I (30%, jazz/)
+
+Schemas jazz (5):
+  ii-V-I: ['IIm', 'V7', 'I']
+  turnaround: ['I', 'VIm', 'IIm', 'V7']
+  backdoor: ['IVm', 'bVII', 'I']
+  tritone_sub: ['IIm', 'SUBV7', 'I']
+  extended_turnaround: ['IIIm', 'VIm', 'IIm', 'V7']
+
+Schemas harmonic_tree (8):
+  descending: ['I', 'V7 / IIm', 'IIm', 'V7', 'I']
+  ascending: ['I', 'V7 / IV', 'IV', 'V7', 'I']
+  direct: ['I', 'V7', 'I']
+  extended_descending: ['I', 'IIm7(b5) / IIm', 'V7 / IIm', 'IIm', 'V7', 'I']
+  subdominant_prep: ['I', 'IIm / IV', 'V7 / IV', 'IV', 'V7', 'I']
 ```

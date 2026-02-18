@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="222" viewBox="0 0 680 222">
+<style>
+.str{stroke:#555;stroke-width:1}
+.frt{stroke:#555;stroke-width:1}
+.nut{stroke:#222;stroke-width:4}
+.dot{fill:#4A90D9}
+.dot.root{fill:#2E6AB0}
+.open{fill:none;stroke:#555;stroke-width:1.5}
+.mute{stroke:#555;stroke-width:2;stroke-linecap:round}
+.lbl{font-family:Arial,Helvetica,sans-serif;font-size:9px;fill:#fff;text-anchor:middle;pointer-events:none}
+.flbl{font-family:Arial,Helvetica,sans-serif;font-size:10px;fill:#666}
+.title{font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;fill:#333;text-anchor:middle}
+</style>
+<rect width="680" height="222" fill="#F5F5F5" rx="4"/>
+<text x="340" y="32" class="title">A Minor Blues</text>
+<line x1="64" y1="43" x2="64" y2="185" class="nut"/>
+<line x1="114" y1="44" x2="114" y2="184" class="frt"/>
+<line x1="164" y1="44" x2="164" y2="184" class="frt"/>
+<line x1="214" y1="44" x2="214" y2="184" class="frt"/>
+<line x1="264" y1="44" x2="264" y2="184" class="frt"/>
+<line x1="314" y1="44" x2="314" y2="184" class="frt"/>
+<line x1="364" y1="44" x2="364" y2="184" class="frt"/>
+<line x1="414" y1="44" x2="414" y2="184" class="frt"/>
+<line x1="464" y1="44" x2="464" y2="184" class="frt"/>
+<line x1="514" y1="44" x2="514" y2="184" class="frt"/>
+<line x1="564" y1="44" x2="564" y2="184" class="frt"/>
+<line x1="614" y1="44" x2="614" y2="184" class="frt"/>
+<line x1="664" y1="44" x2="664" y2="184" class="frt"/>
+<line x1="64" y1="184" x2="664" y2="184" class="str"/>
+<text x="44" y="188" class="flbl" text-anchor="end">E4</text>
+<line x1="64" y1="156" x2="664" y2="156" class="str"/>
+<text x="44" y="160" class="flbl" text-anchor="end">B3</text>
+<line x1="64" y1="128" x2="664" y2="128" class="str"/>
+<text x="44" y="132" class="flbl" text-anchor="end">G3</text>
+<line x1="64" y1="100" x2="664" y2="100" class="str"/>
+<text x="44" y="104" class="flbl" text-anchor="end">D3</text>
+<line x1="64" y1="72" x2="664" y2="72" class="str"/>
+<text x="44" y="76" class="flbl" text-anchor="end">A2</text>
+<line x1="64" y1="44" x2="664" y2="44" class="str"/>
+<text x="44" y="48" class="flbl" text-anchor="end">E2</text>
+<text x="64" y="200" class="flbl" text-anchor="middle">0</text>
+<text x="214" y="200" class="flbl" text-anchor="middle">3</text>
+<text x="314" y="200" class="flbl" text-anchor="middle">5</text>
+<text x="414" y="200" class="flbl" text-anchor="middle">7</text>
+<text x="514" y="200" class="flbl" text-anchor="middle">9</text>
+<text x="664" y="200" class="flbl" text-anchor="middle">12</text>
+<circle cx="56" cy="184" r="4" class="open"/>
+<circle cx="189" cy="184" r="7" class="dot"/>
+<text x="189" y="187" class="lbl">G</text>
+<circle cx="289" cy="184" r="7" class="dot"/>
+<text x="289" y="187" class="lbl">A</text>
+<circle cx="439" cy="184" r="7" class="dot"/>
+<text x="439" y="187" class="lbl">C</text>
+<circle cx="539" cy="184" r="7" class="dot"/>
+<text x="539" y="187" class="lbl">D</text>
+<circle cx="589" cy="184" r="7" class="dot"/>
+<text x="589" y="187" class="lbl">D#</text>
+<circle cx="639" cy="184" r="7" class="dot"/>
+<text x="639" y="187" class="lbl">E</text>
+<circle cx="89" cy="156" r="7" class="dot"/>
+<text x="89" y="159" class="lbl">C</text>
+<circle cx="189" cy="156" r="7" class="dot"/>
+<text x="189" y="159" class="lbl">D</text>
+<circle cx="239" cy="156" r="7" class="dot"/>
+<text x="239" y="159" class="lbl">D#</text>
+<circle cx="289" cy="156" r="7" class="dot"/>
+<text x="289" y="159" class="lbl">E</text>
+<circle cx="439" cy="156" r="7" class="dot"/>
+<text x="439" y="159" class="lbl">G</text>
+<circle cx="539" cy="156" r="7" class="dot"/>
+<text x="539" y="159" class="lbl">A</text>
+<circle cx="56" cy="128" r="4" class="open"/>
+<circle cx="139" cy="128" r="7" class="dot"/>
+<text x="139" y="131" class="lbl">A</text>
+<circle cx="289" cy="128" r="7" class="dot"/>
+<text x="289" y="131" class="lbl">C</text>
+<circle cx="389" cy="128" r="7" class="dot"/>
+<text x="389" y="131" class="lbl">D</text>
+<circle cx="439" cy="128" r="7" class="dot"/>
+<text x="439" y="131" class="lbl">D#</text>
+<circle cx="489" cy="128" r="7" class="dot"/>
+<text x="489" y="131" class="lbl">E</text>
+<circle cx="639" cy="128" r="7" class="dot"/>
+<text x="639" y="131" class="lbl">G</text>
+<circle cx="56" cy="100" r="4" class="open"/>
+<circle cx="89" cy="100" r="7" class="dot"/>
+<text x="89" y="103" class="lbl">D#</text>
+<circle cx="139" cy="100" r="7" class="dot"/>
+<text x="139" y="103" class="lbl">E</text>
+<circle cx="289" cy="100" r="7" class="dot"/>
+<text x="289" y="103" class="lbl">G</text>
+<circle cx="389" cy="100" r="7" class="dot"/>
+<text x="389" y="103" class="lbl">A</text>
+<circle cx="539" cy="100" r="7" class="dot"/>
+<text x="539" y="103" class="lbl">C</text>
+<circle cx="639" cy="100" r="7" class="dot"/>
+<text x="639" y="103" class="lbl">D</text>
+<circle cx="56" cy="72" r="4" class="open"/>
+<circle cx="189" cy="72" r="7" class="dot"/>
+<text x="189" y="75" class="lbl">C</text>
+<circle cx="289" cy="72" r="7" class="dot"/>
+<text x="289" y="75" class="lbl">D</text>
+<circle cx="339" cy="72" r="7" class="dot"/>
+<text x="339" y="75" class="lbl">D#</text>
+<circle cx="389" cy="72" r="7" class="dot"/>
+<text x="389" y="75" class="lbl">E</text>
+<circle cx="539" cy="72" r="7" class="dot"/>
+<text x="539" y="75" class="lbl">G</text>
+<circle cx="639" cy="72" r="7" class="dot"/>
+<text x="639" y="75" class="lbl">A</text>
+<circle cx="56" cy="44" r="4" class="open"/>
+<circle cx="189" cy="44" r="7" class="dot"/>
+<text x="189" y="47" class="lbl">G</text>
+<circle cx="289" cy="44" r="7" class="dot"/>
+<text x="289" y="47" class="lbl">A</text>
+<circle cx="439" cy="44" r="7" class="dot"/>
+<text x="439" y="47" class="lbl">C</text>
+<circle cx="539" cy="44" r="7" class="dot"/>
+<text x="539" y="47" class="lbl">D</text>
+<circle cx="589" cy="44" r="7" class="dot"/>
+<text x="589" y="47" class="lbl">D#</text>
+<circle cx="639" cy="44" r="7" class="dot"/>
+<text x="639" y="47" class="lbl">E</text>
+</svg>
