@@ -10,6 +10,7 @@
 #include <gingo/midi2.hpp>
 #include <fstream>
 #include <cstdio>
+#include <filesystem>
 
 using namespace gingo;
 using namespace gingo::internal;
@@ -87,7 +88,7 @@ TEST_CASE("to_midi writes valid MIDI header", "[midi]") {
     Sequence seq(Tempo(120), TimeSignature(4, 4));
     seq.add(NoteEvent(Note("C"), Duration("quarter"), 4));
 
-    std::string path = "/tmp/gingo_test_header.mid";
+    std::string path = (std::filesystem::temp_directory_path() / "gingo_test_header.mid").string();
     seq.to_midi(path);
 
     std::ifstream f(path, std::ios::binary);
@@ -125,7 +126,7 @@ TEST_CASE("to_midi with notes", "[midi]") {
     seq.add(NoteEvent(Note("E"), Duration("quarter"), 4));
     seq.add(Rest(Duration("half")));
 
-    std::string path = "/tmp/gingo_test_notes.mid";
+    std::string path = (std::filesystem::temp_directory_path() / "gingo_test_notes.mid").string();
     REQUIRE_NOTHROW(seq.to_midi(path));
 
     // File should exist and be non-empty
@@ -140,7 +141,7 @@ TEST_CASE("to_midi with chords", "[midi]") {
     Sequence seq(Tempo(100), TimeSignature(4, 4));
     seq.add(ChordEvent(Chord("CM"), Duration("whole"), 4));
 
-    std::string path = "/tmp/gingo_test_chord.mid";
+    std::string path = (std::filesystem::temp_directory_path() / "gingo_test_chord.mid").string();
     REQUIRE_NOTHROW(seq.to_midi(path));
 
     std::ifstream f(path, std::ios::binary | std::ios::ate);
@@ -154,7 +155,7 @@ TEST_CASE("to_midi custom ppqn", "[midi]") {
     Sequence seq(Tempo(120), TimeSignature(4, 4));
     seq.add(NoteEvent(Note("C"), Duration("quarter"), 4));
 
-    std::string path = "/tmp/gingo_test_ppqn.mid";
+    std::string path = (std::filesystem::temp_directory_path() / "gingo_test_ppqn.mid").string();
     REQUIRE_NOTHROW(seq.to_midi(path, 96));
 
     // Read ppqn from header
@@ -179,7 +180,7 @@ TEST_CASE("MIDI roundtrip single notes", "[midi]") {
     original.add(NoteEvent(Note("E"), Duration("quarter"), 4));
     original.add(NoteEvent(Note("G"), Duration("half"), 4));
 
-    std::string path = "/tmp/gingo_roundtrip.mid";
+    std::string path = (std::filesystem::temp_directory_path() / "gingo_roundtrip.mid").string();
     original.to_midi(path);
 
     Sequence loaded = Sequence::from_midi(path);
@@ -196,7 +197,7 @@ TEST_CASE("MIDI roundtrip with rest", "[midi]") {
     original.add(Rest(Duration("quarter")));
     original.add(NoteEvent(Note("B"), Duration("half"), 4));
 
-    std::string path = "/tmp/gingo_roundtrip_rest.mid";
+    std::string path = (std::filesystem::temp_directory_path() / "gingo_roundtrip_rest.mid").string();
     original.to_midi(path);
 
     Sequence loaded = Sequence::from_midi(path);
@@ -212,7 +213,7 @@ TEST_CASE("MIDI roundtrip with chord", "[midi]") {
     Sequence original(Tempo(120), TimeSignature(4, 4));
     original.add(ChordEvent(Chord("CM"), Duration("whole"), 4));
 
-    std::string path = "/tmp/gingo_roundtrip_chord.mid";
+    std::string path = (std::filesystem::temp_directory_path() / "gingo_roundtrip_chord.mid").string();
     original.to_midi(path);
 
     Sequence loaded = Sequence::from_midi(path);
