@@ -8,12 +8,12 @@ Music theory engine for Python, powered by a C++17 core.
 
 <p align="center">
 
-[![PyPI](https://img.shields.io/badge/pypi-v1.1.0-deepviolet?logo=pypi&logoColor=white)](https://pypi.org/project/gingo/)
+[![PyPI](https://img.shields.io/badge/pypi-v1.2.0-deepviolet?logo=pypi&logoColor=white)](https://pypi.org/project/gingo/)
 [![Python](https://img.shields.io/pypi/pyversions/gingo?logo=python&logoColor=white)](https://pypi.org/project/gingo/)
 [![License](https://img.shields.io/github/license/sauloverissimo/gingo?color=blue)](https://github.com/sauloverissimo/gingo/blob/main/LICENSE)
 [![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C?logo=cplusplus&logoColor=white)](https://en.cppreference.com/w/cpp/17)
 [![Docs](https://img.shields.io/badge/docs-MkDocs-526CFE?logo=materialformkdocs&logoColor=white)](https://sauloverissimo.github.io/gingo/)
-[![Tests](https://img.shields.io/badge/tests-1102%20passed-brightgreen?logo=pytest&logoColor=white)](https://github.com/sauloverissimo/gingo)
+[![Tests](https://img.shields.io/badge/tests-1149%20passed-brightgreen?logo=pytest&logoColor=white)](https://github.com/sauloverissimo/gingo)
 
 </p>
 
@@ -36,7 +36,8 @@ Gingo is a pragmatic library for analysis, composition, and teaching. It priorit
 - **Instruments** — `Piano` maps theory to physical keys (forward & reverse MIDI), with voicing styles (close, open, shell). `Fretboard` generates playable fingerings for guitar, cavaquinho, bandolim (or custom tunings) using a CAGED-based scoring algorithm.
 - **SVG Visualization** — `PianoSVG` renders interactive piano keyboard SVGs. `FretboardSVG` renders chord boxes, fretboard diagrams, scale maps, and harmonic field charts — with orientation (horizontal/vertical) and handedness (right/left) support.
 - **Notation** — `MusicXML` serializes any musical object to MusicXML 4.0 for MuseScore, Finale, and Sibelius.
-- **Rhythm & time** — `Duration`, `Tempo` (BPM + nomes de tempo), `TimeSignature`, and `Sequence` with note/chord events.
+- **MIDI** — `Sequence.to_midi()` / `.from_midi()` for Standard MIDI File import/export. `Duration.midi_ticks()` and `Tempo.microseconds_per_beat()` for low-level MIDI conversions.
+- **Rhythm & time** — `Duration` (flexible parsing: names, abbreviations, LilyPond, fractions), `Tempo` (BPM + nomes de tempo), `TimeSignature`, and `Sequence` with note/chord events.
 - **Audio** — `.play()` and `.to_wav()` on musical objects, plus CLI `--play` / `--wav` with waveform and strum controls.
 - **CLI-first exploration** — query and inspect theory concepts without leaving the terminal.
 
@@ -200,13 +201,24 @@ xml = MusicXML.scale(Scale("C", "major"), 4)  # scale
 xml = MusicXML.field(Field("C", "major"), 4)  # harmonic field
 MusicXML.write(xml, "score.musicxml")  # save to file
 
-# Rhythm
-q = Duration("quarter")
+# Rhythm — flexible Duration parsing
+q = Duration("quarter")            # by name
+q = Duration("q")                  # abbreviation
+q = Duration("4")                  # LilyPond notation
+q = Duration("1/4")                # fraction string
+q = Duration(1, 4)                 # numerator, denominator
+dotted = Duration("q.")            # dotted abbreviation
 dotted = Duration("eighth", dots=1)
 triplet = Duration("eighth", tuplet=3)
-Tempo("Allegro").bpm()         # 140.0
-Tempo(120).marking()           # "Allegretto"
+Tempo("Allegro").bpm()             # 140.0
+Tempo(120).marking()               # "Allegretto"
 TimeSignature(6, 8).classification()  # "compound"
+
+# MIDI conversions
+Duration("quarter").midi_ticks()           # 480
+Duration.from_ticks(240)                   # Duration("eighth")
+Tempo(120).microseconds_per_beat()         # 500000
+Tempo.from_microseconds(500000)            # Tempo(120)
 
 # Sequence (events in time)
 seq = Sequence(Tempo(120), TimeSignature(4, 4))
@@ -214,6 +226,10 @@ seq.add(NoteEvent(Note("C"), Duration("quarter"), octave=4))
 seq.add(ChordEvent(Chord("G7"), Duration("half"), octave=4))
 seq.add(Rest(Duration("quarter")))
 seq.total_seconds()
+
+# MIDI file export/import
+seq.to_midi("output.mid")                 # Standard MIDI File (format 0)
+seq2 = Sequence.from_midi("output.mid")   # import from MIDI file
 
 # Audio
 Note("C").play()
@@ -1585,27 +1601,46 @@ Gingo models rhythm with first-class objects that match standard music notation.
 
 ### Duration
 
-Durations can be created by name (e.g., `quarter`, `eighth`) or as rational values. Dots and tuplets are built in.
+Durations can be created by name, abbreviation, LilyPond notation, fraction string, or as rational values. Dots and tuplets are built in.
 
 ```python
 from gingo import Duration
 
-Duration("quarter")
-Duration("eighth", dots=1)   # dotted eighth
+# Multiple parsing formats
+Duration("quarter")           # by full name
+Duration("q")                 # abbreviation (w, h, q, e, s)
+Duration("4")                 # LilyPond notation (1, 2, 4, 8, 16, 32, 64)
+Duration("1/4")               # fraction string
+Duration(1, 4)                # numerator, denominator
+
+# Dotted and tuplets
+Duration("q.")                # dotted quarter (abbreviation + dot)
+Duration("8.")                # dotted eighth (LilyPond + dot)
+Duration("eighth", dots=1)   # dotted eighth (name + dots param)
 Duration("eighth", tuplet=3) # triplet eighth
 Duration(3, 16)               # 3/16
+
+# MIDI conversions
+Duration("quarter").midi_ticks()      # 480 (at default ppqn=480)
+Duration("eighth").midi_ticks(96)     # 48  (at ppqn=96)
+Duration.from_ticks(480)              # Duration("quarter")
+Duration.from_ticks(240)              # Duration("eighth")
 ```
 
-### Tempo (nomos de tempo)
+### Tempo (nomes de tempo)
 
-Tempo accepts either BPM or traditional tempo markings (nomos/nomes de tempo) such as Allegro or Adagio, and converts between them.
+Tempo accepts either BPM or traditional tempo markings (nomes de tempo) such as Allegro or Adagio, and converts between them.
 
 ```python
 from gingo import Tempo, Duration
 
-Tempo(120).marking()     # "Allegretto"
-Tempo("Adagio").bpm()   # 60
+Tempo(120).marking()                # "Allegretto"
+Tempo("Adagio").bpm()              # 60
 Tempo("Allegro").seconds(Duration("quarter"))
+
+# MIDI conversions
+Tempo(120).microseconds_per_beat()  # 500000
+Tempo.from_microseconds(500000)     # Tempo(120)
 ```
 
 ### Time Signature
@@ -1623,7 +1658,7 @@ Tempo(120).seconds(ts.bar_duration())
 
 ### Sequence & Events
 
-Build a timeline of note/chord events with a tempo and time signature. Sequences can be transposed and played back.
+Build a timeline of note/chord events with a tempo and time signature. Sequences can be transposed, played back, and exported to MIDI.
 
 ```python
 from gingo import (
@@ -1636,6 +1671,11 @@ seq.add(NoteEvent(Note("C"), Duration("quarter"), octave=4))
 seq.add(ChordEvent(Chord("G7"), Duration("half"), octave=4))
 seq.add(Rest(Duration("quarter")))
 seq.total_seconds()
+
+# MIDI file export/import
+seq.to_midi("song.mid")                  # Standard MIDI File (format 0)
+seq.to_midi("song.mid", ppqn=96)         # custom resolution
+loaded = Sequence.from_midi("song.mid")   # import (format 0 or 1)
 ```
 
 CLI helpers for rhythm:
@@ -1697,7 +1737,8 @@ gingo/
 │   │       ├── notation_utils.hpp  # Formal notation helpers
 │   │       ├── lookup_data.hpp     # Singleton with all music data
 │   │       ├── lookup_progression.hpp  # Singleton with tradition data
-│   │       └── mode_data.hpp       # Mode metadata
+│   │       ├── mode_data.hpp       # Mode metadata
+│   │       └── midi_format.hpp    # MIDI binary format utilities (VLQ, big-endian)
 │   └── src/                   # All implementations
 ├── bindings/
 │   └── pybind_module.cpp      # pybind11 Python bridge

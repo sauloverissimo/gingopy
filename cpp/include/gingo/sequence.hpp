@@ -100,6 +100,18 @@ public:
     /// Transpose all note events by semitones.
     Sequence transpose(int semitones) const;
 
+    // -- MIDI I/O ---------------------------------------------------------------
+
+    /// Export this sequence to a Standard MIDI File (format 0, single track).
+    /// @param path  File path to write to (should end in .mid).
+    /// @param ppqn  Pulses per quarter note (default 480).
+    void to_midi(const std::string& path, int ppqn = 480) const;
+
+    /// Import a Sequence from a Standard MIDI File.
+    /// Reads format 0 or format 1 (merges tracks).
+    /// @param path  Path to a .mid file.
+    static Sequence from_midi(const std::string& path);
+
     bool operator==(const Sequence& other) const;
     bool operator!=(const Sequence& other) const { return !(*this == other); }
 

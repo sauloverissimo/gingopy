@@ -1526,6 +1526,9 @@ PYBIND11_MODULE(_gingo, m) {
         .def("rational",    &Duration::rational)
         .def("numerator",   &Duration::numerator)
         .def("denominator", &Duration::denominator)
+        .def("midi_ticks",  &Duration::midi_ticks, py::arg("ppqn") = 480)
+        .def_static("from_ticks", &Duration::from_ticks,
+                    py::arg("ticks"), py::arg("ppqn") = 480)
         .def_static("standard_names", &Duration::standard_names)
         .def("__add__",     &Duration::operator+)
         .def("__mul__",     &Duration::operator*, py::arg("factor"))
@@ -1543,8 +1546,10 @@ PYBIND11_MODULE(_gingo, m) {
         .def("marking",      &Tempo::marking)
         .def("seconds",      &Tempo::seconds, py::arg("duration"))
         .def("ms_per_beat",  &Tempo::ms_per_beat)
+        .def("microseconds_per_beat", &Tempo::microseconds_per_beat)
         .def_static("bpm_to_marking",  &Tempo::bpm_to_marking, py::arg("bpm"))
         .def_static("marking_to_bpm",  &Tempo::marking_to_bpm, py::arg("marking"))
+        .def_static("from_microseconds", &Tempo::from_microseconds, py::arg("usec"))
         .def("__eq__",       &Tempo::operator==)
         .def("__ne__",       &Tempo::operator!=)
         .def("__repr__",     &Tempo::to_string)
@@ -1634,6 +1639,9 @@ PYBIND11_MODULE(_gingo, m) {
         .def("total_seconds",  &Sequence::total_seconds)
         .def("bar_count",      &Sequence::bar_count)
         .def("transpose",      &Sequence::transpose, py::arg("semitones"))
+        .def("to_midi",        &Sequence::to_midi,
+             py::arg("path"), py::arg("ppqn") = 480)
+        .def_static("from_midi", &Sequence::from_midi, py::arg("path"))
         .def("__len__",        &Sequence::size)
         .def("__getitem__",    [](const Sequence& self, int index) -> py::object {
             int n = static_cast<int>(self.size());

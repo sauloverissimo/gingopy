@@ -23,6 +23,11 @@ graph LR
     D --> H
     G --> I[PianoSVG]
     H --> J[FretboardSVG]
+    K[Duration] --> L[Sequence]
+    M[Tempo] --> L
+    C --> L
+    A --> L
+    L --> N[MIDI]
 
     style A fill:#e1f5e1,color:#000
     style B fill:#e3f2fd,color:#000
@@ -34,6 +39,10 @@ graph LR
     style H fill:#fbe9e7,color:#000
     style I fill:#e8eaf6,color:#000
     style J fill:#fbe9e7,color:#000
+    style K fill:#e8f5e9,color:#000
+    style L fill:#e0f7fa,color:#000
+    style M fill:#e8f5e9,color:#000
+    style N fill:#ede7f6,color:#000
 ```
 
 Esta arquitetura em camadas permite a construção progressiva de conceitos harmônicos complexos a partir de elementos fundamentais.
@@ -260,6 +269,44 @@ graph LR
     style I fill:#1dd1a1,color:#000
 ```
 
+### 8. Ritmo e MIDI
+
+```python
+from gingo import (
+    Duration, Tempo, TimeSignature, Sequence,
+    NoteEvent, ChordEvent, Rest, Note, Chord,
+)
+
+# Duration — multiplos formatos de parsing
+q = Duration("quarter")       # nome completo
+q = Duration("q")             # abreviacao
+q = Duration("4")             # LilyPond
+q = Duration("1/4")           # fracao
+
+# Dotted
+dq = Duration("q.")           # seminima pontuada
+dq = Duration("8.")           # colcheia pontuada (LilyPond)
+
+# MIDI ticks
+Duration("quarter").midi_ticks()      # 480 (ppqn=480)
+Duration.from_ticks(240)              # Duration("eighth")
+
+# Tempo — BPM e microsegundos MIDI
+Tempo(120).microseconds_per_beat()    # 500000
+Tempo.from_microseconds(500000)       # Tempo(120)
+
+# Sequence — composicao com export MIDI
+seq = Sequence(Tempo(120), TimeSignature(4, 4))
+seq.add(NoteEvent(Note("C"), Duration("q"), 4))
+seq.add(NoteEvent(Note("E"), Duration("q"), 4))
+seq.add(NoteEvent(Note("G"), Duration("q"), 4))
+seq.add(ChordEvent(Chord("CM"), Duration("h"), 4))
+
+# Exportar e importar MIDI
+seq.to_midi("melodia.mid")
+seq2 = Sequence.from_midi("melodia.mid")
+```
+
 ---
 
 ## Características
@@ -277,6 +324,12 @@ Core implementado em C++17 com lookup tables e cached computations para operaç�
 `Piano` mapeia teoria para teclas fisicas (MIDI, voicings close/open/shell) com `PianoSVG` interativo.
 `Fretboard` gera digitacoes realisticas para violao, cavaquinho e bandolim usando algoritmo CAGED.
 `FretboardSVG` renderiza chord boxes, diagramas de braco e campos harmonicos — com orientacao (horizontal/vertical) e lateralidade (destro/canhoto).
+
+**MIDI**
+
+Import e export de Standard MIDI Files com `Sequence.to_midi()` e `Sequence.from_midi()`.
+Conversoes de baixo nivel: `Duration.midi_ticks()`, `Tempo.microseconds_per_beat()`.
+Parsing flexivel de Duration: nomes, abreviacoes (`q`, `h`), LilyPond (`4`, `8`), fracoes (`1/4`).
 
 **Audio integrado**
 

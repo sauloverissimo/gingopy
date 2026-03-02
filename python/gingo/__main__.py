@@ -1100,6 +1100,7 @@ def cmd_duration(args):
         _row("Beats", f"{d.beats():.4g}")
         num, den = d.rational()
         _row("Rational", f"{num}/{den}")
+        _row("MIDI ticks (480 ppqn)", str(d.midi_ticks()))
         if args.dots:
             _row("Dots", str(args.dots))
         if args.tuplet:
@@ -1142,6 +1143,7 @@ def cmd_tempo(args):
     _row("BPM", f"{t.bpm():.1f}")
     _row("Marking", t.marking())
     _row("ms per beat", f"{t.ms_per_beat():.1f} ms")
+    _row("us per beat (MIDI)", str(t.microseconds_per_beat()))
     _row("Quarter note", f"{t.seconds(Duration('quarter')):.4g} s")
     _row("Half note", f"{t.seconds(Duration('half')):.4g} s")
     _row("Whole note", f"{t.seconds(Duration('whole')):.4g} s")

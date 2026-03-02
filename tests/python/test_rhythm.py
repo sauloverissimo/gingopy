@@ -83,6 +83,81 @@ class TestDuration:
         assert str(d) == "quarter"
         assert "quarter" in repr(d)
 
+    def test_abbreviation(self):
+        assert Duration("q").name() == "quarter"
+        assert Duration("h").name() == "half"
+        assert Duration("w").name() == "whole"
+        assert Duration("e").name() == "eighth"
+        assert Duration("s").name() == "sixteenth"
+        assert Duration("q").beats() == pytest.approx(1.0)
+
+    def test_dotted_abbreviation(self):
+        d = Duration("q.")
+        assert d.name() == "quarter"
+        assert d.dots() == 1
+        assert d.beats() == pytest.approx(1.5)
+
+        d2 = Duration("h..")
+        assert d2.name() == "half"
+        assert d2.dots() == 2
+        assert d2.beats() == pytest.approx(3.5)
+
+    def test_lilypond_notation(self):
+        assert Duration("4").name() == "quarter"
+        assert Duration("8").name() == "eighth"
+        assert Duration("2").name() == "half"
+        assert Duration("1").name() == "whole"
+        assert Duration("16").name() == "sixteenth"
+        assert Duration("32").name() == "thirty_second"
+        assert Duration("64").name() == "sixty_fourth"
+
+    def test_dotted_lilypond(self):
+        d = Duration("4.")
+        assert d.name() == "quarter"
+        assert d.dots() == 1
+        assert d.beats() == pytest.approx(1.5)
+
+    def test_fraction_string(self):
+        d = Duration("1/4")
+        assert d.numerator() == 1
+        assert d.denominator() == 4
+        assert d.name() == "quarter"
+
+        d2 = Duration("3/8")
+        assert d2.numerator() == 3
+        assert d2.denominator() == 8
+        assert d2.beats() == pytest.approx(1.5)
+
+    def test_explicit_dots_override(self):
+        d = Duration("q", dots=1)
+        assert d.dots() == 1
+        assert d.beats() == pytest.approx(1.5)
+
+        d2 = Duration("q.", dots=2)
+        assert d2.dots() == 2
+        assert d2.beats() == pytest.approx(1.75)
+
+    def test_midi_ticks(self):
+        assert Duration("quarter").midi_ticks() == 480
+        assert Duration("half").midi_ticks() == 960
+        assert Duration("whole").midi_ticks() == 1920
+        assert Duration("eighth").midi_ticks() == 240
+        assert Duration("quarter", dots=1).midi_ticks() == 720
+        # Custom ppqn
+        assert Duration("quarter").midi_ticks(96) == 96
+
+    def test_from_ticks(self):
+        d = Duration.from_ticks(480, 480)
+        assert d.name() == "quarter"
+        assert d.numerator() == 1
+        assert d.denominator() == 4
+
+        d2 = Duration.from_ticks(960, 480)
+        assert d2.name() == "half"
+
+        d3 = Duration.from_ticks(720, 480)
+        assert d3.beats() == pytest.approx(1.5)
+
 
 # ===========================================================================
 # Tempo
@@ -124,6 +199,20 @@ class TestTempo:
     def test_static_conversions(self):
         assert Tempo.bpm_to_marking(140) == "Allegro"
         assert Tempo.marking_to_bpm("Allegro") > 0
+
+    def test_microseconds_per_beat(self):
+        assert Tempo(120).microseconds_per_beat() == 500000
+        assert Tempo(60).microseconds_per_beat() == 1000000
+
+    def test_from_microseconds(self):
+        t = Tempo.from_microseconds(500000)
+        assert t.bpm() == pytest.approx(120.0)
+
+        t2 = Tempo.from_microseconds(1000000)
+        assert t2.bpm() == pytest.approx(60.0)
+
+        with pytest.raises(ValueError):
+            Tempo.from_microseconds(0)
 
 
 # ===========================================================================

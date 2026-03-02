@@ -412,6 +412,34 @@ std::optional<HarmonicFunction> Field::function(const Chord& chord) const {
     return function(*deg);
 }
 
+NoteContext Field::noteContext(const Note& note) const {
+    // Find degree by matching note pitch class to scale tones
+    uint8_t degree = 0;
+    bool inScale = false;
+    HarmonicFunction func = HarmonicFunction::Tonic;
+
+    for (int d = 1; d <= 7; d++) {
+        if (chord(d).root().semitone() == note.semitone()) {
+            degree = static_cast<uint8_t>(d);
+            inScale = true;
+            func = this->function(d);
+            break;
+        }
+    }
+
+    // Ascending interval from field tonic to this note (0-11 semitones)
+    int semis = note.semitone() - scale_.tonic().semitone();
+    if (semis < 0) semis += 12;
+
+    NoteContext ctx;
+    ctx.note     = note;
+    ctx.degree   = degree;
+    ctx.interval = Interval(semis);
+    ctx.function = func;
+    ctx.inScale  = inScale;
+    return ctx;
+}
+
 std::string Field::role(int degree) const {
     auto n = size();
     if (degree < 1 || static_cast<std::size_t>(degree) > n)

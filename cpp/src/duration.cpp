@@ -27,20 +27,112 @@ static const std::map<std::string, int> NAME_TO_DENOM = {
     {"sixty_fourth", 64}
 };
 
+static const std::map<std::string, std::string> ABBREV_TO_NAME = {
+    {"w", "whole"},
+    {"h", "half"},
+    {"q", "quarter"},
+    {"e", "eighth"},
+    {"s", "sixteenth"},
+};
+
+static const std::map<std::string, std::string> LILYPOND_TO_NAME = {
+    {"1", "whole"},
+    {"2", "half"},
+    {"4", "quarter"},
+    {"8", "eighth"},
+    {"16", "sixteenth"},
+    {"32", "thirty_second"},
+    {"64", "sixty_fourth"},
+};
+
+// ---------------------------------------------------------------------------
+// Parsing
+
+std::pair<std::string, int> Duration::parse_notation(const std::string& input) {
+    // 1. Exact match with standard names (fast path)
+    if (NAME_TO_DENOM.count(input)) {
+        return {input, 0};
+    }
+
+    // 2. Fraction string: "N/D"
+    auto slash = input.find('/');
+    if (slash != std::string::npos) {
+        return {"", -1};  // sentinel for fraction path
+    }
+
+    // 3. Strip trailing dots, count them
+    int dot_count = 0;
+    size_t end = input.size();
+    while (end > 0 && input[end - 1] == '.') {
+        ++dot_count;
+        --end;
+    }
+    std::string base = input.substr(0, end);
+
+    // 4. Try abbreviation map
+    auto abbr_it = ABBREV_TO_NAME.find(base);
+    if (abbr_it != ABBREV_TO_NAME.end()) {
+        return {abbr_it->second, dot_count};
+    }
+
+    // 5. Try LilyPond denominator map
+    auto lily_it = LILYPOND_TO_NAME.find(base);
+    if (lily_it != LILYPOND_TO_NAME.end()) {
+        return {lily_it->second, dot_count};
+    }
+
+    // 6. Not recognized
+    return {input, 0};
+}
+
 // ---------------------------------------------------------------------------
 // Constructor
 
 Duration::Duration(const std::string& name, int dots, int tuplet)
     : name_(name), dots_(dots), tuplet_(tuplet), numerator_(1), denominator_(4)
 {
-    auto it = NAME_TO_DENOM.find(name);
+    // Try flexible parsing
+    auto [parsed_name, parsed_dots] = parse_notation(name);
+
+    if (parsed_name.empty() && parsed_dots == -1) {
+        // Fraction string: parse "N/D" and delegate to rational construction
+        auto slash = name.find('/');
+        int num = std::stoi(name.substr(0, slash));
+        int den = std::stoi(name.substr(slash + 1));
+        if (den <= 0) throw std::invalid_argument("Denominator must be positive");
+        if (num < 0) throw std::invalid_argument("Numerator must be non-negative");
+
+        int g = std::gcd(num, den);
+        numerator_ = num / g;
+        denominator_ = den / g;
+        dots_ = 0;
+        tuplet_ = 0;
+
+        // Try to match a standard name
+        name_ = "custom";
+        for (const auto& [n, d] : NAME_TO_DENOM) {
+            if (denominator_ == d && numerator_ == 1) {
+                name_ = n;
+                break;
+            }
+        }
+        return;
+    }
+
+    // Use parsed values; explicit dots parameter overrides parsed dots
+    name_ = parsed_name;
+    if (dots == 0 && parsed_dots > 0) {
+        dots_ = parsed_dots;
+    }
+
+    auto it = NAME_TO_DENOM.find(name_);
     if (it == NAME_TO_DENOM.end()) {
         throw std::invalid_argument("Invalid duration name: " + name);
     }
-    if (dots < 0 || dots > 2) {
+    if (dots_ < 0 || dots_ > 2) {
         throw std::invalid_argument("Dots must be 0, 1, or 2");
     }
-    if (tuplet < 0) {
+    if (tuplet_ < 0) {
         throw std::invalid_argument("Tuplet must be non-negative");
     }
 
@@ -152,6 +244,21 @@ std::string Duration::to_string() const {
     }
     oss << " = " << numerator_ << "/" << denominator_;
     return oss.str();
+}
+
+// ---------------------------------------------------------------------------
+// MIDI utilities
+
+int Duration::midi_ticks(int ppqn) const {
+    // Quarter note (1/4) = ppqn ticks
+    // General: ticks = (numerator * 4 * ppqn) / denominator
+    return (numerator_ * 4 * ppqn) / denominator_;
+}
+
+Duration Duration::from_ticks(int ticks, int ppqn) {
+    // Whole note = 4 * ppqn ticks
+    // Duration = ticks / (4 * ppqn) as a fraction
+    return Duration(ticks, 4 * ppqn);
 }
 
 // ---------------------------------------------------------------------------

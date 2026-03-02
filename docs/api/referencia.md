@@ -11,7 +11,7 @@
 | `Field`      | `Field("C", "major")`                                         | Campo harmonico      |
 | `Tree`       | `Tree("C", "major", "harmonic_tree")`                         | Arvore harmonica (grafo de uma tradition) |
 | `Progression`| `Progression("C", "major")`                                   | Coordenador cross-tradition                |
-| `Duration`   | `Duration("quarter")` ou `Duration(1, 4)`                     | Duracao ritmica                |
+| `Duration`   | `Duration("quarter")`, `Duration("q")`, `Duration("4")`, `Duration("1/4")`, `Duration(1, 4)` | Duracao ritmica |
 | `Tempo`      | `Tempo(120)`                                                   | Andamento em BPM               |
 | `TimeSignature` | `TimeSignature(4, 4)`                                       | Formula de compasso            |
 | `NoteEvent`  | `NoteEvent(Note("C"), Duration("quarter"), 4)`                 | Nota com duracao e oitava      |
@@ -292,8 +292,19 @@
 | `dotted()`                 | `Duration` | Versao pontuada (1.5x)               |
 | `double_dotted()`          | `Duration` | Versao duplamente pontuada (1.75x)   |
 | `triplet()`                | `Duration` | Versao em tercina (2/3x)             |
+| `midi_ticks(ppqn=480)`     | `int`      | Ticks MIDI para esta duracao          |
+| `Duration.from_ticks(ticks, ppqn=480)` | `Duration` | Cria Duration a partir de ticks MIDI |
 
-Nomes aceitos: `"whole"`, `"half"`, `"quarter"`, `"eighth"`, `"sixteenth"`, `"thirty_second"`
+Formatos aceitos no construtor:
+
+| Formato         | Exemplo                | Descricao                    |
+|-----------------|------------------------|------------------------------|
+| Nome completo   | `Duration("quarter")`  | `whole`, `half`, `quarter`, `eighth`, `sixteenth`, `thirty_second` |
+| Abreviacao      | `Duration("q")`        | `w`, `h`, `q`, `e`, `s`     |
+| LilyPond        | `Duration("4")`        | `1`, `2`, `4`, `8`, `16`, `32`, `64` |
+| Fracao (string) | `Duration("1/4")`      | Numerador/denominador        |
+| Fracao (int)    | `Duration(1, 4)`       | Numerador, denominador       |
+| Dotted (sufixo) | `Duration("q.")`       | Abreviacao ou LilyPond + `.` ou `..` |
 
 ### Metodos de Tempo
 
@@ -302,6 +313,8 @@ Nomes aceitos: `"whole"`, `"half"`, `"quarter"`, `"eighth"`, `"sixteenth"`, `"th
 | `bpm()`                    | `int`    | Batidas por minuto                    |
 | `seconds(duration)`        | `float`  | Duracao em segundos para um Duration  |
 | `marking()`                | `str`    | Marcacao italiana (Allegro, Adagio...)  |
+| `microseconds_per_beat()`  | `int`    | Microsegundos por batida (MIDI meta-event) |
+| `Tempo.from_microseconds(usec)` | `Tempo` | Cria Tempo a partir de microsegundos MIDI |
 
 ### Metodos de TimeSignature
 
@@ -343,6 +356,8 @@ Nomes aceitos: `"whole"`, `"half"`, `"quarter"`, `"eighth"`, `"sixteenth"`, `"th
 | `add(event)`               | `None`               | Adiciona NoteEvent, ChordEvent ou Rest |
 | `__len__()`                | `int`                | Quantidade de eventos                |
 | `__getitem__(i)`           | `NoteEvent\|ChordEvent\|Rest` | Acesso por indice (suporta negativo) |
+| `to_midi(path, ppqn=480)`  | `None`               | Exporta para Standard MIDI File (formato 0) |
+| `Sequence.from_midi(path)` | `Sequence`           | Importa de arquivo MIDI (formato 0 ou 1) |
 
 ### Metodos de Piano
 

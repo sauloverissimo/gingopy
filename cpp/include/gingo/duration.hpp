@@ -74,6 +74,17 @@ public:
 
     std::string to_string() const;
 
+    // -- MIDI utilities ---------------------------------------------------------
+
+    /// Convert this duration to MIDI ticks.
+    /// Quarter note = ppqn ticks. Half = 2*ppqn. Eighth = ppqn/2.
+    int midi_ticks(int ppqn = 480) const;
+
+    /// Create a Duration from a MIDI tick count.
+    /// @param ticks  Number of MIDI ticks.
+    /// @param ppqn   Pulses per quarter note (default 480).
+    static Duration from_ticks(int ticks, int ppqn = 480);
+
     // -- Static utilities ------------------------------------------------------
 
     /// All standard duration names.
@@ -87,6 +98,10 @@ private:
     int denominator_;
 
     void compute_rational();
+
+    /// Parse flexible notation into (name, dots) pair.
+    /// Returns {"", -1} for fraction strings that should use rational path.
+    static std::pair<std::string, int> parse_notation(const std::string& input);
 };
 
 }  // namespace gingo

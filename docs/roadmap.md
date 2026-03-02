@@ -72,7 +72,7 @@ Estado atual do projeto e visao de futuro.
 
 ---
 
-## v1.1.0 — Fretboard (versao atual)
+## v1.1.0 — Fretboard
 
 ### Fretboard (instrumentos de cordas)
 
@@ -98,13 +98,33 @@ Estado atual do projeto e visao de futuro.
 
 ---
 
+## v1.2.0 — MIDI + Duration Parsing (versao atual)
+
+### Duration Parsing
+
+- [x] Abreviacoes: `Duration("q")`, `Duration("h")`, `Duration("w")`, `Duration("e")`, `Duration("s")`
+- [x] Dotted: `Duration("q.")`, `Duration("h..")`
+- [x] LilyPond: `Duration("4")`, `Duration("8.")`, `Duration("16")`
+- [x] Fracoes: `Duration("1/4")`, `Duration("3/8")`
+
+### MIDI Conversions
+
+- [x] `Duration.midi_ticks(ppqn=480)` — converte para ticks MIDI
+- [x] `Duration.from_ticks(ticks, ppqn)` — cria Duration a partir de ticks
+- [x] `Tempo.microseconds_per_beat()` — formato MIDI meta-event
+- [x] `Tempo.from_microseconds(usec)` — cria Tempo a partir de microsegundos
+
+### MIDI Import/Export
+
+- [x] `Sequence.to_midi(path, ppqn)` — export SMF format 0
+- [x] `Sequence.from_midi(path)` — import MIDI (format 0/1)
+- [x] Suporte a NoteEvent, ChordEvent, Rest no roundtrip
+- [x] Meta-events: tempo, time signature
+- [x] Chord detection via `Chord.identify()` no import
+
+---
+
 ## Planejado
-
-### MIDI import/export
-
-- [ ] `Sequence.to_midi()` / `Sequence.from_midi(path)` — import/export .mid
-- [ ] `Duration.midi_ticks(ppqn=480)` / `Duration.from_ticks(ticks, ppqn)`
-- [ ] `Tempo.microseconds_per_beat()` / `Tempo.from_microseconds(usec)`
 
 ### Escalas Bebop
 
@@ -124,6 +144,8 @@ Estado atual do projeto e visao de futuro.
 - **FretboardSVG** com orientacao (horizontal/vertical) e lateralidade (destro/canhoto)
 - **Piano** com voicings (close, open, shell) e **PianoSVG** interativo
 - **MusicXML 4.0** para exportacao de partitura
+- **MIDI import/export** com `Sequence.to_midi()` e `Sequence.from_midi()`
+- **Duration flexivel** com parsing de abreviacoes, LilyPond e fracoes
 - **Sintese de audio** integrada com `.play()` e `.to_wav()` em todas as classes
 - **Duration racional** exata (fracao, nao float)
 - **Zero dependencias** runtime + backend C++17

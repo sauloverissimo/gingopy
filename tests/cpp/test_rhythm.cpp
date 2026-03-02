@@ -83,6 +83,31 @@ TEST_CASE("Duration comparison", "[duration]") {
     REQUIRE(q < h);
 }
 
+TEST_CASE("Duration midi_ticks", "[duration]") {
+    REQUIRE(Duration("quarter").midi_ticks() == 480);
+    REQUIRE(Duration("half").midi_ticks() == 960);
+    REQUIRE(Duration("whole").midi_ticks() == 1920);
+    REQUIRE(Duration("eighth").midi_ticks() == 240);
+    REQUIRE(Duration("sixteenth").midi_ticks() == 120);
+    REQUIRE(Duration("quarter", 1).midi_ticks() == 720);  // dotted quarter
+    // Custom ppqn
+    REQUIRE(Duration("quarter").midi_ticks(96) == 96);
+    REQUIRE(Duration("half").midi_ticks(96) == 192);
+}
+
+TEST_CASE("Duration from_ticks", "[duration]") {
+    Duration d = Duration::from_ticks(480, 480);
+    REQUIRE(d.name() == "quarter");
+    REQUIRE(d.numerator() == 1);
+    REQUIRE(d.denominator() == 4);
+
+    Duration d2 = Duration::from_ticks(960, 480);
+    REQUIRE(d2.name() == "half");
+
+    Duration d3 = Duration::from_ticks(720, 480);
+    REQUIRE_THAT(d3.beats(), WithinAbs(1.5, 1e-9));  // dotted quarter
+}
+
 TEST_CASE("Duration invalid name throws", "[duration]") {
     REQUIRE_THROWS_AS(Duration("invalid"), std::invalid_argument);
 }
@@ -92,6 +117,81 @@ TEST_CASE("Duration standard_names returns all names", "[duration]") {
     REQUIRE(names.size() == 7);
     REQUIRE(names[0] == "whole");
     REQUIRE(names[2] == "quarter");
+}
+
+TEST_CASE("Duration from abbreviation", "[duration]") {
+    REQUIRE(Duration("q").name() == "quarter");
+    REQUIRE(Duration("h").name() == "half");
+    REQUIRE(Duration("w").name() == "whole");
+    REQUIRE(Duration("e").name() == "eighth");
+    REQUIRE(Duration("s").name() == "sixteenth");
+    REQUIRE_THAT(Duration("q").beats(), WithinAbs(1.0, 1e-9));
+    REQUIRE_THAT(Duration("w").beats(), WithinAbs(4.0, 1e-9));
+}
+
+TEST_CASE("Duration dotted abbreviation", "[duration]") {
+    Duration dq("q.");
+    REQUIRE(dq.name() == "quarter");
+    REQUIRE(dq.dots() == 1);
+    REQUIRE(dq.numerator() == 3);
+    REQUIRE(dq.denominator() == 8);
+    REQUIRE_THAT(dq.beats(), WithinAbs(1.5, 1e-9));
+
+    Duration ddh("h..");
+    REQUIRE(ddh.name() == "half");
+    REQUIRE(ddh.dots() == 2);
+    REQUIRE_THAT(ddh.beats(), WithinAbs(3.5, 1e-9));
+}
+
+TEST_CASE("Duration LilyPond notation", "[duration]") {
+    REQUIRE(Duration("4").name() == "quarter");
+    REQUIRE(Duration("8").name() == "eighth");
+    REQUIRE(Duration("2").name() == "half");
+    REQUIRE(Duration("1").name() == "whole");
+    REQUIRE(Duration("16").name() == "sixteenth");
+    REQUIRE(Duration("32").name() == "thirty_second");
+    REQUIRE(Duration("64").name() == "sixty_fourth");
+    REQUIRE_THAT(Duration("4").beats(), WithinAbs(1.0, 1e-9));
+}
+
+TEST_CASE("Duration dotted LilyPond notation", "[duration]") {
+    Duration d("4.");
+    REQUIRE(d.name() == "quarter");
+    REQUIRE(d.dots() == 1);
+    REQUIRE_THAT(d.beats(), WithinAbs(1.5, 1e-9));
+
+    Duration d2("2..");
+    REQUIRE(d2.name() == "half");
+    REQUIRE(d2.dots() == 2);
+    REQUIRE_THAT(d2.beats(), WithinAbs(3.5, 1e-9));
+}
+
+TEST_CASE("Duration from fraction string", "[duration]") {
+    Duration d("1/4");
+    REQUIRE(d.numerator() == 1);
+    REQUIRE(d.denominator() == 4);
+    REQUIRE(d.name() == "quarter");
+
+    Duration d2("3/8");
+    REQUIRE(d2.numerator() == 3);
+    REQUIRE(d2.denominator() == 8);
+    REQUIRE_THAT(d2.beats(), WithinAbs(1.5, 1e-9));
+
+    Duration d3("1/1");
+    REQUIRE(d3.name() == "whole");
+    REQUIRE_THAT(d3.beats(), WithinAbs(4.0, 1e-9));
+}
+
+TEST_CASE("Duration explicit dots override parsed dots", "[duration]") {
+    // "q" with explicit dots=1 should give dotted quarter
+    Duration d("q", 1);
+    REQUIRE(d.dots() == 1);
+    REQUIRE_THAT(d.beats(), WithinAbs(1.5, 1e-9));
+
+    // "q." with explicit dots=2 — explicit wins
+    Duration d2("q.", 2);
+    REQUIRE(d2.dots() == 2);
+    REQUIRE_THAT(d2.beats(), WithinAbs(1.75, 1e-9));
 }
 
 // ===========================================================================
@@ -126,6 +226,23 @@ TEST_CASE("Tempo seconds calculation", "[tempo]") {
 TEST_CASE("Tempo ms_per_beat", "[tempo]") {
     Tempo t(120);
     REQUIRE_THAT(t.ms_per_beat(), WithinAbs(500.0, 1e-9));
+}
+
+TEST_CASE("Tempo microseconds_per_beat", "[tempo]") {
+    REQUIRE(Tempo(120).microseconds_per_beat() == 500000);
+    REQUIRE(Tempo(60).microseconds_per_beat() == 1000000);
+    REQUIRE(Tempo(240).microseconds_per_beat() == 250000);
+}
+
+TEST_CASE("Tempo from_microseconds", "[tempo]") {
+    Tempo t = Tempo::from_microseconds(500000);
+    REQUIRE_THAT(t.bpm(), WithinAbs(120.0, 1e-9));
+
+    Tempo t2 = Tempo::from_microseconds(1000000);
+    REQUIRE_THAT(t2.bpm(), WithinAbs(60.0, 1e-9));
+
+    REQUIRE_THROWS_AS(Tempo::from_microseconds(0), std::invalid_argument);
+    REQUIRE_THROWS_AS(Tempo::from_microseconds(-1), std::invalid_argument);
 }
 
 TEST_CASE("Tempo invalid BPM throws", "[tempo]") {

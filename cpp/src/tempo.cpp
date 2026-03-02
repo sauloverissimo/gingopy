@@ -57,6 +57,10 @@ double Tempo::seconds(const Duration& duration) const {
     return beats * (60.0 / bpm_);
 }
 
+int Tempo::microseconds_per_beat() const {
+    return static_cast<int>(60000000.0 / bpm_);
+}
+
 // ---------------------------------------------------------------------------
 // String representation
 
@@ -93,6 +97,13 @@ double Tempo::marking_to_bpm(const std::string& marking) {
         }
     }
     return -1.0;  // Invalid
+}
+
+Tempo Tempo::from_microseconds(int usec) {
+    if (usec <= 0) {
+        throw std::invalid_argument("Microseconds must be positive");
+    }
+    return Tempo(60000000.0 / usec);
 }
 
 }  // namespace gingo

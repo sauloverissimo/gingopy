@@ -30,3 +30,7 @@
 #include "fretboard.hpp"
 #include "fretboard_svg.hpp"
 #include "musicxml.hpp"
+#include "note_context.hpp"
+#include "monitor.hpp"
+#include "midi1.hpp"
+#include "midi2.hpp"

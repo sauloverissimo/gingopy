@@ -9,20 +9,34 @@ propria duracao, e a Sequence toca tudo na ordem correta.
 ## Duration — duracoes musicais
 
 Uma `Duration` representa o valor ritmico de uma nota ou pausa.
-Pode ser construida pelo nome ou pela fracao:
+Pode ser construida de varias formas:
 
 ```python
 from gingo import Duration
 
-# Por nome
+# Por nome completo
 q = Duration("quarter")       # seminima (1/4)
 h = Duration("half")          # minima (1/2)
 w = Duration("whole")         # semibreve (1/1)
 e = Duration("eighth")        # colcheia (1/8)
 s = Duration("sixteenth")     # semicolcheia (1/16)
 
-# Por fracao
-d = Duration(3, 8)            # 3/8
+# Por abreviacao
+q = Duration("q")             # quarter
+h = Duration("h")             # half
+w = Duration("w")             # whole
+e = Duration("e")             # eighth
+s = Duration("s")             # sixteenth
+
+# Por notacao LilyPond
+q = Duration("4")             # quarter (1/4)
+e = Duration("8")             # eighth (1/8)
+s = Duration("16")            # sixteenth (1/16)
+
+# Por fracao (string ou numerica)
+d = Duration("1/4")           # seminima
+d = Duration("3/8")           # seminima pontuada
+d = Duration(3, 8)            # 3/8 (numerico)
 ```
 
 ### Nomes disponiveis
@@ -46,11 +60,17 @@ print(Duration.standard_names())
 ```python
 # Ponto de aumento (1.5x a duracao)
 dq = Duration("quarter", dots=1)   # 3/8
-dq.beats()                          # 1.5
+dq = Duration("q.")               # abreviacao com ponto
+dq = Duration("4.")               # LilyPond com ponto
+dq.beats()                         # 1.5
+
+# Duplo ponto (1.75x a duracao)
+dd = Duration("h..")              # minima duplamente pontuada
+dd = Duration("half", dots=2)     # equivalente
 
 # Tercina (3 notas no espaco de 2)
 t = Duration("quarter", tuplet=3)
-t.beats()                            # ~0.667
+t.beats()                          # ~0.667
 ```
 
 ### Operacoes
@@ -66,6 +86,27 @@ a.rational()         # (1, 4)
 a.numerator()        # 1
 a.denominator()      # 4
 a.beats()            # 1.0 (em seminimas)
+```
+
+### MIDI ticks
+
+Conversao entre Duration e ticks MIDI. O parametro `ppqn` (pulses per quarter note)
+define a resolucao — o padrao e 480:
+
+```python
+# Duration -> ticks
+Duration("quarter").midi_ticks()        # 480
+Duration("eighth").midi_ticks()         # 240
+Duration("half").midi_ticks()           # 960
+Duration("quarter", dots=1).midi_ticks()  # 720 (seminima pontuada)
+
+# Custom ppqn
+Duration("quarter").midi_ticks(96)      # 96
+
+# Ticks -> Duration
+Duration.from_ticks(480)                # Duration("quarter")
+Duration.from_ticks(240)                # Duration("eighth")
+Duration.from_ticks(720)                # 3/8 (seminima pontuada)
 ```
 
 ---
@@ -111,6 +152,20 @@ t.seconds(Duration("eighth"))    # 0.25
 # Converter entre BPM e marking
 Tempo.bpm_to_marking(120.0)   # "Allegro"
 Tempo.marking_to_bpm("Adagio") # 70.0
+```
+
+### MIDI
+
+Conversoes para o formato MIDI:
+
+```python
+# Microsegundos por batida (meta-event MIDI 0xFF 0x51)
+Tempo(120).microseconds_per_beat()    # 500000
+Tempo(60).microseconds_per_beat()     # 1000000
+
+# Criar Tempo a partir de microsegundos
+Tempo.from_microseconds(500000)       # Tempo(120)
+Tempo.from_microseconds(1000000)      # Tempo(60)
 ```
 
 ---
@@ -260,9 +315,67 @@ seq.set_time_signature(TimeSignature(3, 4))
 
 ---
 
+## MIDI — import e export
+
+A `Sequence` pode ser exportada e importada como Standard MIDI File (SMF):
+
+```python
+from gingo import (
+    Sequence, Tempo, TimeSignature,
+    NoteEvent, ChordEvent, Rest,
+    Note, Chord, Duration,
+)
+
+# Criar sequencia
+seq = Sequence(Tempo(120), TimeSignature(4, 4))
+seq.add(NoteEvent(Note("C"), Duration("q"), 4))
+seq.add(NoteEvent(Note("E"), Duration("q"), 4))
+seq.add(NoteEvent(Note("G"), Duration("q"), 4))
+seq.add(Rest(Duration("q")))
+seq.add(ChordEvent(Chord("CM"), Duration("h"), 4))
+
+# Exportar para MIDI (formato 0)
+seq.to_midi("melodia.mid")
+
+# Custom ppqn (resolucao)
+seq.to_midi("melodia_96.mid", ppqn=96)
+
+# Importar de MIDI (formato 0 ou 1)
+seq2 = Sequence.from_midi("melodia.mid")
+len(seq2)              # 5 eventos
+seq2.tempo().bpm()     # 120
+```
+
+### O que e preservado no roundtrip
+
+- **NoteEvent**: nota, oitava, duracao
+- **ChordEvent**: acorde (reconstruido via `Chord.identify()`), oitava, duracao
+- **Rest**: duracao (gaps entre notas viram pausas)
+- **Tempo**: meta-event de tempo MIDI
+- **TimeSignature**: meta-event de compasso MIDI
+
+### Formato
+
+O export gera um **Standard MIDI File formato 0** (single track) com:
+
+- Header chunk (MThd): formato, tracks, ppqn
+- Track chunk (MTrk): meta-events (tempo, time signature) + Note On/Off
+- Codificacao VLQ (Variable-Length Quantity) para delta times
+
+---
+
 ## CLI
 
-O modulo de ritmo nao tem subcomando CLI proprio — use a API Python.
+O modulo de ritmo tem subcomandos para consulta rapida:
+
+```bash
+gingo duration quarter              # mostra fracao, beats, MIDI ticks
+gingo duration quarter --tempo 120  # mostra duracao em segundos
+gingo tempo 120                     # mostra marking, ms/beat, us/beat MIDI
+gingo tempo Allegro --all           # mostra todos os markings
+gingo timesig 6 8 --tempo 120      # mostra classificacao, duracao do compasso
+```
+
 Para **ouvir** objetos musicais pelo terminal, use `--play`:
 
 ```bash

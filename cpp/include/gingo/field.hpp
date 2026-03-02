@@ -6,7 +6,9 @@
 #pragma once
 
 #include "chord.hpp"
+#include "harmonic_function.hpp"
 #include "note.hpp"
+#include "note_context.hpp"
 #include "scale.hpp"
 
 #include <optional>
@@ -16,23 +18,8 @@
 
 namespace gingo {
 
-/// The three primary harmonic functions in tonal music.
-///
-/// Every chord in a diatonic field belongs to one of three functional groups:
-///   - Tonic (T):       stability, resolution, repose
-///   - Subdominant (S): departure, tension away from tonic
-///   - Dominant (D):    tension toward tonic, demands resolution
-enum class HarmonicFunction {
-    Tonic       = 0,
-    Subdominant = 1,
-    Dominant    = 2
-};
-
-/// Full name: "Tonic", "Subdominant", "Dominant".
-std::string harmonic_function_name(HarmonicFunction f);
-
-/// Short abbreviation: "T", "S", "D".
-std::string harmonic_function_short(HarmonicFunction f);
+// Note: HarmonicFunction, harmonic_function_name, harmonic_function_short
+// are defined in harmonic_function.hpp
 
 /// Information about a borrowed chord — a chord found in a parallel
 /// harmonic field (e.g. from the parallel minor when analyzing major).
@@ -211,6 +198,17 @@ public:
 
     /// Compare two chords within the context of this harmonic field.
     FieldComparison compare(const Chord& a, const Chord& b) const;
+
+    /// Get per-note harmonic context for a given note.
+    ///
+    /// Returns NoteContext with scale degree, interval from tonic,
+    /// harmonic function, and inScale flag.
+    ///
+    /// Examples (Field("C", Major)):
+    ///   noteContext(Note("E"))  → degree=3, function=Tonic, interval=M3, inScale=true
+    ///   noteContext(Note("F"))  → degree=4, function=Subdominant, interval=P4, inScale=true
+    ///   noteContext(Note("C#")) → degree=0, function=Tonic, interval=m2, inScale=false
+    NoteContext noteContext(const Note& note) const;
 
     /// Key signature (delegates to the underlying scale).
     int signature() const;
