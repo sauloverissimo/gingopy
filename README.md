@@ -8,7 +8,7 @@ Music theory engine for Python, powered by a C++17 core.
 
 <p align="center">
 
-[![PyPI](https://img.shields.io/badge/pypi-v1.2.0-deepviolet?logo=pypi&logoColor=white)](https://pypi.org/project/gingo/)
+[![PyPI](https://img.shields.io/badge/pypi-v2.0.0-deepviolet?logo=pypi&logoColor=white)](https://pypi.org/project/gingo/)
 [![Python](https://img.shields.io/pypi/pyversions/gingo?logo=python&logoColor=white)](https://pypi.org/project/gingo/)
 [![License](https://img.shields.io/github/license/sauloverissimo/gingo?color=blue)](https://github.com/sauloverissimo/gingo/blob/main/LICENSE)
 [![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C?logo=cplusplus&logoColor=white)](https://en.cppreference.com/w/cpp/17)
@@ -36,7 +36,7 @@ Gingo is a pragmatic library for analysis, composition, and teaching. It priorit
 - **Instruments** — `Piano` maps theory to physical keys (forward & reverse MIDI), with voicing styles (close, open, shell). `Fretboard` generates playable fingerings for guitar, cavaquinho, bandolim (or custom tunings) using a CAGED-based scoring algorithm.
 - **SVG Visualization** — `PianoSVG` renders interactive piano keyboard SVGs. `FretboardSVG` renders chord boxes, fretboard diagrams, scale maps, and harmonic field charts — with orientation (horizontal/vertical) and handedness (right/left) support.
 - **Notation** — `MusicXML` serializes any musical object to MusicXML 4.0 for MuseScore, Finale, and Sibelius.
-- **MIDI** — `Sequence.to_midi()` / `.from_midi()` for Standard MIDI File import/export. `Duration.midi_ticks()` and `Tempo.microseconds_per_beat()` for low-level MIDI conversions.
+- **MIDI 1.0 & 2.0** — `Sequence.to_midi()` / `.from_midi()` for Standard MIDI File import/export. MIDI 2.0 UMP stream support via `Midi2`. `Monitor` for real-time event routing. `Duration.midi_ticks()` and `Tempo.microseconds_per_beat()` for low-level conversions.
 - **Rhythm & time** — `Duration` (flexible parsing: names, abbreviations, LilyPond, fractions), `Tempo` (BPM + nomes de tempo), `TimeSignature`, and `Sequence` with note/chord events.
 - **Audio** — `.play()` and `.to_wav()` on musical objects, plus CLI `--play` / `--wav` with waveform and strum controls.
 - **CLI-first exploration** — query and inspect theory concepts without leaving the terminal.
