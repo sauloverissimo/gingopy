@@ -98,7 +98,7 @@ Estado atual do projeto e visao de futuro.
 
 ---
 
-## v1.2.0 — MIDI + Duration Parsing (versao atual)
+## v1.2.0 — MIDI + Duration Parsing
 
 ### Duration Parsing
 
@@ -124,6 +124,32 @@ Estado atual do projeto e visao de futuro.
 
 ---
 
+## v2.0.0 — MIDI 2.0, Monitor, Expression (versao atual)
+
+### MIDI 2.0
+
+- [x] `Midi2` — suporte a MIDI 2.0 UMP (Universal MIDI Packet)
+- [x] `Midi1` — interface unificada para MIDI 1.0
+- [x] Formato interno `midi_format.hpp` para utilidades binarias (VLQ, big-endian)
+
+### Monitor
+
+- [x] `Monitor` — monitoramento e roteamento de eventos MIDI em tempo real
+
+### Expression & CI
+
+- [x] `ExpressionState` — rastreamento de parametros de expressao por nota
+- [x] `MidiCiHandler` — negociacao de protocolo MIDI-CI, property exchange, perfis
+
+### Melhorias
+
+- [x] `Duration` — aritmetica estendida e suporte a quialteras
+- [x] `Tempo` — mapa de tempo e conversoes BPM aprimoradas
+- [x] `Field` — refatoracao e melhorias no campo harmonico
+- [x] Documentacao expandida com guias, referencia API e exemplos interativos
+
+---
+
 ## Planejado
 
 ### Escalas Bebop
@@ -144,7 +170,7 @@ Estado atual do projeto e visao de futuro.
 - **FretboardSVG** com orientacao (horizontal/vertical) e lateralidade (destro/canhoto)
 - **Piano** com voicings (close, open, shell) e **PianoSVG** interativo
 - **MusicXML 4.0** para exportacao de partitura
-- **MIDI import/export** com `Sequence.to_midi()` e `Sequence.from_midi()`
+- **MIDI 1.0 & 2.0** — import/export SMF, UMP streams via `Midi2`, monitoramento via `Monitor`
 - **Duration flexivel** com parsing de abreviacoes, LilyPond e fracoes
 - **Sintese de audio** integrada com `.play()` e `.to_wav()` em todas as classes
 - **Duration racional** exata (fracao, nao float)
