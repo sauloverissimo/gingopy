@@ -17,6 +17,10 @@ Music theory engine for Python, powered by a C++17 core.
 
 </p>
 
+<p align="center">
+  <a href="https://github.com/sponsors/sauloverissimo"><img src="https://img.shields.io/badge/Sponsor-❤-ea4aaa?style=flat-square&logo=github-sponsors&logoColor=white" alt="Sponsor" /></a>
+</p>
+
 From pitch classes to harmonic trees and rhythmic grids — with audio playback and a friendly CLI.
 
 Notes, intervals, chords, scales, and harmonic fields are just the beginning: Gingo also ships with durations, tempo markings (nomes de tempo), time signatures, and sequence playback.
