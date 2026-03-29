@@ -453,6 +453,6 @@ O Gingo classifica acordes em três funções principais:
 
 ## Recursos Adicionais
 
-- **GitHub**: [github.com/sauloverissimo/gingo](https://github.com/sauloverissimo/gingo)
+- **GitHub**: [github.com/sauloverissimo/gingopy](https://github.com/sauloverissimo/gingopy)
 - **Referências Bibliográficas**: [Teoria e fundamentos acadêmicos](referencias.md)
 - **Exemplos Práticos**: Disponíveis em cada seção de tutorial

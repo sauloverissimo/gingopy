@@ -243,5 +243,5 @@ Se não houver wheel para sua plataforma, pip compilará automaticamente do cód
 
 ---
 
-**GitHub**: [github.com/sauloverissimo/gingo](https://github.com/sauloverissimo/gingo)
+**GitHub**: [github.com/sauloverissimo/gingopy](https://github.com/sauloverissimo/gingopy)
 **PyPI**: [pypi.org/project/gingo](https://pypi.org/project/gingo/)

@@ -1,9 +1,9 @@
 site_name: 🪇 Gingo - Teoria Musical em Python
-site_url: https://sauloverissimo.github.io/gingo
+site_url: https://sauloverissimo.github.io/gingopy
 site_description: Aprenda teoria musical de forma divertida e fácil com Python
 site_author: Saulo Verissimo
-repo_url: https://github.com/sauloverissimo/gingo
-repo_name: sauloverissimo/gingo
+repo_url: https://github.com/sauloverissimo/gingopy
+repo_name: sauloverissimo/gingopy
 
 theme:
   name: material
@@ -87,6 +87,6 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/sauloverissimo/gingo
+      link: https://github.com/sauloverissimo/gingopy
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/gingo/

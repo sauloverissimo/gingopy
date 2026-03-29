@@ -4,7 +4,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "gingo"
-version = "2.0.0"
+version = "2.0.1"
 description = "Music theory library — notes, chords, scales, and harmonic fields"
 readme = "README.md"
 license = "MIT"
@@ -32,10 +32,10 @@ classifiers = [
 keywords = ["music", "theory", "chord", "scale", "harmony", "interval", "harmonic-field"]
 
 [project.urls]
-Homepage = "https://github.com/sauloverissimo/gingo"
-Documentation = "https://sauloverissimo.github.io/gingo"
-Repository = "https://github.com/sauloverissimo/gingo"
-Issues = "https://github.com/sauloverissimo/gingo/issues"
+Homepage = "https://github.com/sauloverissimo/gingopy"
+Documentation = "https://sauloverissimo.github.io/gingopy"
+Repository = "https://github.com/sauloverissimo/gingopy"
+Issues = "https://github.com/sauloverissimo/gingopy/issues"
 
 [project.scripts]
 gingo = "gingo.__main__:main"
