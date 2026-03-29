@@ -220,10 +220,10 @@ def test_brightness_accessor():
     assert lyd.brightness() == 7
 
     ion = Scale("C", "major")
-    assert ion.brightness() == 5
+    assert ion.brightness() == 6
 
     loc = Scale("B", "locrian")
-    assert loc.brightness() == 1
+    assert loc.brightness() == 0
 
 
 def test_mode_int_tracks():

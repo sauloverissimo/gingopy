@@ -44,11 +44,11 @@ void LookupData::init_enharmonic_map() {
         {"##G", "A"},  {"##A", "B"},  {"##B", "C#"},
 
         // Double flat (bb) — suffix form
-        {"Cbb", "B"},  {"Dbb", "C"},  {"Ebb", "D"},  {"Fbb", "E"},
+        {"Cbb", "A#"}, {"Dbb", "C"},  {"Ebb", "D"},  {"Fbb", "D#"},
         {"Gbb", "F"},  {"Abb", "G"},  {"Bbb", "A"},
 
         // Double flat (bb) — prefix form
-        {"bbC", "B"},  {"bbD", "C"},  {"bbE", "D"},  {"bbF", "E"},
+        {"bbC", "A#"}, {"bbD", "C"},  {"bbE", "D"},  {"bbF", "D#"},
         {"bbG", "F"},  {"bbA", "G"},  {"bbB", "A"},
 
         // Simple enharmonics
@@ -127,7 +127,7 @@ void LookupData::init_intervals() {
          "8J","b9","9","#9","b11","11","#11","5","b13","13","#13","bI"},
         // anglo_saxon (row 6)
         {"P1","mi2","ma2","mi3","ma3","P4","d5","P5","mi6","ma6","mi7","ma7",
-         "P8","mi9","ma9","mi10","ma10","P11","d11","P12","mi13","ma13","mi14","ma14"},
+         "P8","mi9","ma9","mi10","ma10","P11","A11","P12","mi13","ma13","mi14","ma14"},
         // ratio_float (row 7)
         {0.0,0.5,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0,5.5,
          6.0,6.5,7.0,7.5,8.0,8.5,9.0,9.5,10.0,10.5,11.0,11.5},

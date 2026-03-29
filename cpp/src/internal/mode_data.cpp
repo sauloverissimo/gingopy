@@ -21,13 +21,13 @@ static constexpr std::size_t kModeCount = 36;
 // Primary mode entries.  Order: heptatonic families (7 each), then specials.
 static const std::array<ModeInfo, kModeCount> kModes = {{
     // ── Major (7 modes) ────────────────────────────────────────────────
-    {ScaleType::Major, 1, "Ionian",     "major", 5, 7},
-    {ScaleType::Major, 2, "Dorian",     "minor", 4, 7},
-    {ScaleType::Major, 3, "Phrygian",   "minor", 2, 7},
+    {ScaleType::Major, 1, "Ionian",     "major", 6, 7},
+    {ScaleType::Major, 2, "Dorian",     "minor", 3, 7},
+    {ScaleType::Major, 3, "Phrygian",   "minor", 1, 7},
     {ScaleType::Major, 4, "Lydian",     "major", 7, 7},
-    {ScaleType::Major, 5, "Mixolydian", "major", 3, 7},
+    {ScaleType::Major, 5, "Mixolydian", "major", 5, 7},
     {ScaleType::Major, 6, "Aeolian",    "minor", 2, 7},
-    {ScaleType::Major, 7, "Locrian",    "minor", 1, 7},
+    {ScaleType::Major, 7, "Locrian",    "minor", 0, 7},
 
     // ── Harmonic Minor (7 modes) ──────────────────────────────────────
     {ScaleType::HarmonicMinor, 1, "Harmonic Minor",     "minor", 0, 7},

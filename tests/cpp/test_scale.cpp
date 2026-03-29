@@ -227,10 +227,10 @@ TEST_CASE("brightness accessor", "[scale][hierarchy]") {
     REQUIRE(lyd.brightness() == 7);
 
     Scale ion("C", "major");
-    REQUIRE(ion.brightness() == 5);
+    REQUIRE(ion.brightness() == 6);
 
     Scale loc("B", "locrian");
-    REQUIRE(loc.brightness() == 1);
+    REQUIRE(loc.brightness() == 0);
 }
 
 TEST_CASE("mode(int) tracks mode number", "[scale][hierarchy]") {
