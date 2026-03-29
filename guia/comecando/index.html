@@ -1,0 +1,2979 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Aprenda teoria musical de forma divertida e fácil com Python">
+      
+      
+        <meta name="author" content="Saulo Verissimo">
+      
+      
+        <link rel="canonical" href="https://sauloverissimo.github.io/gingopy/guia/comecando/">
+      
+      
+        <link rel="prev" href="../conceitos-basicos/">
+      
+      
+        <link rel="next" href="../fretboard/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Começando - 🪇 Gingo - Teoria Musical em Python</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bem-vindo-ao-gingo" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="🪇 Gingo - Teoria Musical em Python" class="md-header__button md-logo" aria-label="🪇 Gingo - Teoria Musical em Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🪇 Gingo - Teoria Musical em Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Começando
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sauloverissimo/gingopy" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sauloverissimo/gingopy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏠 Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../introducao/" class="md-tabs__link">
+          
+  
+  
+  📖 Guia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/referencia/" class="md-tabs__link">
+          
+  
+  
+  📚 API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../roadmap/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🗺️ Roadmap
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../referencias/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📖 Referências
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="🪇 Gingo - Teoria Musical em Python" class="md-nav__button md-logo" aria-label="🪇 Gingo - Teoria Musical em Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    🪇 Gingo - Teoria Musical em Python
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sauloverissimo/gingopy" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sauloverissimo/gingopy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏠 Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📖 Guia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📖 Guia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introducao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introdução
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instalacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primeiros-passos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primeiros Passos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conceitos-basicos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conceitos Básicos de Música
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Começando
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Começando
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-e-o-gingo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que e o Gingo?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#duas-formas-de-usar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duas formas de usar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Duas formas de usar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-biblioteca-python-uso-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como biblioteca Python (uso principal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-cli-exploracao-e-teste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como CLI (exploracao e teste)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-note-o-atomo-da-musica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Note — o atomo da musica
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Note — o atomo da musica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enarmonia-dois-nomes-mesmo-som" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enarmonia: dois nomes, mesmo som
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-interval-a-distancia-entre-duas-notas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Interval — a distancia entre duas notas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Interval — a distancia entre duas notas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entendendo-os-nomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entendendo os nomes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-chord-notas-empilhadas-por-uma-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Chord — notas empilhadas por uma formula
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Chord — notas empilhadas por uma formula">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#as-42-formulas-por-familia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        As 42 formulas, por familia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-scale-uma-selecao-de-notas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Scale — uma selecao de notas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Scale — uma selecao de notas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#as-10-familias-parentais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        As 10 familias parentais
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nomes-de-modo-como-tipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nomes de modo como tipo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modos-o-conceito-mais-poderoso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modos — o conceito mais poderoso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-field-os-acordes-que-pertencem-a-uma-escala" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Field — os acordes que pertencem a uma escala
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Field — os acordes que pertencem a uma escala">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detectar-tonalidade-identify-vs-deduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detectar tonalidade (identify vs deduce)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-compare-o-que-dois-acordes-tem-em-comum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Compare — o que dois acordes tem em comum?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Compare — o que dois acordes tem em comum?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparacao-absoluta-chord" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparacao absoluta (Chord)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparacao-contextual-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparacao contextual (Field)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fretboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fretboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ritmo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ritmo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exemplos-praticos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exemplos Práticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📚 API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/referencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência Completa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗺️ Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📖 Referências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-e-o-gingo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que e o Gingo?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#duas-formas-de-usar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duas formas de usar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Duas formas de usar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-biblioteca-python-uso-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como biblioteca Python (uso principal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-cli-exploracao-e-teste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como CLI (exploracao e teste)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-note-o-atomo-da-musica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Note — o atomo da musica
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Note — o atomo da musica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enarmonia-dois-nomes-mesmo-som" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enarmonia: dois nomes, mesmo som
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-interval-a-distancia-entre-duas-notas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Interval — a distancia entre duas notas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Interval — a distancia entre duas notas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entendendo-os-nomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entendendo os nomes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-chord-notas-empilhadas-por-uma-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Chord — notas empilhadas por uma formula
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Chord — notas empilhadas por uma formula">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#as-42-formulas-por-familia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        As 42 formulas, por familia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-scale-uma-selecao-de-notas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Scale — uma selecao de notas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Scale — uma selecao de notas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#as-10-familias-parentais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        As 10 familias parentais
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nomes-de-modo-como-tipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nomes de modo como tipo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modos-o-conceito-mais-poderoso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modos — o conceito mais poderoso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-field-os-acordes-que-pertencem-a-uma-escala" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Field — os acordes que pertencem a uma escala
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Field — os acordes que pertencem a uma escala">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detectar-tonalidade-identify-vs-deduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detectar tonalidade (identify vs deduce)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-compare-o-que-dois-acordes-tem-em-comum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Compare — o que dois acordes tem em comum?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Compare — o que dois acordes tem em comum?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparacao-absoluta-chord" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparacao absoluta (Chord)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparacao-contextual-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparacao contextual (Field)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navegação" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    🏠 Início
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../introducao/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    📖 Guia
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="bem-vindo-ao-gingo">Bem-vindo ao Gingo<a class="headerlink" href="#bem-vindo-ao-gingo" title="Permanent link">&para;</a></h1>
+<p>Biblioteca Python de teoria musical para estudo, analise e desenvolvimento.</p>
+<hr />
+<h2 id="o-que-e-o-gingo">O que e o Gingo?<a class="headerlink" href="#o-que-e-o-gingo" title="Permanent link">&para;</a></h2>
+<p>O Gingo e uma <strong>biblioteca Python</strong> que modela a harmonia ocidental em camadas.
+Voce pode usar em scripts, notebooks, aplicacoes — ou explorar pelo terminal com o CLI.</p>
+<p>Pense na musica como uma escada de <strong>12 degraus</strong> (as 12 notas). Tudo que
+existe na harmonia — acordes, escalas, campos, progressoes — e uma forma
+de <strong>selecionar e organizar</strong> esses 12 degraus.</p>
+<p>O Gingo organiza isso em 5 camadas, uma construida sobre a outra:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Note         &quot;O que e essa nota?&quot;
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  |
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Interval     &quot;Qual a distancia entre duas notas?&quot;
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  |
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Chord        &quot;Que notas tocadas juntas formam isso?&quot;
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  |
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Scale        &quot;Que notas posso usar nessa tonalidade?&quot;
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  |
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Field        &quot;Que acordes essa escala gera?&quot;
+</span></code></pre></div>
+<p>Nao da pra entender campos sem entender acordes. Nao da pra entender
+acordes sem entender intervalos. Cada camada depende da anterior.</p>
+<hr />
+<h2 id="duas-formas-de-usar">Duas formas de usar<a class="headerlink" href="#duas-formas-de-usar" title="Permanent link">&para;</a></h2>
+<h3 id="como-biblioteca-python-uso-principal">Como biblioteca Python (uso principal)<a class="headerlink" href="#como-biblioteca-python-uso-principal" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Note</span><span class="p">,</span> <span class="n">Interval</span><span class="p">,</span> <span class="n">Chord</span><span class="p">,</span> <span class="n">Scale</span><span class="p">,</span> <span class="n">Field</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">note</span> <span class="o">=</span> <span class="n">Note</span><span class="p">(</span><span class="s2">&quot;C#&quot;</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">chord</span> <span class="o">=</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am7&quot;</span><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">scale</span> <span class="o">=</span> <span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">field</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Use em scripts, notebooks Jupyter, aplicacoes web, ferramentas de estudo,
+geradores de exercicios — qualquer coisa que voce consiga construir com Python.</p>
+<h3 id="como-cli-exploracao-e-teste">Como CLI (exploracao e teste)<a class="headerlink" href="#como-cli-exploracao-e-teste" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>gingo note C#
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>gingo chord Am7
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>gingo scale &quot;C major&quot; --modes
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>gingo field &quot;C major&quot;
+</span></code></pre></div>
+<p>Para ver a ajuda: <code>gingo --help</code>, <code>gingo chord --help</code>, etc.</p>
+<hr />
+<h2 id="1-note-o-atomo-da-musica">1. Note — o atomo da musica<a class="headerlink" href="#1-note-o-atomo-da-musica" title="Permanent link">&para;</a></h2>
+<p>Uma nota e um som com uma frequencia. Existem 12 notas na musica ocidental,
+chamadas de <strong>pitch classes cromaticos</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>C    C#    D    D#    E    F    F#    G    G#    A    A#    B
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Do   Do#   Re   Re#   Mi   Fa   Fa#  Sol  Sol#  La   La#   Si
+</span></code></pre></div>
+<p>Depois do B (Si), volta para o C (Do) — so que uma oitava acima.
+Esse ciclo de 12 se repete infinitamente.</p>
+<h3 id="enarmonia-dois-nomes-mesmo-som">Enarmonia: dois nomes, mesmo som<a class="headerlink" href="#enarmonia-dois-nomes-mesmo-som" title="Permanent link">&para;</a></h3>
+<p>Algumas notas tem dois nomes. Bb (Si bemol) e A# (La sustenido)
+sao a <strong>mesma tecla do piano</strong>, o <strong>mesmo som</strong>. Isso se chama <strong>enarmonia</strong>.</p>
+<p>Notacoes aceitas:
+- Sustenidos: <code>C#</code>, <code>D#</code>, <code>F#</code>, <code>G#</code>, <code>A#</code>
+- Bemois: <code>Db</code>, <code>Eb</code>, <code>Gb</code>, <code>Ab</code>, <code>Bb</code>
+- Duplos: <code>Ebb</code>, <code>F##</code>
+- Unicode: <code>B♭</code>, <code>F♯</code></p>
+<h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Note</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">n</span> <span class="o">=</span> <span class="n">Note</span><span class="p">(</span><span class="s2">&quot;Bb&quot;</span><span class="p">)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">n</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>           <span class="c1"># &quot;Bb&quot;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">n</span><span class="o">.</span><span class="n">natural</span><span class="p">()</span>         <span class="c1"># &quot;A#&quot;  (nome canonico, com sustenido)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">n</span><span class="o">.</span><span class="n">semitone</span><span class="p">()</span>        <span class="c1"># 10</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">n</span><span class="o">.</span><span class="n">frequency</span><span class="p">()</span>       <span class="c1"># 466.16 (Hz, referencia A4=440)</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">n</span><span class="o">.</span><span class="n">sound</span><span class="p">()</span>           <span class="c1"># &quot;A&quot;</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Transposicao</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">n</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>      <span class="c1"># Note(&quot;F&quot;)  — subir 7 semitons</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="c1"># Enarmonia</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="n">n</span><span class="o">.</span><span class="n">is_enharmonic</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;A#&quot;</span><span class="p">))</span>  <span class="c1"># True — mesmo som, nomes diferentes</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="c1"># Ouvir a nota</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="n">n</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>                     <span class="c1"># toca Bb na oitava 4</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="n">n</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">octave</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>             <span class="c1"># uma oitava acima</span>
+</span></code></pre></div>
+<h3 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$ gingo note Bb
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  Note: Bb
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  ————————
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    Semitone index...... 10
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    Frequency (A4=440).. 466.16 Hz
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    Natural name........ A#
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    Sound............... A
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opcao</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--transpose N</code></td>
+<td>Sobe ou desce N semitons</td>
+</tr>
+<tr>
+<td><code>--enharmonic NOTA</code></td>
+<td>Verifica se duas notas sao enarmonicas</td>
+</tr>
+<tr>
+<td><code>--distance NOTA</code></td>
+<td>Distancia no ciclo de quintas (0-6)</td>
+</tr>
+<tr>
+<td><code>--fifths</code></td>
+<td>Mostra a posicao no circulo de quintas</td>
+</tr>
+<tr>
+<td><code>--play</code></td>
+<td>Toca a nota pelo audio do sistema</td>
+</tr>
+<tr>
+<td><code>--wav FILE</code></td>
+<td>Exporta para arquivo WAV</td>
+</tr>
+</tbody>
+</table>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>gingo note C --transpose 7           # C + 7 semitons = G
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>gingo note Db --enharmonic C#        # sim, sao enarmonicos
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>gingo note C --distance G            # distancia no ciclo de quintas
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>gingo note G --fifths                # posicao no circulo de quintas
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>gingo note A --play                  # ouvir a nota La
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>gingo note C --play --waveform square  # onda quadrada
+</span></code></pre></div>
+<p><strong>O que da pra estudar:</strong> o sistema cromatico de 12 notas, enarmonia,
+frequencias, transposicao.</p>
+<hr />
+<h2 id="2-interval-a-distancia-entre-duas-notas">2. Interval — a distancia entre duas notas<a class="headerlink" href="#2-interval-a-distancia-entre-duas-notas" title="Permanent link">&para;</a></h2>
+<p>Um intervalo mede a <strong>distancia</strong> entre duas notas, contada em <strong>semitons</strong>
+(a menor distancia possivel entre duas notas). O Gingo cobre
+<strong>24 intervalos</strong> (2 oitavas completas, de 0 a 23 semitons).</p>
+<h3 id="entendendo-os-nomes">Entendendo os nomes<a class="headerlink" href="#entendendo-os-nomes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Semitons</th>
+<th style="text-align: center;">Label</th>
+<th style="text-align: center;">Anglo-saxao</th>
+<th>Nome em portugues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">P1</td>
+<td style="text-align: center;">P1</td>
+<td>Unissono (mesma nota)</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2m</td>
+<td style="text-align: center;">mi2</td>
+<td>Segunda menor</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2M</td>
+<td style="text-align: center;">ma2</td>
+<td>Segunda maior</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3m</td>
+<td style="text-align: center;">mi3</td>
+<td>Terca menor</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3M</td>
+<td style="text-align: center;">ma3</td>
+<td>Terca maior</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4J</td>
+<td style="text-align: center;">P4</td>
+<td>Quarta justa</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">d5</td>
+<td style="text-align: center;">d5</td>
+<td>Quinta diminuta (tritono)</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">5J</td>
+<td style="text-align: center;">P5</td>
+<td>Quinta justa</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">#5</td>
+<td style="text-align: center;">mi6</td>
+<td>Sexta menor</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">M6</td>
+<td style="text-align: center;">ma6</td>
+<td>Sexta maior</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">7m</td>
+<td style="text-align: center;">mi7</td>
+<td>Setima menor</td>
+</tr>
+<tr>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">7M</td>
+<td style="text-align: center;">ma7</td>
+<td>Setima maior</td>
+</tr>
+<tr>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">8J</td>
+<td style="text-align: center;">P8</td>
+<td>Oitava</td>
+</tr>
+</tbody>
+</table>
+<p>A partir do semitom 13, os intervalos se repetem na segunda oitava
+(b9, 9, #9, 11, #11, 13, etc.) — usados em acordes estendidos no jazz.</p>
+<h3 id="python_1">Python<a class="headerlink" href="#python_1" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Interval</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">iv</span> <span class="o">=</span> <span class="n">Interval</span><span class="p">(</span><span class="s2">&quot;5J&quot;</span><span class="p">)</span>        <span class="c1"># por label</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">iv</span> <span class="o">=</span> <span class="n">Interval</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>           <span class="c1"># por semitons (mesmo resultado)</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">iv</span><span class="o">.</span><span class="n">label</span><span class="p">()</span>          <span class="c1"># &quot;5J&quot;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">iv</span><span class="o">.</span><span class="n">anglo_saxon</span><span class="p">()</span>    <span class="c1"># &quot;P5&quot;</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">iv</span><span class="o">.</span><span class="n">semitones</span><span class="p">()</span>      <span class="c1"># 7</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="n">iv</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>         <span class="c1"># 5</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="n">iv</span><span class="o">.</span><span class="n">octave</span><span class="p">()</span>         <span class="c1"># 1</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1"># Listar todos os 24 intervalos</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">24</span><span class="p">):</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    <span class="n">iv</span> <span class="o">=</span> <span class="n">Interval</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">iv</span><span class="o">.</span><span class="n">semitones</span><span class="p">()</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2"> st  </span><span class="si">{</span><span class="n">iv</span><span class="o">.</span><span class="n">label</span><span class="p">()</span><span class="si">:</span><span class="s2">&lt;6s</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">iv</span><span class="o">.</span><span class="n">anglo_saxon</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="cli_1">CLI<a class="headerlink" href="#cli_1" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$ gingo interval 5J
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  Interval: 5J
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>  —————————————
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    Semitones........... 7
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    Anglo-saxon......... P5
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    Degree.............. 5
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    Octave.............. 1
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opcao</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--all</code></td>
+<td>Mostra a tabela completa dos 24 intervalos</td>
+</tr>
+</tbody>
+</table>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>gingo interval 4             # 4 semitons = 3M (terca maior)
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>gingo interval 0 --all       # tabela completa dos 24
+</span></code></pre></div>
+<p><strong>O que da pra estudar:</strong> como medir distancias entre notas, a diferenca
+entre maior/menor/justo/diminuto/aumentado, o sistema de 2 oitavas.</p>
+<hr />
+<h2 id="3-chord-notas-empilhadas-por-uma-formula">3. Chord — notas empilhadas por uma formula<a class="headerlink" href="#3-chord-notas-empilhadas-por-uma-formula" title="Permanent link">&para;</a></h2>
+<p>Um acorde e uma <strong>receita</strong>: uma nota raiz + um conjunto de intervalos.
+O Gingo conhece <strong>42 formulas de acordes</strong>.</p>
+<h3 id="as-42-formulas-por-familia">As 42 formulas, por familia<a class="headerlink" href="#as-42-formulas-por-familia" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Familia</th>
+<th>Tipos disponiveis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Triades</td>
+<td><code>M</code>  <code>m</code>  <code>dim</code>  <code>aug</code>  <code>sus4</code>  <code>sus2</code>  <code>5</code></td>
+</tr>
+<tr>
+<td>Setimas</td>
+<td><code>7</code>  <code>7M</code>  <code>m7</code>  <code>m7M</code>  <code>dim7</code>  <code>m7(b5)</code></td>
+</tr>
+<tr>
+<td>Sextas</td>
+<td><code>6</code>  <code>m6</code></td>
+</tr>
+<tr>
+<td>Estendidos</td>
+<td><code>9</code>  <code>7M(9)</code>  <code>m9</code>  <code>6(9)</code>  <code>m6(9)</code></td>
+</tr>
+<tr>
+<td>Alterados</td>
+<td><code>7(b5)</code> <code>aug7</code> <code>7(#9)</code> <code>7(b9)</code> <code>7(#5)</code> <code>7(b5b9)</code> <code>7(#5#9)</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>m7(9)</code> <code>7M(#5)</code></td>
+</tr>
+<tr>
+<td>Suspensos</td>
+<td><code>7sus4</code>  <code>7sus2</code></td>
+</tr>
+<tr>
+<td>Add</td>
+<td><code>add9</code>  <code>madd9</code>  <code>add11</code>  <code>add13</code></td>
+</tr>
+<tr>
+<td>Outros</td>
+<td><code>dim7M</code>  <code>m7(11)</code>  <code>7(13)</code>  <code>7M(13)</code> ...</td>
+</tr>
+</tbody>
+</table>
+<p>Para formar um acorde, combine: <strong>nota raiz</strong> + <strong>tipo</strong>. Exemplos:
+<code>CM</code> (Do maior), <code>Am7</code> (La menor com setima), <code>F#dim7</code> (Fa# diminuto com setima).</p>
+<h3 id="python_2">Python<a class="headerlink" href="#python_2" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chord</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">c</span> <span class="o">=</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am7&quot;</span><span class="p">)</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">c</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>            <span class="c1"># &quot;Am7&quot;</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">c</span><span class="o">.</span><span class="n">root</span><span class="p">()</span>            <span class="c1"># Note(&quot;A&quot;)</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">c</span><span class="o">.</span><span class="n">type</span><span class="p">()</span>            <span class="c1"># &quot;m7&quot;</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">c</span><span class="o">.</span><span class="n">notes</span><span class="p">()</span>           <span class="c1"># [Note(&quot;A&quot;), Note(&quot;C&quot;), Note(&quot;E&quot;), Note(&quot;G&quot;)]</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="n">c</span><span class="o">.</span><span class="n">formal_notes</span><span class="p">()</span>    <span class="c1"># [Note(&quot;A&quot;), Note(&quot;C&quot;), Note(&quot;E&quot;), Note(&quot;G&quot;)]</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="n">c</span><span class="o">.</span><span class="n">intervals</span><span class="p">()</span>       <span class="c1"># [Interval(&quot;P1&quot;), Interval(&quot;3m&quot;), Interval(&quot;5J&quot;), Interval(&quot;7m&quot;)]</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="n">c</span><span class="o">.</span><span class="n">interval_labels</span><span class="p">()</span> <span class="c1"># [&quot;P1&quot;, &quot;3m&quot;, &quot;5J&quot;, &quot;7m&quot;]</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="n">c</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>            <span class="c1"># 4</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="n">c</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">))</span>  <span class="c1"># True</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1"># Construcao por lista de notas</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="n">Chord</span><span class="p">([</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">])</span>                 <span class="c1"># Chord(&quot;CM&quot;)</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="n">Chord</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">])</span>            <span class="c1"># Chord(&quot;Am7&quot;)</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="c1"># Identificacao reversa: dadas as notas, descobre o acorde</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="n">Chord</span><span class="o">.</span><span class="n">identify</span><span class="p">([</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">])</span>   <span class="c1"># Chord(&quot;C7M&quot;)</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="n">Chord</span><span class="o">.</span><span class="n">identify</span><span class="p">([</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">])</span>        <span class="c1"># Chord(&quot;Dm&quot;)</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="c1"># Ouvir o acorde</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="n">c</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>                               <span class="c1"># Am7 com strum suave</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="n">c</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">waveform</span><span class="o">=</span><span class="s2">&quot;triangle&quot;</span><span class="p">)</span>            <span class="c1"># timbre diferente</span>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="n">c</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">strum</span><span class="o">=</span><span class="mf">0.08</span><span class="p">)</span>                     <span class="c1"># strum mais lento (arpejado)</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="n">c</span><span class="o">.</span><span class="n">to_wav</span><span class="p">(</span><span class="s2">&quot;am7.wav&quot;</span><span class="p">)</span>                    <span class="c1"># exportar WAV</span>
+</span></code></pre></div>
+<p>A identificacao reversa e poderosa para estudo: toque notas no instrumento,
+passe para o Gingo, e descubra o nome do acorde.</p>
+<h3 id="cli_2">CLI<a class="headerlink" href="#cli_2" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$ gingo chord Am7
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  Chord: Am7
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  ——————————
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    Root................ A
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    Type................ m7
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    Notes............... A, C, E, G
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    Formal notes........ A, C, E, G
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    Intervals........... P1, 3m, 5J, 7m
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    Size................ 4
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opcao</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--identify</code></td>
+<td>Identifica acorde a partir de notas (separar com virgula)</td>
+</tr>
+<tr>
+<td><code>--play</code></td>
+<td>Toca o acorde pelo audio do sistema</td>
+</tr>
+<tr>
+<td><code>--wav FILE</code></td>
+<td>Exporta para arquivo WAV</td>
+</tr>
+<tr>
+<td><code>--strum S</code></td>
+<td>Delay entre notas do acorde em segundos (default 0.03)</td>
+</tr>
+</tbody>
+</table>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>gingo chord Bbdim7                    # Sib diminuto com setima
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>gingo chord &quot;F#7M(#5)&quot;               # Fa# maior 7 com quinta aumentada
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>gingo chord &quot;C,E,G,B&quot; --identify     # descobre = C7M
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>gingo chord &quot;D,F,A&quot; --identify       # descobre = Dm
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>gingo chord Am7 --play               # ouvir o acorde
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>gingo chord Am7 --play --strum 0.08  # strum lento
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>gingo chord Am7 --wav am7.wav        # exportar WAV
+</span></code></pre></div>
+<p><strong>O que da pra estudar:</strong> formacao de acordes (triades, tetrades, estendidos),
+como um acorde e definido pela formula de intervalos, identificacao reversa.</p>
+<hr />
+<h2 id="4-scale-uma-selecao-de-notas">4. Scale — uma selecao de notas<a class="headerlink" href="#4-scale-uma-selecao-de-notas" title="Permanent link">&para;</a></h2>
+<p>Uma escala e uma <strong>selecao de notas</strong> das 12 disponiveis, seguindo um padrao
+de intervalos. E como um filtro: das 12 notas cromaticas, a escala "acende"
+algumas e "apaga" outras.</p>
+<p>O modelo do Gingo organiza escalas em 3 niveis: <strong>Familia → Modo → Filtro</strong>.</p>
+<h3 id="as-10-familias-parentais">As 10 familias parentais<a class="headerlink" href="#as-10-familias-parentais" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Familia</th>
+<th>Aliases aceitos</th>
+<th style="text-align: center;">Notas</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>major</code></td>
+<td><code>maj</code></td>
+<td style="text-align: center;">7</td>
+<td>A referencia. Tom alegre, estavel</td>
+</tr>
+<tr>
+<td><code>natural minor</code></td>
+<td><code>m</code></td>
+<td style="text-align: center;">7</td>
+<td>Tom melancolico, introspectivo</td>
+</tr>
+<tr>
+<td><code>harmonic minor</code></td>
+<td><code>minor</code></td>
+<td style="text-align: center;">7</td>
+<td>Dramatica, sonoridade arabe</td>
+</tr>
+<tr>
+<td><code>melodic minor</code></td>
+<td></td>
+<td style="text-align: center;">7</td>
+<td>Sofisticada, muito usada no jazz</td>
+</tr>
+<tr>
+<td><code>harmonic major</code></td>
+<td></td>
+<td style="text-align: center;">7</td>
+<td>Maior com 6a menor, dramatica</td>
+</tr>
+<tr>
+<td><code>diminished</code></td>
+<td><code>dim</code></td>
+<td style="text-align: center;">8</td>
+<td>Tensa, simetrica (octatonica)</td>
+</tr>
+<tr>
+<td><code>whole tone</code></td>
+<td><code>wholetone</code></td>
+<td style="text-align: center;">6</td>
+<td>Simetrica, impressionista</td>
+</tr>
+<tr>
+<td><code>augmented</code></td>
+<td><code>aug</code></td>
+<td style="text-align: center;">6</td>
+<td>Simetrica, sonoridade Coltrane</td>
+</tr>
+<tr>
+<td><code>blues</code></td>
+<td></td>
+<td style="text-align: center;">6</td>
+<td>Pentatonica menor + blue note</td>
+</tr>
+<tr>
+<td><code>chromatic</code></td>
+<td></td>
+<td style="text-align: center;">12</td>
+<td>Todas as 12 notas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nomes-de-modo-como-tipo">Nomes de modo como tipo<a class="headerlink" href="#nomes-de-modo-como-tipo" title="Permanent link">&para;</a></h3>
+<p>Cada familia de 7 notas gera modos. Voce pode construir uma escala
+diretamente pelo nome do modo:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;dorian&quot;</span><span class="p">)</span>             <span class="c1"># D Dorian (modo 2 de Major)</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;phrygian dominant&quot;</span><span class="p">)</span>  <span class="c1"># modo 5 de HarmonicMinor</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;altered&quot;</span><span class="p">)</span>            <span class="c1"># modo 7 de MelodicMinor</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;lydian&quot;</span><span class="p">)</span>             <span class="c1"># modo 4 de Major</span>
+</span></code></pre></div>
+<h3 id="python_3">Python<a class="headerlink" href="#python_3" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Scale</span><span class="p">,</span> <span class="n">ScaleType</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1"># Construcao — por enum, string, ou nome de modo</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">s</span> <span class="o">=</span> <span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">ScaleType</span><span class="o">.</span><span class="n">Major</span><span class="p">)</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">s</span> <span class="o">=</span> <span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="n">s</span> <span class="o">=</span> <span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;dorian&quot;</span><span class="p">)</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="c1"># Identidade</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="n">s</span> <span class="o">=</span> <span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;dorian&quot;</span><span class="p">)</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="n">s</span><span class="o">.</span><span class="n">tonic</span><span class="p">()</span>         <span class="c1"># Note(&quot;D&quot;)</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="n">s</span><span class="o">.</span><span class="n">parent</span><span class="p">()</span>        <span class="c1"># ScaleType.Major</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="n">s</span><span class="o">.</span><span class="n">mode_number</span><span class="p">()</span>   <span class="c1"># 2</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="n">s</span><span class="o">.</span><span class="n">mode_name</span><span class="p">()</span>     <span class="c1"># &quot;Dorian&quot;</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="n">s</span><span class="o">.</span><span class="n">quality</span><span class="p">()</span>       <span class="c1"># &quot;minor&quot;</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="n">s</span><span class="o">.</span><span class="n">brightness</span><span class="p">()</span>    <span class="c1"># 3</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="c1"># Notas</span>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="n">s</span><span class="o">.</span><span class="n">notes</span><span class="p">()</span>         <span class="c1"># [Note(&quot;D&quot;), Note(&quot;E&quot;), Note(&quot;F&quot;), ...]</span>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="n">s</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>          <span class="c1"># 7</span>
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="n">s</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>       <span class="c1"># Note(&quot;F&quot;)  — terceiro grau</span>
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="n">s</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;F#&quot;</span><span class="p">))</span>  <span class="c1"># False</span>
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="c1"># Grau encadeado (varargs)</span>
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="n">s</span> <span class="o">=</span> <span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span>
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a><span class="n">s</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>       <span class="c1"># Note(&quot;G&quot;)           — grau V</span>
+</span><span id="__span-14-26"><a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a><span class="n">s</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>    <span class="c1"># Note(&quot;D&quot;)           — V do V</span>
+</span><span id="__span-14-27"><a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a><span class="n">s</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># Note(&quot;F&quot;)           — III do V do V</span>
+</span><span id="__span-14-28"><a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a>
+</span><span id="__span-14-29"><a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a><span class="c1"># Walk: navegar pela escala</span>
+</span><span id="__span-14-30"><a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a><span class="n">s</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>      <span class="c1"># Note(&quot;F&quot;)           — de I, quarta = IV</span>
+</span><span id="__span-14-31"><a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a><span class="n">s</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>      <span class="c1"># Note(&quot;D&quot;)           — de V, quinta = II</span>
+</span><span id="__span-14-32"><a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a>
+</span><span id="__span-14-33"><a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a><span class="c1"># Modos: por numero ou nome</span>
+</span><span id="__span-14-34"><a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a><span class="n">s</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                 <span class="c1"># D Dorian</span>
+</span><span id="__span-14-35"><a id="__codelineno-14-35" name="__codelineno-14-35" href="#__codelineno-14-35"></a><span class="n">s</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">&quot;lydian&quot;</span><span class="p">)</span>          <span class="c1"># F Lydian</span>
+</span><span id="__span-14-36"><a id="__codelineno-14-36" name="__codelineno-14-36" href="#__codelineno-14-36"></a>
+</span><span id="__span-14-37"><a id="__codelineno-14-37" name="__codelineno-14-37" href="#__codelineno-14-37"></a><span class="c1"># Pentatonica</span>
+</span><span id="__span-14-38"><a id="__codelineno-14-38" name="__codelineno-14-38" href="#__codelineno-14-38"></a><span class="n">s</span><span class="o">.</span><span class="n">pentatonic</span><span class="p">()</span>            <span class="c1"># C major pentatonic (5 notas)</span>
+</span><span id="__span-14-39"><a id="__codelineno-14-39" name="__codelineno-14-39" href="#__codelineno-14-39"></a><span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;minor pentatonic&quot;</span><span class="p">)</span>   <span class="c1"># A C D E G</span>
+</span><span id="__span-14-40"><a id="__codelineno-14-40" name="__codelineno-14-40" href="#__codelineno-14-40"></a>
+</span><span id="__span-14-41"><a id="__codelineno-14-41" name="__codelineno-14-41" href="#__codelineno-14-41"></a><span class="c1"># Notas coloridas (OMT2): o que distingue um modo de outro</span>
+</span><span id="__span-14-42"><a id="__codelineno-14-42" name="__codelineno-14-42" href="#__codelineno-14-42"></a><span class="n">dor</span> <span class="o">=</span> <span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;dorian&quot;</span><span class="p">)</span>
+</span><span id="__span-14-43"><a id="__codelineno-14-43" name="__codelineno-14-43" href="#__codelineno-14-43"></a><span class="n">dor</span><span class="o">.</span><span class="n">colors</span><span class="p">(</span><span class="s2">&quot;ionian&quot;</span><span class="p">)</span>     <span class="c1"># [Eb, Bb] — notas que diferem do Ionian</span>
+</span><span id="__span-14-44"><a id="__codelineno-14-44" name="__codelineno-14-44" href="#__codelineno-14-44"></a>
+</span><span id="__span-14-45"><a id="__codelineno-14-45" name="__codelineno-14-45" href="#__codelineno-14-45"></a><span class="c1"># Identificacao: dadas as notas, descobre a escala</span>
+</span><span id="__span-14-46"><a id="__codelineno-14-46" name="__codelineno-14-46" href="#__codelineno-14-46"></a><span class="n">Scale</span><span class="o">.</span><span class="n">identify</span><span class="p">([</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">])</span>  <span class="c1"># C major</span>
+</span><span id="__span-14-47"><a id="__codelineno-14-47" name="__codelineno-14-47" href="#__codelineno-14-47"></a><span class="n">Scale</span><span class="o">.</span><span class="n">identify</span><span class="p">([</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">])</span>  <span class="c1"># D dorian</span>
+</span><span id="__span-14-48"><a id="__codelineno-14-48" name="__codelineno-14-48" href="#__codelineno-14-48"></a>
+</span><span id="__span-14-49"><a id="__codelineno-14-49" name="__codelineno-14-49" href="#__codelineno-14-49"></a><span class="c1"># Ouvir a escala (notas em sequencia ascendente)</span>
+</span><span id="__span-14-50"><a id="__codelineno-14-50" name="__codelineno-14-50" href="#__codelineno-14-50"></a><span class="n">s</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>                              <span class="c1"># C D E F G A B C</span>
+</span><span id="__span-14-51"><a id="__codelineno-14-51" name="__codelineno-14-51" href="#__codelineno-14-51"></a><span class="n">s</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>       <span class="c1"># mais rapido</span>
+</span><span id="__span-14-52"><a id="__codelineno-14-52" name="__codelineno-14-52" href="#__codelineno-14-52"></a><span class="n">s</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">waveform</span><span class="o">=</span><span class="s2">&quot;triangle&quot;</span><span class="p">)</span>           <span class="c1"># timbre suave</span>
+</span></code></pre></div>
+<h3 id="modos-o-conceito-mais-poderoso">Modos — o conceito mais poderoso<a class="headerlink" href="#modos-o-conceito-mais-poderoso" title="Permanent link">&para;</a></h3>
+<p>Cada escala de 7 notas gera <strong>7 modos</strong>. Sao as mesmas notas, mas
+comecando de um grau diferente. Cada modo tem uma <strong>cor sonora</strong> distinta:</p>
+<table>
+<thead>
+<tr>
+<th>Modo</th>
+<th style="text-align: center;">Grau</th>
+<th>Carater sonoro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ionian</td>
+<td style="text-align: center;">1</td>
+<td>Maior "normal" — alegre, estavel</td>
+</tr>
+<tr>
+<td>Dorian</td>
+<td style="text-align: center;">2</td>
+<td>Menor com 6a maior — funk, soul, jazz</td>
+</tr>
+<tr>
+<td>Phrygian</td>
+<td style="text-align: center;">3</td>
+<td>Espanhol, flamenco, metal</td>
+</tr>
+<tr>
+<td>Lydian</td>
+<td style="text-align: center;">4</td>
+<td>Sonhador, flutuante, cinema</td>
+</tr>
+<tr>
+<td>Mixolydian</td>
+<td style="text-align: center;">5</td>
+<td>Rock, blues, country</td>
+</tr>
+<tr>
+<td>Aeolian</td>
+<td style="text-align: center;">6</td>
+<td>Menor natural — melancolico, pop</td>
+</tr>
+<tr>
+<td>Locrian</td>
+<td style="text-align: center;">7</td>
+<td>Instavel, diminuto — pouco usado como centro</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cada familia de 7 notas tem seus proprios modos</strong> — harmonica menor
+(Phrygian Dominant, Ultralocrian...), melodica menor (Lydian Dominant,
+Altered...), harmonica maior, etc. Sao <strong>4+ familias x 7 modos = 28+
+escalas</strong> com sonoridades unicas, todas acessiveis por nome.</p>
+<h4 id="exemplo-listar-e-ouvir-todos-os-modos">Exemplo: listar e ouvir todos os modos<a class="headerlink" href="#exemplo-listar-e-ouvir-todos-os-modos" title="Permanent link">&para;</a></h4>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">s</span> <span class="o">=</span> <span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="n">notes</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">notes</span><span class="p">())</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">mode_name</span><span class="p">()</span><span class="si">:</span><span class="s2">&lt;12s</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">tonic</span><span class="p">()</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">notes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="n">m</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>   <span class="c1"># ouvir cada modo</span>
+</span></code></pre></div>
+<h3 id="cli_3">CLI<a class="headerlink" href="#cli_3" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>$ gingo scale &quot;D dorian&quot;
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>  Scale: Scale(&quot;D&quot;, &quot;Dorian&quot;)
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>  ———————————————————————————
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    Parent.............. Major
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    Mode................ Dorian (mode 2)
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    Quality............. minor
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    Brightness.......... 3
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    ...
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>$ gingo scale &quot;C major&quot; --modes
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>  Modes
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>  —————
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    1. Ionian                C    C  D  E  F  G  A  B
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    2. Dorian                D    D  E  F  G  A  B  C
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    3. Phrygian              E    E  F  G  A  B  C  D
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    ...
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opcao</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--modes</code></td>
+<td>Mostra todos os modos da familia com nomes</td>
+</tr>
+<tr>
+<td><code>--degrees</code></td>
+<td>Mostra cada nota grau a grau</td>
+</tr>
+<tr>
+<td><code>--pentatonic</code></td>
+<td>Usa filtro pentatonico (5 notas)</td>
+</tr>
+<tr>
+<td><code>--colors REF</code></td>
+<td>Notas que diferem de um modo de referencia</td>
+</tr>
+<tr>
+<td><code>--degree N..</code></td>
+<td>Grau encadeado (ex: <code>--degree 5 5</code> = V de V)</td>
+</tr>
+<tr>
+<td><code>--walk N..</code></td>
+<td>Caminho por graus (start + passos)</td>
+</tr>
+<tr>
+<td><code>--relative</code></td>
+<td>Mostra a relativa maior/menor</td>
+</tr>
+<tr>
+<td><code>--parallel</code></td>
+<td>Mostra a paralela maior/menor</td>
+</tr>
+<tr>
+<td><code>--neighbors</code></td>
+<td>Mostra vizinhas no circulo de quintas</td>
+</tr>
+<tr>
+<td><code>--identify</code></td>
+<td>Identifica escala a partir de notas (separar com virgula)</td>
+</tr>
+<tr>
+<td><code>--play</code></td>
+<td>Toca a escala pelo audio do sistema</td>
+</tr>
+<tr>
+<td><code>--wav FILE</code></td>
+<td>Exporta para arquivo WAV</td>
+</tr>
+<tr>
+<td><code>--gap SEC</code></td>
+<td>Silencio entre notas consecutivas (default 0.05)</td>
+</tr>
+</tbody>
+</table>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>gingo scale &quot;C major&quot; --modes             # modos da maior
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>gingo scale &quot;C harmonic minor&quot; --modes    # modos da harmonica menor
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>gingo scale &quot;C melodic minor&quot; --modes     # modos da melodica menor
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>gingo scale &quot;D dorian&quot; --colors ionian    # notas coloridas
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>gingo scale &quot;C major pentatonic&quot;          # pentatonica maior
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>gingo scale &quot;A minor pentatonic&quot;          # pentatonica menor
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>gingo scale &quot;C whole tone&quot;               # tons inteiros
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>gingo scale &quot;A blues&quot;                    # blues
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>gingo scale &quot;C major&quot; --degree 5 5       # V de V
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>gingo scale &quot;C major&quot; --walk 1 4         # caminha a partir do I
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>gingo scale &quot;C major&quot; --relative         # relativa (A menor)
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>gingo scale &quot;A natural minor&quot; --parallel # paralela (A maior)
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>gingo scale &quot;G major&quot; --neighbors        # vizinhas no circulo
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>gingo scale &quot;C,D,E,F,G,A,B&quot; --identify  # identifica: C major
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>gingo scale &quot;A,B,C,D,E,F,G&quot; --identify  # identifica: A natural minor
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>gingo scale &quot;C major&quot; --play             # ouvir a escala
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>gingo scale &quot;A blues&quot; --play --gap 0.08  # blues com mais separacao
+</span></code></pre></div>
+<p><strong>O que da pra estudar:</strong> construcao de escalas, modos de todas as familias,
+pentatonicas, notas coloridas, relacoes entre tonalidades.
+<strong>Ouca a diferenca:</strong> toque cada modo com <code>--play</code> para sentir a cor sonora.</p>
+<hr />
+<h2 id="5-field-os-acordes-que-pertencem-a-uma-escala">5. Field — os acordes que pertencem a uma escala<a class="headerlink" href="#5-field-os-acordes-que-pertencem-a-uma-escala" title="Permanent link">&para;</a></h2>
+<p>O campo harmonico responde a pergunta fundamental:
+<strong>"quais acordes pertencem a esta tonalidade?"</strong></p>
+<p>O processo: pegue uma escala de 7 notas. Em cada grau, empilhe tercas
+(pule uma nota, pegue a proxima, pule, pegue). Isso gera automaticamente
+um acorde para cada grau.</p>
+<h3 id="python_4">Python<a class="headerlink" href="#python_4" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span><span class="p">,</span> <span class="n">HarmonicFunction</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">f</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">f</span><span class="o">.</span><span class="n">tonic</span><span class="p">()</span>       <span class="c1"># Note(&quot;C&quot;)</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="n">f</span><span class="o">.</span><span class="n">scale</span><span class="p">()</span>       <span class="c1"># Scale(&quot;C&quot;, &quot;major&quot;)</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="n">f</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>        <span class="c1"># 7</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="c1"># Triades (3 notas) e tetrades (4 notas) de cada grau</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="n">f</span><span class="o">.</span><span class="n">chords</span><span class="p">()</span>      <span class="c1"># [Chord(&quot;CM&quot;), Chord(&quot;Dm&quot;), Chord(&quot;Em&quot;), ...]</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="n">f</span><span class="o">.</span><span class="n">sevenths</span><span class="p">()</span>    <span class="c1"># [Chord(&quot;C7M&quot;), Chord(&quot;Dm7&quot;), Chord(&quot;Em7&quot;), ...]</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="c1"># Acorde de um grau especifico</span>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="n">f</span><span class="o">.</span><span class="n">chord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># Chord(&quot;CM&quot;)   — triade do grau I</span>
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="n">f</span><span class="o">.</span><span class="n">chord</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>      <span class="c1"># Chord(&quot;GM&quot;)   — triade do grau V</span>
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="n">f</span><span class="o">.</span><span class="n">seventh</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>    <span class="c1"># Chord(&quot;G7&quot;)   — tetrade do grau V</span>
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>
+</span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="c1"># Funcao harmonica (T/S/D) e papel de cada grau</span>
+</span><span id="__span-19-19"><a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="n">f</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>            <span class="c1"># HarmonicFunction.Tonic</span>
+</span><span id="__span-19-20"><a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a><span class="n">f</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>            <span class="c1"># HarmonicFunction.Dominant</span>
+</span><span id="__span-19-21"><a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="n">f</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>       <span class="c1"># &quot;Dominant&quot;</span>
+</span><span id="__span-19-22"><a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="n">f</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">short</span>      <span class="c1"># &quot;D&quot;</span>
+</span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="n">f</span><span class="o">.</span><span class="n">role</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                <span class="c1"># &quot;primary&quot;</span>
+</span><span id="__span-19-24"><a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="n">f</span><span class="o">.</span><span class="n">role</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>                <span class="c1"># &quot;relative of I&quot;</span>
+</span><span id="__span-19-25"><a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a>
+</span><span id="__span-19-26"><a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="c1"># Funcao por nome de acorde ou objeto Chord</span>
+</span><span id="__span-19-27"><a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a><span class="n">f</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;FM&quot;</span><span class="p">)</span>         <span class="c1"># HarmonicFunction.Subdominant</span>
+</span><span id="__span-19-28"><a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="n">f</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;F#M&quot;</span><span class="p">)</span>        <span class="c1"># None (nao pertence ao campo)</span>
+</span><span id="__span-19-29"><a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="n">f</span><span class="o">.</span><span class="n">role</span><span class="p">(</span><span class="s2">&quot;Am&quot;</span><span class="p">)</span>             <span class="c1"># &quot;relative of I&quot;</span>
+</span><span id="__span-19-30"><a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a>
+</span><span id="__span-19-31"><a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="c1"># Acordes aplicados (tonicizacao)</span>
+</span><span id="__span-19-32"><a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a><span class="n">f</span><span class="o">.</span><span class="n">applied</span><span class="p">(</span><span class="s2">&quot;V7&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>       <span class="c1"># Chord(&quot;A7&quot;)  — V7 do grau II</span>
+</span><span id="__span-19-33"><a id="__codelineno-19-33" name="__codelineno-19-33" href="#__codelineno-19-33"></a><span class="n">f</span><span class="o">.</span><span class="n">applied</span><span class="p">(</span><span class="s2">&quot;V7&quot;</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">)</span>     <span class="c1"># Chord(&quot;D7&quot;)  — V7 do grau V</span>
+</span><span id="__span-19-34"><a id="__codelineno-19-34" name="__codelineno-19-34" href="#__codelineno-19-34"></a><span class="n">f</span><span class="o">.</span><span class="n">applied</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>          <span class="c1"># Chord(&quot;A7&quot;)  — atalho numerico</span>
+</span><span id="__span-19-35"><a id="__codelineno-19-35" name="__codelineno-19-35" href="#__codelineno-19-35"></a>
+</span><span id="__span-19-36"><a id="__codelineno-19-36" name="__codelineno-19-36" href="#__codelineno-19-36"></a><span class="c1"># Ouvir o campo harmonico (7 acordes em sequencia)</span>
+</span><span id="__span-19-37"><a id="__codelineno-19-37" name="__codelineno-19-37" href="#__codelineno-19-37"></a><span class="n">f</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>                          <span class="c1"># CM Dm Em FM GM Am Bdim</span>
+</span><span id="__span-19-38"><a id="__codelineno-19-38" name="__codelineno-19-38" href="#__codelineno-19-38"></a><span class="n">f</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>    <span class="c1"># mais lento, com respiracao</span>
+</span><span id="__span-19-39"><a id="__codelineno-19-39" name="__codelineno-19-39" href="#__codelineno-19-39"></a><span class="n">f</span><span class="o">.</span><span class="n">to_wav</span><span class="p">(</span><span class="s2">&quot;campo_c.wav&quot;</span><span class="p">)</span>          <span class="c1"># exportar WAV</span>
+</span></code></pre></div>
+<h4 id="exemplo-comparar-campos-de-duas-tonalidades">Exemplo: comparar campos de duas tonalidades<a class="headerlink" href="#exemplo-comparar-campos-de-duas-tonalidades" title="Permanent link">&para;</a></h4>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">major</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">minor</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;natural minor&quot;</span><span class="p">)</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C major:&quot;</span><span class="p">)</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">major</span><span class="o">.</span><span class="n">chords</span><span class="p">(),</span> <span class="n">major</span><span class="o">.</span><span class="n">sevenths</span><span class="p">()),</span> <span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">:</span><span class="s2">&lt;8s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">A natural minor:&quot;</span><span class="p">)</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">minor</span><span class="o">.</span><span class="n">chords</span><span class="p">(),</span> <span class="n">minor</span><span class="o">.</span><span class="n">sevenths</span><span class="p">()),</span> <span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">:</span><span class="s2">&lt;8s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="cli_4">CLI<a class="headerlink" href="#cli_4" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>$ gingo field &quot;C major&quot;
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>         Triad         Seventh       Notes (triad)         Notes (7th)
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>         -----         -------       -------------         -----------
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>      I  CM            C7M           C E G                 C E G B
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>     II  Dm            Dm7           D F A                 D F A C
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    III  Em            Em7           E G B                 E G B D
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>     IV  FM            F7M           F A C                 F A C E
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>      V  GM            G7            G B D                 G B D F
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>     VI  Am            Am7           A C E                 A C E G
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>    VII  Bdim          Bm7(b5)       B D F                 B D F A
+</span></code></pre></div>
+<p>O que essa tabela diz:</p>
+<ul>
+<li><strong>Grau I</strong> (C): acorde maior com setima maior (C7M) — <strong>tonica</strong>, repouso</li>
+<li><strong>Grau II</strong> (D): acorde menor com setima (Dm7) — <strong>subdominante</strong></li>
+<li><strong>Grau IV</strong> (F): acorde maior com setima maior (F7M) — <strong>subdominante</strong></li>
+<li><strong>Grau V</strong> (G): acorde maior com setima menor (G7) — <strong>dominante</strong>, tensao</li>
+<li><strong>Grau VI</strong> (A): acorde menor com setima (Am7) — tonica relativa</li>
+</ul>
+<p>Se uma musica esta em Do maior, esses sao os <strong>7 acordes nativos</strong>.
+Qualquer outro acorde e "emprestado" de outro lugar.</p>
+<p>Use <code>--functions</code> para ver a funcao harmonica (T/S/D) e o papel de cada grau:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>$ gingo field &quot;C major&quot; --functions
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>         Triad         Seventh       Function        Role
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>         -----         -------       --------        ----
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>      I  CM            C7M           Tonic           primary
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>     II  Dm            Dm7           Subdominant     relative of IV
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>    III  Em            Em7           Tonic           transitive
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>     IV  FM            F7M           Subdominant     primary
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>      V  GM            G7            Dominant        primary
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>     VI  Am            Am7           Tonic           relative of I
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>    VII  Bdim          Bm7(b5)       Dominant        relative of V
+</span></code></pre></div>
+<p>Use <code>--applied</code> para acordes aplicados (tonicizacao):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>gingo field &quot;C major&quot; --applied V7/II       # A7 (dominante do grau II)
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>gingo field &quot;C major&quot; --applied &quot;IIm7(b5)/V&quot;  # Am7(b5)
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opcao</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--functions</code></td>
+<td>Mostra funcao harmonica e papel de cada grau</td>
+</tr>
+<tr>
+<td><code>--applied</code></td>
+<td>Acorde aplicado (ex: <code>--applied V7/II</code>)</td>
+</tr>
+<tr>
+<td><code>--relative</code></td>
+<td>Campo relativo maior/menor</td>
+</tr>
+<tr>
+<td><code>--parallel</code></td>
+<td>Campo paralelo maior/menor</td>
+</tr>
+<tr>
+<td><code>--neighbors</code></td>
+<td>Campos vizinhos no circulo de quintas</td>
+</tr>
+<tr>
+<td><code>--identify</code></td>
+<td>Identifica campo a partir de notas ou acordes</td>
+</tr>
+<tr>
+<td><code>--deduce</code></td>
+<td>Deduz campos possiveis (ranqueado)</td>
+</tr>
+<tr>
+<td><code>--limit N</code></td>
+<td>Limita resultados do --deduce (default 10)</td>
+</tr>
+<tr>
+<td><code>--play</code></td>
+<td>Toca os 7 acordes do campo pelo audio</td>
+</tr>
+<tr>
+<td><code>--wav FILE</code></td>
+<td>Exporta para arquivo WAV</td>
+</tr>
+</tbody>
+</table>
+<h3 id="detectar-tonalidade-identify-vs-deduce">Detectar tonalidade (identify vs deduce)<a class="headerlink" href="#detectar-tonalidade-identify-vs-deduce" title="Permanent link">&para;</a></h3>
+<p>O Gingo tem dois modos de deteccao:</p>
+<ul>
+<li><strong><code>identify</code></strong>: exige um conjunto completo e inequivoco e retorna <strong>um</strong> campo.</li>
+<li><strong><code>deduce</code></strong>: aceita input parcial e retorna <strong>varias</strong> possibilidades ranqueadas.</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Campo exato (input completo)</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">Field</span><span class="o">.</span><span class="n">identify</span><span class="p">([</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">])</span>   <span class="c1"># Field(&quot;C&quot;, &quot;major&quot;)</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="n">Field</span><span class="o">.</span><span class="n">identify</span><span class="p">([</span><span class="s2">&quot;CM&quot;</span><span class="p">,</span> <span class="s2">&quot;Dm&quot;</span><span class="p">,</span> <span class="s2">&quot;Em&quot;</span><span class="p">,</span> <span class="s2">&quot;FM&quot;</span><span class="p">,</span> <span class="s2">&quot;GM&quot;</span><span class="p">,</span> <span class="s2">&quot;Am&quot;</span><span class="p">])</span>  <span class="c1"># Field(&quot;C&quot;, &quot;major&quot;)</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="c1"># Inferencia ranqueada (input parcial)</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="n">matches</span> <span class="o">=</span> <span class="n">Field</span><span class="o">.</span><span class="n">deduce</span><span class="p">([</span><span class="s2">&quot;CM&quot;</span><span class="p">,</span> <span class="s2">&quot;FM&quot;</span><span class="p">])</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">field</span>   <span class="c1"># Field(&quot;C&quot;, &quot;major&quot;) ou Field(&quot;F&quot;, &quot;major&quot;)</span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">score</span>   <span class="c1"># 1.0</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>gingo field &quot;A natural minor&quot;                  # campo de La menor
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>gingo field &quot;C harmonic minor&quot;                 # campo da harmonica menor
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>gingo field &quot;D melodic minor&quot;                  # campo da melodica menor
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>gingo field &quot;Bb major&quot;                         # campo de Sib maior
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>gingo field &quot;CM,Dm,Em,FM,GM,Am&quot; --identify     # identifica: C major
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>gingo field &quot;CM,FM,G7&quot; --identify              # identifica: C major
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>gingo field &quot;CM,FM&quot; --deduce                   # deduz tonalidades possiveis
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>gingo field &quot;Am,Dm,E7&quot; --deduce                # deduz: A harmonic minor lidera
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>gingo field &quot;CM,FM&quot; --deduce --limit 5         # limita a 5 resultados
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>gingo field &quot;C major&quot; --play                   # ouvir os 7 acordes
+</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>gingo field &quot;A natural minor&quot; --play --wav campo_am.wav  # ouvir + exportar
+</span></code></pre></div>
+<p><strong>O que da pra estudar:</strong> harmonizacao de escalas, triades vs tetrades,
+funcoes tonais (tonica, subdominante, dominante), relativa maior/menor.
+<strong>Ouca a diferenca:</strong> toque campos de diferentes tonalidades com <code>--play</code>.</p>
+<hr />
+<h2 id="6-compare-o-que-dois-acordes-tem-em-comum">6. Compare — o que dois acordes tem em comum?<a class="headerlink" href="#6-compare-o-que-dois-acordes-tem-em-comum" title="Permanent link">&para;</a></h2>
+<p>A comparacao responde: <strong>"qual a relacao entre esses dois acordes?"</strong></p>
+<p>Existem dois niveis de comparacao:</p>
+<ul>
+<li><strong>Absoluta</strong> (<code>Chord.compare</code>): o que se pode dizer olhando apenas os dois acordes, sem contexto tonal</li>
+<li><strong>Contextual</strong> (<code>Field.compare</code>): o que se pode dizer considerando uma tonalidade especifica</li>
+</ul>
+<h3 id="comparacao-absoluta-chord">Comparacao absoluta (Chord)<a class="headerlink" href="#comparacao-absoluta-chord" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chord</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">r</span> <span class="o">=</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am&quot;</span><span class="p">))</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="c1"># Notas</span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="n">r</span><span class="o">.</span><span class="n">common_notes</span>       <span class="c1"># [Note(&quot;C&quot;), Note(&quot;E&quot;)]  — notas em comum</span>
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="n">r</span><span class="o">.</span><span class="n">exclusive_a</span>        <span class="c1"># [Note(&quot;G&quot;)]             — so no primeiro</span>
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="n">r</span><span class="o">.</span><span class="n">exclusive_b</span>        <span class="c1"># [Note(&quot;A&quot;)]             — so no segundo</span>
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="c1"># Raizes</span>
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="n">r</span><span class="o">.</span><span class="n">root_distance</span>      <span class="c1"># 3   — distancia em semitons (0-6, arco mais curto)</span>
+</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="n">r</span><span class="o">.</span><span class="n">root_direction</span>     <span class="c1"># -3  — direcao com sinal (-6 a +6)</span>
+</span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>
+</span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="c1"># Qualidade e tamanho</span>
+</span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="n">r</span><span class="o">.</span><span class="n">same_quality</span>       <span class="c1"># False — M vs m</span>
+</span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a><span class="n">r</span><span class="o">.</span><span class="n">same_size</span>          <span class="c1"># True  — ambos triades (3 notas)</span>
+</span><span id="__span-26-17"><a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a><span class="n">r</span><span class="o">.</span><span class="n">common_intervals</span>   <span class="c1"># [&quot;P1&quot;]  — intervalos identicos</span>
+</span><span id="__span-26-18"><a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a>
+</span><span id="__span-26-19"><a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a><span class="c1"># Relacoes</span>
+</span><span id="__span-26-20"><a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a><span class="n">r</span><span class="o">.</span><span class="n">enharmonic</span>         <span class="c1"># False — nao sao o mesmo acorde</span>
+</span><span id="__span-26-21"><a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a><span class="n">r</span><span class="o">.</span><span class="n">subset</span>             <span class="c1"># &quot;&quot;    — nenhum contem o outro (&quot;a_subset_of_b&quot;, &quot;equal&quot;, etc.)</span>
+</span><span id="__span-26-22"><a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a><span class="n">r</span><span class="o">.</span><span class="n">inversion</span>          <span class="c1"># False — nao sao inversoes</span>
+</span><span id="__span-26-23"><a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a>
+</span><span id="__span-26-24"><a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a><span class="c1"># Voice leading (Tymoczko 2011) e transformacao neo-Riemanniana (Cohn 2012)</span>
+</span><span id="__span-26-25"><a id="__codelineno-26-25" name="__codelineno-26-25" href="#__codelineno-26-25"></a><span class="n">r</span><span class="o">.</span><span class="n">voice_leading</span>      <span class="c1"># 4  — pareamento otimo de vozes em semitons (Tymoczko 2011)</span>
+</span><span id="__span-26-26"><a id="__codelineno-26-26" name="__codelineno-26-26" href="#__codelineno-26-26"></a><span class="n">r</span><span class="o">.</span><span class="n">transformation</span>     <span class="c1"># &quot;R&quot; — transformacao neo-Riemanniana (Cohn 2012)</span>
+</span></code></pre></div>
+<h4 id="transformacoes-neo-riemannianas-cohn-2012">Transformacoes neo-Riemannianas (Cohn 2012)<a class="headerlink" href="#transformacoes-neo-riemannianas-cohn-2012" title="Permanent link">&para;</a></h4>
+<p>Tres operacoes fundamentais — P (Parallel), L (Leading-tone), R (Relative) —
+que transformam triades movendo apenas uma nota por um semitom (Richard Cohn,
+<em>Audacious Euphony</em>, 2012). Detectadas automaticamente para pares major/minor:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Transformacao</th>
+<th>Nome</th>
+<th>Exemplo</th>
+<th>O que muda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>P</strong></td>
+<td>Parallel</td>
+<td>CM → Cm</td>
+<td>Terca muda (E→D#), raiz igual</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>L</strong></td>
+<td>Leading-tone</td>
+<td>CM → Em</td>
+<td>Fundamental desce meio tom (C→B)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>R</strong></td>
+<td>Relative</td>
+<td>CM → Am</td>
+<td>Quinta sobe um tom (G→A)</td>
+</tr>
+</tbody>
+</table>
+<p>Quando nao ha transformacao direta, o Gingo tenta composicoes de 2 passos:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Composicao</th>
+<th>Exemplo</th>
+<th>Caminho</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>RP</strong></td>
+<td>CM → AM</td>
+<td>R(CM)=Am, P(Am)=AM</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>LP</strong></td>
+<td>CM → EM</td>
+<td>L(CM)=Em, P(Em)=EM</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PL</strong></td>
+<td>CM → G#M</td>
+<td>P(CM)=Cm, L(Cm)=G#M</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>PR</strong></td>
+<td>CM → D#M</td>
+<td>P(CM)=Cm, R(Cm)=D#M</td>
+</tr>
+</tbody>
+</table>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Cm&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">transformation</span>   <span class="c1"># &quot;P&quot;</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Em&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">transformation</span>   <span class="c1"># &quot;L&quot;</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">transformation</span>   <span class="c1"># &quot;R&quot;</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;AM&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">transformation</span>   <span class="c1"># &quot;RP&quot;</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;EM&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">transformation</span>   <span class="c1"># &quot;LP&quot;</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;C7M&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am7&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">transformation</span> <span class="c1"># &quot;&quot;  — so triades</span>
+</span></code></pre></div>
+<h4 id="novas-dimensoes-de-comparacao">Novas dimensoes de comparacao<a class="headerlink" href="#novas-dimensoes-de-comparacao" title="Permanent link">&para;</a></h4>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">r</span> <span class="o">=</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Cm&quot;</span><span class="p">))</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="c1"># Interval Vector (Forte 1973) — vetor de classes de intervalo (set theory)</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="n">r</span><span class="o">.</span><span class="n">interval_vector_a</span>      <span class="c1"># [0, 0, 1, 1, 1, 0]  — CM</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="n">r</span><span class="o">.</span><span class="n">interval_vector_b</span>      <span class="c1"># [0, 0, 1, 1, 1, 0]  — Cm (mesmo vetor!)</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="n">r</span><span class="o">.</span><span class="n">same_interval_vector</span>   <span class="c1"># True (Z-relation candidate)</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="c1"># Transposicao T_n (Lewin 1987) — teoria transformacional generalizada</span>
+</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;DM&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">transposition</span>     <span class="c1"># 2 (T_2)</span>
+</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Cm&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">transposition</span>     <span class="c1"># -1 (nao e transposicao)</span>
+</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>
+</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="c1"># Dissonancia psicoacustica (Plomp &amp; Levelt 1965 / Sethares 1998)</span>
+</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="n">r</span><span class="o">.</span><span class="n">dissonance_a</span>           <span class="c1"># 0.057... (roughness do CM)</span>
+</span><span id="__span-28-14"><a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="n">r</span><span class="o">.</span><span class="n">dissonance_b</span>           <span class="c1"># 0.072... (roughness do Cm)</span>
+</span></code></pre></div>
+<h4 id="serializacao-com-to_dict">Serializacao com to_dict()<a class="headerlink" href="#serializacao-com-to_dict" title="Permanent link">&para;</a></h4>
+<p>Todas as structs de comparacao possuem <code>to_dict()</code> para facil serializacao:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">d</span> <span class="o">=</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="c1"># {&quot;common_notes&quot;: [&quot;C&quot;, &quot;E&quot;], &quot;transformation&quot;: &quot;R&quot;, ...}</span>
+</span></code></pre></div>
+<h3 id="comparacao-contextual-field">Comparacao contextual (Field)<a class="headerlink" href="#comparacao-contextual-field" title="Permanent link">&para;</a></h3>
+<p>Quando voce sabe a tonalidade, pode extrair muito mais informacao:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ScaleType</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="n">f</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">ScaleType</span><span class="o">.</span><span class="n">Major</span><span class="p">)</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="c1"># Acordes diatonicos</span>
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="n">r</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">),</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;GM&quot;</span><span class="p">))</span>
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="n">r</span><span class="o">.</span><span class="n">degree_a</span>           <span class="c1"># 1 (grau I)</span>
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="n">r</span><span class="o">.</span><span class="n">degree_b</span>           <span class="c1"># 5 (grau V)</span>
+</span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="n">r</span><span class="o">.</span><span class="n">function_a</span>         <span class="c1"># HarmonicFunction.Tonic</span>
+</span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="n">r</span><span class="o">.</span><span class="n">function_b</span>         <span class="c1"># HarmonicFunction.Dominant</span>
+</span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="n">r</span><span class="o">.</span><span class="n">same_function</span>      <span class="c1"># False</span>
+</span><span id="__span-30-12"><a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="n">r</span><span class="o">.</span><span class="n">diatonic_a</span>         <span class="c1"># True</span>
+</span><span id="__span-30-13"><a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a><span class="n">r</span><span class="o">.</span><span class="n">diatonic_b</span>         <span class="c1"># True</span>
+</span><span id="__span-30-14"><a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a><span class="n">r</span><span class="o">.</span><span class="n">degree_distance</span>    <span class="c1"># 4 (|1-5|)</span>
+</span><span id="__span-30-15"><a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a>
+</span><span id="__span-30-16"><a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a><span class="c1"># Acordes relativos (mesma funcao harmonica)</span>
+</span><span id="__span-30-17"><a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a><span class="n">r</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">),</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am&quot;</span><span class="p">))</span>
+</span><span id="__span-30-18"><a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a><span class="n">r</span><span class="o">.</span><span class="n">relative</span>           <span class="c1"># True — I e VIm sao tonica</span>
+</span><span id="__span-30-19"><a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a><span class="n">r</span><span class="o">.</span><span class="n">same_function</span>      <span class="c1"># True</span>
+</span><span id="__span-30-20"><a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a>
+</span><span id="__span-30-21"><a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a><span class="c1"># Root motion — movimento diatonico de raiz (Kostka &amp; Payne)</span>
+</span><span id="__span-30-22"><a id="__codelineno-30-22" name="__codelineno-30-22" href="#__codelineno-30-22"></a><span class="n">r</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">),</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;GM&quot;</span><span class="p">))</span>
+</span><span id="__span-30-23"><a id="__codelineno-30-23" name="__codelineno-30-23" href="#__codelineno-30-23"></a><span class="n">r</span><span class="o">.</span><span class="n">root_motion</span>        <span class="c1"># &quot;ascending_fifth&quot;</span>
+</span><span id="__span-30-24"><a id="__codelineno-30-24" name="__codelineno-30-24" href="#__codelineno-30-24"></a>
+</span><span id="__span-30-25"><a id="__codelineno-30-25" name="__codelineno-30-25" href="#__codelineno-30-25"></a><span class="n">r</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;GM&quot;</span><span class="p">),</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">))</span>
+</span><span id="__span-30-26"><a id="__codelineno-30-26" name="__codelineno-30-26" href="#__codelineno-30-26"></a><span class="n">r</span><span class="o">.</span><span class="n">root_motion</span>        <span class="c1"># &quot;descending_fifth&quot;</span>
+</span><span id="__span-30-27"><a id="__codelineno-30-27" name="__codelineno-30-27" href="#__codelineno-30-27"></a>
+</span><span id="__span-30-28"><a id="__codelineno-30-28" name="__codelineno-30-28" href="#__codelineno-30-28"></a><span class="c1"># Dominante secundaria (Kostka &amp; Payne)</span>
+</span><span id="__span-30-29"><a id="__codelineno-30-29" name="__codelineno-30-29" href="#__codelineno-30-29"></a><span class="n">r</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;D7&quot;</span><span class="p">),</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;GM&quot;</span><span class="p">))</span>
+</span><span id="__span-30-30"><a id="__codelineno-30-30" name="__codelineno-30-30" href="#__codelineno-30-30"></a><span class="n">r</span><span class="o">.</span><span class="n">secondary_dominant</span> <span class="c1"># &quot;a_is_V7_of_b&quot; — D7 e o V7 de G</span>
+</span><span id="__span-30-31"><a id="__codelineno-30-31" name="__codelineno-30-31" href="#__codelineno-30-31"></a>
+</span><span id="__span-30-32"><a id="__codelineno-30-32" name="__codelineno-30-32" href="#__codelineno-30-32"></a><span class="c1"># Diminuta aplicada vii/x (Gauldin 1997)</span>
+</span><span id="__span-30-33"><a id="__codelineno-30-33" name="__codelineno-30-33" href="#__codelineno-30-33"></a><span class="n">r</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Bdim&quot;</span><span class="p">),</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">))</span>
+</span><span id="__span-30-34"><a id="__codelineno-30-34" name="__codelineno-30-34" href="#__codelineno-30-34"></a><span class="n">r</span><span class="o">.</span><span class="n">applied_diminished</span> <span class="c1"># &quot;a_is_viidim_of_b&quot; — Bdim resolve em CM</span>
+</span><span id="__span-30-35"><a id="__codelineno-30-35" name="__codelineno-30-35" href="#__codelineno-30-35"></a>
+</span><span id="__span-30-36"><a id="__codelineno-30-36" name="__codelineno-30-36" href="#__codelineno-30-36"></a><span class="c1"># Substituicao tritonal (Kostka &amp; Payne)</span>
+</span><span id="__span-30-37"><a id="__codelineno-30-37" name="__codelineno-30-37" href="#__codelineno-30-37"></a><span class="n">r</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;G7&quot;</span><span class="p">),</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;C#7&quot;</span><span class="p">))</span>
+</span><span id="__span-30-38"><a id="__codelineno-30-38" name="__codelineno-30-38" href="#__codelineno-30-38"></a><span class="n">r</span><span class="o">.</span><span class="n">tritone_sub</span>        <span class="c1"># True — raizes a 6 semitons, ambos dom7</span>
+</span><span id="__span-30-39"><a id="__codelineno-30-39" name="__codelineno-30-39" href="#__codelineno-30-39"></a>
+</span><span id="__span-30-40"><a id="__codelineno-30-40" name="__codelineno-30-40" href="#__codelineno-30-40"></a><span class="c1"># Mediante cromatica (Cohn 2012)</span>
+</span><span id="__span-30-41"><a id="__codelineno-30-41" name="__codelineno-30-41" href="#__codelineno-30-41"></a><span class="n">r</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">),</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;EM&quot;</span><span class="p">))</span>
+</span><span id="__span-30-42"><a id="__codelineno-30-42" name="__codelineno-30-42" href="#__codelineno-30-42"></a><span class="n">r</span><span class="o">.</span><span class="n">chromatic_mediant</span>  <span class="c1"># &quot;upper&quot; — terca maior ascendente</span>
+</span><span id="__span-30-43"><a id="__codelineno-30-43" name="__codelineno-30-43" href="#__codelineno-30-43"></a>
+</span><span id="__span-30-44"><a id="__codelineno-30-44" name="__codelineno-30-44" href="#__codelineno-30-44"></a><span class="c1"># Emprestimo modal</span>
+</span><span id="__span-30-45"><a id="__codelineno-30-45" name="__codelineno-30-45" href="#__codelineno-30-45"></a><span class="n">r</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">),</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Fm&quot;</span><span class="p">))</span>
+</span><span id="__span-30-46"><a id="__codelineno-30-46" name="__codelineno-30-46" href="#__codelineno-30-46"></a><span class="n">r</span><span class="o">.</span><span class="n">diatonic_b</span>         <span class="c1"># False — Fm nao pertence a C maior</span>
+</span><span id="__span-30-47"><a id="__codelineno-30-47" name="__codelineno-30-47" href="#__codelineno-30-47"></a><span class="n">r</span><span class="o">.</span><span class="n">borrowed_b</span><span class="o">.</span><span class="n">scale_type</span>  <span class="c1"># &quot;NaturalMinor&quot; — emprestado de C menor</span>
+</span><span id="__span-30-48"><a id="__codelineno-30-48" name="__codelineno-30-48" href="#__codelineno-30-48"></a><span class="n">r</span><span class="o">.</span><span class="n">borrowed_b</span><span class="o">.</span><span class="n">degree</span>      <span class="c1"># 4 — grau IV da menor natural</span>
+</span><span id="__span-30-49"><a id="__codelineno-30-49" name="__codelineno-30-49" href="#__codelineno-30-49"></a><span class="n">r</span><span class="o">.</span><span class="n">foreign_b</span>              <span class="c1"># [Note(&quot;G#&quot;)] — Ab (= G#) nao pertence a C maior</span>
+</span><span id="__span-30-50"><a id="__codelineno-30-50" name="__codelineno-30-50" href="#__codelineno-30-50"></a>
+</span><span id="__span-30-51"><a id="__codelineno-30-51" name="__codelineno-30-51" href="#__codelineno-30-51"></a><span class="c1"># Acorde pivot (pertence a mais de uma tonalidade)</span>
+</span><span id="__span-30-52"><a id="__codelineno-30-52" name="__codelineno-30-52" href="#__codelineno-30-52"></a><span class="n">r</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">),</span> <span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am&quot;</span><span class="p">))</span>
+</span><span id="__span-30-53"><a id="__codelineno-30-53" name="__codelineno-30-53" href="#__codelineno-30-53"></a><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">pivot</span><span class="p">:</span>
+</span><span id="__span-30-54"><a id="__codelineno-30-54" name="__codelineno-30-54" href="#__codelineno-30-54"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">tonic</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">scale_type</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">degree_a</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">degree_b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-30-55"><a id="__codelineno-30-55" name="__codelineno-30-55" href="#__codelineno-30-55"></a><span class="c1"># C Major: 1 → 6</span>
+</span><span id="__span-30-56"><a id="__codelineno-30-56" name="__codelineno-30-56" href="#__codelineno-30-56"></a><span class="c1"># A NaturalMinor: 3 → 1</span>
+</span><span id="__span-30-57"><a id="__codelineno-30-57" name="__codelineno-30-57" href="#__codelineno-30-57"></a><span class="c1"># F Major: 5 → 3</span>
+</span><span id="__span-30-58"><a id="__codelineno-30-58" name="__codelineno-30-58" href="#__codelineno-30-58"></a><span class="c1"># ...</span>
+</span></code></pre></div>
+<h3 id="cli_5">CLI<a class="headerlink" href="#cli_5" title="Permanent link">&para;</a></h3>
+<p>Se <code>--field</code> for usado, a comparacao absoluta vem primeiro e o contexto tonal
+aparece em seguida.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>$ gingo compare CM Am
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>  Compare: CM vs Am
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>  ——————————————————
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>    Common notes......... C, E
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>    Exclusive A.......... G
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>    Exclusive B.......... A
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>    Root distance........ 3
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>    Root direction....... -3
+</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>    Same quality......... no
+</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>    Same size............ yes
+</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>    Common intervals.... P1, 5J
+</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a>    Enharmonic.......... no
+</span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a>    Voice leading........ 2 st
+</span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a>    Transformation....... R (Relative)
+</span><span id="__span-31-16"><a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a>    Interval vector A... [0, 0, 1, 1, 1, 0]
+</span><span id="__span-31-17"><a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a>    Interval vector B... [0, 0, 1, 1, 1, 0]
+</span><span id="__span-31-18"><a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a>    Same interval vector yes
+</span><span id="__span-31-19"><a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a>    Dissonance A........ 0.1826
+</span><span id="__span-31-20"><a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a>    Dissonance B........ 0.1027
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>$ gingo compare CM GM --field &quot;C major&quot;
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>  Compare: CM vs GM
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>  —————————————————
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>    Common notes........ G
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>    Exclusive A......... C, E
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>    Exclusive B......... B, D
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>    Root distance....... 5
+</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>    Root direction...... -5
+</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>    Same quality........ yes
+</span><span id="__span-32-11"><a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>    Same size........... yes
+</span><span id="__span-32-12"><a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>    Common intervals.... P1, 3M, 5J
+</span><span id="__span-32-13"><a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>    Enharmonic.......... no
+</span><span id="__span-32-14"><a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>    Voice leading....... 3 st
+</span><span id="__span-32-15"><a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>    Transformation...... LR (Leading-tone + Relative)
+</span><span id="__span-32-16"><a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a>    Interval vector A... [0, 0, 1, 1, 1, 0]
+</span><span id="__span-32-17"><a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a>    Interval vector B... [0, 0, 1, 1, 1, 0]
+</span><span id="__span-32-18"><a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a>    Same interval vector yes
+</span><span id="__span-32-19"><a id="__codelineno-32-19" name="__codelineno-32-19" href="#__codelineno-32-19"></a>    Transposition....... T7
+</span><span id="__span-32-20"><a id="__codelineno-32-20" name="__codelineno-32-20" href="#__codelineno-32-20"></a>    Dissonance A........ 0.1826
+</span><span id="__span-32-21"><a id="__codelineno-32-21" name="__codelineno-32-21" href="#__codelineno-32-21"></a>    Dissonance B........ 0.0717
+</span><span id="__span-32-22"><a id="__codelineno-32-22" name="__codelineno-32-22" href="#__codelineno-32-22"></a>
+</span><span id="__span-32-23"><a id="__codelineno-32-23" name="__codelineno-32-23" href="#__codelineno-32-23"></a>
+</span><span id="__span-32-24"><a id="__codelineno-32-24" name="__codelineno-32-24" href="#__codelineno-32-24"></a>  Context: C major
+</span><span id="__span-32-25"><a id="__codelineno-32-25" name="__codelineno-32-25" href="#__codelineno-32-25"></a>  ————————————————
+</span><span id="__span-32-26"><a id="__codelineno-32-26" name="__codelineno-32-26" href="#__codelineno-32-26"></a>    Degree A............ I
+</span><span id="__span-32-27"><a id="__codelineno-32-27" name="__codelineno-32-27" href="#__codelineno-32-27"></a>    Degree B............ V
+</span><span id="__span-32-28"><a id="__codelineno-32-28" name="__codelineno-32-28" href="#__codelineno-32-28"></a>    Function A.......... Tonic
+</span><span id="__span-32-29"><a id="__codelineno-32-29" name="__codelineno-32-29" href="#__codelineno-32-29"></a>    Function B.......... Dominant
+</span><span id="__span-32-30"><a id="__codelineno-32-30" name="__codelineno-32-30" href="#__codelineno-32-30"></a>    Same function....... no
+</span><span id="__span-32-31"><a id="__codelineno-32-31" name="__codelineno-32-31" href="#__codelineno-32-31"></a>    Diatonic A.......... yes
+</span><span id="__span-32-32"><a id="__codelineno-32-32" name="__codelineno-32-32" href="#__codelineno-32-32"></a>    Diatonic B.......... yes
+</span><span id="__span-32-33"><a id="__codelineno-32-33" name="__codelineno-32-33" href="#__codelineno-32-33"></a>    Degree distance..... 4
+</span><span id="__span-32-34"><a id="__codelineno-32-34" name="__codelineno-32-34" href="#__codelineno-32-34"></a>    Root motion......... ascending_fifth
+</span></code></pre></div>
+<p><strong>O que da pra estudar:</strong> relacoes entre acordes, voice leading (Tymoczko 2011),
+transformacoes neo-Riemannianas (Cohn 2012), interval vector (Forte 1973),
+transposicao T_n (Lewin 1987), dissonancia psicoacustica (Plomp &amp; Levelt 1965 /
+Sethares 1998), emprestimo modal, acordes pivot para modulacao, dominantes
+secundarias (Kostka &amp; Payne), diminuta aplicada (Gauldin 1997), substituicao
+tritonal, mediantes cromaticas.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/sauloverissimo/gingopy" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/gingo/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

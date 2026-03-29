@@ -1,0 +1,5280 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Aprenda teoria musical de forma divertida e fácil com Python">
+      
+      
+        <meta name="author" content="Saulo Verissimo">
+      
+      
+        <link rel="canonical" href="https://sauloverissimo.github.io/gingopy/api/referencia/">
+      
+      
+        <link rel="prev" href="../../guia/exemplos-praticos/">
+      
+      
+        <link rel="next" href="../../roadmap/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Referência Completa - 🪇 Gingo - Teoria Musical em Python</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-completa-referencia-rapida" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="🪇 Gingo - Teoria Musical em Python" class="md-header__button md-logo" aria-label="🪇 Gingo - Teoria Musical em Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🪇 Gingo - Teoria Musical em Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Referência Completa
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sauloverissimo/gingopy" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sauloverissimo/gingopy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏠 Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guia/introducao/" class="md-tabs__link">
+          
+  
+  
+  📖 Guia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  📚 API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../roadmap/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🗺️ Roadmap
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../referencias/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📖 Referências
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="🪇 Gingo - Teoria Musical em Python" class="md-nav__button md-logo" aria-label="🪇 Gingo - Teoria Musical em Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    🪇 Gingo - Teoria Musical em Python
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sauloverissimo/gingopy" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sauloverissimo/gingopy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏠 Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📖 Guia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📖 Guia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guia/introducao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introdução
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guia/instalacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guia/primeiros-passos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primeiros Passos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guia/conceitos-basicos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conceitos Básicos de Música
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guia/comecando/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Começando
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guia/fretboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fretboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guia/ritmo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ritmo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guia/audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guia/exemplos-praticos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exemplos Práticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📚 API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência Completa
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência Completa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Note
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Interval
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-chord" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Chord
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Scale
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Field
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Tree
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-progression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Progression
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-tradition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de Tradition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de Schema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-progressionmatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de ProgressionMatch
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-progressionroute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de ProgressionRoute
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-harmonicpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de HarmonicPath
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-chordcomparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de ChordComparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-fieldcomparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de FieldComparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-fieldmatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de FieldMatch
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-borrowedinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de BorrowedInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-pivotinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de PivotInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Duration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Tempo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-timesignature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de TimeSignature
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-noteevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de NoteEvent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-chordevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de ChordEvent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Rest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Sequence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-piano" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Piano
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-pianokey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de PianoKey
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-pianovoicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de PianoVoicing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voicingstyle-enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VoicingStyle (enum)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-pianosvg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de PianoSVG
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-fretboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Fretboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de Tuning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-fretposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de FretPosition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-fingering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de Fingering
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-stringstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de StringState
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stringaction-enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        StringAction (enum)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-fretboardsvg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de FretboardSVG
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-musicxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de MusicXML
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-gingoaudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio (gingo.audio)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio (gingo.audio)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waveform-enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waveform (enum)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envelope-adsr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Envelope (ADSR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#play" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        play()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to_wav" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        to_wav()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametros-de-audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parametros de audio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodos-play-e-to_wav-nas-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos .play() e .to_wav() nas classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enums" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enums
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo-dos-comandos-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo dos comandos CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todas-as-opcoes-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Todas as opcoes CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roteiro-de-estudo-sugerido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roteiro de estudo sugerido
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Roteiro de estudo sugerido">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nivel-1-fundamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nivel 1 — Fundamentos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nivel-2-acordes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nivel 2 — Acordes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nivel-3-escalas-e-modos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nivel 3 — Escalas e modos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nivel-4-harmonia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nivel 4 — Harmonia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia-rapida-de-tipos-de-escala" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referencia rapida de tipos de escala
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Referencia rapida de tipos de escala">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#familias-parentais-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Familias parentais (10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nomes-de-modo-aceitos-como-tipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nomes de modo (aceitos como tipo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variantes-pentatonicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variantes pentatonicas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗺️ Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📖 Referências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Note
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Interval
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-chord" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Chord
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Scale
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Field
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Tree
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-progression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Progression
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-tradition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de Tradition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de Schema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-progressionmatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de ProgressionMatch
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-progressionroute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de ProgressionRoute
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-harmonicpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de HarmonicPath
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-chordcomparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de ChordComparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-fieldcomparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de FieldComparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-fieldmatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de FieldMatch
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-borrowedinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de BorrowedInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-pivotinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de PivotInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Duration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Tempo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-timesignature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de TimeSignature
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-noteevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de NoteEvent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-chordevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de ChordEvent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Rest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Sequence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-piano" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Piano
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-pianokey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de PianoKey
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-pianovoicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de PianoVoicing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voicingstyle-enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VoicingStyle (enum)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-pianosvg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de PianoSVG
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-fretboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de Fretboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de Tuning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-fretposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de FretPosition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-fingering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de Fingering
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-stringstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de StringState
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stringaction-enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        StringAction (enum)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-fretboardsvg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de FretboardSVG
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-musicxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos de MusicXML
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-gingoaudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio (gingo.audio)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio (gingo.audio)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waveform-enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waveform (enum)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envelope-adsr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Envelope (ADSR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#play" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        play()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to_wav" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        to_wav()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametros-de-audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parametros de audio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodos-play-e-to_wav-nas-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metodos .play() e .to_wav() nas classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enums" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enums
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumo-dos-comandos-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resumo dos comandos CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todas-as-opcoes-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Todas as opcoes CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roteiro-de-estudo-sugerido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roteiro de estudo sugerido
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Roteiro de estudo sugerido">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nivel-1-fundamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nivel 1 — Fundamentos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nivel-2-acordes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nivel 2 — Acordes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nivel-3-escalas-e-modos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nivel 3 — Escalas e modos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nivel-4-harmonia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nivel 4 — Harmonia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia-rapida-de-tipos-de-escala" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referencia rapida de tipos de escala
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Referencia rapida de tipos de escala">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#familias-parentais-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Familias parentais (10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nomes-de-modo-aceitos-como-tipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nomes de modo (aceitos como tipo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variantes-pentatonicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variantes pentatonicas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navegação" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    🏠 Início
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    📚 API
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="api-completa-referencia-rapida">API completa — referencia rapida<a class="headerlink" href="#api-completa-referencia-rapida" title="Permanent link">&para;</a></h1>
+<h3 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>Construtor</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Note</code></td>
+<td><code>Note("C#")</code></td>
+<td>Uma nota</td>
+</tr>
+<tr>
+<td><code>Interval</code></td>
+<td><code>Interval("5J")</code> ou <code>Interval(7)</code></td>
+<td>Distancia em semitons</td>
+</tr>
+<tr>
+<td><code>Chord</code></td>
+<td><code>Chord("Am7")</code></td>
+<td>Acorde por nome</td>
+</tr>
+<tr>
+<td><code>Scale</code></td>
+<td><code>Scale("C", "major")</code> ou <code>Scale("D", "dorian")</code></td>
+<td>Escala</td>
+</tr>
+<tr>
+<td><code>Field</code></td>
+<td><code>Field("C", "major")</code></td>
+<td>Campo harmonico</td>
+</tr>
+<tr>
+<td><code>Tree</code></td>
+<td><code>Tree("C", "major", "harmonic_tree")</code></td>
+<td>Arvore harmonica (grafo de uma tradition)</td>
+</tr>
+<tr>
+<td><code>Progression</code></td>
+<td><code>Progression("C", "major")</code></td>
+<td>Coordenador cross-tradition</td>
+</tr>
+<tr>
+<td><code>Duration</code></td>
+<td><code>Duration("quarter")</code>, <code>Duration("q")</code>, <code>Duration("4")</code>, <code>Duration("1/4")</code>, <code>Duration(1, 4)</code></td>
+<td>Duracao ritmica</td>
+</tr>
+<tr>
+<td><code>Tempo</code></td>
+<td><code>Tempo(120)</code></td>
+<td>Andamento em BPM</td>
+</tr>
+<tr>
+<td><code>TimeSignature</code></td>
+<td><code>TimeSignature(4, 4)</code></td>
+<td>Formula de compasso</td>
+</tr>
+<tr>
+<td><code>NoteEvent</code></td>
+<td><code>NoteEvent(Note("C"), Duration("quarter"), 4)</code></td>
+<td>Nota com duracao e oitava</td>
+</tr>
+<tr>
+<td><code>ChordEvent</code></td>
+<td><code>ChordEvent(Chord("CM"), Duration("half"), 4)</code></td>
+<td>Acorde com duracao e oitava</td>
+</tr>
+<tr>
+<td><code>Rest</code></td>
+<td><code>Rest(Duration("quarter"))</code></td>
+<td>Pausa (silencio)</td>
+</tr>
+<tr>
+<td><code>Sequence</code></td>
+<td><code>Sequence(Tempo(120), TimeSignature(4, 4))</code></td>
+<td>Sequencia de eventos musicais</td>
+</tr>
+<tr>
+<td><code>Piano</code></td>
+<td><code>Piano(88)</code></td>
+<td>Mapeamento piano (teoria ↔ teclas)</td>
+</tr>
+<tr>
+<td><code>PianoSVG</code></td>
+<td><code>PianoSVG.note(piano, Note("C"), 4)</code></td>
+<td>Visualizacao SVG interativa do piano</td>
+</tr>
+<tr>
+<td><code>Fretboard</code></td>
+<td><code>Fretboard.violao()</code></td>
+<td>Motor de digitacao para cordas (violao, cavaquinho, bandolim)</td>
+</tr>
+<tr>
+<td><code>FretboardSVG</code></td>
+<td><code>FretboardSVG.chord(fb, Chord("CM"))</code></td>
+<td>Visualizacao SVG de diagramas de violao</td>
+</tr>
+<tr>
+<td><code>MusicXML</code></td>
+<td><code>MusicXML.note(Note("C"), 4)</code></td>
+<td>Serializador MusicXML 4.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-note">Metodos de Note<a class="headerlink" href="#metodos-de-note" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name()</code></td>
+<td><code>str</code></td>
+<td>Nome como informado</td>
+</tr>
+<tr>
+<td><code>natural()</code></td>
+<td><code>str</code></td>
+<td>Nome canonico (com sustenido)</td>
+</tr>
+<tr>
+<td><code>sound()</code></td>
+<td><code>str</code></td>
+<td>Nota natural (sem acidente)</td>
+</tr>
+<tr>
+<td><code>semitone()</code></td>
+<td><code>int</code></td>
+<td>Indice cromatico (0-11)</td>
+</tr>
+<tr>
+<td><code>frequency(octave=4)</code></td>
+<td><code>float</code></td>
+<td>Frequencia em Hz (A4=440)</td>
+</tr>
+<tr>
+<td><code>is_enharmonic(other)</code></td>
+<td><code>bool</code></td>
+<td>Mesmo som, nomes diferentes?</td>
+</tr>
+<tr>
+<td><code>transpose(semitones)</code></td>
+<td><code>Note</code></td>
+<td>Nova nota transposta</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-interval">Metodos de Interval<a class="headerlink" href="#metodos-de-interval" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>label()</code></td>
+<td><code>str</code></td>
+<td>Abreviacao (P1, 3m, 5J...)</td>
+</tr>
+<tr>
+<td><code>anglo_saxon()</code></td>
+<td><code>str</code></td>
+<td>Nome anglo-saxao (P5, ma3...)</td>
+</tr>
+<tr>
+<td><code>semitones()</code></td>
+<td><code>int</code></td>
+<td>Distancia em semitons</td>
+</tr>
+<tr>
+<td><code>degree()</code></td>
+<td><code>int</code></td>
+<td>Numero do grau</td>
+</tr>
+<tr>
+<td><code>octave()</code></td>
+<td><code>int</code></td>
+<td>Oitava (1 ou 2)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-chord">Metodos de Chord<a class="headerlink" href="#metodos-de-chord" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name()</code></td>
+<td><code>str</code></td>
+<td>Nome completo (Am7, C7M...)</td>
+</tr>
+<tr>
+<td><code>root()</code></td>
+<td><code>Note</code></td>
+<td>Nota raiz</td>
+</tr>
+<tr>
+<td><code>type()</code></td>
+<td><code>str</code></td>
+<td>Sufixo do tipo (m7, 7M, dim...)</td>
+</tr>
+<tr>
+<td><code>notes()</code></td>
+<td><code>List[Note]</code></td>
+<td>Notas do acorde</td>
+</tr>
+<tr>
+<td><code>formal_notes()</code></td>
+<td><code>List[Note]</code></td>
+<td>Notas com grafia formal</td>
+</tr>
+<tr>
+<td><code>intervals()</code></td>
+<td><code>List[Interval]</code></td>
+<td>Intervalos do acorde</td>
+</tr>
+<tr>
+<td><code>interval_labels()</code></td>
+<td><code>List[str]</code></td>
+<td>Labels dos intervalos</td>
+</tr>
+<tr>
+<td><code>size()</code></td>
+<td><code>int</code></td>
+<td>Quantidade de notas</td>
+</tr>
+<tr>
+<td><code>contains(note)</code></td>
+<td><code>bool</code></td>
+<td>Nota pertence ao acorde?</td>
+</tr>
+<tr>
+<td><code>compare(other)</code></td>
+<td><code>ChordComparison</code></td>
+<td>Comparacao detalhada (18 dimensoes)</td>
+</tr>
+<tr>
+<td><code>Chord.identify(notes)</code></td>
+<td><code>Chord</code></td>
+<td>Identifica acorde pelas notas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-scale">Metodos de Scale<a class="headerlink" href="#metodos-de-scale" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tonic()</code></td>
+<td><code>Note</code></td>
+<td>Nota tonica</td>
+</tr>
+<tr>
+<td><code>parent()</code></td>
+<td><code>ScaleType</code></td>
+<td>Familia parental (Major, HarmonicMinor, ...)</td>
+</tr>
+<tr>
+<td><code>mode_number()</code></td>
+<td><code>int</code></td>
+<td>Numero do modo (1-7)</td>
+</tr>
+<tr>
+<td><code>mode_name()</code></td>
+<td><code>str</code></td>
+<td>Nome do modo (Ionian, Dorian, ...)</td>
+</tr>
+<tr>
+<td><code>quality()</code></td>
+<td><code>str</code></td>
+<td>Qualidade tonal ("major" / "minor")</td>
+</tr>
+<tr>
+<td><code>brightness()</code></td>
+<td><code>int</code></td>
+<td>Brilho do modo (1=Locrian, 7=Lydian)</td>
+</tr>
+<tr>
+<td><code>is_pentatonic()</code></td>
+<td><code>bool</code></td>
+<td>Se esta no filtro pentatonico</td>
+</tr>
+<tr>
+<td><code>type()</code></td>
+<td><code>ScaleType</code></td>
+<td>Tipo da escala (backward compat, = parent)</td>
+</tr>
+<tr>
+<td><code>modality()</code></td>
+<td><code>Modality</code></td>
+<td>Diatonica ou pentatonica (backward compat)</td>
+</tr>
+<tr>
+<td><code>notes()</code></td>
+<td><code>List[Note]</code></td>
+<td>Notas da escala</td>
+</tr>
+<tr>
+<td><code>formal_notes()</code></td>
+<td><code>List[Note]</code></td>
+<td>Notas com grafia formal</td>
+</tr>
+<tr>
+<td><code>degree(*degrees)</code></td>
+<td><code>Note</code></td>
+<td>Grau encadeado: <code>degree(5, 5)</code> = V do V</td>
+</tr>
+<tr>
+<td><code>walk(start, *steps)</code></td>
+<td><code>Note</code></td>
+<td>Navegar pela escala: <code>walk(1, 4)</code> = IV</td>
+</tr>
+<tr>
+<td><code>size()</code></td>
+<td><code>int</code></td>
+<td>Quantidade de notas</td>
+</tr>
+<tr>
+<td><code>contains(note)</code></td>
+<td><code>bool</code></td>
+<td>Nota pertence a escala?</td>
+</tr>
+<tr>
+<td><code>mode(n_or_name)</code></td>
+<td><code>Scale</code></td>
+<td>Modo por numero (int) ou nome (str)</td>
+</tr>
+<tr>
+<td><code>pentatonic()</code></td>
+<td><code>Scale</code></td>
+<td>Versao pentatonica da escala</td>
+</tr>
+<tr>
+<td><code>colors(reference)</code></td>
+<td><code>List[Note]</code></td>
+<td>Notas que diferem de um modo de referencia</td>
+</tr>
+<tr>
+<td><code>mask()</code></td>
+<td><code>List[int]</code></td>
+<td>Mascara binaria (24 bits)</td>
+</tr>
+<tr>
+<td><code>Scale.identify(notes)</code></td>
+<td><code>Scale</code></td>
+<td>Identifica escala a partir de um conjunto completo de notas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-field">Metodos de Field<a class="headerlink" href="#metodos-de-field" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tonic()</code></td>
+<td><code>Note</code></td>
+<td>Nota tonica</td>
+</tr>
+<tr>
+<td><code>scale()</code></td>
+<td><code>Scale</code></td>
+<td>Escala base</td>
+</tr>
+<tr>
+<td><code>chords()</code></td>
+<td><code>List[Chord]</code></td>
+<td>Triades de todos os graus</td>
+</tr>
+<tr>
+<td><code>sevenths()</code></td>
+<td><code>List[Chord]</code></td>
+<td>Tetrades de todos os graus</td>
+</tr>
+<tr>
+<td><code>chord(degree)</code></td>
+<td><code>Chord</code></td>
+<td>Triade de um grau especifico</td>
+</tr>
+<tr>
+<td><code>seventh(degree)</code></td>
+<td><code>Chord</code></td>
+<td>Tetrade de um grau especifico</td>
+</tr>
+<tr>
+<td><code>applied(func, target)</code></td>
+<td><code>Chord</code></td>
+<td>Acorde aplicado (tonicizacao)</td>
+</tr>
+<tr>
+<td><code>function(degree)</code></td>
+<td><code>HarmonicFunction</code></td>
+<td>Funcao harmonica do grau (T/S/D)</td>
+</tr>
+<tr>
+<td><code>function(chord)</code></td>
+<td><code>Optional[HarmonicFunction]</code></td>
+<td>Funcao do acorde (None se nao pertence)</td>
+</tr>
+<tr>
+<td><code>role(degree)</code></td>
+<td><code>str</code></td>
+<td>Papel do grau ("primary", "relative of I", etc.)</td>
+</tr>
+<tr>
+<td><code>role(chord)</code></td>
+<td><code>Optional[str]</code></td>
+<td>Papel do acorde (None se nao pertence)</td>
+</tr>
+<tr>
+<td><code>compare(a, b)</code></td>
+<td><code>FieldComparison</code></td>
+<td>Comparacao contextual (21 dimensoes)</td>
+</tr>
+<tr>
+<td><code>size()</code></td>
+<td><code>int</code></td>
+<td>Quantidade de graus</td>
+</tr>
+<tr>
+<td><code>Field.identify(items)</code></td>
+<td><code>Field</code></td>
+<td>Identifica campo a partir de notas ou acordes completos</td>
+</tr>
+<tr>
+<td><code>Field.deduce(items, limit=10)</code></td>
+<td><code>List[FieldMatch]</code></td>
+<td>Deduz campos provaveis a partir de input parcial</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-tree">Metodos de Tree<a class="headerlink" href="#metodos-de-tree" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tonic()</code></td>
+<td><code>Note</code></td>
+<td>Nota tonica</td>
+</tr>
+<tr>
+<td><code>type()</code></td>
+<td><code>ScaleType</code></td>
+<td>Tipo de escala</td>
+</tr>
+<tr>
+<td><code>tradition()</code></td>
+<td><code>Tradition</code></td>
+<td>Metadados da tradicao (nome, descricao)</td>
+</tr>
+<tr>
+<td><code>branches()</code></td>
+<td><code>List[str]</code></td>
+<td>Todos os branches harmonicos</td>
+</tr>
+<tr>
+<td><code>paths(branch)</code></td>
+<td><code>List[HarmonicPath]</code></td>
+<td>Todos os caminhos de um branch</td>
+</tr>
+<tr>
+<td><code>shortest_path(from_, to)</code></td>
+<td><code>List[str]</code></td>
+<td>Caminho mais curto entre branches</td>
+</tr>
+<tr>
+<td><code>is_valid(branches)</code></td>
+<td><code>bool</code></td>
+<td>Valida progressao harmonica</td>
+</tr>
+<tr>
+<td><code>is_valid_progression(branches)</code></td>
+<td><code>bool</code></td>
+<td>Alias de is_valid (retrocompat)</td>
+</tr>
+<tr>
+<td><code>function(branch)</code></td>
+<td><code>HarmonicFunction</code></td>
+<td>Funcao harmonica (T/S/D)</td>
+</tr>
+<tr>
+<td><code>branches_with_function(func)</code></td>
+<td><code>List[str]</code></td>
+<td>Branches com funcao especifica</td>
+</tr>
+<tr>
+<td><code>schemas()</code></td>
+<td><code>List[Schema]</code></td>
+<td>Padroes nomeados da tradicao</td>
+</tr>
+<tr>
+<td><code>to_dot(show_functions=False)</code></td>
+<td><code>str</code></td>
+<td>Exporta para Graphviz DOT</td>
+</tr>
+<tr>
+<td><code>to_mermaid()</code></td>
+<td><code>str</code></td>
+<td>Exporta para diagrama Mermaid</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-progression">Metodos de Progression<a class="headerlink" href="#metodos-de-progression" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tonic()</code></td>
+<td><code>Note</code></td>
+<td>Nota tonica</td>
+</tr>
+<tr>
+<td><code>type()</code></td>
+<td><code>ScaleType</code></td>
+<td>Tipo de escala</td>
+</tr>
+<tr>
+<td><code>traditions()</code></td>
+<td><code>List[Tradition]</code></td>
+<td>Tradicoes disponiveis (estatico)</td>
+</tr>
+<tr>
+<td><code>tree(tradition)</code></td>
+<td><code>Tree</code></td>
+<td>Arvore de uma tradicao especifica</td>
+</tr>
+<tr>
+<td><code>identify(branches)</code></td>
+<td><code>ProgressionMatch</code></td>
+<td>Identifica tradicao e schema</td>
+</tr>
+<tr>
+<td><code>deduce(branches, limit=10)</code></td>
+<td><code>List[ProgressionMatch]</code></td>
+<td>Deduz tradicoes provaveis (ranqueado)</td>
+</tr>
+<tr>
+<td><code>predict(branches, tradition="")</code></td>
+<td><code>List[ProgressionRoute]</code></td>
+<td>Sugere proximos acordes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-tradition">Atributos de Tradition<a class="headerlink" href="#atributos-de-tradition" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>str</code></td>
+<td>Nome da tradicao ("harmonic_tree")</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>str</code></td>
+<td>Descricao legivel</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-schema">Atributos de Schema<a class="headerlink" href="#atributos-de-schema" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>str</code></td>
+<td>Nome do schema ("descending")</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>str</code></td>
+<td>Descricao legivel</td>
+</tr>
+<tr>
+<td><code>branches</code></td>
+<td><code>List[str]</code></td>
+<td>Sequencia de branches do padrao</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-progressionmatch">Atributos de ProgressionMatch<a class="headerlink" href="#atributos-de-progressionmatch" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tradition</code></td>
+<td><code>str</code></td>
+<td>Tradicao identificada</td>
+</tr>
+<tr>
+<td><code>schema</code></td>
+<td><code>str</code></td>
+<td>Schema identificado (ou "")</td>
+</tr>
+<tr>
+<td><code>score</code></td>
+<td><code>float</code></td>
+<td>Score de match (0.0-1.0)</td>
+</tr>
+<tr>
+<td><code>matched</code></td>
+<td><code>int</code></td>
+<td>Transicoes validas</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td><code>int</code></td>
+<td>Total de transicoes</td>
+</tr>
+<tr>
+<td><code>branches</code></td>
+<td><code>List[str]</code></td>
+<td>Branches resolvidos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-progressionroute">Atributos de ProgressionRoute<a class="headerlink" href="#atributos-de-progressionroute" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>next</code></td>
+<td><code>str</code></td>
+<td>Proximo branch sugerido</td>
+</tr>
+<tr>
+<td><code>tradition</code></td>
+<td><code>str</code></td>
+<td>De qual tradicao</td>
+</tr>
+<tr>
+<td><code>schema</code></td>
+<td><code>str</code></td>
+<td>Schema motivador (ou "")</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td><code>List[str]</code></td>
+<td>Caminho completo sugerido</td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td><code>float</code></td>
+<td>Confianca (0.0-1.0)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-harmonicpath">Atributos de HarmonicPath<a class="headerlink" href="#atributos-de-harmonicpath" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>int</code></td>
+<td>Identificador do caminho</td>
+</tr>
+<tr>
+<td><code>branch</code></td>
+<td><code>str</code></td>
+<td>Nome do branch destino</td>
+</tr>
+<tr>
+<td><code>chord</code></td>
+<td><code>Chord</code></td>
+<td>Acorde resolvido</td>
+</tr>
+<tr>
+<td><code>interval_labels</code></td>
+<td><code>List[str]</code></td>
+<td>Labels dos intervalos do acorde</td>
+</tr>
+<tr>
+<td><code>note_names</code></td>
+<td><code>List[str]</code></td>
+<td>Nomes das notas do acorde</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-chordcomparison">Atributos de ChordComparison<a class="headerlink" href="#atributos-de-chordcomparison" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>common_notes</code></td>
+<td><code>List[Note]</code></td>
+<td>Notas em comum</td>
+</tr>
+<tr>
+<td><code>exclusive_a</code></td>
+<td><code>List[Note]</code></td>
+<td>Notas exclusivas do acorde A</td>
+</tr>
+<tr>
+<td><code>exclusive_b</code></td>
+<td><code>List[Note]</code></td>
+<td>Notas exclusivas do acorde B</td>
+</tr>
+<tr>
+<td><code>root_distance</code></td>
+<td><code>int</code></td>
+<td>Distancia entre raizes (0-6 semitons)</td>
+</tr>
+<tr>
+<td><code>root_direction</code></td>
+<td><code>int</code></td>
+<td>Direcao com sinal (-6 a +6)</td>
+</tr>
+<tr>
+<td><code>same_quality</code></td>
+<td><code>bool</code></td>
+<td>Mesmo tipo (M, m, dim, etc.)</td>
+</tr>
+<tr>
+<td><code>same_size</code></td>
+<td><code>bool</code></td>
+<td>Mesmo numero de notas</td>
+</tr>
+<tr>
+<td><code>common_intervals</code></td>
+<td><code>List[str]</code></td>
+<td>Intervalos identicos em ambos</td>
+</tr>
+<tr>
+<td><code>enharmonic</code></td>
+<td><code>bool</code></td>
+<td>Mesmo conjunto de notas</td>
+</tr>
+<tr>
+<td><code>subset</code></td>
+<td><code>str</code></td>
+<td><code>""</code>, <code>"a_subset_of_b"</code>, <code>"b_subset_of_a"</code>, <code>"equal"</code></td>
+</tr>
+<tr>
+<td><code>voice_leading</code></td>
+<td><code>int</code></td>
+<td>Pareamento otimo de vozes em semitons (Tymoczko 2011). -1 se tamanhos diferentes</td>
+</tr>
+<tr>
+<td><code>transformation</code></td>
+<td><code>str</code></td>
+<td>Transformacao neo-Riemanniana (Cohn 2012): <code>""</code>, <code>"P"</code>, <code>"L"</code>, <code>"R"</code>, <code>"RP"</code>, <code>"LP"</code>, <code>"PL"</code>, <code>"PR"</code>, <code>"LR"</code>, <code>"RL"</code> (so triades)</td>
+</tr>
+<tr>
+<td><code>inversion</code></td>
+<td><code>bool</code></td>
+<td>Mesmas notas, raiz diferente</td>
+</tr>
+<tr>
+<td><code>interval_vector_a</code></td>
+<td><code>List[int]</code></td>
+<td>Vetor de classes de intervalo (Forte 1973): 6 elementos ic1-6 do acorde A</td>
+</tr>
+<tr>
+<td><code>interval_vector_b</code></td>
+<td><code>List[int]</code></td>
+<td>Vetor de classes de intervalo (Forte 1973) do acorde B</td>
+</tr>
+<tr>
+<td><code>same_interval_vector</code></td>
+<td><code>bool</code></td>
+<td>Mesmo vetor = candidato a Z-relation (Forte 1973)</td>
+</tr>
+<tr>
+<td><code>transposition</code></td>
+<td><code>int</code></td>
+<td>Indice de transposicao T_n (Lewin 1987): 0-11, ou -1 se nao sao transposicao</td>
+</tr>
+<tr>
+<td><code>dissonance_a</code></td>
+<td><code>float</code></td>
+<td>Roughness psicoacustico (Plomp &amp; Levelt 1965 / Sethares 1998) do acorde A</td>
+</tr>
+<tr>
+<td><code>dissonance_b</code></td>
+<td><code>float</code></td>
+<td>Roughness psicoacustico (Plomp &amp; Levelt 1965 / Sethares 1998) do acorde B</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>to_dict()</code></td>
+<td><code>dict</code></td>
+<td>Serializa todos os campos em dict Python puro (Notes como strings)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-fieldcomparison">Atributos de FieldComparison<a class="headerlink" href="#atributos-de-fieldcomparison" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>degree_a</code></td>
+<td><code>Optional[int]</code></td>
+<td>Grau do acorde A (None se nao-diatonico)</td>
+</tr>
+<tr>
+<td><code>degree_b</code></td>
+<td><code>Optional[int]</code></td>
+<td>Grau do acorde B</td>
+</tr>
+<tr>
+<td><code>function_a</code></td>
+<td><code>Optional[HarmonicFunction]</code></td>
+<td>Funcao harmonica de A</td>
+</tr>
+<tr>
+<td><code>function_b</code></td>
+<td><code>Optional[HarmonicFunction]</code></td>
+<td>Funcao harmonica de B</td>
+</tr>
+<tr>
+<td><code>role_a</code></td>
+<td><code>Optional[str]</code></td>
+<td>Papel de A ("primary", "relative of I")</td>
+</tr>
+<tr>
+<td><code>role_b</code></td>
+<td><code>Optional[str]</code></td>
+<td>Papel de B</td>
+</tr>
+<tr>
+<td><code>degree_distance</code></td>
+<td><code>Optional[int]</code></td>
+<td>Distancia entre graus</td>
+</tr>
+<tr>
+<td><code>same_function</code></td>
+<td><code>Optional[bool]</code></td>
+<td>Mesma funcao harmonica</td>
+</tr>
+<tr>
+<td><code>relative</code></td>
+<td><code>bool</code></td>
+<td>Par de acordes relativos</td>
+</tr>
+<tr>
+<td><code>progression</code></td>
+<td><code>bool</code></td>
+<td>Reservado para uso futuro</td>
+</tr>
+<tr>
+<td><code>root_motion</code></td>
+<td><code>str</code></td>
+<td>Movimento diatonico de raiz (Kostka &amp; Payne): <code>""</code>, <code>"ascending_fifth"</code>, <code>"descending_fifth"</code>, <code>"ascending_third"</code>, <code>"descending_third"</code>, <code>"ascending_step"</code>, <code>"descending_step"</code>, <code>"tritone"</code>, <code>"unison"</code></td>
+</tr>
+<tr>
+<td><code>secondary_dominant</code></td>
+<td><code>str</code></td>
+<td>Dominante secundaria (Kostka &amp; Payne): <code>""</code>, <code>"a_is_V7_of_b"</code>, <code>"b_is_V7_of_a"</code></td>
+</tr>
+<tr>
+<td><code>applied_diminished</code></td>
+<td><code>str</code></td>
+<td>Diminuta aplicada vii/x (Gauldin 1997): <code>""</code>, <code>"a_is_viidim_of_b"</code>, <code>"b_is_viidim_of_a"</code></td>
+</tr>
+<tr>
+<td><code>diatonic_a</code></td>
+<td><code>bool</code></td>
+<td>A pertence ao campo</td>
+</tr>
+<tr>
+<td><code>diatonic_b</code></td>
+<td><code>bool</code></td>
+<td>B pertence ao campo</td>
+</tr>
+<tr>
+<td><code>borrowed_a</code></td>
+<td><code>Optional[BorrowedInfo]</code></td>
+<td>De qual escala A e emprestado</td>
+</tr>
+<tr>
+<td><code>borrowed_b</code></td>
+<td><code>Optional[BorrowedInfo]</code></td>
+<td>De qual escala B e emprestado</td>
+</tr>
+<tr>
+<td><code>pivot</code></td>
+<td><code>List[PivotInfo]</code></td>
+<td>Tonalidades onde ambos tem grau</td>
+</tr>
+<tr>
+<td><code>tritone_sub</code></td>
+<td><code>bool</code></td>
+<td>Substituicao tritonal (ambos dom7, dist=6)</td>
+</tr>
+<tr>
+<td><code>chromatic_mediant</code></td>
+<td><code>str</code></td>
+<td><code>""</code>, <code>"upper"</code>, <code>"lower"</code></td>
+</tr>
+<tr>
+<td><code>foreign_a</code></td>
+<td><code>List[Note]</code></td>
+<td>Notas de A fora da escala</td>
+</tr>
+<tr>
+<td><code>foreign_b</code></td>
+<td><code>List[Note]</code></td>
+<td>Notas de B fora da escala</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>to_dict()</code></td>
+<td><code>dict</code></td>
+<td>Serializa todos os campos em dict Python puro</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-fieldmatch">Atributos de FieldMatch<a class="headerlink" href="#atributos-de-fieldmatch" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>field</code></td>
+<td><code>Field</code></td>
+<td>Campo harmonico candidato</td>
+</tr>
+<tr>
+<td><code>score</code></td>
+<td><code>float</code></td>
+<td>Proporcao de matches (0.0 a 1.0)</td>
+</tr>
+<tr>
+<td><code>matched</code></td>
+<td><code>int</code></td>
+<td>Quantidade de itens reconhecidos</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td><code>int</code></td>
+<td>Total de itens no input</td>
+</tr>
+<tr>
+<td><code>roles</code></td>
+<td><code>List[str]</code></td>
+<td>Papel/romanos para cada item</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>to_dict()</code></td>
+<td><code>dict</code></td>
+<td>Serializa em dict</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-borrowedinfo">Atributos de BorrowedInfo<a class="headerlink" href="#atributos-de-borrowedinfo" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scale_type</code></td>
+<td><code>str</code></td>
+<td>Tipo da escala de origem</td>
+</tr>
+<tr>
+<td><code>degree</code></td>
+<td><code>int</code></td>
+<td>Grau nessa escala</td>
+</tr>
+<tr>
+<td><code>function</code></td>
+<td><code>HarmonicFunction</code></td>
+<td>Funcao nessa escala</td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td><code>str</code></td>
+<td>Papel nessa escala</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>to_dict()</code></td>
+<td><code>dict</code></td>
+<td>Serializa em dict (function como string do nome)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-pivotinfo">Atributos de PivotInfo<a class="headerlink" href="#atributos-de-pivotinfo" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tonic</code></td>
+<td><code>str</code></td>
+<td>Tonica da tonalidade pivot</td>
+</tr>
+<tr>
+<td><code>scale_type</code></td>
+<td><code>str</code></td>
+<td>Tipo de escala</td>
+</tr>
+<tr>
+<td><code>degree_a</code></td>
+<td><code>int</code></td>
+<td>Grau do acorde A nessa tonalidade</td>
+</tr>
+<tr>
+<td><code>degree_b</code></td>
+<td><code>int</code></td>
+<td>Grau do acorde B nessa tonalidade</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>to_dict()</code></td>
+<td><code>dict</code></td>
+<td>Serializa em dict</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-duration">Metodos de Duration<a class="headerlink" href="#metodos-de-duration" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>numerator()</code></td>
+<td><code>int</code></td>
+<td>Numerador da fracao</td>
+</tr>
+<tr>
+<td><code>denominator()</code></td>
+<td><code>int</code></td>
+<td>Denominador da fracao</td>
+</tr>
+<tr>
+<td><code>beats()</code></td>
+<td><code>float</code></td>
+<td>Valor em tempos (1.0 = semibreve)</td>
+</tr>
+<tr>
+<td><code>dotted()</code></td>
+<td><code>Duration</code></td>
+<td>Versao pontuada (1.5x)</td>
+</tr>
+<tr>
+<td><code>double_dotted()</code></td>
+<td><code>Duration</code></td>
+<td>Versao duplamente pontuada (1.75x)</td>
+</tr>
+<tr>
+<td><code>triplet()</code></td>
+<td><code>Duration</code></td>
+<td>Versao em tercina (2/3x)</td>
+</tr>
+<tr>
+<td><code>midi_ticks(ppqn=480)</code></td>
+<td><code>int</code></td>
+<td>Ticks MIDI para esta duracao</td>
+</tr>
+<tr>
+<td><code>Duration.from_ticks(ticks, ppqn=480)</code></td>
+<td><code>Duration</code></td>
+<td>Cria Duration a partir de ticks MIDI</td>
+</tr>
+</tbody>
+</table>
+<p>Formatos aceitos no construtor:</p>
+<table>
+<thead>
+<tr>
+<th>Formato</th>
+<th>Exemplo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nome completo</td>
+<td><code>Duration("quarter")</code></td>
+<td><code>whole</code>, <code>half</code>, <code>quarter</code>, <code>eighth</code>, <code>sixteenth</code>, <code>thirty_second</code></td>
+</tr>
+<tr>
+<td>Abreviacao</td>
+<td><code>Duration("q")</code></td>
+<td><code>w</code>, <code>h</code>, <code>q</code>, <code>e</code>, <code>s</code></td>
+</tr>
+<tr>
+<td>LilyPond</td>
+<td><code>Duration("4")</code></td>
+<td><code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>, <code>32</code>, <code>64</code></td>
+</tr>
+<tr>
+<td>Fracao (string)</td>
+<td><code>Duration("1/4")</code></td>
+<td>Numerador/denominador</td>
+</tr>
+<tr>
+<td>Fracao (int)</td>
+<td><code>Duration(1, 4)</code></td>
+<td>Numerador, denominador</td>
+</tr>
+<tr>
+<td>Dotted (sufixo)</td>
+<td><code>Duration("q.")</code></td>
+<td>Abreviacao ou LilyPond + <code>.</code> ou <code>..</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-tempo">Metodos de Tempo<a class="headerlink" href="#metodos-de-tempo" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bpm()</code></td>
+<td><code>int</code></td>
+<td>Batidas por minuto</td>
+</tr>
+<tr>
+<td><code>seconds(duration)</code></td>
+<td><code>float</code></td>
+<td>Duracao em segundos para um Duration</td>
+</tr>
+<tr>
+<td><code>marking()</code></td>
+<td><code>str</code></td>
+<td>Marcacao italiana (Allegro, Adagio...)</td>
+</tr>
+<tr>
+<td><code>microseconds_per_beat()</code></td>
+<td><code>int</code></td>
+<td>Microsegundos por batida (MIDI meta-event)</td>
+</tr>
+<tr>
+<td><code>Tempo.from_microseconds(usec)</code></td>
+<td><code>Tempo</code></td>
+<td>Cria Tempo a partir de microsegundos MIDI</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-timesignature">Metodos de TimeSignature<a class="headerlink" href="#metodos-de-timesignature" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beats_per_measure()</code></td>
+<td><code>int</code></td>
+<td>Tempos por compasso (numerador)</td>
+</tr>
+<tr>
+<td><code>beat_value()</code></td>
+<td><code>int</code></td>
+<td>Figura que vale um tempo (denominador)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-noteevent">Metodos de NoteEvent<a class="headerlink" href="#metodos-de-noteevent" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>note()</code></td>
+<td><code>Note</code></td>
+<td>Nota associada</td>
+</tr>
+<tr>
+<td><code>duration()</code></td>
+<td><code>Duration</code></td>
+<td>Duracao do evento</td>
+</tr>
+<tr>
+<td><code>octave()</code></td>
+<td><code>int</code></td>
+<td>Oitava do evento</td>
+</tr>
+<tr>
+<td><code>frequency(tuning=440.0)</code></td>
+<td><code>float</code></td>
+<td>Frequencia em Hz</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-chordevent">Metodos de ChordEvent<a class="headerlink" href="#metodos-de-chordevent" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>chord()</code></td>
+<td><code>Chord</code></td>
+<td>Acorde associado</td>
+</tr>
+<tr>
+<td><code>duration()</code></td>
+<td><code>Duration</code></td>
+<td>Duracao do evento</td>
+</tr>
+<tr>
+<td><code>octave()</code></td>
+<td><code>int</code></td>
+<td>Oitava do evento</td>
+</tr>
+<tr>
+<td><code>note_events()</code></td>
+<td><code>List[NoteEvent]</code></td>
+<td>NoteEvents das notas do acorde</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-rest">Metodos de Rest<a class="headerlink" href="#metodos-de-rest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>duration()</code></td>
+<td><code>Duration</code></td>
+<td>Duracao do silencio</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-sequence">Metodos de Sequence<a class="headerlink" href="#metodos-de-sequence" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tempo()</code></td>
+<td><code>Tempo</code></td>
+<td>Andamento da sequencia</td>
+</tr>
+<tr>
+<td><code>time_signature()</code></td>
+<td><code>TimeSignature</code></td>
+<td>Formula de compasso</td>
+</tr>
+<tr>
+<td><code>add(event)</code></td>
+<td><code>None</code></td>
+<td>Adiciona NoteEvent, ChordEvent ou Rest</td>
+</tr>
+<tr>
+<td><code>__len__()</code></td>
+<td><code>int</code></td>
+<td>Quantidade de eventos</td>
+</tr>
+<tr>
+<td><code>__getitem__(i)</code></td>
+<td><code>NoteEvent\|ChordEvent\|Rest</code></td>
+<td>Acesso por indice (suporta negativo)</td>
+</tr>
+<tr>
+<td><code>to_midi(path, ppqn=480)</code></td>
+<td><code>None</code></td>
+<td>Exporta para Standard MIDI File (formato 0)</td>
+</tr>
+<tr>
+<td><code>Sequence.from_midi(path)</code></td>
+<td><code>Sequence</code></td>
+<td>Importa de arquivo MIDI (formato 0 ou 1)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-piano">Metodos de Piano<a class="headerlink" href="#metodos-de-piano" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>num_keys()</code></td>
+<td><code>int</code></td>
+<td>Quantidade de teclas</td>
+</tr>
+<tr>
+<td><code>lowest()</code></td>
+<td><code>PianoKey</code></td>
+<td>Tecla mais grave</td>
+</tr>
+<tr>
+<td><code>highest()</code></td>
+<td><code>PianoKey</code></td>
+<td>Tecla mais aguda</td>
+</tr>
+<tr>
+<td><code>in_range(midi)</code></td>
+<td><code>bool</code></td>
+<td>MIDI esta no alcance do piano?</td>
+</tr>
+<tr>
+<td><code>key(note, octave=4)</code></td>
+<td><code>PianoKey</code></td>
+<td>Mapeia Note para tecla</td>
+</tr>
+<tr>
+<td><code>keys(note)</code></td>
+<td><code>List[PianoKey]</code></td>
+<td>Todas as oitavas de uma nota</td>
+</tr>
+<tr>
+<td><code>voicing(chord, octave=4, style=Close)</code></td>
+<td><code>PianoVoicing</code></td>
+<td>Voicing de acorde no piano</td>
+</tr>
+<tr>
+<td><code>voicings(chord, octave=4)</code></td>
+<td><code>List[PianoVoicing]</code></td>
+<td>Todos os estilos de voicing</td>
+</tr>
+<tr>
+<td><code>scale_keys(scale, octave=4)</code></td>
+<td><code>List[PianoKey]</code></td>
+<td>Teclas da escala no piano</td>
+</tr>
+<tr>
+<td><code>note_at(midi)</code></td>
+<td><code>Note</code></td>
+<td>MIDI para Note</td>
+</tr>
+<tr>
+<td><code>identify(midi_list)</code></td>
+<td><code>Chord</code></td>
+<td>Identifica acorde a partir de MIDI</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-pianokey">Atributos de PianoKey<a class="headerlink" href="#atributos-de-pianokey" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>midi</code></td>
+<td><code>int</code></td>
+<td>Numero MIDI (21=A0, 60=C4, 108=C8)</td>
+</tr>
+<tr>
+<td><code>octave</code></td>
+<td><code>int</code></td>
+<td>Numero da oitava</td>
+</tr>
+<tr>
+<td><code>note</code></td>
+<td><code>str</code></td>
+<td>Nome da nota (classe de pitch)</td>
+</tr>
+<tr>
+<td><code>white</code></td>
+<td><code>bool</code></td>
+<td>True = tecla branca</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><code>int</code></td>
+<td>Posicao 1-indexed no teclado</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-pianovoicing">Atributos de PianoVoicing<a class="headerlink" href="#atributos-de-pianovoicing" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keys</code></td>
+<td><code>List[PianoKey]</code></td>
+<td>Teclas do voicing</td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td><code>VoicingStyle</code></td>
+<td>Estilo de voicing</td>
+</tr>
+<tr>
+<td><code>chord_name</code></td>
+<td><code>str</code></td>
+<td>Nome do acorde</td>
+</tr>
+<tr>
+<td><code>inversion</code></td>
+<td><code>int</code></td>
+<td>Inversao (0=fundamental, 1=1a, 2=2a)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="voicingstyle-enum">VoicingStyle (enum)<a class="headerlink" href="#voicingstyle-enum" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Close</code></td>
+<td>Todas as notas na mesma oitava</td>
+</tr>
+<tr>
+<td><code>Open</code></td>
+<td>Raiz desce uma oitava</td>
+</tr>
+<tr>
+<td><code>Shell</code></td>
+<td>Raiz + 3a + 7a (voicing jazz)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-pianosvg">Metodos de PianoSVG<a class="headerlink" href="#metodos-de-pianosvg" title="Permanent link">&para;</a></h3>
+<p>Gera imagens SVG interativas de um teclado de piano com teclas destacadas.
+Cada tecla <code>&lt;rect&gt;</code> carrega atributos HTML5 data (padrao W3C Custom Data Attributes)
+para facilitar integracao com JavaScript, D3.js, React, Vue, ou qualquer framework interativo.</p>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PianoSVG.note(piano, note, octave=4)</code></td>
+<td><code>str</code></td>
+<td>SVG com uma nota destacada</td>
+</tr>
+<tr>
+<td><code>PianoSVG.chord(piano, chord, octave=4, style=Close)</code></td>
+<td><code>str</code></td>
+<td>SVG com voicing de acorde destacado</td>
+</tr>
+<tr>
+<td><code>PianoSVG.scale(piano, scale, octave=4)</code></td>
+<td><code>str</code></td>
+<td>SVG com notas da escala destacadas</td>
+</tr>
+<tr>
+<td><code>PianoSVG.keys(piano, keys, title="")</code></td>
+<td><code>str</code></td>
+<td>SVG a partir de uma lista de PianoKeys</td>
+</tr>
+<tr>
+<td><code>PianoSVG.voicing(piano, voicing)</code></td>
+<td><code>str</code></td>
+<td>SVG a partir de um objeto PianoVoicing</td>
+</tr>
+<tr>
+<td><code>PianoSVG.midi(piano, midi_numbers)</code></td>
+<td><code>str</code></td>
+<td>SVG a partir de numeros MIDI</td>
+</tr>
+<tr>
+<td><code>PianoSVG.write(svg, path)</code></td>
+<td><code>None</code></td>
+<td>Grava SVG em arquivo</td>
+</tr>
+</tbody>
+</table>
+<h4 id="atributos-interativos-do-svg">Atributos interativos do SVG<a class="headerlink" href="#atributos-interativos-do-svg" title="Permanent link">&para;</a></h4>
+<p>Cada tecla <code>&lt;rect&gt;</code> no SVG gerado possui:</p>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Exemplo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>key-60</code></td>
+<td>Identificador unico (numero MIDI)</td>
+</tr>
+<tr>
+<td><code>class</code></td>
+<td><code>piano-key white highlighted</code></td>
+<td>Classes CSS para estilizacao</td>
+</tr>
+<tr>
+<td><code>data-midi</code></td>
+<td><code>60</code></td>
+<td>Numero MIDI</td>
+</tr>
+<tr>
+<td><code>data-note</code></td>
+<td><code>C</code></td>
+<td>Nome da nota (classe de pitch)</td>
+</tr>
+<tr>
+<td><code>data-octave</code></td>
+<td><code>4</code></td>
+<td>Numero da oitava</td>
+</tr>
+<tr>
+<td><code>data-color</code></td>
+<td><code>white</code> ou <code>black</code></td>
+<td>Cor da tecla</td>
+</tr>
+<tr>
+<td><code>data-highlighted</code></td>
+<td><code>true</code> ou <code>false</code></td>
+<td>Se a tecla esta destacada</td>
+</tr>
+</tbody>
+</table>
+<p>Labels nas teclas possuem <code>pointer-events="none"</code> para que clicks passem pela label e atinjam o <code>&lt;rect&gt;</code>.</p>
+<h4 id="exemplo-svg-interativo-no-navegador">Exemplo: SVG interativo no navegador<a class="headerlink" href="#exemplo-svg-interativo-no-navegador" title="Permanent link">&para;</a></h4>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;piano&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;piano&quot;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">svgString</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;.piano-key&quot;</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nx">key</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">midi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">key</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">midi</span><span class="p">;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">note</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">key</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">note</span><span class="p">;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">octave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">key</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">octave</span><span class="p">;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Clicou: </span><span class="si">${</span><span class="nx">note</span><span class="si">}${</span><span class="nx">octave</span><span class="si">}</span><span class="sb"> (MIDI </span><span class="si">${</span><span class="nx">midi</span><span class="si">}</span><span class="sb">)`</span><span class="p">);</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nx">key</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">cursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pointer&quot;</span><span class="p">;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<h4 id="como-visualizar-o-svg">Como visualizar o SVG<a class="headerlink" href="#como-visualizar-o-svg" title="Permanent link">&para;</a></h4>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Opcao 1: Salvar e abrir no navegador</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">PianoSVG</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">svg</span><span class="p">,</span> <span class="s2">&quot;piano.svg&quot;</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s2">&quot;xdg-open&quot;</span><span class="p">,</span> <span class="s2">&quot;piano.svg&quot;</span><span class="p">])</span>  <span class="c1"># Linux</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># subprocess.Popen([&quot;open&quot;, &quot;piano.svg&quot;])    # macOS</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Opcao 2: Jupyter notebook</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">svg</span><span class="p">))</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># Opcao 3: CLI</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># gingo piano Am7 --svg am7.svg</span>
+</span></code></pre></div>
+<h3 id="metodos-de-fretboard">Metodos de Fretboard<a class="headerlink" href="#metodos-de-fretboard" title="Permanent link">&para;</a></h3>
+<p>Motor de digitacao para instrumentos de cordas com trastes (violao, cavaquinho, bandolim).</p>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Fretboard.violao()</code></td>
+<td><code>Fretboard</code></td>
+<td>Violao 6 cordas, afinacao padrao (EADGBE)</td>
+</tr>
+<tr>
+<td><code>Fretboard.cavaquinho()</code></td>
+<td><code>Fretboard</code></td>
+<td>Cavaquinho 4 cordas (DGBD)</td>
+</tr>
+<tr>
+<td><code>Fretboard.bandolim()</code></td>
+<td><code>Fretboard</code></td>
+<td>Bandolim 4 cordas (GDAE)</td>
+</tr>
+<tr>
+<td><code>Fretboard(tuning, frets)</code></td>
+<td><code>Fretboard</code></td>
+<td>Instrumento customizado</td>
+</tr>
+<tr>
+<td><code>fingering(chord, pos=0)</code></td>
+<td><code>Fingering</code></td>
+<td>Digitacao otima baseada no sistema CAGED</td>
+</tr>
+<tr>
+<td><code>scale_positions(scale, lo, hi)</code></td>
+<td><code>List[FretPosition]</code></td>
+<td>Posicoes da escala no braco</td>
+</tr>
+<tr>
+<td><code>positions(note)</code></td>
+<td><code>List[FretPosition]</code></td>
+<td>Todas as posicoes de uma nota</td>
+</tr>
+<tr>
+<td><code>position(string, fret)</code></td>
+<td><code>FretPosition</code></td>
+<td>Posicao especifica (corda, traste)</td>
+</tr>
+<tr>
+<td><code>num_strings()</code></td>
+<td><code>int</code></td>
+<td>Numero de cordas</td>
+</tr>
+<tr>
+<td><code>num_frets()</code></td>
+<td><code>int</code></td>
+<td>Numero de trastes</td>
+</tr>
+<tr>
+<td><code>tuning()</code></td>
+<td><code>Tuning</code></td>
+<td>Afinacao do instrumento</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-tuning">Atributos de Tuning<a class="headerlink" href="#atributos-de-tuning" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>str</code></td>
+<td>Nome da afinacao ("standard", etc.)</td>
+</tr>
+<tr>
+<td><code>open_midi</code></td>
+<td><code>List[int]</code></td>
+<td>Valores MIDI das cordas soltas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-fretposition">Atributos de FretPosition<a class="headerlink" href="#atributos-de-fretposition" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>string</code></td>
+<td><code>int</code></td>
+<td>Numero da corda (1 = mais aguda)</td>
+</tr>
+<tr>
+<td><code>fret</code></td>
+<td><code>int</code></td>
+<td>Numero do traste (0 = solta)</td>
+</tr>
+<tr>
+<td><code>note</code></td>
+<td><code>str</code></td>
+<td>Nome da nota</td>
+</tr>
+<tr>
+<td><code>midi</code></td>
+<td><code>int</code></td>
+<td>Numero MIDI</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-fingering">Atributos de Fingering<a class="headerlink" href="#atributos-de-fingering" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>strings</code></td>
+<td><code>List[StringState]</code></td>
+<td>Estado de cada corda</td>
+</tr>
+<tr>
+<td><code>barre</code></td>
+<td><code>int</code></td>
+<td>Traste da pestana (0 = sem pestana)</td>
+</tr>
+<tr>
+<td><code>base_fret</code></td>
+<td><code>int</code></td>
+<td>Posicao mais baixa com dedo</td>
+</tr>
+<tr>
+<td><code>chord_name</code></td>
+<td><code>str</code></td>
+<td>Nome do acorde</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atributos-de-stringstate">Atributos de StringState<a class="headerlink" href="#atributos-de-stringstate" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>string</code></td>
+<td><code>int</code></td>
+<td>Numero da corda (1-based)</td>
+</tr>
+<tr>
+<td><code>fret</code></td>
+<td><code>int</code></td>
+<td>Numero do traste</td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td><code>StringAction</code></td>
+<td>Open, Fretted, ou Muted</td>
+</tr>
+</tbody>
+</table>
+<h3 id="stringaction-enum">StringAction (enum)<a class="headerlink" href="#stringaction-enum" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Open</code></td>
+<td>Corda solta (sem dedo)</td>
+</tr>
+<tr>
+<td><code>Fretted</code></td>
+<td>Corda pressionada em um traste</td>
+</tr>
+<tr>
+<td><code>Muted</code></td>
+<td>Corda abafada (sem som)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-fretboardsvg">Metodos de FretboardSVG<a class="headerlink" href="#metodos-de-fretboardsvg" title="Permanent link">&para;</a></h3>
+<p>Renderiza diagramas SVG de alta qualidade para instrumentos de cordas com trastes.
+Todos os metodos suportam parametros de orientacao e lateralidade.</p>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FretboardSVG.chord(fb, chord, pos=0, orient, hand)</code></td>
+<td><code>str</code></td>
+<td>Diagrama de acorde em SVG</td>
+</tr>
+<tr>
+<td><code>FretboardSVG.fingering(fb, fingering, orient, hand)</code></td>
+<td><code>str</code></td>
+<td>Digitacao especifica em SVG</td>
+</tr>
+<tr>
+<td><code>FretboardSVG.scale(fb, scale, lo=0, hi=12, orient, hand)</code></td>
+<td><code>str</code></td>
+<td>Escala no braco em SVG</td>
+</tr>
+<tr>
+<td><code>FretboardSVG.note(fb, note, orient, hand)</code></td>
+<td><code>str</code></td>
+<td>Posicoes de uma nota em SVG</td>
+</tr>
+<tr>
+<td><code>FretboardSVG.positions(fb, positions, title, orient, hand)</code></td>
+<td><code>str</code></td>
+<td>Posicoes customizadas em SVG</td>
+</tr>
+<tr>
+<td><code>FretboardSVG.field(fb, field, layout, orient, hand)</code></td>
+<td><code>str</code></td>
+<td>Campo harmonico em SVG</td>
+</tr>
+<tr>
+<td><code>FretboardSVG.progression(fb, field, branches, layout, orient, hand)</code></td>
+<td><code>str</code></td>
+<td>Progressao em SVG</td>
+</tr>
+<tr>
+<td><code>FretboardSVG.full(fb, orient, hand)</code></td>
+<td><code>str</code></td>
+<td>Braco completo em SVG</td>
+</tr>
+<tr>
+<td><code>FretboardSVG.write(svg, path)</code></td>
+<td><code>None</code></td>
+<td>Grava SVG em arquivo</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orientation-enum">Orientation (enum)<a class="headerlink" href="#orientation-enum" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Horizontal</code></td>
+<td>Vista do braco (cordas vertical, trastes horizontal)</td>
+</tr>
+<tr>
+<td><code>Vertical</code></td>
+<td>Vista chord box (cordas horizontal, trastes vertical)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="handedness-enum">Handedness (enum)<a class="headerlink" href="#handedness-enum" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RightHanded</code></td>
+<td>Orientacao padrao (destro)</td>
+</tr>
+<tr>
+<td><code>LeftHanded</code></td>
+<td>Espelhado para canhotos</td>
+</tr>
+</tbody>
+</table>
+<h4 id="defaults-por-metodo">Defaults por metodo<a class="headerlink" href="#defaults-por-metodo" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Orientacao padrão</th>
+<th>Lateralidade padrão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>chord()</code>, <code>fingering()</code></td>
+<td>Vertical</td>
+<td>RightHanded</td>
+</tr>
+<tr>
+<td><code>scale()</code>, <code>note()</code>, <code>positions()</code></td>
+<td>Horizontal</td>
+<td>RightHanded</td>
+</tr>
+<tr>
+<td><code>field()</code>, <code>progression()</code>, <code>full()</code></td>
+<td>Vertical</td>
+<td>RightHanded</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-de-musicxml">Metodos de MusicXML<a class="headerlink" href="#metodos-de-musicxml" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Retorno</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MusicXML.note(note, octave=4, type="quarter")</code></td>
+<td><code>str</code></td>
+<td>Nota unica como XML</td>
+</tr>
+<tr>
+<td><code>MusicXML.chord(chord, octave=4, type="whole")</code></td>
+<td><code>str</code></td>
+<td>Acorde como XML</td>
+</tr>
+<tr>
+<td><code>MusicXML.scale(scale, octave=4, type="quarter")</code></td>
+<td><code>str</code></td>
+<td>Escala como XML</td>
+</tr>
+<tr>
+<td><code>MusicXML.field(field, octave=4, type="whole")</code></td>
+<td><code>str</code></td>
+<td>Campo harmonico como XML</td>
+</tr>
+<tr>
+<td><code>MusicXML.sequence(seq)</code></td>
+<td><code>str</code></td>
+<td>Sequencia como XML</td>
+</tr>
+<tr>
+<td><code>MusicXML.write(xml, path)</code></td>
+<td><code>None</code></td>
+<td>Grava XML em arquivo</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="audio-gingoaudio">Audio (<code>gingo.audio</code>)<a class="headerlink" href="#audio-gingoaudio" title="Permanent link">&para;</a></h2>
+<h3 id="waveform-enum">Waveform (enum)<a class="headerlink" href="#waveform-enum" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>String</th>
+<th>Timbre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Waveform.SINE</code></td>
+<td><code>"sine"</code></td>
+<td>Puro, suave, sem harmonicos</td>
+</tr>
+<tr>
+<td><code>Waveform.SQUARE</code></td>
+<td><code>"square"</code></td>
+<td>Rico, cheio, tipo 8-bit</td>
+</tr>
+<tr>
+<td><code>Waveform.SAWTOOTH</code></td>
+<td><code>"sawtooth"</code></td>
+<td>Brilhante, agressivo</td>
+</tr>
+<tr>
+<td><code>Waveform.TRIANGLE</code></td>
+<td><code>"triangle"</code></td>
+<td>Suave, levemente oco</td>
+</tr>
+</tbody>
+</table>
+<h3 id="envelope-adsr">Envelope (ADSR)<a class="headerlink" href="#envelope-adsr" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Envelope</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">env</span> <span class="o">=</span> <span class="n">Envelope</span><span class="p">(</span><span class="n">attack</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">sustain</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">release</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">amp</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">amplitude</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">note_duration</span><span class="p">)</span>  <span class="c1"># float</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Tipo</th>
+<th>Default</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>attack</code></td>
+<td><code>float</code></td>
+<td><code>0.01</code></td>
+<td>Tempo de subida em segundos</td>
+</tr>
+<tr>
+<td><code>decay</code></td>
+<td><code>float</code></td>
+<td><code>0.08</code></td>
+<td>Tempo de descida do pico ao sustain</td>
+</tr>
+<tr>
+<td><code>sustain</code></td>
+<td><code>float</code></td>
+<td><code>0.6</code></td>
+<td>Nivel de amplitude (0.0-1.0)</td>
+</tr>
+<tr>
+<td><code>release</code></td>
+<td><code>float</code></td>
+<td><code>0.2</code></td>
+<td>Tempo de descida ao soltar a nota</td>
+</tr>
+</tbody>
+</table>
+<h3 id="play">play()<a class="headerlink" href="#play" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">play</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">play</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">octave</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">waveform</span><span class="o">=</span><span class="s2">&quot;sine&quot;</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>     <span class="n">amplitude</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">strum</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>     <span class="n">tuning</span><span class="o">=</span><span class="mf">440.0</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">44100</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Aceita: <code>Note</code>, <code>Chord</code>, <code>Scale</code>, <code>Field</code>, <code>Tree</code>, <code>Sequence</code>, <code>NoteEvent</code>, <code>ChordEvent</code>, <code>Rest</code>, <code>list[str]</code></p>
+<h3 id="to_wav">to_wav()<a class="headerlink" href="#to_wav" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_wav</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">to_wav</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">octave</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">waveform</span><span class="o">=</span><span class="s2">&quot;sine&quot;</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>       <span class="n">amplitude</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">strum</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>       <span class="n">tuning</span><span class="o">=</span><span class="mf">440.0</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mi">44100</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Mesmos parametros de <code>play()</code>. Exporta WAV 16-bit mono.</p>
+<h3 id="parametros-de-audio">Parametros de audio<a class="headerlink" href="#parametros-de-audio" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Default</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>octave</code></td>
+<td><code>int</code></td>
+<td><code>4</code></td>
+<td>Oitava base (4 = Do central)</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><code>float</code></td>
+<td><code>0.5</code></td>
+<td>Segundos por nota/acorde</td>
+</tr>
+<tr>
+<td><code>waveform</code></td>
+<td><code>str</code> ou <code>Waveform</code></td>
+<td><code>"sine"</code></td>
+<td>Forma de onda</td>
+</tr>
+<tr>
+<td><code>amplitude</code></td>
+<td><code>float</code></td>
+<td><code>0.8</code></td>
+<td>Volume (0.0 a 1.0)</td>
+</tr>
+<tr>
+<td><code>envelope</code></td>
+<td><code>Envelope</code> ou <code>None</code></td>
+<td><code>None</code></td>
+<td>Envelope ADSR</td>
+</tr>
+<tr>
+<td><code>strum</code></td>
+<td><code>float</code></td>
+<td><code>0.03</code></td>
+<td>Delay entre notas de um acorde (segundos)</td>
+</tr>
+<tr>
+<td><code>gap</code></td>
+<td><code>float</code></td>
+<td><code>0.05</code></td>
+<td>Silencio entre notas/acordes consecutivos</td>
+</tr>
+<tr>
+<td><code>tuning</code></td>
+<td><code>float</code></td>
+<td><code>440.0</code></td>
+<td>Referencia A4 em Hz</td>
+</tr>
+<tr>
+<td><code>sample_rate</code></td>
+<td><code>int</code></td>
+<td><code>44100</code></td>
+<td>Amostras por segundo</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metodos-play-e-to_wav-nas-classes">Metodos .play() e .to_wav() nas classes<a class="headerlink" href="#metodos-play-e-to_wav-nas-classes" title="Permanent link">&para;</a></h3>
+<p>Todas as classes musicais possuem <code>.play(**kwargs)</code> e <code>.to_wav(path, **kwargs)</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am7&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">waveform</span><span class="o">=</span><span class="s2">&quot;triangle&quot;</span><span class="p">)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">Field</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">Tree</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_wav</span><span class="p">(</span><span class="s2">&quot;do.wav&quot;</span><span class="p">)</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am7&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_wav</span><span class="p">(</span><span class="s2">&quot;am7.wav&quot;</span><span class="p">,</span> <span class="n">waveform</span><span class="o">=</span><span class="s2">&quot;triangle&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="enums">Enums<a class="headerlink" href="#enums" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Enum</th>
+<th>Valores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ScaleType</code></td>
+<td><code>Major</code>, <code>NaturalMinor</code>, <code>HarmonicMinor</code>, <code>MelodicMinor</code>, <code>Diminished</code>, <code>HarmonicMajor</code>, <code>WholeTone</code>, <code>Augmented</code>, <code>Blues</code>, <code>Chromatic</code></td>
+</tr>
+<tr>
+<td><code>Modality</code></td>
+<td><code>Diatonic</code>, <code>Pentatonic</code></td>
+</tr>
+<tr>
+<td><code>HarmonicFunction</code></td>
+<td><code>Tonic</code>, <code>Subdominant</code>, <code>Dominant</code> — props: <code>.name</code>, <code>.short</code></td>
+</tr>
+<tr>
+<td><code>VoicingStyle</code></td>
+<td><code>Close</code>, <code>Open</code>, <code>Shell</code></td>
+</tr>
+<tr>
+<td><code>StringAction</code></td>
+<td><code>Open</code>, <code>Fretted</code>, <code>Muted</code></td>
+</tr>
+<tr>
+<td><code>Orientation</code></td>
+<td><code>Horizontal</code> (braco deitado), <code>Vertical</code> (chord box)</td>
+</tr>
+<tr>
+<td><code>Handedness</code></td>
+<td><code>RightHanded</code>, <code>LeftHanded</code></td>
+</tr>
+<tr>
+<td><code>Layout</code></td>
+<td><code>Vertical</code>, <code>Horizontal</code>, <code>Grid</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="resumo-dos-comandos-cli">Resumo dos comandos CLI<a class="headerlink" href="#resumo-dos-comandos-cli" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>O que faz</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>note</code></td>
+<td>Propriedades de uma nota</td>
+<td><code>gingo note C#</code></td>
+</tr>
+<tr>
+<td><code>interval</code></td>
+<td>Distancia entre notas (0-23 semitons)</td>
+<td><code>gingo interval 5J</code></td>
+</tr>
+<tr>
+<td><code>chord</code></td>
+<td>Acorde por nome ou identificacao reversa</td>
+<td><code>gingo chord Am7</code></td>
+</tr>
+<tr>
+<td><code>scale</code></td>
+<td>Escala: notas, modos, mascara</td>
+<td><code>gingo scale "C major" --modes</code></td>
+</tr>
+<tr>
+<td><code>field</code></td>
+<td>Campo harmonico: acordes, funcoes, tonicizacao</td>
+<td><code>gingo field "C major" --functions</code></td>
+</tr>
+<tr>
+<td><code>tree</code></td>
+<td>Arvore harmonica: branches, paths, validacao</td>
+<td><code>gingo tree "C major" harmonic_tree</code></td>
+</tr>
+<tr>
+<td><code>progression</code></td>
+<td>Analise cross-tradition de progressoes</td>
+<td><code>gingo progression "C major" --identify IIm V7 I</code></td>
+</tr>
+<tr>
+<td><code>piano</code></td>
+<td>Mapeamento piano: teclas, voicings, MIDI reverso</td>
+<td><code>gingo piano Am7 --voicings</code></td>
+</tr>
+<tr>
+<td><code>musicxml</code></td>
+<td>Gera MusicXML para notacao</td>
+<td><code>gingo musicxml chord Am7 -o am7.musicxml</code></td>
+</tr>
+<tr>
+<td><code>fretboard</code></td>
+<td>Digitacoes e diagramas SVG para violao/cordas</td>
+<td><code>gingo fretboard chord Am --svg am.svg</code></td>
+</tr>
+<tr>
+<td><code>compare</code></td>
+<td>Comparacao entre dois acordes (absoluta ou contextual)</td>
+<td><code>gingo compare CM Am --field "C major"</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="todas-as-opcoes-cli">Todas as opcoes CLI<a class="headerlink" href="#todas-as-opcoes-cli" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Opcao</th>
+<th>Disponivel em</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--transpose N</code></td>
+<td><code>note</code></td>
+<td>Transpoe N semitons (positivo=sobe)</td>
+</tr>
+<tr>
+<td><code>--enharmonic NOTA</code></td>
+<td><code>note</code></td>
+<td>Verifica se duas notas sao enarmonicas</td>
+</tr>
+<tr>
+<td><code>--distance NOTA</code></td>
+<td><code>note</code></td>
+<td>Distancia no ciclo de quintas (0-6)</td>
+</tr>
+<tr>
+<td><code>--fifths</code></td>
+<td><code>note</code></td>
+<td>Mostra a posicao no circulo de quintas</td>
+</tr>
+<tr>
+<td><code>--all</code></td>
+<td><code>interval</code></td>
+<td>Mostra todos os 24 intervalos</td>
+</tr>
+<tr>
+<td><code>--identify</code></td>
+<td><code>chord</code></td>
+<td>Identifica acorde a partir de notas</td>
+</tr>
+<tr>
+<td><code>--modes</code></td>
+<td><code>scale</code></td>
+<td>Mostra todos os modos da familia com nomes</td>
+</tr>
+<tr>
+<td><code>--degrees</code></td>
+<td><code>scale</code></td>
+<td>Mostra cada nota grau a grau</td>
+</tr>
+<tr>
+<td><code>--pentatonic</code></td>
+<td><code>scale</code></td>
+<td>Usa filtro pentatonico (5 notas)</td>
+</tr>
+<tr>
+<td><code>--colors REF</code></td>
+<td><code>scale</code></td>
+<td>Notas que diferem de um modo de referencia</td>
+</tr>
+<tr>
+<td><code>--degree N..</code></td>
+<td><code>scale</code></td>
+<td>Grau encadeado (ex: <code>--degree 5 5</code> = V de V)</td>
+</tr>
+<tr>
+<td><code>--walk N..</code></td>
+<td><code>scale</code></td>
+<td>Caminho por graus (start + passos)</td>
+</tr>
+<tr>
+<td><code>--relative</code></td>
+<td><code>scale</code></td>
+<td>Mostra a relativa maior/menor</td>
+</tr>
+<tr>
+<td><code>--parallel</code></td>
+<td><code>scale</code></td>
+<td>Mostra a paralela maior/menor</td>
+</tr>
+<tr>
+<td><code>--neighbors</code></td>
+<td><code>scale</code></td>
+<td>Mostra vizinhas no circulo de quintas</td>
+</tr>
+<tr>
+<td><code>--identify</code></td>
+<td><code>scale</code></td>
+<td>Identifica escala a partir de notas (virgula)</td>
+</tr>
+<tr>
+<td><code>--applied X/Y</code></td>
+<td><code>field</code></td>
+<td>Acorde aplicado (tonicizacao) em notacao X/Y</td>
+</tr>
+<tr>
+<td><code>--functions</code></td>
+<td><code>field</code></td>
+<td>Mostra funcao harmonica (T/S/D) e papel</td>
+</tr>
+<tr>
+<td><code>--relative</code></td>
+<td><code>field</code></td>
+<td>Mostra o campo relativo maior/menor</td>
+</tr>
+<tr>
+<td><code>--parallel</code></td>
+<td><code>field</code></td>
+<td>Mostra o campo paralelo maior/menor</td>
+</tr>
+<tr>
+<td><code>--neighbors</code></td>
+<td><code>field</code></td>
+<td>Mostra campos vizinhos no circulo de quintas</td>
+</tr>
+<tr>
+<td><code>--identify</code></td>
+<td><code>field</code></td>
+<td>Identifica campo a partir de notas ou acordes</td>
+</tr>
+<tr>
+<td><code>--deduce</code></td>
+<td><code>field</code></td>
+<td>Deduz campos possiveis (ranqueado)</td>
+</tr>
+<tr>
+<td><code>--limit N</code></td>
+<td><code>field</code></td>
+<td>Limita resultados do --deduce (default 10)</td>
+</tr>
+<tr>
+<td><code>--field "T tipo"</code></td>
+<td><code>compare</code></td>
+<td>Adiciona contexto tonal a comparacao</td>
+</tr>
+<tr>
+<td><code>--branches</code></td>
+<td><code>tree</code></td>
+<td>Lista todos os branches da arvore</td>
+</tr>
+<tr>
+<td><code>--paths BRANCH</code></td>
+<td><code>tree</code></td>
+<td>Mostra caminhos a partir de um branch</td>
+</tr>
+<tr>
+<td><code>--shortest A B</code></td>
+<td><code>tree</code></td>
+<td>Caminho mais curto entre dois branches</td>
+</tr>
+<tr>
+<td><code>--valid B1 B2..</code></td>
+<td><code>tree</code></td>
+<td>Valida se a progressao e valida</td>
+</tr>
+<tr>
+<td><code>--function BRANCH</code></td>
+<td><code>tree</code></td>
+<td>Mostra funcao harmonica do branch</td>
+</tr>
+<tr>
+<td><code>--schemas</code></td>
+<td><code>tree</code></td>
+<td>Lista schemas da tradicao</td>
+</tr>
+<tr>
+<td><code>--dot</code></td>
+<td><code>tree</code></td>
+<td>Exporta grafo para Graphviz DOT</td>
+</tr>
+<tr>
+<td><code>--mermaid</code></td>
+<td><code>tree</code></td>
+<td>Exporta grafo para diagrama Mermaid</td>
+</tr>
+<tr>
+<td><code>--traditions</code></td>
+<td><code>progression</code></td>
+<td>Lista tradicoes disponiveis</td>
+</tr>
+<tr>
+<td><code>--identify B1..</code></td>
+<td><code>progression</code></td>
+<td>Identifica tradicao/schema da progressao</td>
+</tr>
+<tr>
+<td><code>--deduce B1..</code></td>
+<td><code>progression</code></td>
+<td>Deduz tradicoes provaveis (ranqueado)</td>
+</tr>
+<tr>
+<td><code>--predict B1..</code></td>
+<td><code>progression</code></td>
+<td>Sugere proximos acordes</td>
+</tr>
+<tr>
+<td><code>--limit N</code></td>
+<td><code>progression</code></td>
+<td>Limita resultados de deduce/predict</td>
+</tr>
+<tr>
+<td><code>--identify MIDI..</code></td>
+<td><code>piano</code></td>
+<td>Identifica acorde a partir de numeros MIDI</td>
+</tr>
+<tr>
+<td><code>--scale</code></td>
+<td><code>piano</code></td>
+<td>Mostra teclas da escala no piano</td>
+</tr>
+<tr>
+<td><code>--voicings</code></td>
+<td><code>piano</code></td>
+<td>Mostra todos os estilos de voicing</td>
+</tr>
+<tr>
+<td><code>--style S</code></td>
+<td><code>piano</code></td>
+<td>Estilo de voicing: close, open, shell</td>
+</tr>
+<tr>
+<td><code>--keys N</code></td>
+<td><code>piano</code></td>
+<td>Quantidade de teclas do piano (default 88)</td>
+</tr>
+<tr>
+<td><code>--svg FILE</code></td>
+<td><code>piano</code></td>
+<td>Gera SVG interativo do teclado com notas destacadas</td>
+</tr>
+<tr>
+<td><code>-o FILE</code></td>
+<td><code>musicxml</code></td>
+<td>Grava XML em arquivo em vez de stdout</td>
+</tr>
+<tr>
+<td><code>--type T</code></td>
+<td><code>musicxml</code></td>
+<td>Tipo de nota: whole, half, quarter, eighth, sixteenth</td>
+</tr>
+<tr>
+<td><code>chord ACORDE</code></td>
+<td><code>fretboard</code></td>
+<td>Mostra digitacao e gera SVG do acorde</td>
+</tr>
+<tr>
+<td><code>scale "T tipo"</code></td>
+<td><code>fretboard</code></td>
+<td>Mostra posicoes da escala no braco</td>
+</tr>
+<tr>
+<td><code>field "T tipo"</code></td>
+<td><code>fretboard</code></td>
+<td>Mostra campo harmonico completo no braco</td>
+</tr>
+<tr>
+<td><code>--svg FILE</code></td>
+<td><code>fretboard</code></td>
+<td>Gera SVG do diagrama</td>
+</tr>
+<tr>
+<td><code>--left</code></td>
+<td><code>fretboard</code></td>
+<td>Diagrama para canhoto (left-handed)</td>
+</tr>
+<tr>
+<td><code>--horizontal</code></td>
+<td><code>fretboard</code></td>
+<td>Orientacao horizontal (braco deitado)</td>
+</tr>
+<tr>
+<td><code>--vertical</code></td>
+<td><code>fretboard</code></td>
+<td>Orientacao vertical (chord box)</td>
+</tr>
+<tr>
+<td><code>--play</code></td>
+<td><code>note</code>, <code>chord</code>, <code>scale</code>, <code>field</code></td>
+<td>Toca audio pelo sistema</td>
+</tr>
+<tr>
+<td><code>--wav FILE</code></td>
+<td><code>note</code>, <code>chord</code>, <code>scale</code>, <code>field</code></td>
+<td>Exporta para arquivo WAV</td>
+</tr>
+<tr>
+<td><code>--waveform WF</code></td>
+<td><code>note</code>, <code>chord</code>, <code>scale</code>, <code>field</code></td>
+<td>sine, square, sawtooth, triangle</td>
+</tr>
+<tr>
+<td><code>--strum SEC</code></td>
+<td><code>note</code>, <code>chord</code>, <code>scale</code>, <code>field</code></td>
+<td>Delay entre notas do acorde (default 0.03)</td>
+</tr>
+<tr>
+<td><code>--gap SEC</code></td>
+<td><code>note</code>, <code>chord</code>, <code>scale</code>, <code>field</code></td>
+<td>Silencio entre notas/acordes (default 0.05)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="roteiro-de-estudo-sugerido">Roteiro de estudo sugerido<a class="headerlink" href="#roteiro-de-estudo-sugerido" title="Permanent link">&para;</a></h2>
+<p>Se voce esta comecando do zero, siga esta ordem:</p>
+<h3 id="nivel-1-fundamentos">Nivel 1 — Fundamentos<a class="headerlink" href="#nivel-1-fundamentos" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Conheca as 12 notas:</strong>
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Note</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="s2">&quot;C#&quot;</span><span class="p">,</span><span class="s2">&quot;D&quot;</span><span class="p">,</span><span class="s2">&quot;D#&quot;</span><span class="p">,</span><span class="s2">&quot;E&quot;</span><span class="p">,</span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="s2">&quot;F#&quot;</span><span class="p">,</span><span class="s2">&quot;G&quot;</span><span class="p">,</span><span class="s2">&quot;G#&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;A#&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">]:</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">n</span> <span class="o">=</span> <span class="n">Note</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">:</span><span class="s2">&lt;3s</span><span class="si">}</span><span class="s2">  semitone=</span><span class="si">{</span><span class="n">n</span><span class="o">.</span><span class="n">semitone</span><span class="p">()</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2">  freq=</span><span class="si">{</span><span class="n">n</span><span class="o">.</span><span class="n">frequency</span><span class="p">()</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">n</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>  <span class="c1"># ouca cada nota</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Entenda enarmonia:</strong>
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;Db&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_enharmonic</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;C#&quot;</span><span class="p">)))</span>  <span class="c1"># True</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;Gb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_enharmonic</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;F#&quot;</span><span class="p">)))</span>  <span class="c1"># True</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Explore intervalos:</strong>
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Interval</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">13</span><span class="p">):</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">iv</span> <span class="o">=</span> <span class="n">Interval</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">iv</span><span class="o">.</span><span class="n">semitones</span><span class="p">()</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2"> st  </span><span class="si">{</span><span class="n">iv</span><span class="o">.</span><span class="n">label</span><span class="p">()</span><span class="si">:</span><span class="s2">&lt;6s</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">iv</span><span class="o">.</span><span class="n">anglo_saxon</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div></p>
+</li>
+</ol>
+<h3 id="nivel-2-acordes">Nivel 2 — Acordes<a class="headerlink" href="#nivel-2-acordes" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Compare acordes basicos:</strong>
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chord</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;CM&quot;</span><span class="p">,</span> <span class="s2">&quot;Cm&quot;</span><span class="p">,</span> <span class="s2">&quot;C7&quot;</span><span class="p">,</span> <span class="s2">&quot;Cm7&quot;</span><span class="p">,</span> <span class="s2">&quot;C7M&quot;</span><span class="p">,</span> <span class="s2">&quot;Cdim&quot;</span><span class="p">]:</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="n">c</span> <span class="o">=</span> <span class="n">Chord</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">notes</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">notes</span><span class="p">())</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">:</span><span class="s2">&lt;8s</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">notes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="n">c</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>  <span class="c1"># ouca cada acorde</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Pratique identificacao reversa:</strong>
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">Chord</span><span class="o">.</span><span class="n">identify</span><span class="p">([</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>       <span class="c1"># CM</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">Chord</span><span class="o">.</span><span class="n">identify</span><span class="p">([</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>   <span class="c1"># C7M</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">Chord</span><span class="o">.</span><span class="n">identify</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>         <span class="c1"># Am</span>
+</span></code></pre></div></p>
+</li>
+</ol>
+<h3 id="nivel-3-escalas-e-modos">Nivel 3 — Escalas e modos<a class="headerlink" href="#nivel-3-escalas-e-modos" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Veja e ouca todos os modos da escala maior:</strong>
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Scale</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">s</span> <span class="o">=</span> <span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    <span class="n">notes</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">notes</span><span class="p">())</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">mode_name</span><span class="p">()</span><span class="si">:</span><span class="s2">&lt;12s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">tonic</span><span class="p">()</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">notes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="n">m</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>  <span class="c1"># ouca cada modo</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Compare familias:</strong>
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">for</span> <span class="n">family</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;major&quot;</span><span class="p">,</span> <span class="s2">&quot;harmonic minor&quot;</span><span class="p">,</span> <span class="s2">&quot;melodic minor&quot;</span><span class="p">,</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>                <span class="s2">&quot;harmonic major&quot;</span><span class="p">,</span> <span class="s2">&quot;whole tone&quot;</span><span class="p">,</span> <span class="s2">&quot;blues&quot;</span><span class="p">]:</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="n">s</span> <span class="o">=</span> <span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">family</span><span class="p">)</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">notes</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">notes</span><span class="p">())</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">family</span><span class="si">:</span><span class="s2">&lt;16s</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">notes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div></p>
+</li>
+</ol>
+<h3 id="nivel-4-harmonia">Nivel 4 — Harmonia<a class="headerlink" href="#nivel-4-harmonia" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Construa e ouca campos harmonicos:</strong>
+   <div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">f</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">chords</span><span class="p">(),</span> <span class="n">f</span><span class="o">.</span><span class="n">sevenths</span><span class="p">()),</span> <span class="mi">1</span><span class="p">):</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">:</span><span class="s2">&lt;8s</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">f</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>  <span class="c1"># ouca o campo completo</span>
+</span></code></pre></div></li>
+</ol>
+<hr />
+<h2 id="referencia-rapida-de-tipos-de-escala">Referencia rapida de tipos de escala<a class="headerlink" href="#referencia-rapida-de-tipos-de-escala" title="Permanent link">&para;</a></h2>
+<p>Para qualquer lugar que pede tipo de escala (Python ou CLI):</p>
+<h3 id="familias-parentais-10">Familias parentais (10)<a class="headerlink" href="#familias-parentais-10" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Voce pode escrever</th>
+<th>O Gingo entende como</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"major"</code> ou <code>"maj"</code></td>
+<td>Escala maior (Ionian)</td>
+</tr>
+<tr>
+<td><code>"natural minor"</code> ou <code>"m"</code></td>
+<td>Menor natural (Aeolian)</td>
+</tr>
+<tr>
+<td><code>"harmonic minor"</code> ou <code>"minor"</code></td>
+<td>Harmonica menor</td>
+</tr>
+<tr>
+<td><code>"melodic minor"</code></td>
+<td>Melodica menor</td>
+</tr>
+<tr>
+<td><code>"harmonic major"</code></td>
+<td>Harmonica maior</td>
+</tr>
+<tr>
+<td><code>"diminished"</code> ou <code>"dim"</code></td>
+<td>Diminuta (8 notas)</td>
+</tr>
+<tr>
+<td><code>"whole tone"</code> ou <code>"wholetone"</code></td>
+<td>Tons inteiros (6 notas)</td>
+</tr>
+<tr>
+<td><code>"augmented"</code> ou <code>"aug"</code></td>
+<td>Aumentada (6 notas)</td>
+</tr>
+<tr>
+<td><code>"blues"</code></td>
+<td>Blues (6 notas)</td>
+</tr>
+<tr>
+<td><code>"chromatic"</code></td>
+<td>Cromatica (12 notas)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nomes-de-modo-aceitos-como-tipo">Nomes de modo (aceitos como tipo)<a class="headerlink" href="#nomes-de-modo-aceitos-como-tipo" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Voce pode escrever</th>
+<th>Familia parental</th>
+<th>Modo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"ionian"</code></td>
+<td>Major</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>"dorian"</code></td>
+<td>Major</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>"phrygian"</code></td>
+<td>Major</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>"lydian"</code></td>
+<td>Major</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>"mixolydian"</code></td>
+<td>Major</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>"aeolian"</code></td>
+<td>Major</td>
+<td>6</td>
+</tr>
+<tr>
+<td><code>"locrian"</code></td>
+<td>Major</td>
+<td>7</td>
+</tr>
+<tr>
+<td><code>"altered"</code></td>
+<td>MelodicMinor</td>
+<td>7</td>
+</tr>
+<tr>
+<td><code>"lydian dominant"</code></td>
+<td>MelodicMinor</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>"lydian augmented"</code></td>
+<td>MelodicMinor</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>"phrygian dominant"</code></td>
+<td>HarmonicMinor</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="variantes-pentatonicas">Variantes pentatonicas<a class="headerlink" href="#variantes-pentatonicas" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Voce pode escrever</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"major pentatonic"</code></td>
+<td>Maior pentatonica (5 notas)</td>
+</tr>
+<tr>
+<td><code>"minor pentatonic"</code></td>
+<td>Menor pentatonica (5 notas)</td>
+</tr>
+<tr>
+<td><code>"dorian pentatonic"</code></td>
+<td>Dorian pentatonica (5 notas)</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/sauloverissimo/gingopy" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/gingo/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

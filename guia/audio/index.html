@@ -1,0 +1,2463 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Aprenda teoria musical de forma divertida e fácil com Python">
+      
+      
+        <meta name="author" content="Saulo Verissimo">
+      
+      
+        <link rel="canonical" href="https://sauloverissimo.github.io/gingopy/guia/audio/">
+      
+      
+        <link rel="prev" href="../ritmo/">
+      
+      
+        <link rel="next" href="../exemplos-praticos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Audio - 🪇 Gingo - Teoria Musical em Python</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#audio-ouvir-o-que-voce-codou" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="🪇 Gingo - Teoria Musical em Python" class="md-header__button md-logo" aria-label="🪇 Gingo - Teoria Musical em Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🪇 Gingo - Teoria Musical em Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Audio
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sauloverissimo/gingopy" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sauloverissimo/gingopy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏠 Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../introducao/" class="md-tabs__link">
+          
+  
+  
+  📖 Guia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/referencia/" class="md-tabs__link">
+          
+  
+  
+  📚 API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../roadmap/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🗺️ Roadmap
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../referencias/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📖 Referências
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="🪇 Gingo - Teoria Musical em Python" class="md-nav__button md-logo" aria-label="🪇 Gingo - Teoria Musical em Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    🪇 Gingo - Teoria Musical em Python
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sauloverissimo/gingopy" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sauloverissimo/gingopy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏠 Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📖 Guia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📖 Guia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introducao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introdução
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instalacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primeiros-passos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primeiros Passos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conceitos-basicos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conceitos Básicos de Música
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comecando/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Começando
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fretboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fretboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ritmo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ritmo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalacao
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#play-rapido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Play rapido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parametros
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parametros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplos-com-parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos com parametros
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#formas-de-onda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formas de onda
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#envelope-adsr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Envelope ADSR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strum-o-dedilhar-do-acorde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strum — o dedilhar do acorde
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gap-respiracao-entre-notas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gap — respiracao entre notas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exportar-wav" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exportar WAV
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-play-e-wav" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI — --play e --wav
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CLI — --play e --wav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opcoes-de-audio-no-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opcoes de audio no CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comportamento-por-tipo-de-objeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comportamento por tipo de objeto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comportamento por tipo de objeto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-cada-tipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo: cada tipo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence-composicoes-com-tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequence — composicoes com tempo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemplos-praticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos praticos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemplos praticos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#progressao-i-v-vi-iv-pop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progressao I-V-vi-IV (pop)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progressao-ii-v-i-jazz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progressao ii-V-I (jazz)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modos-gregos-compare-o-som" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modos gregos — compare o som
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparar-campos-maior-e-menor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparar campos maior e menor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#familias-de-escalas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Familias de escalas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exportar-todos-os-acordes-do-campo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exportar todos os acordes do campo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referencia tecnica
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Referencia tecnica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waveform-enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waveform (enum)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envelope-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Envelope (class)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#play-e-to_wav" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        play() e to_wav()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exemplos-praticos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exemplos Práticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📚 API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/referencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência Completa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗺️ Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📖 Referências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalacao
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#play-rapido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Play rapido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parametros
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parametros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplos-com-parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos com parametros
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#formas-de-onda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formas de onda
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#envelope-adsr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Envelope ADSR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strum-o-dedilhar-do-acorde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strum — o dedilhar do acorde
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gap-respiracao-entre-notas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gap — respiracao entre notas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exportar-wav" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exportar WAV
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-play-e-wav" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI — --play e --wav
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CLI — --play e --wav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opcoes-de-audio-no-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opcoes de audio no CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comportamento-por-tipo-de-objeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comportamento por tipo de objeto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comportamento por tipo de objeto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-cada-tipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo: cada tipo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequence-composicoes-com-tempo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequence — composicoes com tempo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemplos-praticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplos praticos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemplos praticos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#progressao-i-v-vi-iv-pop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progressao I-V-vi-IV (pop)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progressao-ii-v-i-jazz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progressao ii-V-I (jazz)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modos-gregos-compare-o-som" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modos gregos — compare o som
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparar-campos-maior-e-menor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparar campos maior e menor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#familias-de-escalas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Familias de escalas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exportar-todos-os-acordes-do-campo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exportar todos os acordes do campo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referencia tecnica
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Referencia tecnica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waveform-enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waveform (enum)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envelope-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Envelope (class)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#play-e-to_wav" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        play() e to_wav()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navegação" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    🏠 Início
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../introducao/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    📖 Guia
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="audio-ouvir-o-que-voce-codou">Audio — ouvir o que voce codou<a class="headerlink" href="#audio-ouvir-o-que-voce-codou" title="Permanent link">&para;</a></h1>
+<p>O Gingo sintetiza audio em tempo real a partir de qualquer objeto musical.
+Zero dependencias externas para sintese e exportacao WAV.</p>
+<div class="admonition tip">
+<p class="admonition-title">Audio interativo</p>
+<p>Esta pagina inclui players de audio — clique <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5.14v14l11-7z"/></svg></span> para ouvir
+cada exemplo diretamente no navegador.</p>
+</div>
+<hr />
+<h2 id="instalacao">Instalacao<a class="headerlink" href="#instalacao" title="Permanent link">&para;</a></h2>
+<p>A sintese funciona sem dependencias extras. Para <strong>playback direto</strong> (ouvir pelo
+alto-falante), instale o pacote com extras de audio:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>gingo<span class="o">[</span>audio<span class="o">]</span>
+</span></code></pre></div>
+<p>Sem <code>simpleaudio</code>, o Gingo tenta usar players do sistema (<code>aplay</code>, <code>paplay</code>,
+<code>ffplay</code> no Linux; <code>afplay</code> no macOS; player padrao no Windows).</p>
+<hr />
+<h2 id="play-rapido">Play rapido<a class="headerlink" href="#play-rapido" title="Permanent link">&para;</a></h2>
+<p>Qualquer objeto musical tem o metodo <code>.play()</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Note</span><span class="p">,</span> <span class="n">Chord</span><span class="p">,</span> <span class="n">Scale</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">Tree</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>                   <span class="c1"># nota unica</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am7&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>                <span class="c1"># acorde (com strum)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>         <span class="c1"># escala ascendente</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">Field</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>         <span class="c1"># 7 acordes do campo</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">Tree</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>          <span class="c1"># acordes diatonicos</span>
+</span></code></pre></div>
+<p>Funcao standalone equivalente:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">play</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">play</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">))</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">play</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;G7&quot;</span><span class="p">),</span> <span class="n">waveform</span><span class="o">=</span><span class="s2">&quot;triangle&quot;</span><span class="p">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">play</span><span class="p">([</span><span class="s2">&quot;CM&quot;</span><span class="p">,</span> <span class="s2">&quot;Am&quot;</span><span class="p">,</span> <span class="s2">&quot;FM&quot;</span><span class="p">,</span> <span class="s2">&quot;GM&quot;</span><span class="p">])</span>     <span class="c1"># lista de nomes de acordes</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Objeto</th>
+<th style="text-align: center;">Audio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Note("C")</code></td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/play_note_c.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Chord("Am7")</code></td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/play_chord_am7.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Scale("C", "major")</code></td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/play_scale_cmaj.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Field("C", "major")</code></td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/play_field_cmaj.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>["CM", "Am", "FM", "GM"]</code></td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/play_list_pop.mp3" type="audio/mpeg"></audio></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="parametros">Parametros<a class="headerlink" href="#parametros" title="Permanent link">&para;</a></h2>
+<p>Todos os parametros sao keyword-only, com defaults musicalmente uteis:</p>
+<table>
+<thead>
+<tr>
+<th>Parametro</th>
+<th>Tipo</th>
+<th>Default</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>octave</code></td>
+<td><code>int</code></td>
+<td><code>4</code></td>
+<td>Oitava base (4 = oitava do Do central)</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><code>float</code></td>
+<td><code>0.5</code></td>
+<td>Segundos por nota/acorde</td>
+</tr>
+<tr>
+<td><code>waveform</code></td>
+<td><code>str</code> ou <code>Waveform</code></td>
+<td><code>"sine"</code></td>
+<td>Forma de onda: sine, square, sawtooth, triangle</td>
+</tr>
+<tr>
+<td><code>amplitude</code></td>
+<td><code>float</code></td>
+<td><code>0.8</code></td>
+<td>Volume (0.0 a 1.0)</td>
+</tr>
+<tr>
+<td><code>envelope</code></td>
+<td><code>Envelope</code> ou <code>None</code></td>
+<td><code>None</code></td>
+<td>Envelope ADSR (default: attack=0.01, decay=0.08, sustain=0.6, release=0.2)</td>
+</tr>
+<tr>
+<td><code>strum</code></td>
+<td><code>float</code></td>
+<td><code>0.03</code></td>
+<td>Delay entre notas de um acorde (segundos)</td>
+</tr>
+<tr>
+<td><code>gap</code></td>
+<td><code>float</code></td>
+<td><code>0.05</code></td>
+<td>Silencio entre notas/acordes consecutivos</td>
+</tr>
+<tr>
+<td><code>tuning</code></td>
+<td><code>float</code></td>
+<td><code>440.0</code></td>
+<td>Referencia A4 em Hz</td>
+</tr>
+<tr>
+<td><code>sample_rate</code></td>
+<td><code>int</code></td>
+<td><code>44100</code></td>
+<td>Amostras por segundo</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exemplos-com-parametros">Exemplos com parametros<a class="headerlink" href="#exemplos-com-parametros" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Acorde com strum lento (efeito arpejado)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am7&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">strum</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">waveform</span><span class="o">=</span><span class="s2">&quot;triangle&quot;</span><span class="p">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Escala rapida, sem gap entre notas (legato)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Campo harmonico com som de onda quadrada</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">Field</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">waveform</span><span class="o">=</span><span class="s2">&quot;square&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># Oitava mais aguda, afinacao barroca</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">octave</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">tuning</span><span class="o">=</span><span class="mf">415.0</span><span class="p">)</span>
+</span></code></pre></div>
+<hr />
+<h2 id="formas-de-onda">Formas de onda<a class="headerlink" href="#formas-de-onda" title="Permanent link">&para;</a></h2>
+<p>Quatro formas de onda disponiveis, cada uma com timbre distinto:</p>
+<table>
+<thead>
+<tr>
+<th>Waveform</th>
+<th>Timbre</th>
+<th>Uso tipico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sine</code></td>
+<td>Puro, suave, sem harmonicos</td>
+<td>Tom de referencia, melodias simples</td>
+</tr>
+<tr>
+<td><code>square</code></td>
+<td>Rico, cheio, tipo 8-bit</td>
+<td>Jogos retro, tons marcantes</td>
+</tr>
+<tr>
+<td><code>sawtooth</code></td>
+<td>Brilhante, agressivo</td>
+<td>Sintetizadores, leads</td>
+</tr>
+<tr>
+<td><code>triangle</code></td>
+<td>Suave, levemente oco</td>
+<td>Tons gentis, acompanhamentos</td>
+</tr>
+</tbody>
+</table>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Note</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Compare as quatro formas de onda</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">for</span> <span class="n">wf</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;sine&quot;</span><span class="p">,</span> <span class="s2">&quot;square&quot;</span><span class="p">,</span> <span class="s2">&quot;sawtooth&quot;</span><span class="p">,</span> <span class="s2">&quot;triangle&quot;</span><span class="p">]:</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tocando </span><span class="si">{</span><span class="n">wf</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">Note</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">waveform</span><span class="o">=</span><span class="n">wf</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Compare os timbres da nota La (A4):</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Waveform</th>
+<th style="text-align: left;">Timbre</th>
+<th style="text-align: center;">Audio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>sine</code></td>
+<td style="text-align: left;">Puro, suave</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/waveform_sine.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>square</code></td>
+<td style="text-align: left;">Rico, cheio</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/waveform_square.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sawtooth</code></td>
+<td style="text-align: left;">Brilhante</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/waveform_sawtooth.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>triangle</code></td>
+<td style="text-align: left;">Suave, oco</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/waveform_triangle.mp3" type="audio/mpeg"></audio></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="envelope-adsr">Envelope ADSR<a class="headerlink" href="#envelope-adsr" title="Permanent link">&para;</a></h2>
+<p>O envelope controla como o volume de cada nota evolui no tempo:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Amplitude
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  1.0 |    /\
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>      |   /  \___________
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  0.6 |  /    decay      \  sustain
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>      | /                 \
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>  0.0 |/___________________\________
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>      A    D       S          R
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>      attack  decay  sustain  release
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Default</th>
+<th>O que controla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>attack</code></td>
+<td><code>0.01 s</code></td>
+<td>Tempo de subida (0 = ataque imediato)</td>
+</tr>
+<tr>
+<td><code>decay</code></td>
+<td><code>0.08 s</code></td>
+<td>Tempo de descida do pico ate o sustain</td>
+</tr>
+<tr>
+<td><code>sustain</code></td>
+<td><code>0.6</code></td>
+<td>Nivel de amplitude enquanto a nota soa (0-1)</td>
+</tr>
+<tr>
+<td><code>release</code></td>
+<td><code>0.2 s</code></td>
+<td>Tempo de descida quando a nota termina</td>
+</tr>
+</tbody>
+</table>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Envelope</span><span class="p">,</span> <span class="n">play</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chord</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Envelope com ataque lento (efeito pad/strings)</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">pad</span> <span class="o">=</span> <span class="n">Envelope</span><span class="p">(</span><span class="n">attack</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">sustain</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">release</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am7&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">envelope</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># Envelope percussivo (piano/marimba)</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">perc</span> <span class="o">=</span> <span class="n">Envelope</span><span class="p">(</span><span class="n">attack</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">sustain</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">release</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">envelope</span><span class="o">=</span><span class="n">perc</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Envelope</th>
+<th style="text-align: center;">Audio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Pad (attack lento)</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/adsr_pad.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;">Percussivo (ataque rapido)</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/adsr_perc.mp3" type="audio/mpeg"></audio></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="strum-o-dedilhar-do-acorde">Strum — o dedilhar do acorde<a class="headerlink" href="#strum-o-dedilhar-do-acorde" title="Permanent link">&para;</a></h2>
+<p>O parametro <code>strum</code> adiciona um pequeno delay entre cada nota de um acorde,
+simulando o efeito de dedilhar (como no violao). Sem strum, todas as notas
+soam simultaneamente — o que pode parecer artificial.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chord</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># Sem strum — todas as notas ao mesmo tempo</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am7&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">strum</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># Strum default (0.03s) — leve separacao</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am7&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1"># Strum mais lento — efeito arpejado</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am7&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">strum</span><span class="o">=</span><span class="mf">0.08</span><span class="p">)</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1"># Strum bem lento — quase um arpejo</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am7&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">strum</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Compare o efeito de strum em Am7:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Strum</th>
+<th style="text-align: left;">Efeito</th>
+<th style="text-align: center;">Audio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>0.0</code></td>
+<td style="text-align: left;">Simultaneo</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/strum_0.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0.03</code></td>
+<td style="text-align: left;">Default</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/strum_003.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0.08</code></td>
+<td style="text-align: left;">Arpejado</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/strum_008.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0.15</code></td>
+<td style="text-align: left;">Lento</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/strum_015.mp3" type="audio/mpeg"></audio></td>
+</tr>
+</tbody>
+</table>
+<p>O strum afeta apenas acordes (Chord, ChordEvent, e acordes em Field/Tree).
+Notas individuais e escalas nao sao afetados.</p>
+<hr />
+<h2 id="gap-respiracao-entre-notas">Gap — respiracao entre notas<a class="headerlink" href="#gap-respiracao-entre-notas" title="Permanent link">&para;</a></h2>
+<p>O parametro <code>gap</code> insere um curto silencio entre notas/acordes consecutivos.
+Sem gap, os sons se encostam (legato completo). Com gap, cada som tem espaco
+para respirar — como levantar o dedo entre as teclas.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Scale</span><span class="p">,</span> <span class="n">Field</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># Escala com gap default (0.05s) — articulacao natural</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1"># Sem gap — legato (notas conectadas)</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">gap</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># Gap grande — staccato (notas bem separadas)</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">gap</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="c1"># Campo harmonico com gap entre acordes</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="n">Field</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">gap</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Compare o efeito de gap na escala de C major:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Gap</th>
+<th style="text-align: left;">Articulacao</th>
+<th style="text-align: center;">Audio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>0.0</code></td>
+<td style="text-align: left;">Legato</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/gap_0.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0.05</code></td>
+<td style="text-align: left;">Natural</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/gap_005.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0.15</code></td>
+<td style="text-align: left;">Staccato</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/gap_015.mp3" type="audio/mpeg"></audio></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="exportar-wav">Exportar WAV<a class="headerlink" href="#exportar-wav" title="Permanent link">&para;</a></h2>
+<p>Exporte qualquer objeto para arquivo WAV (16-bit mono):</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Note</span><span class="p">,</span> <span class="n">Chord</span><span class="p">,</span> <span class="n">Scale</span><span class="p">,</span> <span class="n">Field</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_wav</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Nota</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_wav</span><span class="p">(</span><span class="s2">&quot;la.wav&quot;</span><span class="p">)</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Acorde</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am7&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_wav</span><span class="p">(</span><span class="s2">&quot;am7.wav&quot;</span><span class="p">,</span> <span class="n">waveform</span><span class="o">=</span><span class="s2">&quot;triangle&quot;</span><span class="p">)</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1"># Escala completa</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_wav</span><span class="p">(</span><span class="s2">&quot;c_major.wav&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="c1"># Campo harmonico</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="n">Field</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_wav</span><span class="p">(</span><span class="s2">&quot;campo_c.wav&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="c1"># Funcao standalone</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="n">to_wav</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;G7&quot;</span><span class="p">),</span> <span class="s2">&quot;g7.wav&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Os mesmos parametros de <code>play()</code> funcionam em <code>to_wav()</code>.</p>
+<hr />
+<h2 id="cli-play-e-wav">CLI — --play e --wav<a class="headerlink" href="#cli-play-e-wav" title="Permanent link">&para;</a></h2>
+<p>No terminal, use as flags <code>--play</code> e <code>--wav</code> em qualquer subcomando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Ouvir</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>gingo<span class="w"> </span>note<span class="w"> </span>C<span class="w"> </span>--play
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>gingo<span class="w"> </span>chord<span class="w"> </span>Am7<span class="w"> </span>--play
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>gingo<span class="w"> </span>scale<span class="w"> </span><span class="s2">&quot;C major&quot;</span><span class="w"> </span>--play
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>gingo<span class="w"> </span>field<span class="w"> </span><span class="s2">&quot;C major&quot;</span><span class="w"> </span>--play
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Exportar WAV</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>gingo<span class="w"> </span>note<span class="w"> </span>A<span class="w"> </span>--wav<span class="w"> </span>la.wav
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>gingo<span class="w"> </span>chord<span class="w"> </span>Am7<span class="w"> </span>--wav<span class="w"> </span>am7.wav
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c1"># Combinar opcoes</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>gingo<span class="w"> </span>chord<span class="w"> </span>G7<span class="w"> </span>--play<span class="w"> </span>--waveform<span class="w"> </span>triangle<span class="w"> </span>--strum<span class="w"> </span><span class="m">0</span>.06
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>gingo<span class="w"> </span>scale<span class="w"> </span><span class="s2">&quot;A minor&quot;</span><span class="w"> </span>--play<span class="w"> </span>--gap<span class="w"> </span><span class="m">0</span>.1
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>gingo<span class="w"> </span>field<span class="w"> </span><span class="s2">&quot;C major&quot;</span><span class="w"> </span>--play<span class="w"> </span>--wav<span class="w"> </span>campo.wav
+</span></code></pre></div>
+<h3 id="opcoes-de-audio-no-cli">Opcoes de audio no CLI<a class="headerlink" href="#opcoes-de-audio-no-cli" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Descricao</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--play</code></td>
+<td>Toca pelo audio do sistema</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>--wav FILE</code></td>
+<td>Exporta para arquivo WAV</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>--waveform</code></td>
+<td>sine, square, sawtooth, triangle</td>
+<td><code>sine</code></td>
+</tr>
+<tr>
+<td><code>--strum SEC</code></td>
+<td>Delay entre notas do acorde (segundos)</td>
+<td><code>0.03</code></td>
+</tr>
+<tr>
+<td><code>--gap SEC</code></td>
+<td>Silencio entre notas/acordes consecutivos</td>
+<td><code>0.05</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="comportamento-por-tipo-de-objeto">Comportamento por tipo de objeto<a class="headerlink" href="#comportamento-por-tipo-de-objeto" title="Permanent link">&para;</a></h2>
+<p>Cada classe tem um comportamento especifico ao ser tocada:</p>
+<table>
+<thead>
+<tr>
+<th>Objeto</th>
+<th>Comportamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Note</code></td>
+<td>Nota unica na oitava e duracao especificadas</td>
+</tr>
+<tr>
+<td><code>Chord</code></td>
+<td>Notas simultaneas com strum entre elas</td>
+</tr>
+<tr>
+<td><code>Scale</code></td>
+<td>Notas em sequencia ascendente + tonica uma oitava acima</td>
+</tr>
+<tr>
+<td><code>Field</code></td>
+<td>7 triades do campo em sequencia</td>
+</tr>
+<tr>
+<td><code>Tree</code></td>
+<td>Acordes diatonicos (via Field correspondente) <strong>(beta)</strong></td>
+</tr>
+<tr>
+<td><code>NoteEvent</code></td>
+<td>Nota com oitava e duracao proprias</td>
+</tr>
+<tr>
+<td><code>ChordEvent</code></td>
+<td>Acorde com oitava e duracao proprias</td>
+</tr>
+<tr>
+<td><code>Rest</code></td>
+<td>Silencio pela duracao especificada</td>
+</tr>
+<tr>
+<td><code>Sequence</code></td>
+<td>Eventos na ordem, usando tempo e duracoes proprios</td>
+</tr>
+<tr>
+<td><code>list[str]</code></td>
+<td>Lista de nomes de acordes/notas em sequencia</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exemplo-cada-tipo">Exemplo: cada tipo<a class="headerlink" href="#exemplo-cada-tipo" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="n">Note</span><span class="p">,</span> <span class="n">Chord</span><span class="p">,</span> <span class="n">Scale</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">Tree</span><span class="p">,</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="n">NoteEvent</span><span class="p">,</span> <span class="n">ChordEvent</span><span class="p">,</span> <span class="n">Rest</span><span class="p">,</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="n">Duration</span><span class="p">,</span> <span class="n">Tempo</span><span class="p">,</span> <span class="n">TimeSignature</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="p">)</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Nota: Do central por 0.5s</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="c1"># Acorde: Am7 com todas as notas + strum</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Am7&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="c1"># Escala: C major ascendente (C D E F G A B C)</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="c1"># Campo harmonico: CM Dm Em FM GM Am Bdim</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="n">Field</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="c1"># Arvore: mesmos acordes que o campo</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="n">Tree</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="c1"># NoteEvent: nota com oitava e duracao especificas</span>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="n">ne</span> <span class="o">=</span> <span class="n">NoteEvent</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">),</span> <span class="n">Duration</span><span class="p">(</span><span class="s2">&quot;quarter&quot;</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="n">ne</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="c1"># ChordEvent: acorde com oitava e duracao especificas</span>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="n">ce</span> <span class="o">=</span> <span class="n">ChordEvent</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;Dm&quot;</span><span class="p">),</span> <span class="n">Duration</span><span class="p">(</span><span class="s2">&quot;half&quot;</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="n">ce</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="c1"># Sequence: composicao com tempo</span>
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="n">Tempo</span><span class="p">(</span><span class="mi">120</span><span class="p">),</span> <span class="n">TimeSignature</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a><span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">NoteEvent</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">),</span> <span class="n">Duration</span><span class="p">(</span><span class="s2">&quot;quarter&quot;</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">NoteEvent</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">),</span> <span class="n">Duration</span><span class="p">(</span><span class="s2">&quot;quarter&quot;</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+</span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a><span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">NoteEvent</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;G&quot;</span><span class="p">),</span> <span class="n">Duration</span><span class="p">(</span><span class="s2">&quot;quarter&quot;</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ChordEvent</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">),</span> <span class="n">Duration</span><span class="p">(</span><span class="s2">&quot;half&quot;</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+</span><span id="__span-11-36"><a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a><span class="n">seq</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+</span><span id="__span-11-37"><a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a>
+</span><span id="__span-11-38"><a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a><span class="c1"># Lista de acordes</span>
+</span><span id="__span-11-39"><a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">play</span>
+</span><span id="__span-11-40"><a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a><span class="n">play</span><span class="p">([</span><span class="s2">&quot;CM&quot;</span><span class="p">,</span> <span class="s2">&quot;Am&quot;</span><span class="p">,</span> <span class="s2">&quot;FM&quot;</span><span class="p">,</span> <span class="s2">&quot;GM&quot;</span><span class="p">],</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</span></code></pre></div>
+<hr />
+<h2 id="sequence-composicoes-com-tempo">Sequence — composicoes com tempo<a class="headerlink" href="#sequence-composicoes-com-tempo" title="Permanent link">&para;</a></h2>
+<p>Uma <code>Sequence</code> respeita o tempo (BPM) e as duracoes de cada evento. O parametro
+<code>duration</code> de <code>play()</code> e ignorado — a Sequence usa seus proprios valores.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="n">Note</span><span class="p">,</span> <span class="n">Chord</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tempo</span><span class="p">,</span> <span class="n">TimeSignature</span><span class="p">,</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="n">NoteEvent</span><span class="p">,</span> <span class="n">ChordEvent</span><span class="p">,</span> <span class="n">Rest</span><span class="p">,</span> <span class="n">Duration</span><span class="p">,</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">)</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1"># Melodia simples a 100 BPM</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="n">Tempo</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">TimeSignature</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="c1"># Frase: C - E - G - (pausa) - CM</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">NoteEvent</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">),</span> <span class="n">Duration</span><span class="p">(</span><span class="s2">&quot;quarter&quot;</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">NoteEvent</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">),</span> <span class="n">Duration</span><span class="p">(</span><span class="s2">&quot;quarter&quot;</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">NoteEvent</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;G&quot;</span><span class="p">),</span> <span class="n">Duration</span><span class="p">(</span><span class="s2">&quot;quarter&quot;</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Rest</span><span class="p">(</span><span class="n">Duration</span><span class="p">(</span><span class="s2">&quot;quarter&quot;</span><span class="p">)))</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ChordEvent</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;CM&quot;</span><span class="p">),</span> <span class="n">Duration</span><span class="p">(</span><span class="s2">&quot;half&quot;</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="n">seq</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">waveform</span><span class="o">=</span><span class="s2">&quot;triangle&quot;</span><span class="p">)</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="n">seq</span><span class="o">.</span><span class="n">to_wav</span><span class="p">(</span><span class="s2">&quot;melodia.wav&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p><audio controls preload="none"><source src="../../assets/audio/seq_melody.mp3" type="audio/mpeg"></audio></p>
+<hr />
+<h2 id="exemplos-praticos">Exemplos praticos<a class="headerlink" href="#exemplos-praticos" title="Permanent link">&para;</a></h2>
+<h3 id="progressao-i-v-vi-iv-pop">Progressao I-V-vi-IV (pop)<a class="headerlink" href="#progressao-i-v-vi-iv-pop" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">play</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">play</span><span class="p">([</span><span class="s2">&quot;CM&quot;</span><span class="p">,</span> <span class="s2">&quot;GM&quot;</span><span class="p">,</span> <span class="s2">&quot;Am&quot;</span><span class="p">,</span> <span class="s2">&quot;FM&quot;</span><span class="p">],</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">waveform</span><span class="o">=</span><span class="s2">&quot;triangle&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p><audio controls preload="none"><source src="../../assets/audio/jazz_pop.mp3" type="audio/mpeg"></audio></p>
+<h3 id="progressao-ii-v-i-jazz">Progressao ii-V-I (jazz)<a class="headerlink" href="#progressao-ii-v-i-jazz" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">play</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">play</span><span class="p">([</span><span class="s2">&quot;Dm7&quot;</span><span class="p">,</span> <span class="s2">&quot;G7&quot;</span><span class="p">,</span> <span class="s2">&quot;C7M&quot;</span><span class="p">],</span> <span class="n">duration</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">strum</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</span></code></pre></div>
+<p><audio controls preload="none"><source src="../../assets/audio/jazz_251.mp3" type="audio/mpeg"></audio></p>
+<h3 id="modos-gregos-compare-o-som">Modos gregos — compare o som<a class="headerlink" href="#modos-gregos-compare-o-som" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Scale</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">modos</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ionian&quot;</span><span class="p">,</span> <span class="s2">&quot;dorian&quot;</span><span class="p">,</span> <span class="s2">&quot;phrygian&quot;</span><span class="p">,</span> <span class="s2">&quot;lydian&quot;</span><span class="p">,</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>         <span class="s2">&quot;mixolydian&quot;</span><span class="p">,</span> <span class="s2">&quot;aeolian&quot;</span><span class="p">,</span> <span class="s2">&quot;locrian&quot;</span><span class="p">]</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="k">for</span> <span class="n">modo</span> <span class="ow">in</span> <span class="n">modos</span><span class="p">:</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tocando </span><span class="si">{</span><span class="n">modo</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">modo</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">gap</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Modo</th>
+<th style="text-align: left;">Carater</th>
+<th style="text-align: center;">Audio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Ionian</td>
+<td style="text-align: left;">Maior, brilhante</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/mode_ionian.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;">Dorian</td>
+<td style="text-align: left;">Menor, jazzy</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/mode_dorian.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;">Phrygian</td>
+<td style="text-align: left;">Menor, flamenca</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/mode_phrygian.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;">Lydian</td>
+<td style="text-align: left;">Maior, eterea</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/mode_lydian.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;">Mixolydian</td>
+<td style="text-align: left;">Maior, blues</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/mode_mixolydian.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;">Aeolian</td>
+<td style="text-align: left;">Menor natural</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/mode_aeolian.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;">Locrian</td>
+<td style="text-align: left;">Diminuta, tensa</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/mode_locrian.mp3" type="audio/mpeg"></audio></td>
+</tr>
+</tbody>
+</table>
+<h3 id="comparar-campos-maior-e-menor">Comparar campos maior e menor<a class="headerlink" href="#comparar-campos-maior-e-menor" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Campo maior:&quot;</span><span class="p">)</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">Field</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Campo menor:&quot;</span><span class="p">)</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="n">Field</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;natural minor&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Campo</th>
+<th style="text-align: center;">Audio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">C major</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/field_c_major.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;">A minor</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/field_a_minor.mp3" type="audio/mpeg"></audio></td>
+</tr>
+</tbody>
+</table>
+<h3 id="familias-de-escalas">Familias de escalas<a class="headerlink" href="#familias-de-escalas" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Scale</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="n">familias</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="s2">&quot;major&quot;</span><span class="p">,</span> <span class="s2">&quot;natural minor&quot;</span><span class="p">,</span> <span class="s2">&quot;harmonic minor&quot;</span><span class="p">,</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="s2">&quot;melodic minor&quot;</span><span class="p">,</span> <span class="s2">&quot;blues&quot;</span><span class="p">,</span> <span class="s2">&quot;whole tone&quot;</span><span class="p">,</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="p">]</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">familias</span><span class="p">:</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tocando </span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    <span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Familia</th>
+<th style="text-align: center;">Audio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Major</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/family_major.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;">Natural minor</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/family_natural_minor.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;">Harmonic minor</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/family_harmonic_minor.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;">Melodic minor</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/family_melodic_minor.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;">Blues</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/family_blues.mp3" type="audio/mpeg"></audio></td>
+</tr>
+<tr>
+<td style="text-align: left;">Whole tone</td>
+<td style="text-align: center;"><audio controls preload="none"><source src="../../assets/audio/family_whole_tone.mp3" type="audio/mpeg"></audio></td>
+</tr>
+</tbody>
+</table>
+<h3 id="exportar-todos-os-acordes-do-campo">Exportar todos os acordes do campo<a class="headerlink" href="#exportar-todos-os-acordes-do-campo" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="n">campo</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">)</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">campo</span><span class="o">.</span><span class="n">chords</span><span class="p">()):</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="n">ch</span><span class="o">.</span><span class="n">to_wav</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;grau_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">ch</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exportado: grau_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">ch</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2">.wav&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<hr />
+<h2 id="referencia-tecnica">Referencia tecnica<a class="headerlink" href="#referencia-tecnica" title="Permanent link">&para;</a></h2>
+<h3 id="waveform-enum">Waveform (enum)<a class="headerlink" href="#waveform-enum" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Waveform</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">Waveform</span><span class="o">.</span><span class="n">SINE</span>       <span class="c1"># &quot;sine&quot;</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">Waveform</span><span class="o">.</span><span class="n">SQUARE</span>     <span class="c1"># &quot;square&quot;</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">Waveform</span><span class="o">.</span><span class="n">SAWTOOTH</span>   <span class="c1"># &quot;sawtooth&quot;</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="n">Waveform</span><span class="o">.</span><span class="n">TRIANGLE</span>   <span class="c1"># &quot;triangle&quot;</span>
+</span></code></pre></div>
+<h3 id="envelope-class">Envelope (class)<a class="headerlink" href="#envelope-class" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Envelope</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">env</span> <span class="o">=</span> <span class="n">Envelope</span><span class="p">(</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="n">attack</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>   <span class="c1"># segundos</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    <span class="n">decay</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span>    <span class="c1"># segundos</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>    <span class="n">sustain</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>   <span class="c1"># amplitude (0-1)</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    <span class="n">release</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>   <span class="c1"># segundos</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="p">)</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="c1"># Calcular amplitude em t=0.5 para nota de 1 segundo</span>
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="n">amp</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">amplitude</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>  <span class="c1"># float</span>
+</span></code></pre></div>
+<h3 id="play-e-to_wav">play() e to_wav()<a class="headerlink" href="#play-e-to_wav" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo.audio</span><span class="w"> </span><span class="kn">import</span> <span class="n">play</span><span class="p">,</span> <span class="n">to_wav</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1"># play(obj, *, octave=4, duration=0.5, waveform=&quot;sine&quot;,</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1">#      amplitude=0.8, envelope=None, strum=0.03, gap=0.05,</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1">#      tuning=440.0, sample_rate=44100) -&gt; None</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="c1"># to_wav(obj, path, *, ...) -&gt; None</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="c1"># Mesmos parametros de play()</span>
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/sauloverissimo/gingopy" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/gingo/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

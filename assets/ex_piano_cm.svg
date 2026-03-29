@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="598" height="148" viewBox="0 0 598 148">
+<style>
+.w{width:23px;height:120px;fill:#fff;stroke:#333;stroke-width:1;ry:2}
+.b{width:14px;height:78px;fill:#111;stroke:#000;stroke-width:1;ry:2}
+.h.w{fill:#4A90D9}
+.h.b{fill:#2E6AB0}
+.t{font-family:Arial,Helvetica,sans-serif;font-weight:bold;fill:#fff;text-anchor:middle;pointer-events:none}
+.tw{font-size:9px}
+.tb{font-size:7px}
+.title{font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;fill:#333;text-anchor:middle}
+</style>
+<rect width="598" height="148" fill="#F5F5F5" rx="4"/>
+<text x="299" y="18" class="title">CM</text>
+<g transform="translate(0,28)">
+<rect id="key-38" class="w" data-midi="38" data-note="D" data-octave="2" x="0" y="0"/>
+<rect id="key-40" class="w" data-midi="40" data-note="E" data-octave="2" x="23" y="0"/>
+<rect id="key-41" class="w" data-midi="41" data-note="F" data-octave="2" x="46" y="0"/>
+<rect id="key-43" class="w" data-midi="43" data-note="G" data-octave="2" x="69" y="0"/>
+<rect id="key-45" class="w" data-midi="45" data-note="A" data-octave="2" x="92" y="0"/>
+<rect id="key-47" class="w" data-midi="47" data-note="B" data-octave="2" x="115" y="0"/>
+<rect id="key-48" class="w" data-midi="48" data-note="C" data-octave="3" x="138" y="0"/>
+<rect id="key-50" class="w" data-midi="50" data-note="D" data-octave="3" x="161" y="0"/>
+<rect id="key-52" class="w" data-midi="52" data-note="E" data-octave="3" x="184" y="0"/>
+<rect id="key-53" class="w" data-midi="53" data-note="F" data-octave="3" x="207" y="0"/>
+<rect id="key-55" class="w" data-midi="55" data-note="G" data-octave="3" x="230" y="0"/>
+<rect id="key-57" class="w" data-midi="57" data-note="A" data-octave="3" x="253" y="0"/>
+<rect id="key-59" class="w" data-midi="59" data-note="B" data-octave="3" x="276" y="0"/>
+<rect id="key-60" class="w h" data-midi="60" data-note="C" data-octave="4" x="299" y="0"/>
+<text x="310" y="112" class="t tw">C4</text>
+<rect id="key-62" class="w" data-midi="62" data-note="D" data-octave="4" x="322" y="0"/>
+<rect id="key-64" class="w h" data-midi="64" data-note="E" data-octave="4" x="345" y="0"/>
+<text x="356" y="112" class="t tw">E4</text>
+<rect id="key-65" class="w" data-midi="65" data-note="F" data-octave="4" x="368" y="0"/>
+<rect id="key-67" class="w h" data-midi="67" data-note="G" data-octave="4" x="391" y="0"/>
+<text x="402" y="112" class="t tw">G4</text>
+<rect id="key-69" class="w" data-midi="69" data-note="A" data-octave="4" x="414" y="0"/>
+<rect id="key-71" class="w" data-midi="71" data-note="B" data-octave="4" x="437" y="0"/>
+<rect id="key-72" class="w" data-midi="72" data-note="C" data-octave="5" x="460" y="0"/>
+<rect id="key-74" class="w" data-midi="74" data-note="D" data-octave="5" x="483" y="0"/>
+<rect id="key-76" class="w" data-midi="76" data-note="E" data-octave="5" x="506" y="0"/>
+<rect id="key-77" class="w" data-midi="77" data-note="F" data-octave="5" x="529" y="0"/>
+<rect id="key-79" class="w" data-midi="79" data-note="G" data-octave="5" x="552" y="0"/>
+<rect id="key-81" class="w" data-midi="81" data-note="A" data-octave="5" x="575" y="0"/>
+<rect id="key-39" class="b" data-midi="39" data-note="D#" data-octave="2" x="16" y="0"/>
+<rect id="key-42" class="b" data-midi="42" data-note="F#" data-octave="2" x="62" y="0"/>
+<rect id="key-44" class="b" data-midi="44" data-note="G#" data-octave="2" x="85" y="0"/>
+<rect id="key-46" class="b" data-midi="46" data-note="A#" data-octave="2" x="108" y="0"/>
+<rect id="key-49" class="b" data-midi="49" data-note="C#" data-octave="3" x="154" y="0"/>
+<rect id="key-51" class="b" data-midi="51" data-note="D#" data-octave="3" x="177" y="0"/>
+<rect id="key-54" class="b" data-midi="54" data-note="F#" data-octave="3" x="223" y="0"/>
+<rect id="key-56" class="b" data-midi="56" data-note="G#" data-octave="3" x="246" y="0"/>
+<rect id="key-58" class="b" data-midi="58" data-note="A#" data-octave="3" x="269" y="0"/>
+<rect id="key-61" class="b" data-midi="61" data-note="C#" data-octave="4" x="315" y="0"/>
+<rect id="key-63" class="b" data-midi="63" data-note="D#" data-octave="4" x="338" y="0"/>
+<rect id="key-66" class="b" data-midi="66" data-note="F#" data-octave="4" x="384" y="0"/>
+<rect id="key-68" class="b" data-midi="68" data-note="G#" data-octave="4" x="407" y="0"/>
+<rect id="key-70" class="b" data-midi="70" data-note="A#" data-octave="4" x="430" y="0"/>
+<rect id="key-73" class="b" data-midi="73" data-note="C#" data-octave="5" x="476" y="0"/>
+<rect id="key-75" class="b" data-midi="75" data-note="D#" data-octave="5" x="499" y="0"/>
+<rect id="key-78" class="b" data-midi="78" data-note="F#" data-octave="5" x="545" y="0"/>
+<rect id="key-80" class="b" data-midi="80" data-note="G#" data-octave="5" x="568" y="0"/>
+</g>
+</svg>

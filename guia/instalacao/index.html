@@ -1,0 +1,1997 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Aprenda teoria musical de forma divertida e fácil com Python">
+      
+      
+        <meta name="author" content="Saulo Verissimo">
+      
+      
+        <link rel="canonical" href="https://sauloverissimo.github.io/gingopy/guia/instalacao/">
+      
+      
+        <link rel="prev" href="../introducao/">
+      
+      
+        <link rel="next" href="../primeiros-passos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Instalação - 🪇 Gingo - Teoria Musical em Python</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#instalacao" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="🪇 Gingo - Teoria Musical em Python" class="md-header__button md-logo" aria-label="🪇 Gingo - Teoria Musical em Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🪇 Gingo - Teoria Musical em Python
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Instalação
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sauloverissimo/gingopy" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sauloverissimo/gingopy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏠 Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../introducao/" class="md-tabs__link">
+          
+  
+  
+  📖 Guia
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/referencia/" class="md-tabs__link">
+          
+  
+  
+  📚 API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../roadmap/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🗺️ Roadmap
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../referencias/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📖 Referências
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="🪇 Gingo - Teoria Musical em Python" class="md-nav__button md-logo" aria-label="🪇 Gingo - Teoria Musical em Python" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    🪇 Gingo - Teoria Musical em Python
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sauloverissimo/gingopy" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sauloverissimo/gingopy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏠 Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📖 Guia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📖 Guia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introducao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introdução
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalação
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-do-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requisitos do Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-1-verificar-instalacao-do-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1: Verificar Instalação do Python
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 1: Verificar Instalação do Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macos-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        macOS / Linux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpretacao-dos-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interpretação dos Resultados
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-2-instalar-o-gingo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2: Instalar o Gingo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 2: Instalar o Gingo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comando-de-instalacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comando de Instalação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#saida-esperada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saída Esperada
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-3-verificacao-da-instalacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 3: Verificação da Instalação
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 3: Verificação da Instalação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificacao-via-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação via CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacao-via-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação via Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solucao-de-problemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Solução de Problemas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Solução de Problemas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problema-1-pip-nao-e-reconhecido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 1: "pip não é reconhecido"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-2-permission-denied-ou-access-denied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 2: "Permission denied" ou "Access denied"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-3-no-module-named-gingo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 3: "No module named 'gingo'"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-4-versao-desatualizada-do-pip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 4: Versão desatualizada do pip
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacao-avancada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌟 Instalação Avançada
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌟 Instalação Avançada">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacao-com-audio-playback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalação com Audio (playback)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacao-com-dependencias-de-teste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalação com Dependências de Teste
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacao-completa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalação Completa
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suporte-adicional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🆘 Suporte Adicional
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacao-concluida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎉 Instalação Concluída
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximos Passos
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primeiros-passos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primeiros Passos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conceitos-basicos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conceitos Básicos de Música
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comecando/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Começando
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fretboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fretboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ritmo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ritmo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exemplos-praticos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exemplos Práticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📚 API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/referencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referência Completa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗺️ Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📖 Referências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisitos-do-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requisitos do Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-1-verificar-instalacao-do-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1: Verificar Instalação do Python
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 1: Verificar Instalação do Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macos-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        macOS / Linux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpretacao-dos-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interpretação dos Resultados
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-2-instalar-o-gingo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2: Instalar o Gingo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 2: Instalar o Gingo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comando-de-instalacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comando de Instalação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#saida-esperada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saída Esperada
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passo-3-verificacao-da-instalacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 3: Verificação da Instalação
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passo 3: Verificação da Instalação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificacao-via-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação via CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacao-via-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificação via Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solucao-de-problemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Solução de Problemas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Solução de Problemas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problema-1-pip-nao-e-reconhecido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 1: "pip não é reconhecido"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-2-permission-denied-ou-access-denied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 2: "Permission denied" ou "Access denied"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-3-no-module-named-gingo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 3: "No module named 'gingo'"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-4-versao-desatualizada-do-pip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 4: Versão desatualizada do pip
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacao-avancada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌟 Instalação Avançada
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌟 Instalação Avançada">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalacao-com-audio-playback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalação com Audio (playback)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacao-com-dependencias-de-teste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalação com Dependências de Teste
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacao-completa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalação Completa
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suporte-adicional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🆘 Suporte Adicional
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacao-concluida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎉 Instalação Concluída
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximos-passos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximos Passos
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navegação" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    🏠 Início
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../introducao/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    📖 Guia
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="instalacao">📥 Instalação<a class="headerlink" href="#instalacao" title="Permanent link">&para;</a></h1>
+<p>Este guia orienta a instalação do Gingo em diferentes plataformas e ambientes.</p>
+<h2 id="requisitos-do-sistema">Requisitos do Sistema<a class="headerlink" href="#requisitos-do-sistema" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TD
+    A[Requisitos] --&gt; B[Python 3.10+]
+    A --&gt; C[pip]
+    A --&gt; D[Terminal/Shell]
+
+    B --&gt; B1[Incluído na distribuição&lt;br/&gt;Python oficial]
+    C --&gt; C1[Gerenciador de pacotes&lt;br/&gt;Python padrão]
+    D --&gt; D1[Interface de linha&lt;br/&gt;de comando]
+
+    style A fill:#FFD700,stroke:#FF8C00,stroke-width:4px,color:#000
+    style B fill:#87CEEB,stroke:#4169E1,stroke-width:3px,color:#000
+    style C fill:#98FB98,stroke:#32CD32,stroke-width:3px,color:#000
+    style D fill:#FFB6C1,stroke:#FF1493,stroke-width:3px,color:#000
+    style B1 fill:#E0FFE0,stroke:#228B22,stroke-width:2px,color:#000
+    style C1 fill:#E0FFE0,stroke:#228B22,stroke-width:2px,color:#000
+    style D1 fill:#E0FFE0,stroke:#228B22,stroke-width:2px,color:#000</code></pre>
+<p><strong>Sobre o terminal</strong></p>
+<p>O terminal é uma interface textual para comunicação com o sistema operacional:</p>
+<ul>
+<li><strong>Windows</strong>: Prompt de Comando ou PowerShell</li>
+<li><strong>macOS</strong>: Terminal</li>
+<li><strong>Linux</strong>: Terminal (shell padrão)</li>
+</ul>
+<h2 id="passo-1-verificar-instalacao-do-python">Passo 1: Verificar Instalação do Python<a class="headerlink" href="#passo-1-verificar-instalacao-do-python" title="Permanent link">&para;</a></h2>
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Pressione <code>Win + R</code></li>
+<li>Digite <code>cmd</code> e pressione <code>Enter</code></li>
+<li>Execute:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>--version
+</span></code></pre></div>
+<h3 id="macos-linux">macOS / Linux<a class="headerlink" href="#macos-linux" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Abra o Terminal</li>
+<li>Execute:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python3<span class="w"> </span>--version
+</span></code></pre></div>
+<h3 id="interpretacao-dos-resultados">Interpretação dos Resultados<a class="headerlink" href="#interpretacao-dos-resultados" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+    A[Comando executado] --&gt; B{Saída?}
+
+    B --&gt;|Python 3.10 ou superior| C[Instalação válida]
+    B --&gt;|Python 3.9 ou inferior| D[Atualização necessária]
+    B --&gt;|Comando não reconhecido| E[Instalação necessária]
+
+    C --&gt; F[Prosseguir para Passo 2]
+    D --&gt; G[Baixar em&lt;br/&gt;python.org]
+    E --&gt; G
+
+    style A fill:#87CEEB,stroke:#4169E1,stroke-width:3px,color:#000
+    style B fill:#FFD700,stroke:#FF8C00,stroke-width:3px,color:#000
+    style C fill:#98FB98,stroke:#32CD32,stroke-width:3px,color:#000
+    style D fill:#FFE5B4,stroke:#FF8C00,stroke-width:3px,color:#000
+    style E fill:#FFB6C1,stroke:#FF1493,stroke-width:3px,color:#000
+    style F fill:#E0FFE0,stroke:#228B22,stroke-width:3px,color:#000
+    style G fill:#87CEEB,stroke:#4169E1,stroke-width:2px,color:#000</code></pre>
+<p><strong>Saída esperada</strong></p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Python 3.12.0
+</span></code></pre></div>
+Qualquer versão ≥ 3.10 é compatível.</p>
+<p><strong>Instalação do Python</strong></p>
+<p>Se o Python não estiver instalado:</p>
+<ol>
+<li>Acesse <a href="https://www.python.org/downloads/">python.org/downloads</a></li>
+<li>Baixe o instalador apropriado</li>
+<li>Execute a instalação</li>
+<li><strong>IMPORTANTE (Windows)</strong>: Marque a opção "Add Python to PATH"</li>
+</ol>
+<h2 id="passo-2-instalar-o-gingo">Passo 2: Instalar o Gingo<a class="headerlink" href="#passo-2-instalar-o-gingo" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as Usuário
+    participant T as Terminal
+    participant P as pip
+    participant G as Gingo
+
+    U-&gt;&gt;T: Abre terminal
+    U-&gt;&gt;T: pip install gingo
+    T-&gt;&gt;P: Solicita instalação
+    P-&gt;&gt;G: Baixa e instala
+    G-&gt;&gt;P: Instalação concluída
+    P-&gt;&gt;T: Confirmação
+    T-&gt;&gt;U: Sucesso</code></pre>
+<h3 id="comando-de-instalacao">Comando de Instalação<a class="headerlink" href="#comando-de-instalacao" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label><label for="__tabbed_1_2">macOS / Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>pip<span class="w"> </span>install<span class="w"> </span>gingo
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip3<span class="w"> </span>install<span class="w"> </span>gingo
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="saida-esperada">Saída Esperada<a class="headerlink" href="#saida-esperada" title="Permanent link">&para;</a></h3>
+<p>Durante a instalação, você verá:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Collecting gingo
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  Downloading gingo-1.0.1-cp312-cp312-win_amd64.whl (245 kB)
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 245.0/245.0 kB 5.2 MB/s
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Installing collected packages: gingo
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Successfully installed gingo-1.0.1
+</span></code></pre></div>
+<p><strong>Instalação bem-sucedida</strong></p>
+<p>A mensagem <code>Successfully installed gingo-X.X.X</code> confirma a instalação.</p>
+<p><strong>Erros de instalação</strong></p>
+<p>Consulte a seção "Solução de Problemas" abaixo.</p>
+<h2 id="passo-3-verificacao-da-instalacao">Passo 3: Verificação da Instalação<a class="headerlink" href="#passo-3-verificacao-da-instalacao" title="Permanent link">&para;</a></h2>
+<h3 id="verificacao-via-cli">Verificação via CLI<a class="headerlink" href="#verificacao-via-cli" title="Permanent link">&para;</a></h3>
+<p>Execute:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>gingo<span class="w"> </span>--version
+</span></code></pre></div>
+<p>Saída esperada:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>gingo 1.0.1
+</span></code></pre></div>
+<pre class="mermaid"><code>flowchart LR
+    A[gingo --version] --&gt; B{Resultado?}
+
+    B --&gt;|Versão exibida| C[Instalação válida]
+    B --&gt;|Comando não encontrado| D[Erro na instalação]
+
+    C --&gt; E[Prosseguir para teste Python]
+    D --&gt; F[Consultar troubleshooting]
+
+    style A fill:#87CEEB,stroke:#4169E1,stroke-width:3px,color:#000
+    style B fill:#FFD700,stroke:#FF8C00,stroke-width:3px,color:#000
+    style C fill:#98FB98,stroke:#32CD32,stroke-width:3px,color:#000
+    style D fill:#FFB6C1,stroke:#FF1493,stroke-width:3px,color:#000
+    style E fill:#E0FFE0,stroke:#228B22,stroke-width:2px,color:#000
+    style F fill:#FFE5B4,stroke:#FF8C00,stroke-width:2px,color:#000</code></pre>
+<h3 id="verificacao-via-python">Verificação via Python<a class="headerlink" href="#verificacao-via-python" title="Permanent link">&para;</a></h3>
+<p>Entre no interpretador interativo:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python
+</span></code></pre></div>
+<p>Ou no macOS/Linux:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>python3
+</span></code></pre></div>
+<p>Execute:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">gingo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Note</span><span class="p">,</span> <span class="n">Chord</span><span class="p">,</span> <span class="n">Scale</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">Note</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">))</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">Chord</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">))</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">Scale</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;major&quot;</span><span class="p">))</span>
+</span></code></pre></div>
+<p>Saída esperada:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>C
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>C
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>C Major
+</span></code></pre></div>
+<p>Para sair do interpretador:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">exit</span><span class="p">()</span>
+</span></code></pre></div>
+<pre class="mermaid"><code>graph TD
+    A[Abrir interpretador] --&gt; B[Importar gingo]
+    B --&gt; C{Sucesso?}
+
+    C --&gt;|Sim| D[Instalação verificada]
+    C --&gt;|ModuleNotFoundError| E[Erro de importação]
+
+    D --&gt; F[Pronto para uso]
+    E --&gt; G[Consultar troubleshooting]
+
+    style A fill:#87CEEB,stroke:#4169E1,stroke-width:3px,color:#000
+    style B fill:#DDA0DD,stroke:#9370DB,stroke-width:3px,color:#000
+    style C fill:#FFD700,stroke:#FF8C00,stroke-width:3px,color:#000
+    style D fill:#98FB98,stroke:#32CD32,stroke-width:3px,color:#000
+    style E fill:#FFB6C1,stroke:#FF1493,stroke-width:3px,color:#000
+    style F fill:#E0FFE0,stroke:#228B22,stroke-width:4px,color:#000
+    style G fill:#FFE5B4,stroke:#FF8C00,stroke-width:2px,color:#000</code></pre>
+<p><strong>Instalação confirmada</strong></p>
+<p>Se ambos os testes foram bem-sucedidos, o Gingo está operacional.</p>
+<p>Próximo passo: <strong><a href="../conceitos-basicos/">Conceitos Básicos</a></strong></p>
+<h2 id="solucao-de-problemas">🔧 Solução de Problemas<a class="headerlink" href="#solucao-de-problemas" title="Permanent link">&para;</a></h2>
+<h3 id="problema-1-pip-nao-e-reconhecido">Problema 1: "pip não é reconhecido"<a class="headerlink" href="#problema-1-pip-nao-e-reconhecido" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TD
+    A[Erro: pip não reconhecido] --&gt; B[Causa: Python não no PATH]
+    B --&gt; C[Solução 1:&lt;br/&gt;Reinstalar Python]
+    B --&gt; D[Solução 2:&lt;br/&gt;Usar python -m pip]
+
+    C --&gt; C1[Marcar 'Add to PATH'&lt;br/&gt;na instalação]
+    D --&gt; D2[python -m pip install gingo]
+
+    style A fill:#FFB6C1,stroke:#FF1493,stroke-width:3px,color:#000
+    style B fill:#FFE5B4,stroke:#FF8C00,stroke-width:3px,color:#000
+    style C fill:#87CEEB,stroke:#4169E1,stroke-width:2px,color:#000
+    style D fill:#98FB98,stroke:#32CD32,stroke-width:2px,color:#000
+    style C1 fill:#E0FFE0,stroke:#228B22,stroke-width:2px,color:#000
+    style D2 fill:#E0FFE0,stroke:#228B22,stroke-width:2px,color:#000</code></pre>
+<p><strong>Solução rápida</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>gingo
+</span></code></pre></div>
+<h3 id="problema-2-permission-denied-ou-access-denied">Problema 2: "Permission denied" ou "Access denied"<a class="headerlink" href="#problema-2-permission-denied-ou-access-denied" title="Permanent link">&para;</a></h3>
+<p>Erro relacionado a permissões insuficientes.</p>
+<p><strong>Solução</strong>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Windows</label><label for="__tabbed_2_2">macOS / Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Execute o terminal como Administrador:</p>
+<ol>
+<li>Localize "cmd" ou "PowerShell" no menu Iniciar</li>
+<li>Clique com botão direito</li>
+<li>Selecione "Executar como administrador"</li>
+<li>Execute novamente o comando de instalação</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>Use <code>sudo</code> para elevar privilégios:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>gingo
+</span></code></pre></div>
+<p>Digite sua senha quando solicitado (a entrada não é exibida visualmente).</p>
+</div>
+</div>
+</div>
+<h3 id="problema-3-no-module-named-gingo">Problema 3: "No module named 'gingo'"<a class="headerlink" href="#problema-3-no-module-named-gingo" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+    A[ModuleNotFoundError] --&gt; B{Versão de Python?}
+
+    B --&gt;|python| C[Instalar com&lt;br/&gt;python -m pip]
+    B --&gt;|python3| D[Instalar com&lt;br/&gt;python3 -m pip]
+
+    C --&gt; E[Executar com&lt;br/&gt;python]
+    D --&gt; F[Executar com&lt;br/&gt;python3]
+
+    E --&gt; G[Problema resolvido]
+    F --&gt; G
+
+    style A fill:#FFB6C1,stroke:#FF1493,stroke-width:3px,color:#000
+    style B fill:#FFD700,stroke:#FF8C00,stroke-width:3px,color:#000
+    style C fill:#87CEEB,stroke:#4169E1,stroke-width:2px,color:#000
+    style D fill:#87CEEB,stroke:#4169E1,stroke-width:2px,color:#000
+    style E fill:#DDA0DD,stroke:#9370DB,stroke-width:2px,color:#000
+    style F fill:#DDA0DD,stroke:#9370DB,stroke-width:2px,color:#000
+    style G fill:#98FB98,stroke:#32CD32,stroke-width:3px,color:#000</code></pre>
+<p><strong>Solução</strong>: Consistência entre instalação e execução:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Instalar</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>gingo
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># Executar</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>python
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>&gt;&gt;&gt;<span class="w"> </span>from<span class="w"> </span>gingo<span class="w"> </span>import<span class="w"> </span>Note
+</span></code></pre></div>
+<h3 id="problema-4-versao-desatualizada-do-pip">Problema 4: Versão desatualizada do pip<a class="headerlink" href="#problema-4-versao-desatualizada-do-pip" title="Permanent link">&para;</a></h3>
+<p>Se aparecer aviso:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>WARNING:<span class="w"> </span>You<span class="w"> </span>are<span class="w"> </span>using<span class="w"> </span>pip<span class="w"> </span>version<span class="w"> </span><span class="m">20</span>.0.0<span class="p">;</span><span class="w"> </span>however,<span class="w"> </span>version<span class="w"> </span><span class="m">24</span>.0<span class="w"> </span>is<span class="w"> </span>available.
+</span></code></pre></div>
+<p><strong>Solução</strong>: Atualizar o pip:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+</span></code></pre></div>
+<p>Após a atualização, instale o Gingo normalmente.</p>
+<h2 id="instalacao-avancada">🌟 Instalação Avançada<a class="headerlink" href="#instalacao-avancada" title="Permanent link">&para;</a></h2>
+<p>Para desenvolvedores e casos de uso específicos.</p>
+<h3 id="instalacao-com-audio-playback">Instalação com Audio (playback)<a class="headerlink" href="#instalacao-com-audio-playback" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>pip<span class="w"> </span>install<span class="w"> </span>gingo<span class="o">[</span>audio<span class="o">]</span>
+</span></code></pre></div>
+<p>Instala <code>simpleaudio</code> para playback direto pelo alto-falante. A sintese de audio
+e exportacao WAV funcionam sem dependencias extras — <code>gingo[audio]</code> e necessario
+apenas para o <code>.play()</code> tocar som pelo sistema.</p>
+<p>Sem <code>simpleaudio</code>, o Gingo tenta players do sistema (<code>aplay</code>/<code>paplay</code>/<code>ffplay</code>
+no Linux, <code>afplay</code> no macOS).</p>
+<h3 id="instalacao-com-dependencias-de-teste">Instalação com Dependências de Teste<a class="headerlink" href="#instalacao-com-dependencias-de-teste" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>pip<span class="w"> </span>install<span class="w"> </span>gingo<span class="o">[</span>test<span class="o">]</span>
+</span></code></pre></div>
+<h3 id="instalacao-completa">Instalação Completa<a class="headerlink" href="#instalacao-completa" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>pip<span class="w"> </span>install<span class="w"> </span>gingo<span class="o">[</span>audio,test<span class="o">]</span>
+</span></code></pre></div>
+<pre class="mermaid"><code>graph TD
+    A[gingo] --&gt; B[Instalação&lt;br/&gt;Padrão]
+    A --&gt; C[gingo dev]
+    A --&gt; D[gingo test]
+    A --&gt; E[gingo dev,test]
+
+    B --&gt; B1[Uso normal]
+    C --&gt; C1[Desenvolvimento]
+    D --&gt; D1[Testes]
+    E --&gt; E1[Completo]
+
+    style A fill:#FFD700,stroke:#FF8C00,stroke-width:4px,color:#000
+    style B fill:#98FB98,stroke:#32CD32,stroke-width:3px,color:#000
+    style C fill:#87CEEB,stroke:#4169E1,stroke-width:2px,color:#000
+    style D fill:#DDA0DD,stroke:#9370DB,stroke-width:2px,color:#000
+    style E fill:#FFB6C1,stroke:#FF1493,stroke-width:2px,color:#000</code></pre>
+<h2 id="suporte-adicional">🆘 Suporte Adicional<a class="headerlink" href="#suporte-adicional" title="Permanent link">&para;</a></h2>
+<p>Se os problemas persistirem:</p>
+<pre class="mermaid"><code>mindmap
+  root((Suporte))
+    GitHub Issues
+      Descrever problema
+      Incluir logs de erro
+      Informar versões
+    Documentação
+      FAQ
+      Exemplos
+      API Reference
+    Comunidade
+      Fóruns Python
+      Stack Overflow
+      Reddit r/learnpython</code></pre>
+<p><strong>Informações para suporte</strong></p>
+<p>Ao reportar problemas, inclua:</p>
+<ol>
+<li>Sistema operacional e versão</li>
+<li>Versão do Python (<code>python --version</code>)</li>
+<li>Mensagem de erro completa</li>
+<li>Comandos executados</li>
+</ol>
+<h2 id="instalacao-concluida">🎉 Instalação Concluída<a class="headerlink" href="#instalacao-concluida" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>journey
+    title Processo de Instalação
+    section Preparação
+      Verificar Python: 5: Usuário
+      Abrir Terminal: 5: Usuário
+    section Instalação
+      pip install gingo: 5: pip
+      Download: 3: pip
+    section Verificação
+      Testar CLI: 5: Usuário
+      Testar importação: 5: Usuário
+    section Resultado
+      Instalação confirmada: 5: Sucesso</code></pre>
+<h2 id="proximos-passos">Próximos Passos<a class="headerlink" href="#proximos-passos" title="Permanent link">&para;</a></h2>
+<p>Agora que o Gingo está instalado:</p>
+<ol>
+<li><strong><a href="../conceitos-basicos/">Conceitos Básicos</a></strong> - Fundamentos de teoria musical</li>
+<li><strong><a href="../primeiros-passos/">Primeiros Passos</a></strong> - Exemplos práticos de código</li>
+<li><strong><a href="../comecando/">Começando</a></strong> - Casos de uso avançados</li>
+</ol>
+<pre class="mermaid"><code>graph LR
+    A[Instalação&lt;br/&gt;Completa] --&gt; B[Conceitos&lt;br/&gt;Básicos]
+    B --&gt; C[Primeiros&lt;br/&gt;Passos]
+    C --&gt; D[Começando]
+    D --&gt; E[Domínio]
+
+    style A fill:#98FB98,stroke:#32CD32,stroke-width:4px,color:#000
+    style B fill:#87CEEB,stroke:#4169E1,stroke-width:3px,color:#000
+    style C fill:#FFB6C1,stroke:#FF1493,stroke-width:3px,color:#000
+    style D fill:#DDA0DD,stroke:#9370DB,stroke-width:3px,color:#000
+    style E fill:#FFD700,stroke:#FF8C00,stroke-width:4px,color:#000</code></pre>
+<p><strong>Próxima etapa: Conceitos Básicos</strong></p>
+<p>Continue para <strong><a href="../conceitos-basicos/">Conceitos Básicos</a></strong> para compreender os fundamentos teóricos.</p>
+<hr />
+<p>💡 <strong>Dica</strong>: Salve esta página para referência futura em caso de reinstalação ou troubleshooting.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/sauloverissimo/gingopy" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/gingo/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
